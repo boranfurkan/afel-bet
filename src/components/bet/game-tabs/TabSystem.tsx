@@ -39,7 +39,7 @@ const TabSystem = () => {
       <TabHeadings activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Main Content */}
-      <div className="w-full flex-1 flex">
+      <div className="w-full flex-1 flex min-h-[800px]">
         {/* Game Content */}
         <div className="flex-1 relative overflow-hidden">
           <AnimatePresence mode="wait">

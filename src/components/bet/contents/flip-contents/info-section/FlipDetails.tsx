@@ -1,135 +1,76 @@
-import React from "react";
-import { motion } from "framer-motion";
-import FlipDistribution from "./FlipDistribution";
-import UserIcon from "@/assets/icons/UserIcon";
-import LastFlipsShow from "./last-flips/LastFlipsShow";
-import { useGame } from "@/hooks/bet/useGame";
+import React from 'react';
+import { motion } from 'framer-motion';
+import UserIcon from '@/assets/icons/UserIcon';
+import LastFlipsShow from './last-flips/LastFlipsShow';
+import { useGame } from '@/hooks/bet/useGame';
 
 const FlipDetails = () => {
-  const { coinFlip } = useGame("coinflip");
+  const { coinFlip } = useGame('coinflip');
 
   const containerVariants = {
-    hidden: { opacity: 0, y: -20 },
+    hidden: { opacity: 0, y: -10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
-        ease: "easeOut",
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
+        duration: 0.4,
+        ease: 'easeOut',
       },
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+  const statsVariants = {
+    hidden: { opacity: 0, x: -10 },
     visible: {
       opacity: 1,
-      y: 0,
+      x: 0,
       transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const numberVariants = {
-    hidden: { opacity: 0, scale: 0.5 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 20,
+        duration: 0.4,
+        delay: 0.2,
+        ease: 'easeOut',
       },
     },
   };
 
   return (
     <motion.div
-      className="bg-[#002E09] px-3 py-2 flex items-center gap-10"
+      className="bg-[#002E09]/80 backdrop-blur-sm px-3 py-2 flex items-center gap-3 border-b border-[#6c924a]/50"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      <motion.div className="flex items-center gap-10" variants={itemVariants}>
+      <motion.div variants={statsVariants} className="flex items-center gap-3">
         <motion.div
-          className="flex items-center gap-16"
-          variants={itemVariants}
+          whileHover={{ scale: 1.1, rotate: 5 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 10 }}
         >
-          <motion.div
-            className="flex items-center gap-2"
-            variants={itemVariants}
-          >
-            <motion.div
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              <UserIcon />
-            </motion.div>
-            <div className="relative w-max">
-              <motion.span
-                className="font-normal text-base leading-[27.2px] tracking-[0%]"
-                variants={numberVariants}
-                animate={{
-                  color: ["#ffffff", "#a0c380", "#ffffff"],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              >
-                0
-              </motion.span>
-              <motion.span
-                className="font-normal text-[9.6px] leading-[16.32px] tracking-[0%] absolute -top-2 -right-10 text-white"
-                initial={{ opacity: 0, y: -5 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.4 }}
-              >
-                FLIPPING
-              </motion.span>
-            </div>
-          </motion.div>
-
-          <motion.div className="relative w-max" variants={itemVariants}>
+          <UserIcon />
+        </motion.div>
+        <div className="flex items-center gap-4">
+          <div className="relative">
             <motion.span
-              className="font-normal text-base leading-[27.2px] tracking-[0%] text-[#A7D858]"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.7, duration: 0.5 }}
-              whileHover={{
-                scale: 1.05,
-                textShadow: "0 0 8px rgba(167, 216, 88, 0.6)",
+              className="font-normal text-sm text-white"
+              animate={{
+                color: ['#ffffff', '#a0c380', '#ffffff'],
               }}
-            >
-              {coinFlip?.stats?.netProfit || 0}
-            </motion.span>
-            <motion.span
-              className="font-normal text-[9.6px] leading-[16.32px] tracking-[0%] absolute -top-2 -right-4 text-white"
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
               transition={{
-                delay: 1,
-                duration: 0.4,
-                type: "spring",
-                stiffness: 300,
+                duration: 2,
+                repeat: Infinity,
+                repeatType: 'reverse',
               }}
             >
-              SOL
+              {coinFlip?.stats?.netProfit || 0} SOL
             </motion.span>
-          </motion.div>
-        </motion.div>
-
-        <motion.div variants={itemVariants}>
-          <FlipDistribution tailsPercentage={50} headsPercentage={50} />
-        </motion.div>
+            <span className="font-normal text-[9px] ml-1 text-white/60">
+              NET PROFIT
+            </span>
+          </div>
+        </div>
       </motion.div>
 
-      <motion.div variants={itemVariants} className="flex-1">
+      <div className="h-6 w-px bg-white/20 mx-1" />
+
+      <motion.div variants={statsVariants} className="flex-1">
         <LastFlipsShow />
       </motion.div>
     </motion.div>

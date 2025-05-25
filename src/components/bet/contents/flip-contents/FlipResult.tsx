@@ -1,315 +1,197 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import { useFlipMachine } from "@/contexts/FlipContext";
-import FlipContentButton from "./FlipContentButton";
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import { useFlipMachine } from '@/contexts/FlipContext';
+import FlipContentButton from './FlipContentButton';
 
 const FlipResult = () => {
-  const { flipResult, claimReward, canClaimReward, selectedSide, resetGame } =
-    useFlipMachine();
-  const [showProcessing, setShowProcessing] = useState(false);
-  const [dots, setDots] = useState("");
-
-  useEffect(() => {
-    if (flipResult?.isWin) {
-      const timer = setTimeout(() => {
-        setShowProcessing(true);
-      }, 2000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [flipResult]);
-
-  useEffect(() => {
-    if (showProcessing) {
-      const interval = setInterval(() => {
-        setDots((prev) => {
-          if (prev === "...") return "";
-          return prev + ".";
-        });
-      }, 500);
-
-      return () => clearInterval(interval);
-    }
-  }, [showProcessing]);
+  const { flipResult, resetGame, selectedSide } = useFlipMachine();
 
   if (!flipResult) return null;
 
   const isWin = flipResult.isWin;
   const winAmount = flipResult.winAmount;
 
+  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 0.6,
-        ease: "easeOut",
-        staggerChildren: 0.2,
+        duration: 0.5,
+        ease: 'easeOut',
+        staggerChildren: 0.1,
       },
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.8,
-      transition: { duration: 0.4 },
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+  const resultVariants = {
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
-
-  const celebrationVariants = {
-    animate: {
-      scale: [1, 1.1, 1],
-      rotate: [0, 5, -5, 0],
       transition: {
-        duration: 2,
-        repeat: Infinity,
-        ease: "easeInOut",
+        duration: 0.4,
+        ease: 'easeOut',
       },
     },
   };
 
   return (
-    <AnimatePresence>
+    <motion.div
+      className="w-full flex flex-col items-center justify-center gap-6"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      {/* Result Container */}
       <motion.div
-        className="w-full h-full flex flex-col items-center justify-center gap-8"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
+        className="w-full bg-black/30 backdrop-blur-sm rounded-lg p-4 flex flex-col items-center gap-4"
+        variants={resultVariants}
       >
-        {/* Result Coin Display */}
-        <motion.div
-          className="relative"
-          variants={isWin ? celebrationVariants : {}}
-          animate={isWin ? "animate" : ""}
-        >
+        {/* Result Header */}
+        <div className="flex items-center gap-3">
           <motion.div
-            className={`w-32 h-32 rounded-full flex items-center justify-center shadow-2xl ${
-              flipResult.result === "HEADS"
-                ? "bg-gradient-to-br from-yellow-400 to-yellow-600"
-                : "bg-gradient-to-br from-green-500 to-green-700"
+            className={`w-16 h-16 rounded-full flex items-center justify-center ${
+              isWin ? 'bg-green-500/20' : 'bg-red-500/20'
             }`}
-            initial={{ scale: 0, rotateY: 0 }}
             animate={{
-              scale: 1,
-              rotateY: flipResult.result === "HEADS" ? 0 : 180,
+              boxShadow: isWin
+                ? [
+                    '0 0 0px rgba(34, 197, 94, 0.2)',
+                    '0 0 20px rgba(34, 197, 94, 0.4)',
+                    '0 0 0px rgba(34, 197, 94, 0.2)',
+                  ]
+                : [
+                    '0 0 0px rgba(239, 68, 68, 0.2)',
+                    '0 0 20px rgba(239, 68, 68, 0.4)',
+                    '0 0 0px rgba(239, 68, 68, 0.2)',
+                  ],
             }}
             transition={{
-              type: "spring",
-              stiffness: 200,
-              damping: 15,
-              delay: 0.3,
+              duration: 2,
+              repeat: Infinity,
+              ease: 'easeInOut',
             }}
           >
-            <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center">
-              <Image
-                src={`/flip/${flipResult.result.toLowerCase()}-icon.png`}
-                alt={flipResult.result}
-                width={60}
-                height={60}
-                className="w-15 h-15"
-              />
-            </div>
+            <Image
+              src={`/images/bet/flip/${flipResult.result.toLowerCase()}-icon.png`}
+              alt={flipResult.result}
+              width={40}
+              height={40}
+              className="w-10 h-10"
+            />
           </motion.div>
-
-          {/* Win Glow Effect */}
-          {isWin && (
-            <motion.div
-              className="absolute inset-0 bg-yellow-400 rounded-full blur-xl -z-10"
+          <div className="flex flex-col">
+            <motion.h2
+              className={`text-2xl font-bold ${
+                isWin ? 'text-green-400' : 'text-red-400'
+              }`}
               animate={{
-                scale: [0.8, 1.5, 0.8],
-                opacity: [0.3, 0.8, 0.3],
+                textShadow: isWin
+                  ? [
+                      '0 0 0px rgba(34, 197, 94, 0.5)',
+                      '0 0 10px rgba(34, 197, 94, 0.8)',
+                      '0 0 0px rgba(34, 197, 94, 0.5)',
+                    ]
+                  : [
+                      '0 0 0px rgba(239, 68, 68, 0.5)',
+                      '0 0 10px rgba(239, 68, 68, 0.8)',
+                      '0 0 0px rgba(239, 68, 68, 0.5)',
+                    ],
               }}
               transition={{
                 duration: 2,
                 repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          )}
-        </motion.div>
-
-        {/* Win/Lose Message */}
-        <motion.div className="text-center" variants={itemVariants}>
-          {isWin ? (
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{
-                delay: 0.5,
-                type: "spring",
-                stiffness: 200,
+                ease: 'easeInOut',
               }}
             >
-              <motion.h2
-                className="font-bold text-6xl text-green-400 mb-4 uppercase"
-                animate={{
-                  textShadow: [
-                    "0 0 10px rgba(34, 197, 94, 0.8)",
-                    "0 0 30px rgba(34, 197, 94, 0.8)",
-                    "0 0 10px rgba(34, 197, 94, 0.8)",
-                  ],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                YOU WON
-              </motion.h2>
-              <motion.div
-                className="text-4xl font-bold text-white"
-                animate={{
-                  scale: [1, 1.05, 1],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                {winAmount} SOL
-              </motion.div>
-            </motion.div>
-          ) : (
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{
-                delay: 0.5,
-                type: "spring",
-                stiffness: 200,
-              }}
-            >
-              <h2 className="font-bold text-6xl text-red-400 mb-4 uppercase">
-                YOU LOST
-              </h2>
-              <div className="text-2xl text-gray-400">
-                Better luck next time!
-              </div>
-            </motion.div>
-          )}
-        </motion.div>
+              {isWin ? 'YOU WON!' : 'YOU LOST!'}
+            </motion.h2>
+            <div className="text-sm text-gray-400">
+              Result: {flipResult.result} - You chose {selectedSide}
+            </div>
+          </div>
+        </div>
 
-        {/* Processing State for Wins */}
-        {isWin && showProcessing && (
+        {/* Win Amount (only show if win) */}
+        {isWin && (
           <motion.div
-            className="text-center"
-            variants={itemVariants}
-            initial="hidden"
-            animate="visible"
+            className="bg-green-500/20 w-full rounded-lg p-3 text-center"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
           >
+            <div className="text-gray-400 text-sm">PRIZE</div>
             <motion.div
-              className="text-xl text-white mb-6"
+              className="text-3xl font-bold text-green-400"
               animate={{
-                opacity: [0.7, 1, 0.7],
+                scale: [1, 1.05, 1],
+                textShadow: [
+                  '0 0 0px rgba(34, 197, 94, 0.5)',
+                  '0 0 10px rgba(34, 197, 94, 0.8)',
+                  '0 0 0px rgba(34, 197, 94, 0.5)',
+                ],
               }}
               transition={{
-                duration: 1.5,
+                duration: 2,
                 repeat: Infinity,
-                ease: "easeInOut",
+                ease: 'easeInOut',
               }}
             >
-              SOLANA IS PROCESSING{dots}
-            </motion.div>
-
-            {/* Processing Bar */}
-            <motion.div
-              className="w-80 h-1 bg-white/20 rounded-full overflow-hidden mb-6"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-            >
-              <motion.div
-                className="h-full bg-gradient-to-r from-green-400 to-yellow-400 rounded-full"
-                animate={{
-                  x: ["-100%", "100%"],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-              />
-            </motion.div>
-
-            {/* Claim Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1 }}
-            >
-              <FlipContentButton
-                onClick={claimReward}
-                disabled={!canClaimReward}
-                className="px-8 py-4 text-2xl font-bold"
-              >
-                CLAIM REWARD
-              </FlipContentButton>
+              +{winAmount.toFixed(2)} SOL
             </motion.div>
           </motion.div>
         )}
 
-        {/* Confetti for Wins */}
+        {/* Particles for wins */}
         {isWin && (
           <>
-            {Array.from({ length: 20 }).map((_, i) => (
+            {Array.from({ length: 10 }).map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-3 h-3 rounded-full"
+                className="absolute w-2 h-2 rounded-full"
                 style={{
-                  backgroundColor: ["#FFD700", "#FF6B6B", "#4ECDC4", "#45B7D1"][
+                  backgroundColor: ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1'][
                     i % 4
                   ],
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
                 }}
                 animate={{
-                  y: [0, -100, 0],
-                  x: [(Math.random() - 0.5) * 100],
+                  y: [0, -60, 0],
+                  x: [(Math.random() - 0.5) * 40],
                   opacity: [0, 1, 0],
                   scale: [0, 1, 0],
                 }}
                 transition={{
-                  duration: 3 + Math.random() * 2,
+                  duration: 2 + Math.random(),
                   repeat: Infinity,
-                  delay: Math.random() * 2,
-                  ease: "easeInOut",
+                  delay: Math.random(),
+                  ease: 'easeInOut',
                 }}
               />
             ))}
           </>
         )}
 
-        {/* Lose State - Show "Play Again" option */}
-        {!isWin && (
-          <motion.div
-            className="text-center"
-            variants={itemVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 1.5 }}
+        {/* Play again button */}
+        <motion.div
+          className="w-full mt-2"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
+          <FlipContentButton
+            onClick={resetGame}
+            className="w-full py-3 text-lg font-bold"
           >
-            <FlipContentButton
-              onClick={resetGame}
-              className="px-8 py-3 text-xl"
-            >
-              PLAY AGAIN
-            </FlipContentButton>
-          </motion.div>
-        )}
+            PLAY AGAIN
+          </FlipContentButton>
+        </motion.div>
       </motion.div>
-    </AnimatePresence>
+    </motion.div>
   );
 };
 

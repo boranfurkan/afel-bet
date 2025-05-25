@@ -4,16 +4,15 @@ import React, {
   useState,
   useCallback,
   useEffect,
-} from "react";
-import useSound from "use-sound";
-import { useGame } from "@/hooks/bet/useGame";
-import { PlayCoinFlipDtoChoice } from "@/api";
+} from 'react';
+import useSound from 'use-sound';
+import { useGame } from '@/hooks/bet/useGame';
+import { PlayCoinFlipDtoChoice } from '@/api';
 
 export enum FlipGameState {
-  IDLE = "IDLE",
-  WAITING_FOR_DEPOSIT = "WAITING_FOR_DEPOSIT",
-  FLIPPING = "FLIPPING",
-  RESULT = "RESULT",
+  IDLE = 'IDLE',
+  FLIPPING = 'FLIPPING',
+  RESULT = 'RESULT',
 }
 
 export interface FlipResult {
@@ -35,11 +34,9 @@ interface FlipContextType {
   setSelectedSide: (side: PlayCoinFlipDtoChoice) => void;
   startFlip: () => void;
   resetGame: () => void;
-  claimReward: () => void;
   setIsAnimating: (isAnimating: boolean) => void;
 
   canStartFlip: boolean;
-  canClaimReward: boolean;
 }
 
 const FlipContext = createContext<FlipContextType | undefined>(undefined);
@@ -55,23 +52,17 @@ export const FlipProvider: React.FC<{ children: React.ReactNode }> = ({
   const [userBalance, setUserBalance] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const [playCoinFlip] = useSound("/sounds/coin-flip.mp3");
-  const [playWin] = useSound("/sounds/winner.mp3");
-  const [playLose] = useSound("/sounds/lose.mp3");
+  const [playCoinFlip] = useSound('/sounds/coin-flip.mp3');
+  const [playWin] = useSound('/sounds/winner.mp3');
+  const [playLose] = useSound('/sounds/lose.mp3');
 
-  const { coinFlip, solBalance } = useGame("coinflip");
+  const { coinFlip, solBalance } = useGame('coinflip');
 
   const canStartFlip =
     gameState === FlipGameState.IDLE &&
     selectedSide !== null &&
     betAmount > 0 &&
     betAmount <= userBalance &&
-    !isAnimating;
-
-  const canClaimReward =
-    gameState === FlipGameState.RESULT &&
-    flipResult !== null &&
-    flipResult.isWin === true &&
     !isAnimating;
 
   useEffect(() => {
@@ -81,29 +72,45 @@ export const FlipProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [solBalance]);
 
   const performFlip = useCallback(async () => {
-    if (selectedSide === null) throw new Error("You must select a side");
+    if (selectedSide === null) throw new Error('You must select a side');
 
-    const flipApiResult = await coinFlip.play(betAmount, selectedSide);
-    const winAmount = flipApiResult.won ? betAmount * 2 : 0;
+    try {
+      const flipApiResult = await coinFlip.play(betAmount, selectedSide);
 
-    const newResult: FlipResult = {
-      result: flipApiResult.result,
-      isWin: flipApiResult.won,
-      winAmount,
-      timestamp: Date.now(),
-    };
+      const winAmount = flipApiResult.won ? betAmount * 2 : 0;
 
-    setFlipResult(newResult);
+      const newResult: FlipResult = {
+        result: flipApiResult.result,
+        isWin: flipApiResult.won,
+        winAmount,
+        timestamp: Date.now(),
+      };
 
-    setTimeout(() => {
+      setFlipResult(newResult);
+
+      // Auto-add winnings to balance if won
       if (flipApiResult.won) {
-        playWin();
+        setTimeout(() => {
+          playWin();
+        }, 500);
       } else {
-        playLose();
+        setTimeout(() => {
+          playLose();
+        }, 500);
       }
-    }, 500);
 
-    setGameState(FlipGameState.RESULT);
+      setGameState(FlipGameState.RESULT);
+
+      // Auto-reset after showing result if lost
+      if (!flipApiResult.won) {
+        setTimeout(() => {
+          resetGame();
+        }, 5000);
+      }
+    } catch (error) {
+      console.error('Error during flip:', error);
+      resetGame();
+    }
   }, [selectedSide, coinFlip, betAmount, playWin, playLose]);
 
   const startFlip = useCallback(() => {
@@ -111,33 +118,18 @@ export const FlipProvider: React.FC<{ children: React.ReactNode }> = ({
 
     // Deduct bet amount immediately
     setUserBalance((prev) => prev - betAmount);
-    setGameState(FlipGameState.WAITING_FOR_DEPOSIT);
 
-    // Wait for deposit simulation
-    setTimeout(() => {
-      setGameState(FlipGameState.FLIPPING);
-      setIsAnimating(true);
-      playCoinFlip();
-
-      // Start flip animation and wait for completion
-      setTimeout(() => {
-        performFlip();
-        setIsAnimating(false);
-      }, 4000); // 4 seconds for coin flip animation
-    }, 2500); // 2.5 seconds waiting for deposit
-  }, [canStartFlip, betAmount, playCoinFlip, performFlip]);
-
-  const claimReward = useCallback(() => {
-    if (!canClaimReward) return;
-
-    // Add winnings to balance (this was already added in performFlip, but we'll show animation)
+    // Go directly to flipping state
+    setGameState(FlipGameState.FLIPPING);
     setIsAnimating(true);
+    playCoinFlip();
 
+    // Start flip animation and wait for completion
     setTimeout(() => {
-      resetGame();
+      performFlip();
       setIsAnimating(false);
-    }, 1500); // Animation duration for claiming
-  }, [canClaimReward]);
+    }, 3000); // 3 seconds for coin flip animation
+  }, [canStartFlip, betAmount, playCoinFlip, performFlip]);
 
   const resetGame = useCallback(() => {
     setGameState(FlipGameState.IDLE);
@@ -157,10 +149,8 @@ export const FlipProvider: React.FC<{ children: React.ReactNode }> = ({
     setSelectedSide,
     startFlip,
     resetGame,
-    claimReward,
     setIsAnimating,
     canStartFlip,
-    canClaimReward,
   };
 
   return <FlipContext.Provider value={value}>{children}</FlipContext.Provider>;
@@ -169,7 +159,7 @@ export const FlipProvider: React.FC<{ children: React.ReactNode }> = ({
 export const useFlipMachine = () => {
   const context = useContext(FlipContext);
   if (context === undefined) {
-    throw new Error("useFlipMachine must be used within a FlipProvider");
+    throw new Error('useFlipMachine must be used within a FlipProvider');
   }
   return context;
 };

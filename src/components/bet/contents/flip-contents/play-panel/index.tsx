@@ -1,25 +1,32 @@
-import React from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import ChooseSide from "./ChooseSide";
-import { Separator } from "@/components/UI/separator";
-import BetChoosePanel from "./BetChoosePanel";
-import BetInput from "./BetInput";
-import FlipContentButton from "../FlipContentButton";
-import { useFlipMachine } from "@/contexts/FlipContext";
-import { useGame } from "@/hooks/bet/useGame";
+import React from 'react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { useFlipMachine } from '@/contexts/FlipContext';
+import FlipContentButton from '../FlipContentButton';
 
 const PlayPanel = () => {
   const {
     startFlip,
     canStartFlip,
     selectedSide,
+    setSelectedSide,
     betAmount,
+    setBetAmount,
+    userBalance,
     gameState,
-    resetGame,
   } = useFlipMachine();
 
-  const { solBalance, depositSol, withdrawSol } = useGame("coinflip");
+  const isDisabled = gameState !== 'IDLE';
+
+  const handleSideSelect = (side: 'HEADS' | 'TAILS') => {
+    if (isDisabled) return;
+    setSelectedSide(side);
+  };
+
+  const handleBetClick = (amount: number) => {
+    if (isDisabled) return;
+    setBetAmount(amount);
+  };
 
   const handleStartFlip = () => {
     if (canStartFlip) {
@@ -27,172 +34,230 @@ const PlayPanel = () => {
     }
   };
 
+  // Animation variants
   const containerVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
-        ease: "easeOut",
+        duration: 0.5,
+        ease: 'easeOut',
         staggerChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 10, scale: 0.9 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4, ease: "easeOut" },
+      scale: 1,
+      transition: { duration: 0.4, ease: 'easeOut' },
     },
   };
 
+  const betOptions = [
+    { amount: 0.05, label: '0.05' },
+    { amount: 0.1, label: '0.1' },
+    { amount: 0.25, label: '0.25' },
+    { amount: 0.5, label: '0.5' },
+    { amount: 1, label: '1' },
+    { amount: 2, label: '2' },
+  ];
+
   return (
     <motion.div
-      className="w-full flex flex-col items-center gap-10"
+      className="w-full"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       {/* Main Panel */}
       <motion.div
-        className="w-full border border-[#FFFFFF99] p-2.5 rounded-[15px] flex flex-col gap-4 backdrop-blur-sm bg-black/20"
+        className="w-full border border-[#FFFFFF99]/30 rounded-xl p-4 backdrop-blur-sm bg-black/20 flex flex-col gap-4"
         variants={itemVariants}
       >
-        {/* Choose Side Section */}
-        <ChooseSide />
-
-        <Separator className="bg-[#FFFFFF99] w-full h-[1px]" />
-
-        {/* Bet Choose Panel */}
-        <BetChoosePanel />
-
-        <Separator className="bg-[#FFFFFF99] w-full h-[1px]" />
-
-        {/* Custom Bet Input */}
-        <BetInput />
-
-        <Separator className="bg-[#FFFFFF99] w-full h-[1px]" />
-
-        {/* Start Button or Reset Button */}
-        <motion.div className="w-full" variants={itemVariants}>
-          {gameState === "IDLE" ? (
-            <motion.div
-              whileHover={canStartFlip ? { scale: 1.02 } : {}}
-              whileTap={canStartFlip ? { scale: 0.98 } : {}}
-            >
-              <FlipContentButton
-                onClick={handleStartFlip}
-                disabled={!canStartFlip}
-                className={`w-full h-16 text-2xl font-bold transition-all duration-300 ${
-                  canStartFlip ? "hover:shadow-lg" : ""
-                }`}
-              >
-                <motion.div
-                  className="flex items-center justify-center gap-3"
-                  animate={
-                    canStartFlip
-                      ? {
-                          scale: [1, 1.05, 1],
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: 2,
-                    repeat: canStartFlip ? Infinity : 0,
-                    ease: "easeInOut",
-                  }}
-                >
-                  <span>🎯</span>
-                  <span>BET {betAmount} SOL</span>
-                </motion.div>
-              </FlipContentButton>
-            </motion.div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            >
-              <FlipContentButton
-                onClick={resetGame}
-                className="w-full h-16 text-xl font-bold bg-red-500/20 hover:bg-red-500/30 border-red-500"
-              >
-                <motion.div
-                  animate={{
-                    rotate: [0, 10, -10, 0],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
-                  🔄 RESET GAME
-                </motion.div>
-              </FlipContentButton>
-            </motion.div>
-          )}
+        {/* Balance Display */}
+        <motion.div
+          className="w-full flex justify-between items-center"
+          variants={itemVariants}
+        >
+          <div className="text-white/80 text-sm">BALANCE</div>
+          <motion.div
+            className="text-xl font-bold text-green-400"
+            animate={{
+              textShadow: [
+                '0 0 0px rgba(34, 197, 94, 0.5)',
+                '0 0 10px rgba(34, 197, 94, 0.8)',
+                '0 0 0px rgba(34, 197, 94, 0.5)',
+              ],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          >
+            {userBalance.toFixed(3)} SOL
+          </motion.div>
         </motion.div>
 
-        {/* Game Status Indicator */}
-        <motion.div className="text-center text-sm" variants={itemVariants}>
-          {!selectedSide && gameState === "IDLE" && (
-            <motion.span
-              className="text-yellow-400"
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              ⚡ Choose HEADS or TAILS to continue
-            </motion.span>
-          )}
+        {/* Divider */}
+        <div className="h-px w-full bg-white/20" />
 
-          {selectedSide && betAmount === 0 && gameState === "IDLE" && (
-            <motion.span
-              className="text-yellow-400"
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
+        {/* Choose Side Section */}
+        <motion.div variants={itemVariants}>
+          <h3 className="text-white text-center mb-2 text-sm uppercase">
+            I Choose
+          </h3>
+          <div className="grid grid-cols-2 gap-2">
+            <FlipContentButton
+              className={`flex items-center justify-center gap-2 transition-all duration-300 ${
+                isDisabled ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'
+              }`}
+              selected={selectedSide === 'HEADS'}
+              onClick={() => handleSideSelect('HEADS')}
+              disabled={isDisabled}
             >
-              💰 Select your bet amount
-            </motion.span>
-          )}
+              <motion.div
+                animate={
+                  selectedSide === 'HEADS'
+                    ? {
+                        rotate: [0, 10, -10, 0],
+                        scale: [1, 1.1, 1],
+                      }
+                    : {}
+                }
+                transition={{
+                  duration: 0.6,
+                  repeat: selectedSide === 'HEADS' ? Infinity : 0,
+                  repeatDelay: 2,
+                }}
+              >
+                <Image
+                  src="/images/bet/flip/heads-icon.png"
+                  alt="Heads"
+                  width={24}
+                  height={24}
+                  className="w-6 h-6"
+                />
+              </motion.div>
+              <span className="text-base font-bold">HEADS</span>
+            </FlipContentButton>
 
-          {canStartFlip && (
-            <motion.span
-              className="text-green-400 font-medium"
-              animate={{
-                textShadow: [
-                  "0 0 0px rgba(34, 197, 94, 0.8)",
-                  "0 0 10px rgba(34, 197, 94, 0.8)",
-                  "0 0 0px rgba(34, 197, 94, 0.8)",
-                ],
-              }}
+            <FlipContentButton
+              className={`flex items-center justify-center gap-2 transition-all duration-300 ${
+                isDisabled ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'
+              }`}
+              selected={selectedSide === 'TAILS'}
+              onClick={() => handleSideSelect('TAILS')}
+              disabled={isDisabled}
+            >
+              <motion.div
+                animate={
+                  selectedSide === 'TAILS'
+                    ? {
+                        rotate: [0, -10, 10, 0],
+                        scale: [1, 1.1, 1],
+                      }
+                    : {}
+                }
+                transition={{
+                  duration: 0.6,
+                  repeat: selectedSide === 'TAILS' ? Infinity : 0,
+                  repeatDelay: 2,
+                }}
+              >
+                <Image
+                  src="/images/bet/flip/tails-icon.png"
+                  alt="Tails"
+                  width={24}
+                  height={24}
+                  className="w-6 h-6"
+                />
+              </motion.div>
+              <span className="text-base font-bold">TAILS</span>
+            </FlipContentButton>
+          </div>
+        </motion.div>
+
+        {/* Bet Amount Selection */}
+        <motion.div variants={itemVariants}>
+          <h3 className="text-white text-center mb-2 text-sm uppercase">
+            Bet Amount (SOL)
+          </h3>
+          <div className="grid grid-cols-3 gap-2">
+            {betOptions.map((option) => (
+              <FlipContentButton
+                key={option.amount}
+                className={`py-2 text-base transition-all duration-300 ${
+                  !isDisabled && userBalance >= option.amount
+                    ? 'hover:scale-105'
+                    : ''
+                }`}
+                disabled={userBalance < option.amount || isDisabled}
+                selected={betAmount === option.amount}
+                onClick={() => handleBetClick(option.amount)}
+              >
+                {option.label}
+              </FlipContentButton>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Start Button */}
+        <motion.div variants={itemVariants} className="mt-2">
+          <FlipContentButton
+            onClick={handleStartFlip}
+            disabled={!canStartFlip}
+            className={`w-full py-4 text-xl font-bold transition-all duration-300 ${
+              canStartFlip ? 'hover:shadow-lg' : ''
+            }`}
+          >
+            <motion.div
+              className="flex items-center justify-center gap-2"
+              animate={
+                canStartFlip
+                  ? {
+                      scale: [1, 1.05, 1],
+                    }
+                  : {}
+              }
               transition={{
                 duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
+                repeat: canStartFlip ? Infinity : 0,
+                ease: 'easeInOut',
               }}
             >
-              🚀 Ready to flip! Click BET to start
-            </motion.span>
-          )}
-
-          {gameState === "WAITING_FOR_DEPOSIT" && (
-            <span className="text-blue-400">
-              📡 Waiting for deposit confirmation...
-            </span>
-          )}
-
-          {gameState === "FLIPPING" && (
-            <span className="text-purple-400">🪙 Coin is flipping...</span>
-          )}
-
-          {gameState === "RESULT" && (
-            <span className="text-orange-400">🎉 Check your result above!</span>
-          )}
+              <span>
+                {selectedSide ? `FLIP ${betAmount} SOL` : 'SELECT SIDE'}
+              </span>
+              {selectedSide && (
+                <Image
+                  src={`/images/bet/flip/${selectedSide.toLowerCase()}-icon.png`}
+                  alt={selectedSide}
+                  width={24}
+                  height={24}
+                  className="w-6 h-6"
+                />
+              )}
+            </motion.div>
+          </FlipContentButton>
         </motion.div>
+
+        {/* Status Text */}
+        {!selectedSide && (
+          <motion.div
+            className="text-center text-xs text-yellow-400"
+            animate={{ opacity: [0.7, 1, 0.7] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            variants={itemVariants}
+          >
+            ⚡ Choose HEADS or TAILS to continue
+          </motion.div>
+        )}
       </motion.div>
     </motion.div>
   );

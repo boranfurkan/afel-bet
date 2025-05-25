@@ -1,6 +1,5 @@
 import HeadIcon from '@/assets/icons/HeadIcon';
 import TailIcon from '@/assets/icons/TailIcon';
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PlayCoinFlipDtoChoice } from '@/api';
@@ -25,11 +24,17 @@ const LastFlipItem = ({ side }: LastFlipItemProps) => {
 
   return (
     <motion.div
-      className="rounded-[31px] border border-black p-1 cursor-pointer"
+      className="rounded-full border border-black"
       style={{
         background: FlipData[side].background,
+        width: '24px',
+        height: '24px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
       whileHover={{
+        scale: 1.2,
         transition: { duration: 0.2 },
       }}
       whileTap={{ scale: 0.95 }}
@@ -44,19 +49,7 @@ const LastFlipItem = ({ side }: LastFlipItemProps) => {
         },
       }}
     >
-      <motion.div
-        animate={{
-          rotateY: [0, 180, 360],
-        }}
-        transition={{
-          duration: 2,
-          ease: 'easeInOut',
-          repeat: Infinity,
-          repeatDelay: 3,
-        }}
-      >
-        <IconComponent />
-      </motion.div>
+      <IconComponent width={16} height={16} className="he" />
     </motion.div>
   );
 };

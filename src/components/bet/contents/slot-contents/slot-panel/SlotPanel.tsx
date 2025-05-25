@@ -122,6 +122,16 @@ const SlotPanel: React.FC<SlotPanelProps> = ({
               patternType={getWinPatternType(pattern)}
             />
           ))}
+
+        {/* Win multiplier effect */}
+        {showWinningLines && (
+          <WinMultiplierEffect
+            multiplier={winResult.multiplier}
+            winAmount={winResult.winAmount}
+            isVisible={true}
+            winningPatterns={winResult.winningPatterns}
+          />
+        )}
       </motion.div>
     </div>
   );
