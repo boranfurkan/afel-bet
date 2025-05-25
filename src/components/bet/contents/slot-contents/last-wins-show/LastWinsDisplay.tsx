@@ -1,11 +1,12 @@
-import React, { useMemo } from "react";
-import LastWinItem from "./LastWinItem";
-import { SlotIconType } from "@/types/bet";
-import { useGame } from "@/hooks/bet/useGame";
-import { symbolsToNumbers } from "@/utils/gameUtils";
+import React, { useMemo } from 'react';
+import LastWinItem from './LastWinItem';
+import LastWinItemSkeleton from './LastWinItemSkeleton';
+import { SlotIconType } from '@/types/bet';
+import { useGame } from '@/hooks/bet/useGame';
+import { symbolsToNumbers } from '@/utils/gameUtils';
 
 const LastWinsDisplay = () => {
-  const { slotMachine } = useGame("slotmachine");
+  const { slotMachine } = useGame('slotmachine');
 
   const lastWins = useMemo(() => {
     if (!slotMachine?.history) return [];
@@ -21,20 +22,23 @@ const LastWinsDisplay = () => {
       };
       return { rowOne, rowTwo };
     });
-  }, []);
+  }, [slotMachine?.history]);
+
   return (
     <div className="bg-[#A0C380] p-1 pt-0 w-full">
       <div className="slot-gradient-to-bottom p-2 border-[2.5px] border-black w-full">
         <div className="rounded-[10px] w-full flex items-center justify-start p-2 gap-3 overflow-x-auto no-scrollbar">
-          {lastWins.map((item, index) => {
-            return (
-              <LastWinItem
-                rowOne={item.rowOne}
-                rowTwo={item.rowTwo}
-                key={`last-win-item-${index}`}
-              />
-            );
-          })}
+          {slotMachine.isLoading || !slotMachine?.history
+            ? [...Array(10)].map((_, index) => (
+                <LastWinItemSkeleton key={`skeleton-${index}`} />
+              ))
+            : lastWins.map((item, index) => (
+                <LastWinItem
+                  rowOne={item.rowOne}
+                  rowTwo={item.rowTwo}
+                  key={`last-win-item-${index}`}
+                />
+              ))}
         </div>
       </div>
     </div>

@@ -1,18 +1,32 @@
-export function symbolsToNumbers(arr: string[]): number[] {
-  const uniqueStrings = Array.from(new Set(arr));
+import { SlotIconType } from "@/types/bet";
 
-  const stringToNumberMap = new Map<string, number>();
+export function symbolsToNumbers(arr: string[]): SlotIconType[] {
+  const numbers: number[] = [];
 
-  const numbers = Array.from({ length: uniqueStrings.length }, (_, i) => i + 1);
-
-  for (let i = numbers.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
-  }
-
-  uniqueStrings.forEach((str, index) => {
-    stringToNumberMap.set(str, numbers[index]);
+  arr.forEach((str) => {
+    switch (str) {
+      case "LEMON":
+        numbers.push(SlotIconType.MEAT);
+        break;
+      case "ORANGE":
+        numbers.push(SlotIconType.CROCODILE);
+        break;
+      case "MEAT":
+        numbers.push(SlotIconType.HEAD);
+        break;
+      case "TRUMP":
+        numbers.push(SlotIconType.TRUMP);
+        break;
+      case "AFEL":
+        numbers.push(SlotIconType.AFEL);
+        break;
+      case "SOLANA":
+        numbers.push(SlotIconType.SOLANA);
+        break;
+      default:
+        throw new Error(`Unknown symbol: ${str}`);
+    }
   });
 
-  return arr.map((str) => stringToNumberMap.get(str)!);
+  return numbers;
 }

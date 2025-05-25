@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import backgroundImage from '../../../../../public/images/bet/flip-background.png';
@@ -10,11 +10,29 @@ import { FlipGameState } from '@/contexts/FlipContext';
 import WaitingForDeposit from './WaitingForDeposit';
 import CoinFlipAnimation from './CoinFlipAnimation';
 import FlipResult from './FlipResult';
+import BetLoadingSpinner from '../../BetLoadingSpinner';
 
-const FlipContents = () => {
-  const { gameState } = useFlipMachine();
+const ImprovedFlipContents = () => {
+  const { gameState, isAnimating } = useFlipMachine();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate initial loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   const renderGameState = () => {
+    if (isLoading) {
+      return (
+        <div className="h-[400px] flex items-center justify-center">
+          <BetLoadingSpinner text="Loading game..." />
+        </div>
+      );
+    }
+
     switch (gameState) {
       case FlipGameState.WAITING_FOR_DEPOSIT:
         return <WaitingForDeposit key="waiting" />;
@@ -33,17 +51,15 @@ const FlipContents = () => {
       opacity: 1,
       transition: {
         duration: 0.5,
-        staggerChildren: 0.1,
       },
     },
   };
 
   const gameStateVariants = {
-    hidden: { opacity: 0, scale: 0.95, y: 20 },
+    hidden: { opacity: 0, scale: 0.95 },
     visible: {
       opacity: 1,
       scale: 1,
-      y: 0,
       transition: {
         duration: 0.5,
         ease: 'easeOut',
@@ -52,7 +68,6 @@ const FlipContents = () => {
     exit: {
       opacity: 0,
       scale: 0.95,
-      y: -20,
       transition: {
         duration: 0.3,
         ease: 'easeIn',
@@ -62,45 +77,35 @@ const FlipContents = () => {
 
   return (
     <motion.div
-      className="relative w-full h-screen flex flex-col overflow-hidden"
+      className="w-full h-full flex flex-col"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      {/* Background Image */}
-      <Image
-        layout="fill"
-        className="object-center object-cover pointer-events-none"
-        src={backgroundImage}
-        alt="Flip Background"
-        priority
-      />
-
-      {/* Background Overlay */}
-      <motion.div
-        className="absolute inset-0 bg-black/20 z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      />
+      {/* Background Image with lower opacity */}
+      <div className="absolute inset-0 z-0 m-[1.5px] ">
+        <Image
+          src={backgroundImage}
+          alt="Flip Background"
+          layout="fill"
+          objectFit="cover"
+          className="opacity-40"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/40 " />
+      </div>
 
       {/* Content */}
-      <div className="relative w-full h-full z-20 flex flex-col">
+      <div className="relative w-full flex flex-col z-10 h-full">
         {/* Top Info Bar */}
-        <motion.div
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-        >
-          <FlipDetails />
-        </motion.div>
+        <FlipDetails />
 
         {/* Main Game Area */}
         <div className="flex-1 flex items-center justify-center p-4">
-          <div className="max-w-lg w-full">
+          <div className="w-full max-w-lg">
             <AnimatePresence mode="wait">
               <motion.div
-                key={gameState}
+                key={`${gameState}-${isLoading}`}
                 variants={gameStateVariants}
                 initial="hidden"
                 animate="visible"
@@ -112,40 +117,9 @@ const FlipContents = () => {
             </AnimatePresence>
           </div>
         </div>
-
-        {/* Bottom Gradient Fade */}
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/50 to-transparent pointer-events-none z-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-        />
       </div>
-
-      {/* Ambient Particles */}
-      {Array.from({ length: 15 }).map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 bg-white/30 rounded-full"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.3, 1, 0.3],
-            scale: [0.5, 1, 0.5],
-          }}
-          transition={{
-            duration: 4 + Math.random() * 3,
-            repeat: Infinity,
-            delay: Math.random() * 2,
-            ease: 'easeInOut',
-          }}
-        />
-      ))}
     </motion.div>
   );
 };
 
-export default FlipContents;
+export default ImprovedFlipContents;

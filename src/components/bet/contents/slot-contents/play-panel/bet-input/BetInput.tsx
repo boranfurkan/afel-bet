@@ -1,18 +1,18 @@
-import { useCallback, useEffect } from "react";
-import ArrowDownIcon from "@/assets/icons/ArrowDownIcon";
-import ArrowUpIcon from "@/assets/icons/ArrowUpIcon";
-import { useSlotMachine } from "@/contexts/SlotMachineContext";
+import { useCallback, useEffect } from 'react';
+import ArrowDownIcon from '@/assets/icons/ArrowDownIcon';
+import ArrowUpIcon from '@/assets/icons/ArrowUpIcon';
+import { useSlotMachine } from '@/contexts/SlotMachineContext';
 
 const BetInput = () => {
   const { userBalance, betAmount, setBetAmount, isSpinning } = useSlotMachine();
-
-  const isError = betAmount > userBalance;
+  const minBet = 0.1;
+  const maxBet = 2;
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       if (isSpinning) return;
 
-      if (e.target.value === "") {
+      if (e.target.value === '') {
         setBetAmount(0);
         return;
       }
@@ -30,39 +30,50 @@ const BetInput = () => {
 
     const newValue = betAmount + 0.1;
     const roundedValue = Math.round(newValue * 10) / 10;
-    if (roundedValue <= userBalance) {
+    if (roundedValue <= userBalance && roundedValue <= maxBet) {
       setBetAmount(roundedValue);
     }
-  }, [isSpinning, betAmount, userBalance, setBetAmount]);
+  }, [isSpinning, betAmount, userBalance, maxBet, setBetAmount]);
 
   const decreaseValue = useCallback(() => {
     if (isSpinning) return;
 
-    const newValue = Math.max(0.1, betAmount - 0.1);
+    const newValue = Math.max(minBet, betAmount - 0.1);
     const roundedValue = Math.round(newValue * 10) / 10;
     setBetAmount(roundedValue);
-  }, [isSpinning, betAmount, setBetAmount]);
+  }, [isSpinning, betAmount, minBet, setBetAmount]);
+
+  const getErrorMessage = () => {
+    if (betAmount > userBalance) return 'NOT ENOUGH SOL';
+    if (betAmount < minBet) return `MIN BET ${minBet} SOL`;
+    if (betAmount > maxBet) return `MAX BET ${maxBet} SOL`;
+    return '';
+  };
 
   return (
-    <div className="relative w-full mt-7">
-      {isError && (
-        <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-[#FF0018] font-normal text-[19.46px] leading-[20.26px] tracking-[0%] text-center">
-          NOT ENOUGH SOL
-        </div>
-      )}
+    <div className="relative w-full">
+      <div className="flex justify-between mb-1 px-1">
+        <span className="text-[#979797] font-normal text-[11px] leading-[14px] tracking-[0%]">
+          Min: {minBet} SOL
+        </span>
+        <span className="text-[#979797] font-normal text-[11px] leading-[14px] tracking-[0%]">
+          Max: {maxBet} SOL
+        </span>
+      </div>
       <input
         className="w-full bg-[#171717] text-white px-4 py-2.5 rounded-[5.47px] border border-[#979797] font-normal text-[26.99px] leading-[45.33px] tracking-[0%] pr-12"
         type="number"
         step="0.1"
-        min="0.1"
+        min={minBet}
+        max={maxBet}
         value={betAmount}
         onChange={handleChange}
         disabled={isSpinning}
       />
-      <div className="flex flex-col absolute top-0 right-5 h-full justify-center gap-4">
+      <div className="flex flex-col absolute top-2.5 right-5 h-full justify-center gap-4">
         <div
           className={`cursor-pointer ${
-            isSpinning ? "opacity-50 cursor-not-allowed" : ""
+            isSpinning ? 'opacity-50 cursor-not-allowed' : ''
           }`}
           onClick={increaseValue}
         >
@@ -70,7 +81,7 @@ const BetInput = () => {
         </div>
         <div
           className={`cursor-pointer ${
-            isSpinning ? "opacity-50 cursor-not-allowed" : ""
+            isSpinning ? 'opacity-50 cursor-not-allowed' : ''
           }`}
           onClick={decreaseValue}
         >

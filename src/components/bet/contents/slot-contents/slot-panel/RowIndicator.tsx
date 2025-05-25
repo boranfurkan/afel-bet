@@ -17,17 +17,17 @@ const RowIndicator: React.FC<RowIndicatorProps> = ({
     const rowHeight = (heightValue + 50) / 2.1;
 
     return [
-      rowHeight / 2, // row 1 center
-      rowHeight + rowHeight / 2, // row 2 center
-      2 * rowHeight + rowHeight / 2, // row 3 center
+      rowHeight / 2.5, // row 1 center
+      rowHeight + rowHeight / 2.5, // row 2 center
+      2 * rowHeight + rowHeight / 2.5, // row 3 center
     ];
   }, [containerHeight]);
 
   const firstRowStyles = useMemo(() => {
     const backgroundColor = `linear-gradient(180deg, #1A55DD 0%, #00A7D1 100%)`;
-    const width = '46px';
-    const height = '61px';
-    const borderRadius = '10.78px';
+    const width = '32px';
+    const height = '42px';
+    const borderRadius = '8px';
 
     return {
       background: backgroundColor,
@@ -39,9 +39,9 @@ const RowIndicator: React.FC<RowIndicatorProps> = ({
 
   const secondRowStyles = useMemo(() => {
     const backgroundColor = `linear-gradient(180deg, #E76800 0%, #F47103 100%)`;
-    const width = '46px';
-    const height = '61px';
-    const borderRadius = '10.78px';
+    const width = '32px';
+    const height = '42px';
+    const borderRadius = '8px';
 
     return {
       background: backgroundColor,
@@ -53,9 +53,9 @@ const RowIndicator: React.FC<RowIndicatorProps> = ({
 
   const thirdRowStyles = useMemo(() => {
     const backgroundColor = `linear-gradient(180deg, #04FF00 0%, #1A3700 100%)`;
-    const width = '46px';
-    const height = '61px';
-    const borderRadius = '10.78px';
+    const width = '32px';
+    const height = '42px';
+    const borderRadius = '8px';
 
     return {
       background: backgroundColor,
@@ -76,19 +76,19 @@ const RowIndicator: React.FC<RowIndicatorProps> = ({
           className="absolute flex items-center justify-center"
           style={{
             top: `${rowPositions[index]}px`,
-            [side === 'left' ? 'left' : 'right']: '-30px',
-            transform: 'translateY(-240%)',
+            [side === 'left' ? 'left' : 'right']: '0px',
+            transform: 'translateY(-250%)',
             ...((index === 0 && firstRowStyles) ||
               (index === 1 && secondRowStyles) ||
               (index === 2 && thirdRowStyles)),
           }}
         >
           {index === 0 ? (
-            <OneIcon className="scale-90" />
+            <OneIcon className="scale-75" />
           ) : index === 1 ? (
-            <TwoIcon className="scale-90" />
+            <TwoIcon className="scale-75" />
           ) : (
-            <ThreeIcon className="scale-90" />
+            <ThreeIcon className="scale-75" />
           )}
         </div>
       ))}

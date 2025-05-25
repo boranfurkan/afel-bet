@@ -6,17 +6,16 @@ import React, {
   useCallback,
   useMemo,
   useEffect,
-} from "react";
-import useSound from "use-sound";
+} from 'react';
+import useSound from 'use-sound';
 import {
   WINNING_PATTERNS,
   ICON_MULTIPLIERS,
   isFullMatch,
-  checkSpecialCombination,
-} from "@/lib/win-patterns";
-import { SlotIconType } from "@/types/bet";
-import { useGame } from "@/hooks/bet/useGame";
-import { symbolsToNumbers } from "@/utils/gameUtils";
+} from '@/lib/win-patterns';
+import { SlotIconType } from '@/types/bet';
+import { useGame } from '@/hooks/bet/useGame';
+import { symbolsToNumbers } from '@/utils/gameUtils';
 
 export interface WinningResult {
   isWin: boolean;
@@ -58,10 +57,10 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const slotRefs = useRef<any[]>([]);
 
-  const { slotMachine, solBalance } = useGame("slotmachine");
+  const { slotMachine, solBalance } = useGame('slotmachine');
 
   // Sound hooks
-  const [playReelsBegin] = useSound("/sounds/reels-begin.mp3");
+  const [playReelsBegin] = useSound('/sounds/reels-begin.mp3');
 
   const resetWinResult = useCallback(() => {
     setWinResult(null);
@@ -89,12 +88,6 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
           totalMultiplier += ICON_MULTIPLIERS[patternValues[0]];
           winningPatterns.push(pattern);
           continue;
-        }
-
-        const specialMultiplier = checkSpecialCombination(patternValues);
-        if (specialMultiplier !== null) {
-          totalMultiplier += specialMultiplier;
-          winningPatterns.push(pattern);
         }
       }
 
@@ -183,7 +176,7 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
 export const useSlotMachine = () => {
   const context = useContext(SlotMachineContext);
   if (context === undefined) {
-    throw new Error("useSlotMachine must be used within a SlotMachineProvider");
+    throw new Error('useSlotMachine must be used within a SlotMachineProvider');
   }
   return context;
 };

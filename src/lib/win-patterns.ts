@@ -1,9 +1,9 @@
 import { SlotIconType } from '@/types/bet';
 
 export const WINNING_PATTERNS = [
-  [0, 1, 2], // Row 1
-  [3, 4, 5], // Row 2
-  [6, 7, 8], // Row 3
+  [0, 1, 2], // Row 1 (top)
+  [3, 4, 5], // Row 2 (middle)
+  [6, 7, 8], // Row 3 (bottom)
   [0, 4, 8], // Diagonal 1 (top-left to bottom-right)
   [2, 4, 6], // Diagonal 2 (top-right to bottom-left)
 ];
@@ -27,29 +27,7 @@ export const ICON_MULTIPLIERS: Record<SlotIconType, number> = {
   [SlotIconType.AFEL]: 5, // 5-5-5 x5
   [SlotIconType.SOLANA]: 10, // 6-6-6 x10
 };
-// Special combinations with their multipliers
-export const SPECIAL_COMBINATIONS = [
-  {
-    combo: [SlotIconType.MEAT, SlotIconType.CROCODILE, SlotIconType.CROCODILE],
-    multiplier: 1.5, // 1-2-2 x1.5
-    pattern: [0, 1, 2],
-  },
-  {
-    combo: [SlotIconType.HEAD, SlotIconType.TRUMP, SlotIconType.HEAD],
-    multiplier: 2.5, // 3-4-3 x2.5
-    pattern: [3, 4, 5],
-  },
-  {
-    combo: [SlotIconType.CROCODILE, SlotIconType.AFEL, SlotIconType.SOLANA],
-    multiplier: 3, // 2-5-6 x3
-    pattern: [6, 7, 8],
-  },
-  {
-    combo: [SlotIconType.TRUMP, SlotIconType.AFEL, SlotIconType.SOLANA],
-    multiplier: 4, // 4-5-6 x4
-    pattern: [0, 4, 8],
-  },
-];
+
 export interface WinPathData {
   startX: number;
   startY: number;
@@ -188,19 +166,4 @@ export function calculateWinningLinePath(
 // Helper functions for win calculations
 export function isFullMatch(pattern: SlotIconType[]): boolean {
   return pattern[0] === pattern[1] && pattern[1] === pattern[2];
-}
-
-export function checkSpecialCombination(
-  pattern: SlotIconType[]
-): number | null {
-  for (const { combo, multiplier } of SPECIAL_COMBINATIONS) {
-    if (
-      pattern[0] === combo[0] &&
-      pattern[1] === combo[1] &&
-      pattern[2] === combo[2]
-    ) {
-      return multiplier;
-    }
-  }
-  return null;
 }

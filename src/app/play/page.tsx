@@ -3,7 +3,7 @@ import React from 'react';
 
 const Page = () => {
   return (
-    <div className="bet-container w-full h-full py-20 [&>*]:font-pixel">
+    <div className="bet-container w-full min-h-screen py-6 md:py-10 lg:py-20 [&>*]:font-pixel">
       <TabSystem />
     </div>
   );

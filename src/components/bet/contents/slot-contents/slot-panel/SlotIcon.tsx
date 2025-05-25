@@ -36,14 +36,14 @@ const SlotIcon: React.FC<SlotIconProps> = ({
 
   return (
     <div
-      className={`relative flex items-center justify-center ${className}`}
+      className={`relative flex items-center justify-center select-none ${className}`}
       style={{
         width: size,
         height: size,
       }}
     >
       <div
-        className="relative flex items-center justify-center"
+        className="relative flex items-center justify-center select-none"
         style={{
           width: displaySize,
           height: displaySize,
@@ -54,7 +54,7 @@ const SlotIcon: React.FC<SlotIconProps> = ({
           width={displaySize}
           height={displaySize}
           alt={`Slot icon ${SlotIconType[type]}`}
-          className="object-contain"
+          className="object-contain select-none"
           style={{ maxWidth: '100%', maxHeight: '100%' }}
         />
       </div>
