@@ -1,26 +1,26 @@
-import { SlotIconType } from "@/types/bet";
+import { SlotIconType } from '@/types/bet';
 
 export function symbolsToNumbers(arr: string[]): SlotIconType[] {
   const numbers: number[] = [];
 
   arr.forEach((str) => {
     switch (str) {
-      case "LEMON":
+      case 'LEMON':
         numbers.push(SlotIconType.MEAT);
         break;
-      case "ORANGE":
+      case 'ORANGE':
         numbers.push(SlotIconType.CROCODILE);
         break;
-      case "MEAT":
+      case 'MEAT':
         numbers.push(SlotIconType.HEAD);
         break;
-      case "TRUMP":
+      case 'TRUMP':
         numbers.push(SlotIconType.TRUMP);
         break;
-      case "AFEL":
+      case 'AFEL':
         numbers.push(SlotIconType.AFEL);
         break;
-      case "SOLANA":
+      case 'SOLANA':
         numbers.push(SlotIconType.SOLANA);
         break;
       default:

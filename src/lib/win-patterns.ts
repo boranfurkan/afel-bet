@@ -24,9 +24,28 @@ export const ICON_MULTIPLIERS: Record<SlotIconType, number> = {
   [SlotIconType.CROCODILE]: 1.2, // 2-2-2 x1.2
   [SlotIconType.HEAD]: 2, // 3-3-3 x2
   [SlotIconType.TRUMP]: 3, // 4-4-4 x3
-  [SlotIconType.AFEL]: 5, // 5-5-5 x5
-  [SlotIconType.SOLANA]: 10, // 6-6-6 x10
+  [SlotIconType.SOLANA]: 5, // 6-6-6 x10
+  [SlotIconType.AFEL]: 10, // 5-5-5 x5
 };
+
+export const SPECIAL_COMBINATIONS = [
+  {
+    combo: [SlotIconType.MEAT, SlotIconType.CROCODILE, SlotIconType.CROCODILE],
+    multiplier: 1.5, // 1-2-2 x1.5
+  },
+  {
+    combo: [SlotIconType.HEAD, SlotIconType.TRUMP, SlotIconType.HEAD],
+    multiplier: 2.5, // 3-4-3 x2.5
+  },
+  {
+    combo: [SlotIconType.CROCODILE, SlotIconType.SOLANA, SlotIconType.AFEL],
+    multiplier: 3, // 2-5-6 x3
+  },
+  {
+    combo: [SlotIconType.TRUMP, SlotIconType.AFEL, SlotIconType.SOLANA],
+    multiplier: 4, // 4-6-5 x4
+  },
+];
 
 export interface WinPathData {
   startX: number;
@@ -166,4 +185,19 @@ export function calculateWinningLinePath(
 // Helper functions for win calculations
 export function isFullMatch(pattern: SlotIconType[]): boolean {
   return pattern[0] === pattern[1] && pattern[1] === pattern[2];
+}
+
+export function checkSpecialCombination(
+  pattern: SlotIconType[]
+): number | null {
+  for (const { combo, multiplier } of SPECIAL_COMBINATIONS) {
+    if (
+      pattern[0] === combo[0] &&
+      pattern[1] === combo[1] &&
+      pattern[2] === combo[2]
+    ) {
+      return multiplier;
+    }
+  }
+  return null;
 }

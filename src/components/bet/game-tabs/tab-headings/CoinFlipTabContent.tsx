@@ -4,10 +4,12 @@ import { motion, useAnimationControls } from 'framer-motion';
 
 interface CoinFlipTabContentProps {
   isActive?: boolean;
+  isMobile?: boolean;
 }
 
 const CoinFlipTabContent: React.FC<CoinFlipTabContentProps> = ({
   isActive = false,
+  isMobile = false,
 }) => {
   const controls = useAnimationControls();
   const iconControls = useAnimationControls();
@@ -22,10 +24,13 @@ const CoinFlipTabContent: React.FC<CoinFlipTabContentProps> = ({
     }
   }, [isActive, controls, iconControls]);
 
+  // Dynamic text size based on screen size
+  const textSize = isMobile ? 'text-2xl' : 'text-[40.97px]';
+
   return (
-    <div className="font-supply flex items-center gap-3 text-white">
+    <div className="font-supply flex items-center gap-2 md:gap-3 text-white">
       <motion.span
-        className="font-normal text-[40.97px] leading-[0%] tracking-[-3.5%] align-middle uppercase"
+        className={`font-normal ${textSize} leading-[0%] tracking-[-3.5%] align-middle uppercase`}
         initial={{ opacity: 1 }}
         animate={controls}
         variants={{
@@ -57,10 +62,14 @@ const CoinFlipTabContent: React.FC<CoinFlipTabContentProps> = ({
           },
         }}
       >
-        <GoldIcon />
+        <GoldIcon
+          className="max-md:hidden block"
+          width={isMobile ? 16 : 40}
+          height={isMobile ? 16 : 40}
+        />
       </motion.div>
       <motion.span
-        className="font-normal text-[40.97px] leading-[0%] tracking-[-3.5%] align-middle uppercase"
+        className={`font-normal ${textSize} leading-[0%] tracking-[-3.5%] align-middle uppercase`}
         initial={{ opacity: 1 }}
         animate={controls}
         variants={{

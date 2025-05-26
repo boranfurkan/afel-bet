@@ -1,17 +1,17 @@
-"use client";
-import Cookies from "js-cookie";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
-import { StaticImageData } from "next/image";
-import ServicesDropdown from "./ServicesDropdown";
-import { DiscordLogo, User, X } from "@phosphor-icons/react";
-import menuLogo from "/public/images/menu_logo.png";
-import MarketplacesDropdown from "./MarketplacesDropdown";
-import MusicPlayer from "./MusicPlayer/MusicPlayer";
-import { SignInModal } from "./auth/SignInModal";
-import { useWallet } from "@solana/wallet-adapter-react";
+'use client';
+import Cookies from 'js-cookie';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useState, useRef, useEffect } from 'react';
+import { StaticImageData } from 'next/image';
+import ServicesDropdown from './ServicesDropdown';
+import { DiscordLogo, User, X } from '@phosphor-icons/react';
+import menuLogo from '/public/images/menu_logo.png';
+import MarketplacesDropdown from './MarketplacesDropdown';
+import MusicPlayer from './MusicPlayer/MusicPlayer';
+import { SignInModal } from './auth/SignInModal';
+import { useWallet } from '@solana/wallet-adapter-react';
 
 interface NavItem {
   label: string;
@@ -27,26 +27,19 @@ interface NavbarProps {
 }
 
 const navItems: NavItem[] = [
-  { label: "HOME", path: "/", isInternal: true },
-  { label: "STAKING", path: "/stake", isInternal: true },
-  { label: "COLLECTIONS", path: "/collections", isInternal: true },
+  { label: 'HOME', path: '/', isInternal: true },
+  { label: 'STAKING', path: '/stake', isInternal: true },
+  { label: 'COLLECTIONS', path: '/collections', isInternal: true },
   {
-    label: "$WAA↗",
-    path: "https://waa.afel.xyz/",
-    decoration: true,
-    isInternal: false,
-  },
-
-  {
-    label: "IRONNODE↗",
-    path: "https://www.ironnode.io/",
+    label: 'IRONNODE↗',
+    path: 'https://www.ironnode.io/',
     decoration: true,
     isInternal: false,
   },
   // { label: "AFEL[id]", path: "/afel-id", isInternal: true },
   {
-    label: "DISCORD",
-    path: "https://discord.com/invite/afel",
+    label: 'DISCORD',
+    path: 'https://discord.com/invite/afel',
     isInternal: false,
     iconOnly: true, // Add this
   },
@@ -67,7 +60,7 @@ export default function Navbar({ logo }: NavbarProps) {
 
   useEffect(() => {
     // JWT'yi kontrol et
-    const jwt = Cookies.get("jwt");
+    const jwt = Cookies.get('jwt');
     setIsLoggedIn(!!jwt);
     setToken(jwt);
   }, [pathname]); // pathname değiştiğinde tekrar kontrol et
@@ -99,7 +92,7 @@ export default function Navbar({ logo }: NavbarProps) {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className={`transition-transform duration-200 ${
-            isMarketplacesOpen ? "rotate-180" : ""
+            isMarketplacesOpen ? 'rotate-180' : ''
           }`}
         >
           <path
@@ -121,21 +114,21 @@ export default function Navbar({ logo }: NavbarProps) {
   );
 
   const renderSingInButton = () => {
-    const isProfilePage = pathname.startsWith("/afel-id");
+    const isProfilePage = pathname.startsWith('/afel-id');
 
     return isLoggedIn ? (
       <Link href={`/afel-id`} className="relative">
         <div
           className={`${
             isProfilePage
-              ? "bg-[#6C924A] text-white"
-              : "bg-white text-black hover:bg-white/90"
+              ? 'bg-[#6C924A] text-white'
+              : 'bg-white text-black hover:bg-white/90'
           } w-[100px] group relative flex justify-center items-center gap-2 md:gap-3 px-4 py-2 cursor-pointer overflow-hidden rounded-[28px]`}
         >
           <div className="flex items-center gap-2">
             <User
               size={20}
-              className={isProfilePage ? "text-white" : "text-black"}
+              className={isProfilePage ? 'text-white' : 'text-black'}
             />
           </div>
         </div>
@@ -174,7 +167,7 @@ export default function Navbar({ logo }: NavbarProps) {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className={`flex-grow mb-1 h-4 md:h-5 relative transition-transform duration-200 ${
-            isServicesOpen ? "rotate-180" : ""
+            isServicesOpen ? 'rotate-180' : ''
           }`}
         >
           <path
@@ -190,22 +183,22 @@ export default function Navbar({ logo }: NavbarProps) {
     <div
       key={item.path}
       className={`flex justify-center items-center relative p-2 rounded-[28px] ${
-        pathname === item.path ? "bg-[#6C924A] " : "hover:bg-white group"
+        pathname === item.path ? 'bg-[#6C924A] ' : 'hover:bg-white group'
       }`}
     >
       <Link
         href={item.path}
         className={`flex items-center justify-center text-center text-white group-hover:text-black
-        ${item.disabled ? "cursor-not-allowed opacity-50" : ""}
-        ${!item.isInternal ? "hover:opacity-80" : ""}`}
-        target={item.isInternal ? undefined : "_blank"}
-        rel={item.isInternal ? undefined : "noopener noreferrer"}
+        ${item.disabled ? 'cursor-not-allowed opacity-50' : ''}
+        ${!item.isInternal ? 'hover:opacity-80' : ''}`}
+        target={item.isInternal ? undefined : '_blank'}
+        rel={item.isInternal ? undefined : 'noopener noreferrer'}
         onClick={(e) => item.disabled && e.preventDefault()}
       >
         {item.iconOnly ? (
           <DiscordLogo size={20} weight="fill" />
         ) : (
-          <span className={`text-sm ${item?.decoration ? "underline" : ""}`}>
+          <span className={`text-sm ${item?.decoration ? 'underline' : ''}`}>
             {item.label}
           </span>
         )}
@@ -247,7 +240,7 @@ export default function Navbar({ logo }: NavbarProps) {
           <div
             className={`fixed top-0 right-0 h-full bg-[#181818]/[0.70] backdrop-blur-md border-l border-white/30
             w-[50vw] sm:w-[250px] transition-all duration-300 ease-in-out
-            ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
+            ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
           >
             <div className="flex flex-col items-center pt-24 px-8 h-full overflow-y-auto">
               {navItems.slice(0, 2).map((item) => (
@@ -260,7 +253,7 @@ export default function Navbar({ logo }: NavbarProps) {
                   {renderNavItem(item)}
                 </div>
               ))}
-              <div className="w-full h-[1px] bg-white/30" />{" "}
+              <div className="w-full h-[1px] bg-white/30" />{' '}
               {renderSingInButton()}
               {renderMarketplacesButton()} {/* Move BUY button here */}
               {navItems.slice(-1).map((item) => (
@@ -301,11 +294,11 @@ export default function Navbar({ logo }: NavbarProps) {
               <p className="text-[20px] text-white">AFEL</p>
             </div>
             {navItems.slice(0, 2).map(renderNavItem)}
-            {navItems.slice(2, -1).map(renderNavItem)}{" "}
+            {navItems.slice(2, -1).map(renderNavItem)}{' '}
             {/* Remove the last item (Discord) */}
             {renderSingInButton()}
             {renderMarketplacesButton()} {/* Move BUY button here */}
-            {navItems.slice(-1).map(renderNavItem)}{" "}
+            {navItems.slice(-1).map(renderNavItem)}{' '}
             <div>
               <MusicPlayer />
             </div>

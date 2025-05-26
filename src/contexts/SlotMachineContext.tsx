@@ -12,6 +12,7 @@ import {
   WINNING_PATTERNS,
   ICON_MULTIPLIERS,
   isFullMatch,
+  checkSpecialCombination,
 } from '@/lib/win-patterns';
 import { SlotIconType } from '@/types/bet';
 import { useGame } from '@/hooks/bet/useGame';
@@ -88,6 +89,12 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
           totalMultiplier += ICON_MULTIPLIERS[patternValues[0]];
           winningPatterns.push(pattern);
           continue;
+        }
+
+        const specialMultiplier = checkSpecialCombination(patternValues);
+        if (specialMultiplier !== null) {
+          totalMultiplier += specialMultiplier;
+          winningPatterns.push(pattern);
         }
       }
 

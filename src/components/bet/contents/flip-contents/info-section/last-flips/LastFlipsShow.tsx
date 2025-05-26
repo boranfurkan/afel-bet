@@ -54,7 +54,7 @@ const LastFlipsShow = () => {
         LAST:
       </motion.h4>
 
-      <div className="flex items-center gap-1 overflow-x-auto no-scrollbar">
+      <div className="flex items-center gap-1 overflow-x-auto no-scrollbar flex-1">
         {coinFlip.history.items.slice(0, 8).map((flip, index) => (
           <motion.div
             key={flip.id || index}

@@ -1,6 +1,6 @@
 export enum GameTabs {
-  SLOT = "SLOT",
-  FLIP = "FLIP",
+  SLOT = 'SLOT',
+  FLIP = 'FLIP',
 }
 
 export enum SlotIconType {
@@ -8,6 +8,6 @@ export enum SlotIconType {
   CROCODILE = 2,
   HEAD = 3,
   TRUMP = 4,
-  AFEL = 5,
-  SOLANA = 6,
+  SOLANA = 5,
+  AFEL = 6,
 }

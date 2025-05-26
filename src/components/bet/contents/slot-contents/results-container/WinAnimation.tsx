@@ -5,28 +5,35 @@ import AfelLogo from '@/components/UI/AfelLogo';
 import SlotFrenzyText from '@/components/UI/SlotFrenzyText';
 import WinIndicator from '@/components/UI/WinIndicator';
 
-const WinAnimation: React.FC = () => {
+interface WinAnimationProps {
+  isMobile?: boolean;
+}
+
+const WinAnimation: React.FC<WinAnimationProps> = ({ isMobile = false }) => {
   const [particles, setParticles] = useState<
     { x: number; y: number; size: number; color: string; delay: number }[]
   >([]);
 
   useEffect(() => {
-    const newParticles = Array(30)
+    // Create fewer particles on mobile
+    const particleCount = isMobile ? 15 : 30;
+
+    const newParticles = Array(particleCount)
       .fill(0)
       .map(() => ({
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 8 + 3,
+        size: Math.random() * (isMobile ? 6 : 8) + 3,
         color: ['#a0c380', '#78ff00', '#ffff00', '#ffffff'][
           Math.floor(Math.random() * 4)
         ],
         delay: Math.random() * 0.5,
       }));
     setParticles(newParticles);
-  }, []);
+  }, [isMobile]);
 
   return (
-    <div className="slot-gradient-to-right px-5 py-4 w-full flex items-center justify-center gap-4 relative overflow-hidden">
+    <div className="slot-gradient-to-right px-3 py-2 md:px-5 md:py-4 w-full flex items-center justify-center gap-2 md:gap-4 relative overflow-hidden">
       {particles.map((particle, index) => (
         <motion.div
           key={`particle-${index}`}
@@ -54,7 +61,11 @@ const WinAnimation: React.FC = () => {
         />
       ))}
 
-      <div className="bg-[#171717]/30 backdrop-blur-sm rounded-[8px] w-1/4 min-h-[100px] flex items-center justify-center relative">
+      <div
+        className={`bg-[#171717]/30 backdrop-blur-sm rounded-[8px] ${
+          isMobile ? 'w-1/3 min-h-[80px]' : 'w-1/4 min-h-[100px]'
+        } flex items-center justify-center relative`}
+      >
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{
@@ -83,7 +94,7 @@ const WinAnimation: React.FC = () => {
               repeatType: 'loop',
             }}
           >
-            <WinIndicator />
+            <WinIndicator isMobile={isMobile} />
           </motion.div>
         </motion.div>
 
@@ -104,7 +115,11 @@ const WinAnimation: React.FC = () => {
         />
       </div>
 
-      <div className="w-3/4 flex items-center justify-center gap-16 relative z-10">
+      <div
+        className={`${
+          isMobile ? 'w-2/3' : 'w-3/4'
+        } flex items-center justify-center gap-4 md:gap-16 relative z-10`}
+      >
         <motion.div
           animate={{
             scale: [1, 1.05, 1],
@@ -120,7 +135,7 @@ const WinAnimation: React.FC = () => {
             repeatType: 'loop',
           }}
         >
-          <AfelLogo />
+          <AfelLogo isMobile={isMobile} />
         </motion.div>
 
         <motion.div
@@ -135,7 +150,7 @@ const WinAnimation: React.FC = () => {
             ease: 'easeInOut',
           }}
         >
-          <PlusIcon height={19} width={19} />
+          <PlusIcon height={isMobile ? 12 : 19} width={isMobile ? 12 : 19} />
         </motion.div>
 
         <motion.div
@@ -149,7 +164,7 @@ const WinAnimation: React.FC = () => {
             repeatType: 'loop',
           }}
         >
-          <SlotFrenzyText />
+          <SlotFrenzyText isMobile={isMobile} />
         </motion.div>
       </div>
     </div>

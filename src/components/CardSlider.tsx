@@ -1,74 +1,62 @@
-"use client";
-import React from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import slide1 from "/public/images/slider1.jpg";
-import slide2 from "/public/images/slider2.jpg";
-import slide3 from "/public/images/slider3.jpg";
-import slide4 from "/public/images/slider4.jpg";
-import slide5 from "/public/images/slider5.png";
-import Link from "next/link";
+'use client';
+import React from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import Image from 'next/image';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import slide1 from '/public/images/slider1.jpg';
+import slide2 from '/public/images/slider2.jpg';
+import slide3 from '/public/images/slider3.jpg';
+import slide4 from '/public/images/slider4.jpg';
+import slide5 from '/public/images/slider5.png';
+import Link from 'next/link';
 const projects = [
   {
-    title: "Staking",
-    subtitle: "Stake your FELs, earn points and prizes",
-    link: "/stake",
+    title: 'Staking',
+    subtitle: 'Stake your FELs, earn points and prizes',
+    link: '/stake',
     image: slide1,
   },
   {
-    title: "Collection",
-    subtitle: "See your grails",
-    link: "/collections",
+    title: 'Collection',
+    subtitle: 'See your grails',
+    link: '/collections',
     image: slide2,
   },
   {
-    title: "Ironnode",
-    subtitle: "Our web3 security & auditing firm",
+    title: 'Ironnode',
+    subtitle: 'Our web3 security & auditing firm',
     image: slide3,
-    link: "https://x.com/ironnodesec",
+    link: 'https://x.com/ironnodesec',
   },
   {
-    title: "AFEL-ID",
-    subtitle: "Manage your assets and claim prizes",
-    link: "/afel-id",
+    title: 'AFEL-ID',
+    subtitle: 'Manage your assets and claim prizes',
+    link: '/afel-id',
     image: slide4,
   },
   {
-    title: "$Waa",
-    subtitle: "",
-    image: slide5,
-    link: "https://waa.afel.xyz/",
-  },
-  {
-    title: "Staking",
-    subtitle: "Stake your FELs, earn points and prizes",
-    link: "/stake",
+    title: 'Staking',
+    subtitle: 'Stake your FELs, earn points and prizes',
+    link: '/stake',
     image: slide1,
   },
   {
-    title: "Collection",
-    subtitle: "See your grails",
-    link: "/collections",
+    title: 'Collection',
+    subtitle: 'See your grails',
+    link: '/collections',
     image: slide2,
   },
   {
-    title: "Ironnode",
-    subtitle: "Our web3 security & auditing firm",
+    title: 'Ironnode',
+    subtitle: 'Our web3 security & auditing firm',
     image: slide3,
-    link: "https://x.com/ironnodesec",
+    link: 'https://x.com/ironnodesec',
   },
   {
-    title: "AFEL-ID",
-    subtitle: "Manage your assets and claim prizes",
-    link: "/afel-id",
+    title: 'AFEL-ID',
+    subtitle: 'Manage your assets and claim prizes',
+    link: '/afel-id',
     image: slide4,
-  },
-  {
-    title: "$waa",
-    subtitle: "",
-    image: slide5,
-    link: "https://waa.afel.xyz/",
   },
 ];
 
@@ -83,12 +71,12 @@ export default function CardSlider() {
     };
 
     checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-    return () => window.removeEventListener("resize", checkScreenSize);
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: "start",
+    align: 'start',
     loop: true,
     skipSnaps: false,
     startIndex: 0,
@@ -169,17 +157,17 @@ export default function CardSlider() {
             <div className="flex items-center gap-3">
               <div
                 className={`w-4 h-2 rounded-full transition-all duration-300 ${
-                  dotPosition === 0 ? "bg-[#6C924A] w-5 h-3" : "bg-white/30"
+                  dotPosition === 0 ? 'bg-[#6C924A] w-5 h-3' : 'bg-white/30'
                 }`}
               />
               <div
                 className={`w-4 h-2 rounded-full transition-all duration-300 ${
-                  dotPosition === 1 ? "bg-[#6C924A] w-5 h-3" : "bg-white/30"
+                  dotPosition === 1 ? 'bg-[#6C924A] w-5 h-3' : 'bg-white/30'
                 }`}
               />
               <div
                 className={`w-4 h-2 rounded-full transition-all duration-300 ${
-                  dotPosition === 2 ? "bg-[#6C924A] w-5 h-3" : "bg-white/30"
+                  dotPosition === 2 ? 'bg-[#6C924A] w-5 h-3' : 'bg-white/30'
                 }`}
               />
             </div>

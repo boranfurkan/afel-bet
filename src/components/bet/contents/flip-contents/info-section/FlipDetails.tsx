@@ -34,7 +34,7 @@ const FlipDetails = () => {
 
   return (
     <motion.div
-      className="bg-[#002E09]/80 backdrop-blur-sm px-3 py-2 flex items-center gap-3 border-b border-[#6c924a]/50"
+      className="bg-[#002E09]/80 backdrop-blur-sm px-3 py-2 flex items-center gap-3 border-b border-[#6c924a]/50 overflow-x-hidden"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -49,7 +49,7 @@ const FlipDetails = () => {
         <div className="flex items-center gap-4">
           <div className="relative">
             <motion.span
-              className="font-normal text-sm text-white"
+              className="font-normal text-sm text-white text-nowrap"
               animate={{
                 color: ['#ffffff', '#a0c380', '#ffffff'],
               }}
@@ -61,7 +61,7 @@ const FlipDetails = () => {
             >
               {coinFlip?.stats?.netProfit || 0} SOL
             </motion.span>
-            <span className="font-normal text-[9px] ml-1 text-white/60">
+            <span className="font-normal text-[9px] ml-1 text-white/60 text-nowrap">
               NET PROFIT
             </span>
           </div>

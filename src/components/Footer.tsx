@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import Link from "next/link";
-import waaLogo from "/public/images/waaLogo.png";
-import lizardFourth from "/public/images/lizard-4.png";
-import { DiscordLogo, XLogo } from "@phosphor-icons/react";
+import Image from 'next/image';
+import Link from 'next/link';
+import waaLogo from '/public/images/waaLogo.png';
+import lizardFourth from '/public/images/lizard-4.png';
+import { DiscordLogo, XLogo } from '@phosphor-icons/react';
 
 export default function Footer() {
   return (
@@ -79,8 +79,6 @@ export default function Footer() {
                 >
                   IRONNODE
                 </Link>
-
-                <h3 className="text-white font-bold mb-1">$WAA</h3>
 
                 <Link
                   href="https://waa.afel.xyz "

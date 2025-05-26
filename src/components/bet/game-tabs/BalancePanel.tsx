@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useGame } from '@/hooks/bet/useGame';
 import { motion, AnimatePresence } from 'framer-motion';
 import SlotButton from '@/components/UI/SlotButton';
 import Image from 'next/image';
 import ArrowDownIcon from '@/assets/icons/ArrowDownIcon';
 import ArrowUpIcon from '@/assets/icons/ArrowUpIcon';
+import useWindowSize from '@/hooks/useWindowSize';
 
-const BalancePanel = () => {
+interface BalancePanelProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+}
+
+const BalancePanel: React.FC<BalancePanelProps> = ({
+  onClose,
+  isOpen = true,
+}) => {
+  const { isMobile, isLargeScreen } = useWindowSize();
   const { solBalance, depositSol, withdrawSol } = useGame();
   const [depositAmount, setDepositAmount] = useState('0.1');
   const [withdrawAmount, setWithdrawAmount] = useState('0.1');
@@ -14,6 +25,12 @@ const BalancePanel = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [transactionSuccess, setTransactionSuccess] = useState(false);
   const [transactionError, setTransactionError] = useState<string | null>(null);
+  const [portalElement, setPortalElement] = useState<HTMLElement | null>(null);
+
+  // Set up portal element when component mounts
+  useEffect(() => {
+    setPortalElement(document.body);
+  }, []);
 
   const handleDeposit = async () => {
     if (isLoading) return;
@@ -86,29 +103,53 @@ const BalancePanel = () => {
   const maxWithdrawAmount = parseFloat(solBalance?.availableBalance || '0');
   const isWithdrawDisabled = parseFloat(withdrawAmount) > maxWithdrawAmount;
 
-  const panelVariants = {
-    hidden: { opacity: 0, x: 20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
+  if (isMobile && !isOpen) {
+    return null;
+  }
+
+  const panelContent = (
+    <motion.div
+      className={`w-full h-full bg-[#262626] p-4 font-pixel flex flex-col gap-4 
+        ${
+          isMobile
+            ? 'rounded-lg shadow-xl'
+            : 'border-r-[2px] border-b-[2px] border-border'
+        }`}
+      initial={{ opacity: 0, x: isMobile ? 20 : 0, y: isMobile ? 50 : 0 }}
+      animate={{ opacity: 1, x: 0, y: 0 }}
+      exit={{ opacity: 0, x: isMobile ? 20 : 0, y: isMobile ? 50 : 0 }}
+      transition={{
         type: 'spring',
         stiffness: 300,
-        damping: 24,
-        delay: 0.2,
-      },
-    },
-    exit: { opacity: 0, x: 20 },
-  };
-
-  return (
-    <motion.div
-      className="w-[280px] h-auto bg-[#262626] p-4 font-pixel flex flex-col gap-4 border-r-[2px] border-b-[2px] border-border"
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      variants={panelVariants}
+        damping: 30,
+      }}
     >
+      {/* Mobile Close Button */}
+      {isMobile && onClose && (
+        <div className="flex justify-between items-center mb-2">
+          <h3 className="text-white text-xl font-bold">Balance</h3>
+          <button
+            onClick={onClose}
+            className="text-white p-1 rounded-full hover:bg-white/10"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      )}
+
       {/* Balance Display */}
       <div className="bg-[#171717]/50 rounded-md p-3 backdrop-blur-sm text-white">
         <h3 className="text-xs uppercase mb-1 text-[#a0c380]">
@@ -228,7 +269,7 @@ const BalancePanel = () => {
             className="w-full py-1 text-[10px] rounded bg-[#555] text-white hover:bg-[#666] transition-all"
             onClick={() => setWithdrawAmount(maxWithdrawAmount.toString())}
           >
-            MAX ({maxWithdrawAmount.toFixed(3)} SOL)
+            MAX ({maxWithdrawAmount.toFixed(2)} SOL)
           </button>
         )}
 
@@ -306,6 +347,32 @@ const BalancePanel = () => {
       </div>
     </motion.div>
   );
+
+  // Mobile Portal Version
+  if (isMobile && portalElement && isOpen) {
+    return createPortal(
+      <AnimatePresence>
+        <motion.div
+          className="fixed inset-0 z-50 bg-black/80 flex items-start justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose} // Close when clicking backdrop
+        >
+          <motion.div
+            className="w-full max-w-[400px] mx-auto mt-20 p-4"
+            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking panel
+          >
+            <div className="bg-black/20 rounded-lg p-1">{panelContent}</div>
+          </motion.div>
+        </motion.div>
+      </AnimatePresence>,
+      portalElement
+    );
+  }
+
+  // Desktop Version
+  return panelContent;
 };
 
 export default BalancePanel;

@@ -65,7 +65,7 @@ const FlipContents = () => {
         <FlipDetails />
 
         {/* Main Game Area */}
-        <div className="flex-1 flex items-center justify-center p-4">
+        <div className="flex-1 flex items-center justify-center p-4 h-full">
           <div className="w-full max-w-lg">
             <AnimatePresence mode="wait">
               <motion.div

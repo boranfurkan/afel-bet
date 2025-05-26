@@ -1,7 +1,15 @@
 import React, { useEffect } from 'react';
 import { motion, useAnimationControls } from 'framer-motion';
 
-const SlotFrenzyTabContent = ({ isActive = false }) => {
+interface SlotFrenzyTabContentProps {
+  isActive?: boolean;
+  isMobile?: boolean;
+}
+
+const SlotFrenzyTabContent: React.FC<SlotFrenzyTabContentProps> = ({
+  isActive = false,
+  isMobile = false,
+}) => {
   const controls = useAnimationControls();
 
   useEffect(() => {
@@ -12,24 +20,44 @@ const SlotFrenzyTabContent = ({ isActive = false }) => {
     }
   }, [isActive, controls]);
 
-  const letters = [
-    { char: 'S', size: 'text-2xl' },
-    { char: 'L', size: 'text-3xl' },
-    { char: 'O', size: 'text-4xl' },
-    { char: 'T', size: 'text-5xl' },
-    {
-      char: 'F',
-      size: 'font-normal text-[57.94px] leading-[100%] tracking-[0%]',
-    },
-    {
-      char: 'R',
-      size: 'font-normal text-[57.94px] leading-[100%] tracking-[0%]',
-    },
-    { char: 'E', size: 'text-5xl' },
-    { char: 'N', size: 'text-4xl' },
-    { char: 'Z', size: 'text-3xl' },
-    { char: 'Y', size: 'text-2xl' },
-  ];
+  // Responsive sizes based on screen size
+  const getTextSize = () => {
+    if (isMobile) {
+      return [
+        { char: 'S', size: 'text-sm' },
+        { char: 'L', size: 'text-base' },
+        { char: 'O', size: 'text-lg' },
+        { char: 'T', size: 'text-xl' },
+        { char: 'F', size: 'text-xl' },
+        { char: 'R', size: 'text-xl' },
+        { char: 'E', size: 'text-xl' },
+        { char: 'N', size: 'text-lg' },
+        { char: 'Z', size: 'text-base' },
+        { char: 'Y', size: 'text-sm' },
+      ];
+    } else {
+      return [
+        { char: 'S', size: 'text-2xl' },
+        { char: 'L', size: 'text-3xl' },
+        { char: 'O', size: 'text-4xl' },
+        { char: 'T', size: 'text-5xl' },
+        {
+          char: 'F',
+          size: 'font-normal text-[57.94px] leading-[100%] tracking-[0%]',
+        },
+        {
+          char: 'R',
+          size: 'font-normal text-[57.94px] leading-[100%] tracking-[0%]',
+        },
+        { char: 'E', size: 'text-5xl' },
+        { char: 'N', size: 'text-4xl' },
+        { char: 'Z', size: 'text-3xl' },
+        { char: 'Y', size: 'text-2xl' },
+      ];
+    }
+  };
+
+  const letters = getTextSize();
 
   return (
     <div className="flex justify-center items-baseline uppercase text-white">

@@ -11,6 +11,7 @@ interface SlotReelProps {
   isSpinning: boolean;
   winningRows: number[];
   onReelStop?: () => void;
+  isMobile?: boolean;
 }
 
 const SlotReel: React.FC<SlotReelProps> = ({
@@ -19,8 +20,10 @@ const SlotReel: React.FC<SlotReelProps> = ({
   isSpinning,
   winningRows,
   onReelStop,
+  isMobile = false,
 }) => {
-  const slotHeight = 150;
+  // Dynamic slot height based on screen size
+  const slotHeight = isMobile ? 100 : 150;
 
   const { reelRef, reelContainerRef, boxesRef, reelIcons } = useReelAnimation({
     columnIndex,
@@ -34,6 +37,7 @@ const SlotReel: React.FC<SlotReelProps> = ({
     <div
       ref={reelRef}
       className="relative h-full overflow-hidden border-2 border-[#6c924a]/50 rounded-md bg-gradient-to-b from-white/30 to-white/5"
+      style={{ minHeight: isMobile ? '300px' : '450px' }}
     >
       <div ref={reelContainerRef} className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 flex justify-between pointer-events-none">
@@ -47,16 +51,21 @@ const SlotReel: React.FC<SlotReelProps> = ({
             ref={(el) => {
               if (el) boxesRef.current[index] = el;
             }}
-            className="slot-box absolute w-full h-[150px] flex items-center justify-center"
+            className="slot-box absolute w-full flex items-center justify-center"
             style={{
+              height: `${slotHeight}px`,
               top: 0,
-              transform: `translateY(${index * 150}px)`,
+              transform: `translateY(${index * slotHeight}px)`,
               visibility: index < 3 ? 'visible' : 'hidden',
               zIndex: 10 - (index % 10),
             }}
           >
             <div className="slot-icon-container w-full h-full flex items-center justify-center">
-              <SlotIcon type={iconType} size={100} className="p-1" />
+              <SlotIcon
+                type={iconType}
+                size={isMobile ? 80 : 100}
+                className="p-1"
+              />
             </div>
           </div>
         ))}
@@ -70,9 +79,10 @@ const SlotReel: React.FC<SlotReelProps> = ({
           !isSpinning && (
             <motion.div
               key={`win-highlight-${columnIndex}-${rowIndex}`}
-              className="absolute inset-x-0 h-[150px] rounded-md pointer-events-none z-20"
+              className="absolute inset-x-0 rounded-md pointer-events-none z-20"
               style={{
-                top: `${rowIndex * 150}px`,
+                height: `${slotHeight}px`,
+                top: `${rowIndex * slotHeight}px`,
                 filter: 'none',
                 willChange: 'filter, background-color',
               }}
