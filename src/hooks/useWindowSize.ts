@@ -9,6 +9,7 @@ export interface WindowDimensions {
   windowSize: WindowSize;
   isMobile: boolean;
   isDesktop: boolean;
+  isTablet: boolean;
   isLargeScreen: boolean;
 }
 
@@ -40,6 +41,8 @@ function useWindowSize(): WindowDimensions {
     windowSize,
     isMobile:
       Number(windowSize?.width) <= 768 && Number(windowSize?.width) != 0,
+    isTablet:
+      Number(windowSize?.width) > 768 && Number(windowSize?.width) <= 1024,
     isLargeScreen: Number(windowSize?.width) <= 1024,
     isDesktop: Number(windowSize?.width) >= 1440,
   };

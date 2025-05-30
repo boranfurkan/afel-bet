@@ -1,11 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import UserIcon from '@/assets/icons/UserIcon';
-import LastFlipsShow from './last-flips/LastFlipsShow';
-import { useGame } from '@/hooks/bet/useGame';
+import React from "react";
+import { motion } from "framer-motion";
+import UserIcon from "@/assets/icons/UserIcon";
+import LastFlipsShow from "./last-flips/LastFlipsShow";
+import { useGame } from "@/hooks/bet/useGame";
+import { useCoinFlip } from "@/hooks/bet/useCoinFlip";
 
 const FlipDetails = () => {
-  const { coinFlip } = useGame('coinflip');
+  const coinFlip = useCoinFlip();
 
   const containerVariants = {
     hidden: { opacity: 0, y: -10 },
@@ -14,7 +15,7 @@ const FlipDetails = () => {
       y: 0,
       transition: {
         duration: 0.4,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     },
   };
@@ -27,7 +28,7 @@ const FlipDetails = () => {
       transition: {
         duration: 0.4,
         delay: 0.2,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     },
   };
@@ -42,7 +43,7 @@ const FlipDetails = () => {
       <motion.div variants={statsVariants} className="flex items-center gap-3">
         <motion.div
           whileHover={{ scale: 1.1, rotate: 5 }}
-          transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
           <UserIcon />
         </motion.div>
@@ -51,12 +52,12 @@ const FlipDetails = () => {
             <motion.span
               className="font-normal text-sm text-white text-nowrap"
               animate={{
-                color: ['#ffffff', '#a0c380', '#ffffff'],
+                color: ["#ffffff", "#a0c380", "#ffffff"],
               }}
               transition={{
                 duration: 2,
                 repeat: Infinity,
-                repeatType: 'reverse',
+                repeatType: "reverse",
               }}
             >
               {coinFlip?.stats?.netProfit || 0} SOL

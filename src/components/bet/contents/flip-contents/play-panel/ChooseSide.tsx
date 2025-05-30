@@ -3,13 +3,13 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import FlipContentButton from '../FlipContentButton';
 import { useFlipMachine } from '@/contexts/FlipContext';
-import { PlayCoinFlipDtoChoice } from '@/api';
+import { CoinFlipResultDtoChoice } from '@/api';
 
 const ChooseSide = () => {
   const { selectedSide, setSelectedSide, gameState } = useFlipMachine();
   const isDisabled = gameState !== 'IDLE';
 
-  const handleSideSelect = (side: PlayCoinFlipDtoChoice) => {
+  const handleSideSelect = (side: CoinFlipResultDtoChoice) => {
     if (isDisabled) return;
     setSelectedSide(side);
   };

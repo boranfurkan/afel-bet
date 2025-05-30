@@ -1,18 +1,11 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useUmi } from "./useUmi";
 import {
-  coinFlipControllerPlay,
   gamesControllerDeposit,
   gamesControllerGetGameWalletAddress,
   gamesControllerWithdrawFromCoinFlip,
-  PlayCoinFlipDtoChoice,
-  slotMachineControllerPlay,
-  useCoinFlipControllerGetHistory,
-  useCoinFlipControllerGetStats,
   useGamesControllerGetBalance,
-  useSlotMachineControllerGetHistory,
-  useSlotMachineControllerGetStats,
 } from "@/api";
 import {
   transferSol,
@@ -21,10 +14,13 @@ import {
 import { publicKey, sol } from "@metaplex-foundation/umi";
 import { base58 } from "@metaplex-foundation/umi/serializers";
 import { getReferenceId } from "@/lib/utils";
+import { useGameAuthentication } from "./useGameAuthentication";
 
 export type Game = "coinflip" | "slotmachine";
 
-const getQueryOptions = (
+export const DEFAULT_TOKEN_TYPE = "SOL";
+
+export const getQueryOptions = (
   publicKey: string | undefined,
   enabled: boolean,
   queryType: string
@@ -35,10 +31,11 @@ const getQueryOptions = (
   },
 });
 
-export const useGame = (activeGame?: Game) => {
+export const useGame = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const { publicKey: connectedPublicKey } = useWallet();
+  const { isAuthed } = useGameAuthentication();
   const umi = useUmi();
 
   // Fetch balance
@@ -49,91 +46,21 @@ export const useGame = (activeGame?: Game) => {
     error: balanceError,
   } = useGamesControllerGetBalance(
     {
-      accountId: connectedPublicKey?.toString() || "",
       tokenType: "SOL",
     },
     getQueryOptions(connectedPublicKey?.toString(), true, "balance")
   );
 
-  // Fetch coinflip data
-  const {
-    data: coinFlipStats,
-    isLoading: isCoinFlipStatsLoading,
-    refetch: refreshCoinFlipStats,
-    error: coinFlipStatsError,
-  } = useCoinFlipControllerGetStats(
-    {
-      accountId: connectedPublicKey?.toString() || "",
-      tokenType: "SOL",
-    },
-    getQueryOptions(
-      connectedPublicKey?.toString(),
-      activeGame === "coinflip",
-      "coinflip-stats"
-    )
-  );
-
-  const {
-    data: coinFlipHistory,
-    isLoading: isCoinFlipHistoryLoading,
-    refetch: refreshCoinFlipHistory,
-    error: coinFlipHistoryError,
-  } = useCoinFlipControllerGetHistory(
-    {
-      accountId: connectedPublicKey?.toString() || "",
-      page: 1,
-      limit: 10,
-    },
-    getQueryOptions(
-      connectedPublicKey?.toString(),
-      activeGame === "coinflip",
-      "coinflip-history"
-    )
-  );
-
-  // Fetch slot machine data
-  const {
-    data: slotMachineStats,
-    isLoading: isSlotMachineStatsLoading,
-    refetch: refreshSlotMachineStats,
-    error: slotMachineStatsError,
-  } = useSlotMachineControllerGetStats(
-    {
-      accountId: connectedPublicKey?.toString() || "",
-      tokenType: "SOL",
-    },
-    getQueryOptions(
-      connectedPublicKey?.toString(),
-      activeGame === "slotmachine",
-      "slotmachine-stats"
-    )
-  );
-
-  const {
-    data: slotMachineHistory,
-    isLoading: isSlotMachineHistoryLoading,
-    refetch: refreshSlotMachineHistory,
-    error: slotMachineHistoryError,
-  } = useSlotMachineControllerGetHistory(
-    {
-      accountId: connectedPublicKey?.toString() || "",
-      page: 1,
-      limit: 10,
-    },
-    getQueryOptions(
-      connectedPublicKey?.toString(),
-      activeGame === "slotmachine",
-      "slotmachine-history"
-    )
-  );
-
   // Centralized wallet check
-  const checkWalletConnected = useCallback(() => {
+  const checkAuthenticated = useCallback(() => {
     if (!connectedPublicKey) {
       throw new Error("Please connect your wallet");
+    } else if (!isAuthed) {
+      console.log(isAuthed, "isAuthed");
+      throw new Error("Please authenticate to play games");
     }
     return connectedPublicKey.toString();
-  }, [connectedPublicKey]);
+  }, [connectedPublicKey, isAuthed]);
 
   // Centralized balance check
   const checkBalance = useCallback(
@@ -152,28 +79,14 @@ export const useGame = (activeGame?: Game) => {
     [solBalanceData]
   );
 
-  // Utility to handle refetches with error logging
-  const handleRefetches = useCallback(
-    async (refetchFunctions: Array<() => Promise<unknown>>) => {
-      try {
-        await Promise.all(refetchFunctions.map((refetch) => refetch()));
-      } catch (error) {
-        console.error(
-          "Refetch failed:",
-          error instanceof Error ? error.message : "Unknown error"
-        );
-      }
-    },
-    []
-  );
-
   // Deposit SOL to game wallet
   const depositSol = useCallback(
     async (amount: number) => {
       try {
         setIsLoading(true);
-        const accountId = checkWalletConnected();
-        const destinationWallet = await gamesControllerGetGameWalletAddress();
+        const accountId = checkAuthenticated();
+        const { address: destinationWallet } =
+          await gamesControllerGetGameWalletAddress();
         const referenceId = getReferenceId();
 
         const transferResult = await transferSol(umi, {
@@ -199,8 +112,7 @@ export const useGame = (activeGame?: Game) => {
           receiverWalletAddress: destinationWallet,
         });
 
-        // Refetch balance
-        await handleRefetches([refreshBalance]);
+        refreshBalance();
 
         return depositResult;
       } catch (error) {
@@ -213,7 +125,7 @@ export const useGame = (activeGame?: Game) => {
         setIsLoading(false);
       }
     },
-    [checkWalletConnected, umi, refreshBalance, handleRefetches]
+    [checkAuthenticated, umi, refreshBalance]
   );
 
   // Withdraw SOL from game
@@ -221,7 +133,7 @@ export const useGame = (activeGame?: Game) => {
     async (amount: number) => {
       try {
         setIsLoading(true);
-        const accountId = checkWalletConnected();
+        const accountId = checkAuthenticated();
         checkBalance(amount);
 
         const referenceId = getReferenceId();
@@ -234,8 +146,7 @@ export const useGame = (activeGame?: Game) => {
           destinationAddress: accountId,
         });
 
-        // Refetch balance
-        await handleRefetches([refreshBalance]);
+        refreshBalance();
 
         return withdrawResult;
       } catch (error) {
@@ -248,92 +159,7 @@ export const useGame = (activeGame?: Game) => {
         setIsLoading(false);
       }
     },
-    [checkWalletConnected, checkBalance, refreshBalance, handleRefetches]
-  );
-
-  // Play slot machine
-  const playSlotMachine = useCallback(
-    async (amount: number) => {
-      const accountId = checkWalletConnected();
-      checkBalance(amount);
-
-      const referenceId = getReferenceId();
-
-      try {
-        const slotGameResult = await slotMachineControllerPlay({
-          accountId,
-          betAmount: amount,
-          tokenType: "SOL",
-          referenceId,
-        });
-
-        // Refetch balance, stats, and history
-        await handleRefetches([
-          refreshBalance,
-          refreshSlotMachineStats,
-          refreshSlotMachineHistory,
-        ]);
-
-        return slotGameResult;
-      } catch (error) {
-        throw new Error(
-          `Slot machine play failed: ${
-            error instanceof Error ? error.message : "Unknown error"
-          }`
-        );
-      }
-    },
-    [
-      checkWalletConnected,
-      checkBalance,
-      refreshBalance,
-      refreshSlotMachineStats,
-      refreshSlotMachineHistory,
-      handleRefetches,
-    ]
-  );
-
-  // Play coin flip
-  const playCoinFlip = useCallback(
-    async (amount: number, choice: PlayCoinFlipDtoChoice) => {
-      const accountId = checkWalletConnected();
-      checkBalance(amount);
-
-      const referenceId = getReferenceId();
-
-      try {
-        const coinFlipResult = await coinFlipControllerPlay({
-          accountId,
-          betAmount: amount,
-          tokenType: "SOL",
-          referenceId,
-          choice,
-        });
-
-        // Refetch balance, stats, and history
-        await handleRefetches([
-          refreshBalance,
-          refreshCoinFlipStats,
-          refreshCoinFlipHistory,
-        ]);
-
-        return coinFlipResult;
-      } catch (error) {
-        throw new Error(
-          `Coin flip play failed: ${
-            error instanceof Error ? error.message : "Unknown error"
-          }`
-        );
-      }
-    },
-    [
-      checkWalletConnected,
-      checkBalance,
-      refreshBalance,
-      refreshCoinFlipStats,
-      refreshCoinFlipHistory,
-      handleRefetches,
-    ]
+    [checkAuthenticated, checkBalance, refreshBalance]
   );
 
   // Memoize return object to prevent unnecessary re-renders
@@ -346,45 +172,23 @@ export const useGame = (activeGame?: Game) => {
             error: balanceError, // Expose error for balance
           }
         : undefined,
+      isLoading,
+      checkBalance,
+      refreshBalance,
+      checkAuthenticated,
       depositSol,
       withdrawSol,
-      slotMachine: {
-        play: playSlotMachine,
-        stats: slotMachineStats,
-        history: slotMachineHistory,
-        isLoading: isSlotMachineStatsLoading || isSlotMachineHistoryLoading,
-        statsError: slotMachineStatsError, // Expose error for stats
-        historyError: slotMachineHistoryError, // Expose error for history
-      },
-      coinFlip: {
-        play: playCoinFlip,
-        stats: coinFlipStats,
-        history: coinFlipHistory,
-        isLoading: isCoinFlipStatsLoading || isCoinFlipHistoryLoading,
-        statsError: coinFlipStatsError, // Expose error for stats
-        historyError: coinFlipHistoryError, // Expose error for history
-      },
     }),
     [
       solBalanceData,
       isBalanceLoading,
       balanceError,
+      isLoading,
+      checkBalance,
+      refreshBalance,
+      checkAuthenticated,
       depositSol,
       withdrawSol,
-      playSlotMachine,
-      slotMachineStats,
-      slotMachineHistory,
-      isSlotMachineStatsLoading,
-      isSlotMachineHistoryLoading,
-      slotMachineStatsError,
-      slotMachineHistoryError,
-      playCoinFlip,
-      coinFlipStats,
-      coinFlipHistory,
-      isCoinFlipStatsLoading,
-      isCoinFlipHistoryLoading,
-      coinFlipStatsError,
-      coinFlipHistoryError,
     ]
   );
 };

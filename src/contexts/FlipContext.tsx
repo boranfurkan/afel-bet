@@ -4,19 +4,20 @@ import React, {
   useState,
   useCallback,
   useEffect,
-} from 'react';
-import useSound from 'use-sound';
-import { useGame } from '@/hooks/bet/useGame';
-import { PlayCoinFlipDtoChoice } from '@/api';
+} from "react";
+import useSound from "use-sound";
+import { useGame } from "@/hooks/bet/useGame";
+import { CoinFlipResultDtoChoice } from "@/api";
+import { useCoinFlip } from "@/hooks/bet/useCoinFlip";
 
 export enum FlipGameState {
-  IDLE = 'IDLE',
-  FLIPPING = 'FLIPPING',
-  RESULT = 'RESULT',
+  IDLE = "IDLE",
+  FLIPPING = "FLIPPING",
+  RESULT = "RESULT",
 }
 
 export interface FlipResult {
-  result: PlayCoinFlipDtoChoice;
+  result: CoinFlipResultDtoChoice;
   isWin: boolean;
   winAmount: number;
   timestamp: number;
@@ -25,13 +26,13 @@ export interface FlipResult {
 interface FlipContextType {
   gameState: FlipGameState;
   betAmount: number;
-  selectedSide: PlayCoinFlipDtoChoice | null;
+  selectedSide: CoinFlipResultDtoChoice | null;
   flipResult: FlipResult | null;
   userBalance: number;
   isAnimating: boolean;
 
   setBetAmount: (amount: number) => void;
-  setSelectedSide: (side: PlayCoinFlipDtoChoice) => void;
+  setSelectedSide: (side: CoinFlipResultDtoChoice) => void;
   startFlip: () => void;
   resetGame: () => void;
   setIsAnimating: (isAnimating: boolean) => void;
@@ -47,16 +48,17 @@ export const FlipProvider: React.FC<{ children: React.ReactNode }> = ({
   const [gameState, setGameState] = useState(FlipGameState.IDLE);
   const [betAmount, setBetAmount] = useState(0.1);
   const [selectedSide, setSelectedSide] =
-    useState<PlayCoinFlipDtoChoice | null>(null);
+    useState<CoinFlipResultDtoChoice | null>(null);
   const [flipResult, setFlipResult] = useState<FlipResult | null>(null);
   const [userBalance, setUserBalance] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const [playCoinFlip] = useSound('/sounds/coin-flip.mp3');
-  const [playWin] = useSound('/sounds/winner.mp3');
-  const [playLose] = useSound('/sounds/lose.mp3');
+  const [playCoinFlip] = useSound("/sounds/coin-flip.mp3");
+  const [playWin] = useSound("/sounds/winner.mp3");
+  const [playLose] = useSound("/sounds/lose.mp3");
 
-  const { coinFlip, solBalance } = useGame('coinflip');
+  const { solBalance } = useGame();
+  const coinFlip = useCoinFlip();
 
   const canStartFlip =
     gameState === FlipGameState.IDLE &&
@@ -72,7 +74,7 @@ export const FlipProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [solBalance]);
 
   const performFlip = useCallback(async () => {
-    if (selectedSide === null) throw new Error('You must select a side');
+    if (selectedSide === null) throw new Error("You must select a side");
 
     try {
       const flipApiResult = await coinFlip.play(betAmount, selectedSide);
@@ -108,7 +110,7 @@ export const FlipProvider: React.FC<{ children: React.ReactNode }> = ({
         }, 5000);
       }
     } catch (error) {
-      console.error('Error during flip:', error);
+      console.error("Error during flip:", error);
       resetGame();
     }
   }, [selectedSide, coinFlip, betAmount, playWin, playLose]);
@@ -159,7 +161,7 @@ export const FlipProvider: React.FC<{ children: React.ReactNode }> = ({
 export const useFlipMachine = () => {
   const context = useContext(FlipContext);
   if (context === undefined) {
-    throw new Error('useFlipMachine must be used within a FlipProvider');
+    throw new Error("useFlipMachine must be used within a FlipProvider");
   }
   return context;
 };

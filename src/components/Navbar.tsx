@@ -1,12 +1,11 @@
 'use client';
-import Cookies from 'js-cookie';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
 import { StaticImageData } from 'next/image';
 import ServicesDropdown from './ServicesDropdown';
-import { DiscordLogo, User, X } from '@phosphor-icons/react';
+import { DiscordLogo, Wallet, X } from '@phosphor-icons/react';
 import menuLogo from '/public/images/menu_logo.png';
 import MarketplacesDropdown from './MarketplacesDropdown';
 import MusicPlayer from './MusicPlayer/MusicPlayer';
@@ -36,14 +35,12 @@ const navItems: NavItem[] = [
     decoration: true,
     isInternal: false,
   },
-  // { label: "AFEL[id]", path: "/afel-id", isInternal: true },
   {
     label: 'DISCORD',
     path: 'https://discord.com/invite/afel',
     isInternal: false,
-    iconOnly: true, // Add this
+    iconOnly: true,
   },
-  //{ label: "AIRDROP", path: "/airdrop", isInternal: true },
 ];
 
 export default function Navbar({ logo }: NavbarProps) {
@@ -54,16 +51,8 @@ export default function Navbar({ logo }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMarketplacesOpen, setIsMarketplacesOpen] = useState(false);
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const [token, setToken] = useState<any>(null);
-
-  useEffect(() => {
-    // JWT'yi kontrol et
-    const jwt = Cookies.get('jwt');
-    setIsLoggedIn(!!jwt);
-    setToken(jwt);
-  }, [pathname]); // pathname değiştiğinde tekrar kontrol et
+  const { publicKey, connected, disconnecting } = useWallet();
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -73,10 +62,17 @@ export default function Navbar({ logo }: NavbarProps) {
     e.preventDefault();
     setIsServicesOpen(!isServicesOpen);
   };
+
   const toggleMarketplaces = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsMarketplacesOpen(!isMarketplacesOpen);
   };
+
+  useEffect(() => {
+    if (disconnecting) {
+      setIsSignInModalOpen(false);
+    }
+  }, [disconnecting]);
 
   const renderMarketplacesButton = () => (
     <div className="relative my-2" ref={marketplacesButtonRef}>
@@ -113,53 +109,42 @@ export default function Navbar({ logo }: NavbarProps) {
     </div>
   );
 
-  const renderSingInButton = () => {
-    const isProfilePage = pathname.startsWith('/afel-id');
-
-    return isLoggedIn ? (
-      <Link href={`/afel-id`} className="relative">
-        <div
-          className={`${
-            isProfilePage
-              ? 'bg-[#6C924A] text-white'
-              : 'bg-white text-black hover:bg-white/90'
-          } w-[100px] group relative flex justify-center items-center gap-2 md:gap-3 px-4 py-2 cursor-pointer overflow-hidden rounded-[28px]`}
-        >
+  const renderWalletButton = () => {
+    return connected && publicKey ? (
+      <div className="relative" onClick={() => setIsSignInModalOpen(true)}>
+        <div className="bg-[#6C924A] text-white w-[100px] group relative flex justify-center items-center gap-2 md:gap-3 px-4 py-2 cursor-pointer overflow-hidden rounded-[28px]">
           <div className="flex items-center gap-2">
-            <User
-              size={20}
-              className={isProfilePage ? 'text-white' : 'text-black'}
-            />
+            <Wallet size={20} className="text-white" />
+            <span className="text-xs">
+              {publicKey.toString().slice(0, 4)}...
+            </span>
           </div>
         </div>
-      </Link>
+      </div>
     ) : (
       <div
         className="divide-solid w-[100px]"
         onClick={() => setIsSignInModalOpen(true)}
       >
         <div className="relative">
-          <div
-            className="group relative flex justify-center items-center gap-2 md:gap-3 px-4 py-2
-      cursor-pointer overflow-hidden hover:opacity-90 rounded-[28px] bg-white"
-          >
+          <div className="group relative flex justify-center items-center gap-2 md:gap-3 px-4 py-2 cursor-pointer overflow-hidden hover:opacity-90 rounded-[28px] bg-white">
             <p className="text-sm text-center text-black uppercase tracking-wider relative z-10">
-              Sign In
+              Connect
             </p>
-
-            <div className="absolute inset-0 rounded-md ring-white/20 group-hover:ring-white/40  duration-300" />
+            <div className="absolute inset-0 rounded-md ring-white/20 group-hover:ring-white/40 duration-300" />
           </div>
         </div>
       </div>
     );
   };
+
   const renderServicesButton = () => (
     <div className="relative" ref={servicesButtonRef}>
       <div
         onClick={toggleServices}
         className="flex justify-center items-center relative gap-2 md:gap-3 px-2 py-2 rounded-md hover:bg-white/[0.12] cursor-pointer"
       >
-        <p className="text-sm  text-center text-white">SERVICES</p>
+        <p className="text-sm text-center text-white">SERVICES</p>
         <svg
           width={16}
           height={16}
@@ -211,7 +196,6 @@ export default function Navbar({ logo }: NavbarProps) {
       <nav className="font-sans relative" style={{ zIndex: 50 }}>
         {/* Mobile/Tablet Layout */}
         <div className="lg:hidden">
-          {/* Logo and Menu Button Container */}
           <div className="fixed top-0 left-0 px-8 py-2 flex items-center gap-4 z-50 w-full justify-between bg-black/10 backdrop-blur-sm">
             <Image
               src={menuLogo}
@@ -221,7 +205,6 @@ export default function Navbar({ logo }: NavbarProps) {
               priority
               className="w-auto h-[60px]"
             />
-            {/* Two Line Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="flex flex-col gap-2"
@@ -236,7 +219,7 @@ export default function Navbar({ logo }: NavbarProps) {
               )}
             </button>
           </div>
-          {/* Mobile Menu */}
+
           <div
             className={`fixed top-0 right-0 h-full bg-[#181818]/[0.70] backdrop-blur-md border-l border-white/30
             w-[50vw] sm:w-[250px] transition-all duration-300 ease-in-out
@@ -253,9 +236,9 @@ export default function Navbar({ logo }: NavbarProps) {
                   {renderNavItem(item)}
                 </div>
               ))}
-              <div className="w-full h-[1px] bg-white/30" />{' '}
-              {renderSingInButton()}
-              {renderMarketplacesButton()} {/* Move BUY button here */}
+              <div className="w-full h-[1px] bg-white/30" />
+              {renderWalletButton()}
+              {renderMarketplacesButton()}
               {navItems.slice(-1).map((item) => (
                 <div key={item.path} className="w-full">
                   {renderNavItem(item)}
@@ -280,7 +263,7 @@ export default function Navbar({ logo }: NavbarProps) {
         </div>
 
         {/* Desktop Layout */}
-        <div className="hidden lg:block fixed overflow-visible  left-8 top-1/2 -translate-y-1/2">
+        <div className="hidden lg:block fixed overflow-visible left-8 top-1/2 -translate-y-1/2">
           <div className="flex flex-col justify-between items-center gap-1 p-1 rounded-[100px] bg-[#181818]/[0.70] backdrop-blur-md">
             <div className="flex flex-col justify-center items-center border border-[#58585842] py-[10px] rounded-[72px] mb-4">
               <Image
@@ -294,18 +277,17 @@ export default function Navbar({ logo }: NavbarProps) {
               <p className="text-[20px] text-white">AFEL</p>
             </div>
             {navItems.slice(0, 2).map(renderNavItem)}
-            {navItems.slice(2, -1).map(renderNavItem)}{' '}
-            {/* Remove the last item (Discord) */}
-            {renderSingInButton()}
-            {renderMarketplacesButton()} {/* Move BUY button here */}
-            {navItems.slice(-1).map(renderNavItem)}{' '}
+            {navItems.slice(2, -1).map(renderNavItem)}
+            {renderWalletButton()}
+            {renderMarketplacesButton()}
+            {navItems.slice(-1).map(renderNavItem)}
             <div>
               <MusicPlayer />
             </div>
-            {/* Render Discord button last */}
           </div>
         </div>
       </nav>
+
       <ServicesDropdown
         isOpen={isServicesOpen}
         setIsOpen={setIsServicesOpen}

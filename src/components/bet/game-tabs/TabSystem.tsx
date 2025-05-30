@@ -1,17 +1,25 @@
-'use client';
-import React, { useState } from 'react';
-import TabHeadings from './tab-headings/TabHeadings';
-import { AnimatePresence, motion } from 'framer-motion';
-import SlotContents from '../contents/slot-contents';
-import FlipContents from '../contents/flip-contents';
-import { GameTabs } from '@/types/bet';
-import BalancePanel from './BalancePanel';
-import useWindowSize from '@/hooks/useWindowSize';
+"use client";
+import React, { useState } from "react";
+import TabHeadings from "./tab-headings/TabHeadings";
+import { AnimatePresence, motion } from "framer-motion";
+import SlotContents from "../contents/slot-contents";
+import FlipContents from "../contents/flip-contents";
+import { GameTabs } from "@/types/bet";
+import BalancePanel from "./BalancePanel";
+import useWindowSize from "@/hooks/useWindowSize";
+import { useWallet } from "@solana/wallet-adapter-react";
+import SlotMachineFallback from "../contents/slot-contents/SlotMachineFallback";
+import CoinFlipFallback from "../contents/flip-contents/CoinFlipFallback";
+import { Wallet2Icon } from "lucide-react";
+import { useGameAuthentication } from "@/hooks/bet/useGameAuthentication";
 
 const TabSystem = () => {
   const [activeTab, setActiveTab] = useState(GameTabs.SLOT);
   const [isBalancePanelOpen, setIsBalancePanelOpen] = useState(false);
   const { isMobile, isLargeScreen } = useWindowSize();
+  const { connected } = useWallet();
+
+  const { authenticate } = useGameAuthentication();
 
   const toggleBalancePanel = () => {
     setIsBalancePanelOpen(!isBalancePanelOpen);
@@ -27,7 +35,7 @@ const TabSystem = () => {
       y: 0,
       transition: {
         duration: 0.3,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     },
     exit: {
@@ -35,9 +43,29 @@ const TabSystem = () => {
       y: -20,
       transition: {
         duration: 0.2,
-        ease: 'easeIn',
+        ease: "easeIn",
       },
     },
+  };
+
+  const renderGameContent = () => {
+    if (!connected) {
+      return activeTab === GameTabs.SLOT ? (
+        <SlotMachineFallback />
+      ) : (
+        <CoinFlipFallback />
+      );
+    }
+
+    return activeTab === GameTabs.SLOT ? (
+      <div className="w-full h-full border-[1.5px] border-t-0 border-border bg-dark-bg">
+        <SlotContents />
+      </div>
+    ) : (
+      <div className="w-full h-full border-[1.5px] border-t-0 border-border bg-dark-bg">
+        <FlipContents />
+      </div>
+    );
   };
 
   return (
@@ -52,13 +80,13 @@ const TabSystem = () => {
       {/* Main Content */}
       <div
         className={`w-full flex-1 flex ${
-          isMobile ? 'flex-col' : 'flex-row'
+          isMobile ? "flex-col" : "flex-row"
         } relative`}
       >
         {/* Game Content */}
         <div
           className={`${
-            isMobile ? 'w-full' : 'flex-1'
+            isMobile ? "w-full" : "flex-1"
           } relative overflow-hidden`}
         >
           <AnimatePresence mode="wait">
@@ -70,22 +98,14 @@ const TabSystem = () => {
               exit="exit"
               variants={tabVariants}
             >
-              {activeTab === GameTabs.SLOT ? (
-                <div className="w-full h-full border-[1.5px] border-t-0 border-border bg-dark-bg">
-                  <SlotContents />
-                </div>
-              ) : (
-                <div className="w-full h-full border-[1.5px] border-t-0 border-border bg-dark-bg">
-                  <FlipContents />
-                </div>
-              )}
+              {renderGameContent()}
             </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* Side Balance Panel - Desktop: Always visible, Mobile: Toggle */}
+        {/* Side Balance Panel - Only show if wallet is connected */}
         <AnimatePresence>
-          {(!isMobile || isBalancePanelOpen) && (
+          {connected && (!isMobile || isBalancePanelOpen) && (
             <motion.div
               initial="hidden"
               animate="visible"
@@ -93,10 +113,10 @@ const TabSystem = () => {
               className={`
                 ${
                   isMobile
-                    ? 'w-[85%] max-w-[300px]'
+                    ? "w-[85%] max-w-[300px]"
                     : isLargeScreen
-                    ? 'w-[250px]'
-                    : 'w-[280px]'
+                    ? "w-[250px]"
+                    : "w-[280px]"
                 }
               `}
             >
@@ -108,8 +128,8 @@ const TabSystem = () => {
           )}
         </AnimatePresence>
 
-        {/* Mobile: Balance Panel Toggle Button (Fixed to bottom right) */}
-        {isMobile && !isBalancePanelOpen && (
+        {/* Mobile: Balance Panel Toggle Button (Only show if wallet is connected) */}
+        {connected && isMobile && !isBalancePanelOpen && (
           <motion.button
             className="fixed bottom-6 right-6 z-40 bg-[#a0c380] text-black rounded-full w-14 h-14 flex items-center justify-center shadow-lg"
             onClick={toggleBalancePanel}
@@ -118,20 +138,7 @@ const TabSystem = () => {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M2 17h12a3 3 0 1 0 0-6H2"></path>
-              <path d="M2 7h12a3 3 0 1 1 0 6H2"></path>
-            </svg>
+            <Wallet2Icon className="w-6 h-6" />
           </motion.button>
         )}
       </div>

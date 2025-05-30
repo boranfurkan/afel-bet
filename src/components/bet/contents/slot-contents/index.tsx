@@ -112,7 +112,9 @@ const SlotContents = () => {
       </div>
 
       {isMobile && (
-        <StartButton className="bg-[#6c924a] border-r-4 border-b-4 border-l-4 border-[#A0C380]" />
+        <div className="pt-6 bg-[#6c924a] border-r-4 border-b-4 border-l-4 border-[#A0C380]">
+          <StartButton />
+        </div>
       )}
 
       {/* Bottom Last Wins Display */}

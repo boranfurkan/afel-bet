@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useCallback, memo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect, useState, useCallback, memo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface WinMultiplierEffectProps {
   multiplier: number;
@@ -18,23 +18,23 @@ interface WinEffect {
 const MULTIPLIER_THEMES = {
   legendary: {
     threshold: 10,
-    colors: { primary: '#FFD700', secondary: '#FF6B35', glow: '#FFD700' },
+    colors: { primary: "#FFD700", secondary: "#FF6B35", glow: "#FFD700" },
   },
   epic: {
     threshold: 5,
-    colors: { primary: '#9D4EDD', secondary: '#E0AAFF', glow: '#9D4EDD' },
+    colors: { primary: "#9D4EDD", secondary: "#E0AAFF", glow: "#9D4EDD" },
   },
   rare: {
     threshold: 3,
-    colors: { primary: '#06FFA5', secondary: '#4ECDC4', glow: '#06FFA5' },
+    colors: { primary: "#06FFA5", secondary: "#4ECDC4", glow: "#06FFA5" },
   },
   common: {
     threshold: 2,
-    colors: { primary: '#FFE66D', secondary: '#FF6B6B', glow: '#FFE66D' },
+    colors: { primary: "#FFE66D", secondary: "#FF6B6B", glow: "#FFE66D" },
   },
   basic: {
     threshold: 0,
-    colors: { primary: '#A8E6CF', secondary: '#88D8A3', glow: '#A8E6CF' },
+    colors: { primary: "#A8E6CF", secondary: "#88D8A3", glow: "#A8E6CF" },
   },
 } as const;
 
@@ -93,7 +93,7 @@ const WinMultiplierEffect: React.FC<WinMultiplierEffectProps> = ({
   // Format SOL amount for display
   const formatAmount = useCallback((amount: number) => {
     const solAmount = amount / 1_000_000_000;
-    return solAmount < 0.01 ? '< 0.01' : solAmount.toFixed(2);
+    return solAmount < 0.01 ? "< 0.01" : solAmount.toFixed(2);
   }, []);
 
   // Effect management
@@ -145,7 +145,6 @@ const WinMultiplierEffect: React.FC<WinMultiplierEffectProps> = ({
             multiplier={multiplier}
             winAmount={winAmountPerPattern}
             theme={theme}
-            formatAmount={formatAmount}
             onComplete={() => {
               setActiveEffects((prev) =>
                 prev.filter((e) => e.id !== effect.id)
@@ -163,7 +162,6 @@ interface WinEffectDisplayProps {
   multiplier: number;
   winAmount: number;
   theme: (typeof MULTIPLIER_THEMES)[keyof typeof MULTIPLIER_THEMES];
-  formatAmount: (amount: number) => string;
   onComplete: () => void;
 }
 
@@ -172,7 +170,6 @@ const WinEffectDisplay: React.FC<WinEffectDisplayProps> = ({
   multiplier,
   winAmount,
   theme,
-  formatAmount,
   onComplete,
 }) => {
   const fontSize = Math.min(48, 24 + multiplier * 2);
@@ -183,31 +180,31 @@ const WinEffectDisplay: React.FC<WinEffectDisplayProps> = ({
       style={{
         left: `${effect.position.x}%`,
         top: `${effect.position.y}%`,
-        transform: 'translate(-50%, -50%)',
+        transform: "translate(-50%, -50%)",
       }}
       initial={{
         opacity: 0,
         scale: 0.5,
         y: 20,
-        filter: 'blur(8px)',
+        filter: "blur(8px)",
       }}
       animate={{
         opacity: [0, 1, 0.9, 0.7, 0],
         scale: [0.5, 1.2, 1, 0.9, 0.6],
         y: [20, -10, -30, -50, -80],
         filter: [
-          'blur(8px)',
-          'blur(0px)',
-          'blur(0px)',
-          'blur(2px)',
-          'blur(6px)',
+          "blur(8px)",
+          "blur(0px)",
+          "blur(0px)",
+          "blur(2px)",
+          "blur(6px)",
         ],
       }}
       exit={{
         opacity: 0,
         scale: 0.3,
         y: -100,
-        filter: 'blur(10px)',
+        filter: "blur(10px)",
       }}
       transition={{
         duration: ANIMATIONS.duration,
@@ -222,10 +219,10 @@ const WinEffectDisplay: React.FC<WinEffectDisplayProps> = ({
         className="absolute inset-0 rounded-full pointer-events-none"
         style={{
           background: `radial-gradient(circle, ${theme.colors.glow}40 0%, ${theme.colors.glow}20 50%, transparent 70%)`,
-          width: '300%',
-          height: '300%',
-          left: '-100%',
-          top: '-100%',
+          width: "300%",
+          height: "300%",
+          left: "-100%",
+          top: "-100%",
         }}
         animate={{
           scale: [0.8, 1.5, 1.2, 0.9],
@@ -233,7 +230,7 @@ const WinEffectDisplay: React.FC<WinEffectDisplayProps> = ({
         }}
         transition={{
           duration: ANIMATIONS.duration * 0.8,
-          ease: 'easeOut',
+          ease: "easeOut",
         }}
       />
 
@@ -246,7 +243,7 @@ const WinEffectDisplay: React.FC<WinEffectDisplayProps> = ({
             className="absolute inset-0 font-bold font-mono"
             style={{
               fontSize: `${fontSize}px`,
-              color: '#000000',
+              color: "#000000",
               textShadow: `
                 -2px -2px 0 #000,
                 2px -2px 0 #000,
@@ -254,7 +251,7 @@ const WinEffectDisplay: React.FC<WinEffectDisplayProps> = ({
                 2px 2px 0 #000,
                 0 0 8px rgba(0,0,0,0.8)
               `,
-              transform: 'translate(1px, 1px)',
+              transform: "translate(1px, 1px)",
             }}
           >
             +{multiplier}×
@@ -282,7 +279,7 @@ const WinEffectDisplay: React.FC<WinEffectDisplayProps> = ({
             transition={{
               duration: 1.5,
               repeat: 2,
-              repeatType: 'reverse',
+              repeatType: "reverse",
             }}
           >
             +{multiplier}×
@@ -306,7 +303,7 @@ const WinEffectDisplay: React.FC<WinEffectDisplayProps> = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: effect.delay + 0.2 }}
         >
-          +{formatAmount(winAmount)} SOL
+          +{winAmount} SOL
         </motion.div>
       </div>
 
@@ -361,7 +358,7 @@ const ParticleEffect: React.FC<ParticleEffectProps> = ({
             transition={{
               duration: 2.5 + Math.random(),
               delay: delay,
-              ease: 'easeOut',
+              ease: "easeOut",
             }}
           />
         );

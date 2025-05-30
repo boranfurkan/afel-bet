@@ -1,17 +1,9 @@
-import { useWallet } from "@solana/wallet-adapter-react";
-import Image from "next/image";
-import { FC, useState } from "react";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
-import { DiscordLogo, TelegramLogo, XLogo } from "@phosphor-icons/react";
-import waaLogo from "/public/images/waaLogo.png";
-import { WalletMultiButtonDynamic } from "../WalletMultiButtonDynamic";
-import { toast } from "react-hot-toast";
-import {
-  getOAuthSession,
-  initiateDiscordAuth,
-  initiateMatricaAuth,
-  initiateXAuth,
-} from "@/utils/authService";
+import { useWallet } from '@solana/wallet-adapter-react';
+import Image from 'next/image';
+import { FC } from 'react';
+import waaLogo from '/public/images/waaLogo.png';
+import { WalletMultiButtonDynamic } from '../WalletMultiButtonDynamic';
+import { toast } from 'react-hot-toast';
 
 interface SignInModalProps {
   isOpen: boolean;
@@ -21,88 +13,13 @@ interface SignInModalProps {
 export const SignInModal: FC<SignInModalProps> = ({ isOpen, onClose }) => {
   const { publicKey, disconnect } = useWallet();
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [isLoadingX, setIsLoadingX] = useState(false);
-  const [isLoadingMatrica, setIsLoadingMatrica] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [error, setError] = useState<string | null>(null);
-
-  const handleDiscordAuth = async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-
-      // Get OAuth session
-      const sessionData = await getOAuthSession();
-
-      if (!sessionData.sessionId) {
-        throw new Error("No session ID received");
-      }
-
-      // Redirect to Discord OAuth
-      initiateDiscordAuth(sessionData.sessionId);
-    } catch (error) {
-      console.error("Authentication error:", error);
-      setError(
-        error instanceof Error ? error.message : "Authentication failed"
-      );
-      setIsLoading(false);
-    }
-  };
-
-  const handleMatricaAuth = async () => {
-    try {
-      setIsLoadingMatrica(true);
-      setError(null);
-
-      // Get OAuth session
-      const sessionData = await getOAuthSession();
-
-      if (!sessionData.sessionId) {
-        throw new Error("No session ID received");
-      }
-
-      // Redirect to Discord OAuth
-      initiateMatricaAuth(sessionData.sessionId);
-    } catch (error) {
-      console.error("Authentication error:", error);
-      setError(
-        error instanceof Error ? error.message : "Authentication failed"
-      );
-      setIsLoadingMatrica(false);
-    }
-  };
-
-  const handleXAuth = async () => {
-    try {
-      setIsLoadingX(true);
-      setError(null);
-
-      // Get OAuth session
-      const sessionData = await getOAuthSession();
-
-      if (!sessionData.sessionId) {
-        throw new Error("No session ID received");
-      }
-
-      // Redirect to Discord OAuth
-      initiateXAuth(sessionData.sessionId);
-    } catch (error) {
-      console.error("Authentication error:", error);
-      setError(
-        error instanceof Error ? error.message : "Authentication failed"
-      );
-      setIsLoadingX(false);
-    }
-  };
-
   const handleCopyAddress = async () => {
     if (publicKey) {
       try {
         await navigator.clipboard.writeText(publicKey.toString());
-        toast.success("Address copied to clipboard!");
+        toast.success('Address copied to clipboard!');
       } catch (err) {
-        toast.error("Failed to copy address");
+        toast.error('Failed to copy address');
       }
     }
   };
@@ -128,7 +45,7 @@ export const SignInModal: FC<SignInModalProps> = ({ isOpen, onClose }) => {
 
         {/* Title */}
         <h2 className="text-white text-center text-xl mb-6">
-          SIGN IN WITH [ID]
+          CONNECT YOUR WALLET
         </h2>
 
         {/* Wallet Connection */}
@@ -157,51 +74,27 @@ export const SignInModal: FC<SignInModalProps> = ({ isOpen, onClose }) => {
             <WalletMultiButtonDynamic
               className="w-full !bg-[#6C924A] hover:!bg-[#5A7B3E] !text-white !py-3 !rounded-full !transition-colors"
               style={{
-                justifyContent: "center",
-                border: "none",
+                justifyContent: 'center',
+                border: 'none',
               }}
             />
           )}
         </div>
 
-        {/* Connect Options */}
-        <div className="space-y-4">
-          <div className="text-center text-white/60 !my-6">or</div>
-          <button
-            onClick={handleXAuth}
-            className="w-full bg-black hover:bg-black/50 text-white py-3 rounded-full transition-colors flex items-center justify-center gap-2"
-          >
-            {isLoadingX ? (
-              "Loading..."
-            ) : (
-              <>
-                CONTINUE WITH
-                <XLogo size={20} weight="fill" />
-              </>
-            )}
-          </button>
-          <button
-            onClick={handleDiscordAuth}
-            className="w-full bg-[#885EFA] hover:bg-[#7140FA] text-white py-3  rounded-full transition-colors flex items-center justify-center gap-2"
-          >
-            {isLoading ? (
-              "Loading..."
-            ) : (
-              <>
-                CONTINUE WITH
-                <DiscordLogo size={20} weight="fill" />
-              </>
-            )}
-          </button>
-          <button
-            onClick={handleMatricaAuth}
-            className="w-full bg-[#3D474A] hover:bg-[#2D3739] text-white py-3 rounded-full transition-colors flex items-center justify-center gap-2"
-          >
-            {isLoadingMatrica ? "Loading..." : <>CONTINUE WITH MATRICA </>}
-          </button>
+        {/* Instructions */}
+        <div className="mt-6 text-center text-white/70 text-sm">
+          <p>Connect your Solana wallet to start playing</p>
         </div>
 
-        {/* First time text */}
+        {/* Close button */}
+        <div className="mt-6 text-center">
+          <button
+            onClick={onClose}
+            className="text-white/60 hover:text-white transition-colors text-sm"
+          >
+            Close
+          </button>
+        </div>
       </div>
     </div>
   );

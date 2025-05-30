@@ -9,16 +9,16 @@ interface BetChoosePanelProps {
 const BetChoosePanel: React.FC<BetChoosePanelProps> = ({
   isMobile = false,
 }) => {
-  const { userBalance, setBetAmount, isSpinning } = useSlotMachine();
+  const { userBalance, demoBalance, gameMode, setBetAmount, isSpinning } =
+    useSlotMachine();
 
-  const userBalanceInSol = userBalance;
+  const currentBalance = gameMode === 'demo' ? demoBalance : userBalance;
 
   const handleBetClick = (amount: number) => {
     if (isSpinning) return;
     setBetAmount(amount);
   };
 
-  // Adjust bet options for mobile
   const betOptions = isMobile
     ? [
         { amount: 0.05, label: '0.05' },
@@ -44,7 +44,7 @@ const BetChoosePanel: React.FC<BetChoosePanelProps> = ({
           key={option.amount}
           className={`w-full !px-1 md:!px-3 !py-1 h-10 md:h-16 flex items-center justify-center text-xs md:text-base`}
           size={isMobile ? 'small' : 'large'}
-          disabled={userBalanceInSol < option.amount || isSpinning}
+          disabled={currentBalance < option.amount || isSpinning}
           onClick={() => handleBetClick(option.amount)}
         >
           {option.label}

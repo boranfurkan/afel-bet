@@ -1,21 +1,21 @@
-import HeadIcon from '@/assets/icons/HeadIcon';
-import TailIcon from '@/assets/icons/TailIcon';
-import React from 'react';
-import { motion } from 'framer-motion';
-import { PlayCoinFlipDtoChoice } from '@/api';
+import HeadIcon from "@/assets/icons/HeadIcon";
+import TailIcon from "@/assets/icons/TailIcon";
+import React from "react";
+import { motion } from "framer-motion";
+import { CoinFlipResultDtoChoice } from "@/api";
 
 interface LastFlipItemProps {
-  side: PlayCoinFlipDtoChoice;
+  side: CoinFlipResultDtoChoice;
 }
 
 const LastFlipItem = ({ side }: LastFlipItemProps) => {
   const FlipData = {
     TAILS: {
-      background: '#6C924A',
+      background: "#6C924A",
       icon: TailIcon,
     },
     HEADS: {
-      background: '#FFF',
+      background: "#FFF",
       icon: HeadIcon,
     },
   };
@@ -27,11 +27,11 @@ const LastFlipItem = ({ side }: LastFlipItemProps) => {
       className="rounded-full border border-black"
       style={{
         background: FlipData[side].background,
-        width: '24px',
-        height: '24px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        width: "24px",
+        height: "24px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
       }}
       whileHover={{
         scale: 1.2,
@@ -43,7 +43,7 @@ const LastFlipItem = ({ side }: LastFlipItemProps) => {
         opacity: 1,
         scale: 1,
         transition: {
-          type: 'spring',
+          type: "spring",
           stiffness: 300,
           damping: 15,
         },

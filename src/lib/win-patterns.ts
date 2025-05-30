@@ -28,22 +28,44 @@ export const ICON_MULTIPLIERS: Record<SlotIconType, number> = {
   [SlotIconType.AFEL]: 10, // 5-5-5 x5
 };
 
+// Drop chances for each icon (total should be 1.0)
+export const ICON_DROP_CHANCES: Record<SlotIconType, number> = {
+  [SlotIconType.MEAT]: 0.29,
+  [SlotIconType.CROCODILE]: 0.28,
+  [SlotIconType.HEAD]: 0.2,
+  [SlotIconType.TRUMP]: 0.12,
+  [SlotIconType.SOLANA]: 0.07,
+  [SlotIconType.AFEL]: 0.04,
+};
+
 export const SPECIAL_COMBINATIONS = [
   {
-    combo: [SlotIconType.MEAT, SlotIconType.CROCODILE, SlotIconType.CROCODILE],
-    multiplier: 1.5, // 1-2-2 x1.5
+    combo: [SlotIconType.MEAT, SlotIconType.CROCODILE, SlotIconType.CROCODILE], // 1-2-2
+    multiplier: 1.6,
   },
   {
-    combo: [SlotIconType.HEAD, SlotIconType.TRUMP, SlotIconType.HEAD],
-    multiplier: 2.5, // 3-4-3 x2.5
+    combo: [SlotIconType.HEAD, SlotIconType.TRUMP, SlotIconType.HEAD], // 3-4-3
+    multiplier: 2.5,
   },
   {
-    combo: [SlotIconType.CROCODILE, SlotIconType.SOLANA, SlotIconType.AFEL],
-    multiplier: 3, // 2-5-6 x3
+    combo: [SlotIconType.CROCODILE, SlotIconType.SOLANA, SlotIconType.AFEL], // 2-5-6
+    multiplier: 3.5,
   },
   {
-    combo: [SlotIconType.TRUMP, SlotIconType.AFEL, SlotIconType.SOLANA],
-    multiplier: 4, // 4-6-5 x4
+    combo: [SlotIconType.TRUMP, SlotIconType.AFEL, SlotIconType.SOLANA], // 4-6-5
+    multiplier: 4.5,
+  },
+  {
+    combo: [SlotIconType.MEAT, SlotIconType.MEAT, SlotIconType.CROCODILE], // 1-1-2
+    multiplier: 1.4,
+  },
+  {
+    combo: [SlotIconType.TRUMP, SlotIconType.SOLANA, SlotIconType.AFEL], // 4-5-6
+    multiplier: 10,
+  },
+  {
+    combo: [SlotIconType.HEAD, SlotIconType.SOLANA, SlotIconType.AFEL], // 3-5-6
+    multiplier: 6,
   },
 ];
 
@@ -57,6 +79,34 @@ export interface WinPathData {
   controlX2: number;
   controlY2: number;
   pathType: WinPatternType;
+}
+
+// Weighted random selection based on drop chances
+export function getRandomIcon(): SlotIconType {
+  const random = Math.random();
+  let accumulator = 0;
+
+  for (const [icon, chance] of Object.entries(ICON_DROP_CHANCES)) {
+    accumulator += chance;
+    if (random <= accumulator) {
+      return parseInt(icon) as SlotIconType;
+    }
+  }
+
+  // Fallback to most common icon if something goes wrong
+  return SlotIconType.MEAT;
+}
+
+// Generate realistic slot machine results
+export function generateSlotResult(): SlotIconType[] {
+  const result: SlotIconType[] = [];
+
+  // Generate 9 symbols using weighted randomization
+  for (let i = 0; i < 9; i++) {
+    result.push(getRandomIcon());
+  }
+
+  return result;
 }
 
 // Get the win pattern type from the pattern indices

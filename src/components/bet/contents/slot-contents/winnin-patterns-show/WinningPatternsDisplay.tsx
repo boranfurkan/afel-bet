@@ -51,7 +51,7 @@ const WinningPatternsDisplay = () => {
           SlotIconType.CROCODILE,
           SlotIconType.CROCODILE,
         ],
-        multiplier: 1.5,
+        multiplier: 1.6,
       },
       rowTwo: {
         elements: [SlotIconType.HEAD, SlotIconType.TRUMP, SlotIconType.HEAD],
@@ -65,11 +65,35 @@ const WinningPatternsDisplay = () => {
           SlotIconType.SOLANA,
           SlotIconType.AFEL,
         ],
-        multiplier: 3,
+        multiplier: 3.5,
       },
       rowTwo: {
         elements: [SlotIconType.TRUMP, SlotIconType.AFEL, SlotIconType.SOLANA],
-        multiplier: 4,
+        multiplier: 4.5,
+      },
+    },
+    {
+      rowOne: {
+        elements: [
+          SlotIconType.MEAT,
+          SlotIconType.MEAT,
+          SlotIconType.CROCODILE,
+        ],
+        multiplier: 1.4,
+      },
+      rowTwo: {
+        elements: [SlotIconType.TRUMP, SlotIconType.SOLANA, SlotIconType.AFEL],
+        multiplier: 10,
+      },
+    },
+    {
+      rowOne: {
+        elements: [SlotIconType.HEAD, SlotIconType.SOLANA, SlotIconType.AFEL],
+        multiplier: 6,
+      },
+      rowTwo: {
+        elements: [SlotIconType.MEAT, SlotIconType.MEAT, SlotIconType.MEAT],
+        multiplier: 1.2,
       },
     },
   ];

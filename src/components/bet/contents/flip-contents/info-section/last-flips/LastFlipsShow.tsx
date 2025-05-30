@@ -1,11 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import LastFlipItem from './LastFlipItem';
-import { useGame } from '@/hooks/bet/useGame';
-import { PlayCoinFlipDtoChoice } from '@/api';
+import React from "react";
+import { motion } from "framer-motion";
+import LastFlipItem from "./LastFlipItem";
+import { useGame } from "@/hooks/bet/useGame";
+import { CoinFlipResultDtoChoice } from "@/api";
+import { useCoinFlip } from "@/hooks/bet/useCoinFlip";
 
 const LastFlipsShow = () => {
-  const { coinFlip } = useGame('coinflip');
+  const coinFlip = useCoinFlip();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -27,14 +28,14 @@ const LastFlipsShow = () => {
       opacity: 1,
       scale: 1,
       transition: {
-        type: 'spring',
+        type: "spring",
         stiffness: 300,
         damping: 20,
       },
     },
   };
 
-  if (!coinFlip.history || coinFlip.history.items.length === 0) {
+  if (!coinFlip || coinFlip.history?.items.length === 0) {
     return null;
   }
 
@@ -55,7 +56,7 @@ const LastFlipsShow = () => {
       </motion.h4>
 
       <div className="flex items-center gap-1 overflow-x-auto no-scrollbar flex-1">
-        {coinFlip.history.items.slice(0, 8).map((flip, index) => (
+        {coinFlip.history?.items.slice(0, 8).map((flip, index) => (
           <motion.div
             key={flip.id || index}
             variants={itemVariants}
@@ -65,7 +66,7 @@ const LastFlipsShow = () => {
             }}
             whileTap={{ scale: 0.95 }}
           >
-            <LastFlipItem side={flip.result as PlayCoinFlipDtoChoice} />
+            <LastFlipItem side={flip.result as CoinFlipResultDtoChoice} />
           </motion.div>
         ))}
       </div>
