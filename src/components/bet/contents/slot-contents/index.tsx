@@ -99,11 +99,10 @@ const SlotContents = () => {
         {/* Slot Machine */}
         <div className={`${isMobile ? 'w-full' : 'flex-1'} overflow-hidden`}>
           <SlotMachineController>
-            {({ isReady, onReelStop, completedReels }) => (
+            {({ onReelStop, completedReels }) => (
               <SlotPanel
                 onReelStop={onReelStop}
                 completedReels={completedReels}
-                isReady={isReady}
                 isMobile={isMobile}
               />
             )}

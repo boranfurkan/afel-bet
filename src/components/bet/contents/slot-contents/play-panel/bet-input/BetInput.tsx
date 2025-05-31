@@ -1,7 +1,9 @@
+// src/components/bet/contents/slot-contents/play-panel/bet-input/BetInput.tsx
 import { useCallback, useEffect } from 'react';
 import ArrowDownIcon from '@/assets/icons/ArrowDownIcon';
 import ArrowUpIcon from '@/assets/icons/ArrowUpIcon';
 import { useSlotMachine } from '@/contexts/SlotMachineContext';
+import { showErrorToast } from '@/utils/toast';
 
 interface BetInputProps {
   isMobile?: boolean;
@@ -9,7 +11,7 @@ interface BetInputProps {
 
 const BetInput: React.FC<BetInputProps> = ({ isMobile = false }) => {
   const { userBalance, betAmount, setBetAmount, isSpinning } = useSlotMachine();
-  const minBet = 0.1;
+  const minBet = 0.01; // Updated minimum bet
   const maxBet = 2;
 
   const handleChange = useCallback(
@@ -23,27 +25,43 @@ const BetInput: React.FC<BetInputProps> = ({ isMobile = false }) => {
 
       const value = parseFloat(e.target.value);
       if (!isNaN(value)) {
+        if (value < minBet) {
+          showErrorToast(
+            'Invalid Bet Amount',
+            `Minimum bet amount is ${minBet} SOL`
+          );
+        }
         setBetAmount(value);
       }
     },
-    [isSpinning, setBetAmount]
+    [isSpinning, setBetAmount, minBet]
   );
 
   const increaseValue = useCallback(() => {
     if (isSpinning) return;
 
-    const newValue = betAmount + 0.1;
-    const roundedValue = Math.round(newValue * 10) / 10;
+    const newValue = betAmount + 0.01; // Smaller increment for finer control
+    const roundedValue = Math.round(newValue * 100) / 100;
     if (roundedValue <= userBalance && roundedValue <= maxBet) {
       setBetAmount(roundedValue);
+    } else if (roundedValue > userBalance) {
+      showErrorToast(
+        'Insufficient Balance',
+        "You don't have enough SOL for this bet"
+      );
+    } else if (roundedValue > maxBet) {
+      showErrorToast(
+        'Bet Limit Exceeded',
+        `Maximum bet amount is ${maxBet} SOL`
+      );
     }
   }, [isSpinning, betAmount, userBalance, maxBet, setBetAmount]);
 
   const decreaseValue = useCallback(() => {
     if (isSpinning) return;
 
-    const newValue = Math.max(minBet, betAmount - 0.1);
-    const roundedValue = Math.round(newValue * 10) / 10;
+    const newValue = Math.max(minBet, betAmount - 0.01); // Smaller decrement for finer control
+    const roundedValue = Math.round(newValue * 100) / 100;
     setBetAmount(roundedValue);
   }, [isSpinning, betAmount, minBet, setBetAmount]);
 
@@ -62,7 +80,7 @@ const BetInput: React.FC<BetInputProps> = ({ isMobile = false }) => {
           isMobile ? 'text-lg' : 'text-[26.99px]'
         } leading-[45.33px] tracking-[0%] pr-10 md:pr-12`}
         type="number"
-        step="0.1"
+        step="0.01"
         min={minBet}
         max={maxBet}
         value={betAmount}

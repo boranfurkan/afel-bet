@@ -1,25 +1,24 @@
-import { useCallback, useMemo } from "react";
-import { useWallet } from "@solana/wallet-adapter-react";
-import { useGameAuthentication } from "./useGameAuthentication";
-import { getQueryOptions, useGame } from "./useGame";
+import { useCallback, useMemo } from 'react';
+import { useWallet } from '@solana/wallet-adapter-react';
+import { useGameAuthentication } from './useGameAuthentication';
+import { getQueryOptions, useGame } from './useGame';
 import {
   useFreeSpinControllerGetFreeSpinAmount,
   useFreeSpinControllerGetFreeSpinHistory,
   useFreeSpinControllerGetFreeSpinStatus,
-} from "@/api";
+} from '@/api';
 
 export const useFreeSpin = () => {
   const { publicKey: connectedPublicKey } = useWallet();
   const { isAuthed } = useGameAuthentication();
 
-  // Fetch freespin data
   const {
     data: freeSpinStatus,
     isLoading: isFreeSpinStatusLoading,
     refetch: refreshFreeSpinStatus,
     error: freeSpinStatusError,
   } = useFreeSpinControllerGetFreeSpinStatus(
-    getQueryOptions(connectedPublicKey?.toString(), isAuthed, "freespin-stats")
+    getQueryOptions(connectedPublicKey?.toString(), isAuthed, 'freespin-stats')
   );
 
   const {
@@ -35,7 +34,7 @@ export const useFreeSpin = () => {
     getQueryOptions(
       connectedPublicKey?.toString(),
       isAuthed,
-      "freespin-history"
+      'freespin-history'
     )
   );
 
@@ -45,7 +44,7 @@ export const useFreeSpin = () => {
     refetch: refreshFreeSpinAmount,
     error: freeSpinAmountError,
   } = useFreeSpinControllerGetFreeSpinAmount(
-    getQueryOptions(connectedPublicKey?.toString(), isAuthed, "freespin-amount")
+    getQueryOptions(connectedPublicKey?.toString(), isAuthed, 'freespin-amount')
   );
 
   const refreshFreeSpin = useCallback(() => {
@@ -56,9 +55,10 @@ export const useFreeSpin = () => {
 
   return useMemo(
     () => ({
-      amount: freeSpinAmount?.amount || 0,
+      amount: freeSpinStatus?.remainingSpins || 0,
       status: freeSpinStatus,
       history: freeSpinHistory,
+      spinAmount: freeSpinAmount?.amount || 0,
       refreshFreeSpin,
       isLoading:
         isFreeSpinStatusLoading ||
@@ -69,6 +69,7 @@ export const useFreeSpin = () => {
       amountError: freeSpinAmountError,
     }),
     [
+      freeSpinStatus?.remainingSpins,
       freeSpinAmount?.amount,
       freeSpinAmountError,
       freeSpinHistory,

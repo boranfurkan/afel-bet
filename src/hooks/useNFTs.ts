@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback } from "react";
-import { useWallet } from "@solana/wallet-adapter-react";
-import { fetchNFTs, fetchNFTMetadata } from "../services/api";
-import { NFT } from "@/types/nft";
+import { useState, useEffect, useCallback } from 'react';
+import { useWallet } from '@solana/wallet-adapter-react';
+import { fetchNFTs, fetchNFTMetadata } from '../services/api';
+import { NFT } from '@/types/nft';
 
 export const useNFTs = () => {
   const { publicKey } = useWallet();
@@ -13,7 +13,7 @@ export const useNFTs = () => {
 
   const loadNFTs = useCallback(async () => {
     if (!publicKey) {
-      console.log("No wallet connected");
+      console.log('No wallet connected');
       return;
     }
 
@@ -21,13 +21,13 @@ export const useNFTs = () => {
     setError(null);
 
     try {
-      console.log("Fetching NFTs for wallet:", publicKey.toString());
+      console.log('Fetching NFTs for wallet:', publicKey.toString());
       const nfts = await fetchNFTs(publicKey.toString());
-      console.log("Received NFTs:", nfts);
+      console.log('Received NFTs:', nfts);
 
       const nftsWithMetadata = await Promise.all(
         nfts.map(async (nft) => {
-          console.log("Fetching metadata for NFT:", nft.mintAddress);
+          console.log('Fetching metadata for NFT:', nft.mintAddress);
           try {
             const metadata = await fetchNFTMetadata(nft.uri);
             return {
@@ -59,8 +59,8 @@ export const useNFTs = () => {
       setUnstackedNFTs(unstaked);
       setTotalStake([...staked, ...unstaked]);
     } catch (err) {
-      console.error("Error in loadNFTs:", err);
-      setError(err instanceof Error ? err.message : "Failed to fetch NFTs");
+      console.error('Error in loadNFTs:', err);
+      setError(err instanceof Error ? err.message : 'Failed to fetch NFTs');
     } finally {
       setLoading(false);
     }

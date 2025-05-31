@@ -13,12 +13,12 @@ const BetChoosePanel = () => {
   };
 
   const betOptions = [
+    { amount: 0.01, label: '0.01 SOL' },
+    { amount: 0.025, label: '0.025 SOL' },
     { amount: 0.05, label: '0.05 SOL' },
     { amount: 0.1, label: '0.1 SOL' },
-    { amount: 0.25, label: '0.25 SOL' },
     { amount: 0.5, label: '0.5 SOL' },
     { amount: 1, label: '1 SOL' },
-    { amount: 2, label: '2 SOL' },
   ];
 
   const containerVariants = {

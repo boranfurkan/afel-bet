@@ -4,11 +4,11 @@ import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import waaLogo from '/public/images/waaLogo.png';
 
-import { Toaster } from 'react-hot-toast';
 import Providers from '@/providers';
 
 import '@/styles/globals.css';
 import { freePixelFont, supplyMediumFont } from '@/assets/fonts';
+import { Toaster } from '@/components/UI/Toast';
 
 const ppSupplyMono = localFont({
   src: [
@@ -48,8 +48,7 @@ export default function RootLayout({
             <Footer />
           </div>
         </Providers>
-        <Toaster position="bottom-right" />
-        {/* <MusicPlayer /> */}
+        <Toaster />
       </body>
     </html>
   );

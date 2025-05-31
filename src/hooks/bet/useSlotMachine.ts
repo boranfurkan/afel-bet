@@ -55,7 +55,7 @@ export const useSlotMachine = () => {
       isDemo: boolean = false
     ) => {
       checkAuthenticated();
-      if (!isDemo) checkBalance(amount);
+      if (!isDemo && !useFreeSpins) checkBalance(amount);
 
       const referenceId = getReferenceId();
 
@@ -68,10 +68,13 @@ export const useSlotMachine = () => {
           demoMode: isDemo,
         });
 
-        // Refetch balance, stats, and history
-        refreshBalance();
-        refreshSlotMachineStats();
-        refreshSlotMachineHistory();
+        // Delay balance refresh to sync with animation timing
+        // This prevents spoiler effect from backend balance updates
+        setTimeout(() => {
+          refreshBalance();
+          refreshSlotMachineStats();
+          refreshSlotMachineHistory();
+        }, isDemo ? 0 : 6000); // Demo: immediate, Normal: after animation
 
         return slotMachineResult;
       } catch (error) {

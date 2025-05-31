@@ -3,25 +3,19 @@ import React, {
   useContext,
   useState,
   useRef,
+  useEffect,
   useCallback,
   useMemo,
-  useEffect,
-} from "react";
-import useSound from "use-sound";
-import {
-  WINNING_PATTERNS,
-  ICON_MULTIPLIERS,
-  isFullMatch,
-  checkSpecialCombination,
-  generateSlotResult,
-} from "@/lib/win-patterns";
-import { SlotIconType } from "@/types/bet";
-import { useGame } from "@/hooks/bet/useGame";
-import { symbolsToNumbers } from "@/utils/gameUtils";
-import { useSlotMachine as useSlotMachineHook } from "@/hooks/bet/useSlotMachine";
-import { useFreeSpin } from "@/hooks/bet/useFreeSpin";
-import { frameSteps } from "framer-motion";
-import { SlotMachineResultDto } from "@/api";
+} from 'react';
+import useSound from 'use-sound';
+import { SlotIconType } from '@/types/bet';
+
+import { useSlotMachine as useSlotMachineHook } from '@/hooks/bet/useSlotMachine';
+import { useFreeSpin } from '@/hooks/bet/useFreeSpin';
+import { useSlotMachineOdds } from '@/hooks/bet/useSlotMachineOdds';
+import { symbolsToNumbers } from '@/utils/gameUtils';
+import { SlotMachineResultDto } from '@/api';
+import { useGame } from '@/hooks/bet/useGame';
 
 export interface WinningResult {
   isWin: boolean;
@@ -29,9 +23,10 @@ export interface WinningResult {
   winningPatterns: number[][];
   winAmount: number;
   timestamp: number;
+  usedFreeSpin: boolean;
 }
 
-export type GameMode = "normal" | "demo" | "free";
+export type GameMode = 'normal' | 'demo' | 'free';
 
 interface SlotMachineContextType {
   slotValues: SlotIconType[];
@@ -46,6 +41,8 @@ interface SlotMachineContextType {
   spinCompleted: boolean;
   markSpinCompleted: () => void;
   resetWinResult: () => void;
+  reelsCompleted: number;
+  markReelCompleted: () => void;
 
   // New features
   gameMode: GameMode;
@@ -66,12 +63,13 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
     Array(9).fill(SlotIconType.AFEL)
   );
   const [userBalance, setUserBalance] = useState(0);
-  const [demoBalance, setDemoBalance] = useState(100); // Demo starts with 100 SOL
+  const [demoBalance, setDemoBalance] = useState(100);
   const [isSpinning, setIsSpinning] = useState(false);
-  const [betAmount, setBetAmount] = useState(0.1);
+  const [betAmount, setBetAmount] = useState(0.01);
   const [winResult, setWinResult] = useState<WinningResult | null>(null);
   const [spinCompleted, setSpinCompleted] = useState(true);
-  const [gameMode, setGameMode] = useState<GameMode>("normal");
+  const [gameMode, setGameMode] = useState<GameMode>('normal');
+  const [reelsCompleted, setReelsCompleted] = useState(0);
 
   const slotRefs = useRef<any[]>([]);
 
@@ -81,11 +79,13 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
     amount: freeSpinsRemaining,
     status: freeSpinStatus,
     history: freeSpinHistory,
+    spinAmount: freeSpinBetAmount,
     refreshFreeSpin,
   } = useFreeSpin();
 
-  // Sound hooks
-  const [playReelsBegin] = useSound("/sounds/reels-begin.mp3");
+  const { isLoading: isOddsLoading } = useSlotMachineOdds();
+
+  const [playReelsBegin] = useSound('/sounds/reels-begin.mp3');
 
   const resetWinResult = useCallback(() => {
     setWinResult(null);
@@ -98,12 +98,12 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [solBalance]);
 
   const getCurrentBalance = useCallback(() => {
-    return gameMode === "demo" ? demoBalance : userBalance;
+    return gameMode === 'demo' ? demoBalance : userBalance;
   }, [gameMode, demoBalance, userBalance]);
 
   const updateBalance = useCallback(
     (newBalance: number) => {
-      if (gameMode === "demo") {
+      if (gameMode === 'demo') {
         setDemoBalance(newBalance);
       } else {
         setUserBalance(newBalance);
@@ -112,64 +112,54 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
     [gameMode]
   );
 
-  const calculateWinnings = useCallback(
-    (slots: SlotIconType[]): WinningResult => {
-      let totalMultiplier = 0;
-      const winningPatterns: number[][] = [];
+  // Convert backend winningLines to frontend winning patterns
+  const convertWinningLinesToPatterns = useCallback(
+    (winningLines: readonly any[]): number[][] => {
+      if (!winningLines || winningLines.length === 0) return [];
 
-      for (const pattern of WINNING_PATTERNS) {
-        const patternValues = [
-          slots[pattern[0]],
-          slots[pattern[1]],
-          slots[pattern[2]],
-        ];
-
-        if (isFullMatch(patternValues)) {
-          totalMultiplier += ICON_MULTIPLIERS[patternValues[0]];
-          winningPatterns.push(pattern);
-          continue;
-        }
-
-        const specialMultiplier = checkSpecialCombination(patternValues);
-        if (specialMultiplier !== null) {
-          totalMultiplier += specialMultiplier;
-          winningPatterns.push(pattern);
-        }
-      }
-
-      const isWin = totalMultiplier > 0;
-      const winAmount = isWin ? betAmount * totalMultiplier : 0;
-
-      return {
-        isWin,
-        multiplier: totalMultiplier,
-        winningPatterns,
-        winAmount,
-        timestamp: Date.now(),
-      };
+      return winningLines.map((line) => line.positions || []);
     },
-    [betAmount]
+    []
   );
 
   const markSpinCompleted = useCallback(() => {
     setSpinCompleted(true);
   }, []);
 
+  const markReelCompleted = useCallback(() => {
+    setReelsCompleted((prev) => prev + 1);
+  }, []);
+
+  // Reset reel completion when starting a new spin
+  useEffect(() => {
+    if (isSpinning) {
+      setReelsCompleted(0);
+    }
+  }, [isSpinning]);
+
+  // Check if all reels are completed and trigger win result evaluation
+  useEffect(() => {
+    if (reelsCompleted === 3 && !isSpinning && !spinCompleted) {
+      // All reels have finished, now we can show win results
+      setTimeout(() => {
+        setSpinCompleted(true);
+      }, 200); // Small delay to ensure everything is settled
+    }
+  }, [reelsCompleted, isSpinning, spinCompleted]);
+
   const canUseFreeSpins = useMemo(() => {
-    return freeSpinsRemaining > 0 && gameMode !== "demo";
+    return freeSpinsRemaining > 0 && gameMode !== 'demo';
   }, [freeSpinsRemaining, gameMode]);
 
   const spinSlots = useCallback(async () => {
     const currentBalance = getCurrentBalance();
 
-    if (isSpinning || !spinCompleted || betAmount > currentBalance) {
-      console.log({
-        isSpinning,
-        spinCompleted,
-        betAmount,
-        currentBalance,
-        gameMode,
-      });
+    if (
+      isSpinning ||
+      !spinCompleted ||
+      betAmount > currentBalance ||
+      isOddsLoading
+    ) {
       return;
     }
 
@@ -177,43 +167,77 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
     resetWinResult();
     setIsSpinning(true);
     setSpinCompleted(false);
+    setReelsCompleted(0);
 
-    // Deduct bet amount
-    updateBalance(currentBalance - betAmount);
+    // No frontend balance deduction needed - backend handles it
+    // Demo mode handles balance manually since backend doesn't process it
+    if (gameMode === 'demo') {
+      // Demo mode: deduct bet immediately since backend won't do it
+      updateBalance(currentBalance - betAmount);
+    }
+    // Normal mode: let backend handle balance changes via API
 
     let newSlotValues: SlotIconType[];
     let playResult: SlotMachineResultDto;
 
-    if (gameMode === "demo") {
-      // Demo mode - use realistic simulation with drop chances
-      // newSlotValues = generateSlotResult();
-      playResult = await slotMachine.play(betAmount, false, true);
-      newSlotValues = symbolsToNumbers([...playResult.symbols]);
-    } else {
-      // Normal mode - use real API
-      playResult = await slotMachine.play(betAmount, false, false);
-      newSlotValues = symbolsToNumbers([...playResult.symbols]);
-    }
-
-    setTimeout(() => {
-      setSlotValues(newSlotValues);
-      const result: WinningResult = {
-        isWin: playResult.won,
-        multiplier: playResult.multiplier,
-        winningPatterns: calculateWinnings(newSlotValues).winningPatterns,
-        winAmount: playResult.won ? playResult.winAmount : 0,
-        timestamp: Date.now(),
-      };
-
-      setIsSpinning(false);
-
-      if (result.isWin) {
-        const newBalance = getCurrentBalance() + result.winAmount;
-        updateBalance(newBalance);
+    try {
+      if (gameMode === 'demo') {
+        // Demo mode - use realistic simulation with drop chances
+        playResult = await slotMachine.play(betAmount, false, true);
+        newSlotValues = symbolsToNumbers([...playResult.symbols]);
+      } else {
+        // Normal mode - use real API
+        playResult = await slotMachine.play(betAmount, false, false);
+        newSlotValues = symbolsToNumbers([...playResult.symbols]);
       }
 
-      setWinResult(result);
-    }, 3000);
+      setTimeout(() => {
+        // Update slot values first
+        setSlotValues(newSlotValues);
+
+        // Use ONLY backend data - no frontend calculations
+        const result: WinningResult = {
+          isWin: playResult.won,
+          multiplier: playResult.multiplier,
+          winningPatterns: convertWinningLinesToPatterns(
+            playResult.winningLines
+          ),
+          winAmount: playResult.winAmount || 0,
+          timestamp: Date.now(),
+          usedFreeSpin: playResult.usedFreeSpin,
+        };
+
+        // Set win result
+        setWinResult(result);
+
+        // Stop spinning - reels will handle their own completion
+        setIsSpinning(false);
+
+        // Handle winnings after win effects are shown
+        if (result.isWin) {
+          setTimeout(() => {
+            if (gameMode === 'demo') {
+              // Demo mode: add win amount (bet was already deducted)
+              const newBalance = getCurrentBalance() + result.winAmount;
+              updateBalance(newBalance);
+            } else {
+              // Normal mode: backend already handled balance changes via API
+              // Just let the useGame hook update balance from API response
+              // No manual balance manipulation needed
+            }
+          }, 6000);
+        }
+        // Always ensure spinCompleted is set to true after animations
+        setTimeout(() => {
+          setSpinCompleted(true);
+        }, 6000);
+      }, 3000);
+    } catch (error) {
+      console.error('Error during spin:', error);
+      setIsSpinning(false);
+      setSpinCompleted(true);
+      setReelsCompleted(0);
+    }
   }, [
     isSpinning,
     spinCompleted,
@@ -223,17 +247,13 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
     playReelsBegin,
     resetWinResult,
     slotMachine,
-    calculateWinnings,
     gameMode,
+    isOddsLoading,
+    convertWinningLinesToPatterns,
   ]);
 
   const utiliseFreeSpinSlots = useCallback(async () => {
-    if (!canUseFreeSpins || isSpinning || !spinCompleted) {
-      console.log({
-        canUseFreeSpins,
-        isSpinning,
-        spinCompleted,
-      });
+    if (!canUseFreeSpins || isSpinning || !spinCompleted || isOddsLoading) {
       return;
     }
 
@@ -241,38 +261,79 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
     resetWinResult();
     setIsSpinning(true);
     setSpinCompleted(false);
+    setReelsCompleted(0);
 
-    // TODO: Replace with actual free spin API call when available
-    // For now, use realistic simulation
+    // Timeout protection - force recovery after 15 seconds
+    const timeoutId = setTimeout(() => {
+      console.warn('FreeSpin timeout - forcing recovery');
+      setIsSpinning(false);
+      setSpinCompleted(true);
+      setReelsCompleted(0);
+    }, 15000);
+
     try {
-      const playResult = await slotMachine.play(freeSpinsRemaining, true);
-      refreshFreeSpin();
+      // Use the correct bet amount for free spins
+      const playResult = await slotMachine.play(freeSpinBetAmount, true);
+
+      // Multiple refresh attempts to ensure backend transaction is fully committed
+      const refreshFreSpinWithRetry = () => {
+        // First refresh after 2 seconds
+        setTimeout(() => {
+          refreshFreeSpin();
+        }, 2000);
+
+        // Second refresh after 4 seconds (backup)
+        setTimeout(() => {
+          refreshFreeSpin();
+        }, 4000);
+
+        // Third refresh after 8 seconds (final backup)
+        setTimeout(() => {
+          refreshFreeSpin();
+        }, 8000);
+      };
+
+      refreshFreSpinWithRetry();
 
       const newSlotValues = symbolsToNumbers([...playResult.symbols]);
 
       setTimeout(() => {
         setSlotValues(newSlotValues);
+
+        // Use ONLY backend data - no frontend calculations
         const result: WinningResult = {
           isWin: playResult.won,
           multiplier: playResult.multiplier,
-          winningPatterns: calculateWinnings(newSlotValues).winningPatterns,
-          winAmount: playResult.won ? playResult.winAmount : 0,
+          winningPatterns: convertWinningLinesToPatterns(
+            playResult.winningLines
+          ),
+          winAmount: playResult.winAmount || 0,
           timestamp: Date.now(),
+          usedFreeSpin: playResult.usedFreeSpin,
         };
 
-        if (result.isWin) {
-          // Free spins always add to real balance, not demo balance
-          setUserBalance((prev) => prev + result.winAmount);
-        }
-
         setWinResult(result);
+        setIsSpinning(false);
+
+        if (result.isWin) {
+          setTimeout(() => {
+            // Add only the win amount (no bet deduction for free spins)
+            const newBalance = getCurrentBalance() + result.winAmount;
+            updateBalance(newBalance);
+          }, 6000);
+        }
+        // Always ensure spinCompleted is set to true after animations
+        setTimeout(() => {
+          setSpinCompleted(true);
+          clearTimeout(timeoutId); // Clear timeout if successful
+        }, 6000);
       }, 3000);
     } catch (error) {
-      console.error("Error using free spins:", error);
-    } finally {
-      setTimeout(() => {
-        setIsSpinning(false);
-      }, 1500);
+      console.error('Error using free spins:', error);
+      setIsSpinning(false);
+      setSpinCompleted(true);
+      setReelsCompleted(0);
+      clearTimeout(timeoutId); // Clear timeout on error
     }
   }, [
     canUseFreeSpins,
@@ -282,13 +343,15 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
     resetWinResult,
     refreshFreeSpin,
     slotMachine,
-    freeSpinsRemaining,
-    calculateWinnings,
+    freeSpinBetAmount,
+    getCurrentBalance,
+    updateBalance,
+    isOddsLoading,
+    convertWinningLinesToPatterns,
   ]);
 
-  // Reset demo balance when switching to demo mode
   useEffect(() => {
-    if (gameMode === "demo") {
+    if (gameMode === 'demo') {
       setDemoBalance(100);
     }
   }, [gameMode]);
@@ -306,6 +369,8 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
     spinCompleted,
     markSpinCompleted,
     resetWinResult,
+    reelsCompleted,
+    markReelCompleted,
 
     // New features
     gameMode,
@@ -325,7 +390,7 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
 export const useSlotMachine = () => {
   const context = useContext(SlotMachineContext);
   if (context === undefined) {
-    throw new Error("useSlotMachine must be used within a SlotMachineProvider");
+    throw new Error('useSlotMachine must be used within a SlotMachineProvider');
   }
   return context;
 };

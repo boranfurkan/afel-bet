@@ -5,9 +5,30 @@ import LizardSlider from "@/components/LizardSlider";
 import StaySection from "@/components/StaySection";
 import WaaSection from "@/components/WaaSection";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import bannerText from "/public/images/banner-text.svg";
 import homebg2 from "/public/images/home-page-bannerQ.jpg";
+
+// Separate component for referral handling
+function ReferralHandler() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  
+  // Referral link handling
+  useEffect(() => {
+    const refCode = searchParams.get('ref');
+    if (refCode) {
+      // Store referral code for later use
+      localStorage.setItem('referralCode', refCode);
+      
+      // Redirect to casino with referral code
+      router.push(`/play?ref=${refCode}`);
+    }
+  }, [searchParams, router]);
+
+  return null; // This component doesn't render anything
+}
 
 export default function Home() {
   // const lizardImages = [
@@ -65,6 +86,11 @@ export default function Home() {
 
   return (
     <>
+      {/* Referral Handler with Suspense */}
+      <Suspense fallback={null}>
+        <ReferralHandler />
+      </Suspense>
+
       {/* Hero Section - İlk ekran */}
       <div className="w-full h-screen relative">
         <Image

@@ -7,7 +7,7 @@ import {
 } from "@/api";
 import { base58 } from "@metaplex-foundation/umi-serializers";
 
-interface AuthData {
+export interface AuthData {
   accessToken: string;
   refreshToken: string;
   accessTokenExpiresAt: string;
@@ -89,6 +89,9 @@ export const useGameAuthentication = () => {
 
       setAuthData(auth);
       saveAuthToStorage(auth);
+      
+      // Refresh page to ensure all states are properly updated
+      window.location.reload();
     } catch (err) {
       console.warn("User rejected authentication or error occurred:", err);
     }

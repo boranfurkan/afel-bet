@@ -1,9 +1,11 @@
+// src/components/bet/contents/slot-contents/play-panel/start-button/StartButton.tsx
 import React, { memo } from 'react';
 import ArrowRightIcon from '@/assets/icons/ArrowRightIcon';
 import { motion } from 'framer-motion';
 import { useSlotMachine } from '@/contexts/SlotMachineContext';
 import BetLoadingSpinner from '@/components/bet/BetLoadingSpinner';
 import { Gamepad2, Zap, Play } from 'lucide-react';
+import { showErrorToast, showSuccessToast, showInfoToast } from '@/utils/toast';
 
 interface StartButtonProps {
   isMobile?: boolean;
@@ -27,11 +29,36 @@ const StartButton: React.FC<StartButtonProps> = ({
   } = useSlotMachine();
 
   const currentBalance = gameMode === 'demo' ? demoBalance : userBalance;
-  const canSpin = !isSpinning && spinCompleted && currentBalance >= betAmount;
+  const canSpin =
+    !isSpinning &&
+    spinCompleted &&
+    currentBalance >= betAmount &&
+    betAmount >= 0.01;
 
   // Text size based on screen size
   const textSize = isMobile ? 'text-2xl' : 'text-[77.25px]';
   const iconSize = isMobile ? 16 : 24;
+
+  const handleSpin = () => {
+    if (!canSpin) {
+      if (currentBalance < betAmount) {
+        showErrorToast(
+          'Insufficient Balance',
+          "You don't have enough SOL for this bet"
+        );
+      } else if (betAmount < 0.01) {
+        showErrorToast('Invalid Bet Amount', 'Minimum bet amount is 0.01 SOL');
+      } else if (!spinCompleted) {
+        showInfoToast('Please Wait', 'Current spin is still in progress');
+      }
+      return;
+    }
+
+    if (spinSlots) {
+      spinSlots();
+      if (onClosePortal) onClosePortal();
+    }
+  };
 
   const getButtonContent = () => {
     if (!spinCompleted) {
@@ -82,12 +109,7 @@ const StartButton: React.FC<StartButtonProps> = ({
       className={`relative cursor-pointer flex items-center h-full gap-2 md:gap-4 justify-center hover:opacity-90 transition-all duration-300 ${
         isMobile ? 'min-h-[50px]' : 'min-h-[80px]'
       } select-none ${getButtonColor()} ${className}`}
-      onClick={() => {
-        if (canSpin && spinSlots) {
-          spinSlots();
-          if (onClosePortal) onClosePortal();
-        }
-      }}
+      onClick={handleSpin}
       whileTap={canSpin ? { scale: 0.95 } : {}}
       transition={{ duration: 0.2 }}
       animate={

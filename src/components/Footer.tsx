@@ -65,12 +65,12 @@ export default function Footer() {
               {/* Sağ Sütun */}
               <div className="flex flex-col gap-2">
                 <h3 className="text-white font-bold mb-1">SERVICES</h3>
-                <Link
+               {/*  <Link
                   href="/waabot"
                   className="text-[#b2b2b2] pointer-events-none"
                 >
                   WAABOT(COMING SOON)
-                </Link>
+                </Link> */}
 
                 <Link
                   href="https://www.ironnode.io/"
@@ -114,7 +114,7 @@ export default function Footer() {
               </div>
 
               {/* WAA Sosyal Medya */}
-              <div className="flex flex-col gap-2">
+              {/* <div className="flex flex-col gap-2">
                 <h3 className="text-white font-bold">WAA</h3>
                 <div className="flex gap-4">
                   <Link
@@ -125,7 +125,7 @@ export default function Footer() {
                     <XLogo size={20} weight="fill" />
                   </Link>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

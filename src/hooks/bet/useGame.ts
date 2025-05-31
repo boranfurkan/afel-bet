@@ -56,7 +56,6 @@ export const useGame = () => {
     if (!connectedPublicKey) {
       throw new Error("Please connect your wallet");
     } else if (!isAuthed) {
-      console.log(isAuthed, "isAuthed");
       throw new Error("Please authenticate to play games");
     }
     return connectedPublicKey.toString();

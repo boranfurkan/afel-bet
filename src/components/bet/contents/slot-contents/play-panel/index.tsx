@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useSlotMachine } from '@/contexts/SlotMachineContext';
 import BetChoosePanel from './bet-choose/BetChoosePanel';
@@ -22,12 +22,39 @@ const PlayPanel = ({ onClosePortal }: PlayPanelProps) => {
     freeSpinsRemaining,
     utiliseFreeSpinSlots,
     canUseFreeSpins,
+    spinCompleted,
   } = useSlotMachine();
   const { isMobile, isTablet } = useWindowSize();
+  const [displayBalance, setDisplayBalance] = useState(0);
 
   const showWinAnimation = winResult?.isWin && !isSpinning;
-  const currentBalance = gameMode === 'demo' ? demoBalance : userBalance;
   const isSmallScreen = isMobile || isTablet;
+
+  // Update the display balance when animations finish
+  useEffect(() => {
+    const currentBalance = gameMode === 'demo' ? demoBalance : userBalance;
+
+    // Both demo and normal mode: respect animation timing for consistent UX
+    if (isSpinning) {
+      // Don't update display during spinning to avoid spoiler effect
+      return;
+    }
+
+    if (spinCompleted) {
+      // Update display balance after animations complete
+      setDisplayBalance(currentBalance);
+    }
+  }, [isSpinning, spinCompleted, userBalance, demoBalance, gameMode]);
+
+  // Set initial balance
+  useEffect(() => {
+    const currentBalance = gameMode === 'demo' ? demoBalance : userBalance;
+    
+    // Only set initial balance if not currently spinning to maintain consistency
+    if (!isSpinning) {
+      setDisplayBalance(currentBalance);
+    }
+  }, [gameMode, userBalance, demoBalance, isSpinning]);
 
   const handleGameModeToggle = () => {
     setGameMode(gameMode === 'demo' ? 'normal' : 'demo');
@@ -74,7 +101,6 @@ const PlayPanel = ({ onClosePortal }: PlayPanelProps) => {
             </motion.button>
           </div>
         </motion.div>
-
         {/* Credit Display */}
         <div className="bg-[#171717]/50 rounded-md p-1.5 sm:p-2 text-white">
           <div className="flex items-center justify-between">
@@ -108,18 +134,16 @@ const PlayPanel = ({ onClosePortal }: PlayPanelProps) => {
               repeatType: 'reverse',
             }}
           >
-            {currentBalance.toLocaleString(undefined, {
+            {displayBalance.toLocaleString(undefined, {
               maximumFractionDigits: 3,
               minimumFractionDigits: 0,
             })}{' '}
             SOL
           </motion.div>
         </div>
-
         <div className="bg-[#D2D2D2] h-px my-0.5 sm:my-1"></div>
 
-        {/* Free Spin Section */}
-        {canUseFreeSpins && (
+        {canUseFreeSpins ? (
           <motion.div
             className="bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 border border-[#FFD700]/50 rounded-md p-1.5 sm:p-2"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -159,8 +183,37 @@ const PlayPanel = ({ onClosePortal }: PlayPanelProps) => {
               </motion.button>
             </div>
           </motion.div>
+        ) : (
+          <motion.div
+            className="bg-gradient-to-r from-gray-700/20 to-gray-600/20 border border-gray-600/50 rounded-md p-1.5 sm:p-2"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-1">
+                <div className="flex-shrink-0">
+                  <Gift
+                    size={isSmallScreen ? 14 : 16}
+                    className="text-gray-500"
+                  />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-gray-400 text-[10px] sm:text-xs font-bold uppercase leading-tight">
+                    No Free Spins Available
+                  </div>
+                  <div className="text-white/70 text-[8px] sm:text-[9px] leading-tight">
+                    {freeSpinsRemaining} remaining
+                  </div>
+                </div>
+              </div>
+              <div className="bg-gray-600 text-gray-300 px-2 sm:px-3 py-1 rounded-md text-[10px] sm:text-xs font-bold flex items-center gap-1 flex-shrink-0 opacity-60">
+                <Zap size={isSmallScreen ? 10 : 12} />
+                {isSmallScreen ? 'PLAY' : 'KEEP PLAYING'}
+              </div>
+            </div>
+          </motion.div>
         )}
-
         {/* Mode-specific Information */}
         {gameMode === 'demo' && (
           <motion.div
@@ -179,24 +232,20 @@ const PlayPanel = ({ onClosePortal }: PlayPanelProps) => {
             </div>
           </motion.div>
         )}
-
         {/* Bet Selection Buttons */}
         <div className="space-y-1 sm:space-y-1.5">
           <BetChoosePanel isMobile={isSmallScreen} />
         </div>
-
         {/* Bet Input */}
         <div className="space-y-1 sm:space-y-1.5">
           <BetInput isMobile={isSmallScreen} />
         </div>
-
         {/* Start Button */}
         <div className="mt-2 sm:mt-4">
           <StartButton isMobile={isSmallScreen} onClosePortal={onClosePortal} />
         </div>
-
         {/* Balance Warning for Demo Mode */}
-        {gameMode === 'demo' && demoBalance < 1 && (
+        {gameMode === 'demo' && displayBalance < 1 && (
           <motion.div
             className="bg-[#FF6B6B]/20 border border-[#FF6B6B]/50 rounded-md p-1.5 sm:p-2 text-center"
             initial={{ opacity: 0, y: 10 }}
@@ -219,7 +268,6 @@ const PlayPanel = ({ onClosePortal }: PlayPanelProps) => {
             </button>
           </motion.div>
         )}
-
         {/* Mobile-specific spacing */}
         {isSmallScreen && <div className="flex-1 min-h-2" />}
       </div>

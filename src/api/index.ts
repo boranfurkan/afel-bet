@@ -5,10 +5,7 @@
  * The AFEL Discovery API
  * OpenAPI spec version: 1.0
  */
-import {
-  useMutation,
-  useQuery
-} from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import type {
   DataTag,
   DefinedInitialDataOptions,
@@ -21,7 +18,7 @@ import type {
   UseMutationOptions,
   UseMutationResult,
   UseQueryOptions,
-  UseQueryResult
+  UseQueryResult,
 } from '@tanstack/react-query';
 
 import { getAxiosInstance } from './AxiosInstance';
@@ -64,8 +61,8 @@ export interface BalanceResponse {
 /**
  * Type of token
  */
-export type WalletDepositRequestTokenType = typeof WalletDepositRequestTokenType[keyof typeof WalletDepositRequestTokenType];
-
+export type WalletDepositRequestTokenType =
+  (typeof WalletDepositRequestTokenType)[keyof typeof WalletDepositRequestTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const WalletDepositRequestTokenType = {
@@ -102,8 +99,8 @@ export interface WalletDepositResponse {
 /**
  * Type of token
  */
-export type PrizeDepositRequestTokenType = typeof PrizeDepositRequestTokenType[keyof typeof PrizeDepositRequestTokenType];
-
+export type PrizeDepositRequestTokenType =
+  (typeof PrizeDepositRequestTokenType)[keyof typeof PrizeDepositRequestTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const PrizeDepositRequestTokenType = {
@@ -145,8 +142,8 @@ export interface GameRankDto {
 /**
  * Type of token
  */
-export type GameDepositRequestTokenType = typeof GameDepositRequestTokenType[keyof typeof GameDepositRequestTokenType];
-
+export type GameDepositRequestTokenType =
+  (typeof GameDepositRequestTokenType)[keyof typeof GameDepositRequestTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const GameDepositRequestTokenType = {
@@ -200,8 +197,8 @@ export interface GameDepositResponse {
 /**
  * Type of token to block
  */
-export type WithdrawRequestDtoTokenType = typeof WithdrawRequestDtoTokenType[keyof typeof WithdrawRequestDtoTokenType];
-
+export type WithdrawRequestDtoTokenType =
+  (typeof WithdrawRequestDtoTokenType)[keyof typeof WithdrawRequestDtoTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const WithdrawRequestDtoTokenType = {
@@ -238,8 +235,8 @@ export interface WithdrawResponse {
 /**
  * Type of token to AFEL ecosystem
  */
-export type AddBlockageDtoTokenType = typeof AddBlockageDtoTokenType[keyof typeof AddBlockageDtoTokenType];
-
+export type AddBlockageDtoTokenType =
+  (typeof AddBlockageDtoTokenType)[keyof typeof AddBlockageDtoTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const AddBlockageDtoTokenType = {
@@ -262,8 +259,8 @@ export interface AddBlockageDto {
   tokenType: AddBlockageDtoTokenType;
 }
 
-export type AddBlockageResponseType = typeof AddBlockageResponseType[keyof typeof AddBlockageResponseType];
-
+export type AddBlockageResponseType =
+  (typeof AddBlockageResponseType)[keyof typeof AddBlockageResponseType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const AddBlockageResponseType = {
@@ -306,8 +303,8 @@ export interface RemoveMultipleBlockagesDto {
   blockageIds: string[];
 }
 
-export type RemovedBlockageItemDtoStatus = typeof RemovedBlockageItemDtoStatus[keyof typeof RemovedBlockageItemDtoStatus];
-
+export type RemovedBlockageItemDtoStatus =
+  (typeof RemovedBlockageItemDtoStatus)[keyof typeof RemovedBlockageItemDtoStatus];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const RemovedBlockageItemDtoStatus = {
@@ -331,8 +328,8 @@ export interface RemoveMultipleBlockagesResponseDto {
   readonly totalAmount: string;
 }
 
-export type ActiveBlockageItemDtoTokenType = typeof ActiveBlockageItemDtoTokenType[keyof typeof ActiveBlockageItemDtoTokenType];
-
+export type ActiveBlockageItemDtoTokenType =
+  (typeof ActiveBlockageItemDtoTokenType)[keyof typeof ActiveBlockageItemDtoTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ActiveBlockageItemDtoTokenType = {
@@ -342,8 +339,8 @@ export const ActiveBlockageItemDtoTokenType = {
   USDC: 'USDC',
 } as const;
 
-export type ActiveBlockageItemDtoType = typeof ActiveBlockageItemDtoType[keyof typeof ActiveBlockageItemDtoType];
-
+export type ActiveBlockageItemDtoType =
+  (typeof ActiveBlockageItemDtoType)[keyof typeof ActiveBlockageItemDtoType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ActiveBlockageItemDtoType = {
@@ -356,8 +353,8 @@ export const ActiveBlockageItemDtoType = {
   BURN: 'BURN',
 } as const;
 
-export type ActiveBlockageItemDtoStatus = typeof ActiveBlockageItemDtoStatus[keyof typeof ActiveBlockageItemDtoStatus];
-
+export type ActiveBlockageItemDtoStatus =
+  (typeof ActiveBlockageItemDtoStatus)[keyof typeof ActiveBlockageItemDtoStatus];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ActiveBlockageItemDtoStatus = {
@@ -382,8 +379,8 @@ export interface ActiveBlockagesResponseDto {
   readonly totalBlockedAmount: string;
 }
 
-export type BlockageHistoryItemDtoTokenType = typeof BlockageHistoryItemDtoTokenType[keyof typeof BlockageHistoryItemDtoTokenType];
-
+export type BlockageHistoryItemDtoTokenType =
+  (typeof BlockageHistoryItemDtoTokenType)[keyof typeof BlockageHistoryItemDtoTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const BlockageHistoryItemDtoTokenType = {
@@ -393,8 +390,8 @@ export const BlockageHistoryItemDtoTokenType = {
   USDC: 'USDC',
 } as const;
 
-export type BlockageHistoryItemDtoType = typeof BlockageHistoryItemDtoType[keyof typeof BlockageHistoryItemDtoType];
-
+export type BlockageHistoryItemDtoType =
+  (typeof BlockageHistoryItemDtoType)[keyof typeof BlockageHistoryItemDtoType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const BlockageHistoryItemDtoType = {
@@ -407,8 +404,8 @@ export const BlockageHistoryItemDtoType = {
   BURN: 'BURN',
 } as const;
 
-export type BlockageHistoryItemDtoStatus = typeof BlockageHistoryItemDtoStatus[keyof typeof BlockageHistoryItemDtoStatus];
-
+export type BlockageHistoryItemDtoStatus =
+  (typeof BlockageHistoryItemDtoStatus)[keyof typeof BlockageHistoryItemDtoStatus];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const BlockageHistoryItemDtoStatus = {
@@ -439,8 +436,8 @@ export interface BlockageHistoryResponseDto {
 /**
  * Type of token to block
  */
-export type BurnBlockageDtoTokenType = typeof BurnBlockageDtoTokenType[keyof typeof BurnBlockageDtoTokenType];
-
+export type BurnBlockageDtoTokenType =
+  (typeof BurnBlockageDtoTokenType)[keyof typeof BurnBlockageDtoTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const BurnBlockageDtoTokenType = {
@@ -551,8 +548,8 @@ export interface LeaderboardResponseDto {
   total: number;
 }
 
-export type TransactionStatusDtoStatus = typeof TransactionStatusDtoStatus[keyof typeof TransactionStatusDtoStatus];
-
+export type TransactionStatusDtoStatus =
+  (typeof TransactionStatusDtoStatus)[keyof typeof TransactionStatusDtoStatus];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const TransactionStatusDtoStatus = {
@@ -650,8 +647,8 @@ export interface ReferralStatsDto {
   readonly referralUsedAt: string;
 }
 
-export type ReferralTransactionDtoTokenType = typeof ReferralTransactionDtoTokenType[keyof typeof ReferralTransactionDtoTokenType];
-
+export type ReferralTransactionDtoTokenType =
+  (typeof ReferralTransactionDtoTokenType)[keyof typeof ReferralTransactionDtoTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ReferralTransactionDtoTokenType = {
@@ -707,6 +704,25 @@ export interface FreeSpinAmountResponse {
   readonly currency: string;
 }
 
+export interface AddToWhitelistDto {
+  /** Wallet address to add to freeSpin whitelist */
+  accountId: string;
+  /** Daily freeSpin limit for this wallet */
+  dailyLimit?: number;
+  /** Description for this whitelist entry */
+  description?: string;
+}
+
+export interface WhitelistResponse {
+  readonly status: string;
+  readonly message: string;
+}
+
+export interface RemoveFromWhitelistDto {
+  /** Wallet address to remove from freeSpin whitelist */
+  accountId: string;
+}
+
 export interface GenerateTokenDto {
   /** User wallet address (serves as both accountId and wallet address) */
   accountId: string;
@@ -738,11 +754,34 @@ export interface RevokeTokenDto {
   accountId: string;
 }
 
+export interface FreeSpinConfigResponse {
+  readonly enabled: boolean;
+  readonly amount: number;
+  readonly dailyLimit: number;
+}
+
+export interface SpecialCombination {
+  readonly symbols: readonly string[];
+  readonly multiplier: number;
+}
+
+export type SlotMachineOddsResponseSymbolWeights = { [key: string]: unknown };
+
+export type SlotMachineOddsResponseThreeOfAKindMultipliers = {
+  [key: string]: unknown;
+};
+
+export interface SlotMachineOddsResponse {
+  readonly symbolWeights: SlotMachineOddsResponseSymbolWeights;
+  readonly threeOfAKindMultipliers: SlotMachineOddsResponseThreeOfAKindMultipliers;
+  readonly specialCombinations: readonly SpecialCombination[];
+}
+
 /**
  * The type of token being used for the bet (SOL, AFEL, WAA, USDC)
  */
-export type PlaySlotMachineDtoTokenType = typeof PlaySlotMachineDtoTokenType[keyof typeof PlaySlotMachineDtoTokenType];
-
+export type PlaySlotMachineDtoTokenType =
+  (typeof PlaySlotMachineDtoTokenType)[keyof typeof PlaySlotMachineDtoTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const PlaySlotMachineDtoTokenType = {
@@ -753,20 +792,20 @@ export const PlaySlotMachineDtoTokenType = {
 } as const;
 
 export interface PlaySlotMachineDto {
-  /** The amount to bet on this slot machine game (minimum 0.01 SOL / 10000 AFEL). For free spins, this will be 0.025 SOL automatically. */
-  betAmount: number;
+  /** The amount to bet on this slot machine game (minimum 0.01 SOL / 10000 AFEL). For free spins, this will be 0.025 SOL automatically and betAmount is optional. */
+  betAmount?: number;
   /** The type of token being used for the bet (SOL, AFEL, WAA, USDC) */
   tokenType: PlaySlotMachineDtoTokenType;
   /** Unique reference ID to ensure idempotency of transactions */
   referenceId: string;
   /** Demo mode - if true, no real money is used and winnings are not added to wallet */
   demoMode?: boolean;
-  /** Use free spin - if true, uses daily free spin instead of real money (only for SOL, 0.025 amount) */
+  /** Use free spin - if true, uses daily free spin instead of real money (only for SOL, 0.025 amount). When useFreeSpins=true, betAmount is ignored. */
   useFreeSpins?: boolean;
 }
 
-export type SlotMachineResultDtoTokenType = typeof SlotMachineResultDtoTokenType[keyof typeof SlotMachineResultDtoTokenType];
-
+export type SlotMachineResultDtoTokenType =
+  (typeof SlotMachineResultDtoTokenType)[keyof typeof SlotMachineResultDtoTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const SlotMachineResultDtoTokenType = {
@@ -793,8 +832,8 @@ export interface SlotMachineResultDto {
   readonly winningLines: readonly SlotMachineResultDtoWinningLinesItem[];
 }
 
-export type SlotMachineHistoryItemTokenType = typeof SlotMachineHistoryItemTokenType[keyof typeof SlotMachineHistoryItemTokenType];
-
+export type SlotMachineHistoryItemTokenType =
+  (typeof SlotMachineHistoryItemTokenType)[keyof typeof SlotMachineHistoryItemTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const SlotMachineHistoryItemTokenType = {
@@ -824,8 +863,8 @@ export interface SlotMachineHistoryResponse {
 
 export type SlotMachineStatsSymbolFrequency = { [key: string]: unknown };
 
-export type SlotMachineStatsTokenType = typeof SlotMachineStatsTokenType[keyof typeof SlotMachineStatsTokenType];
-
+export type SlotMachineStatsTokenType =
+  (typeof SlotMachineStatsTokenType)[keyof typeof SlotMachineStatsTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const SlotMachineStatsTokenType = {
@@ -849,8 +888,8 @@ export interface SlotMachineStats {
   readonly tokenType: SlotMachineStatsTokenType;
 }
 
-export type DetailedSlotHistoryItemTokenType = typeof DetailedSlotHistoryItemTokenType[keyof typeof DetailedSlotHistoryItemTokenType];
-
+export type DetailedSlotHistoryItemTokenType =
+  (typeof DetailedSlotHistoryItemTokenType)[keyof typeof DetailedSlotHistoryItemTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const DetailedSlotHistoryItemTokenType = {
@@ -881,8 +920,8 @@ export interface DetailedSlotHistoryResponse {
 /**
  * The side of the coin the player is betting on (HEADS or TAILS)
  */
-export type PlayCoinFlipDtoChoice = typeof PlayCoinFlipDtoChoice[keyof typeof PlayCoinFlipDtoChoice];
-
+export type PlayCoinFlipDtoChoice =
+  (typeof PlayCoinFlipDtoChoice)[keyof typeof PlayCoinFlipDtoChoice];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const PlayCoinFlipDtoChoice = {
@@ -893,8 +932,8 @@ export const PlayCoinFlipDtoChoice = {
 /**
  * The type of token being used for the bet (SOL or AFEL)
  */
-export type PlayCoinFlipDtoTokenType = typeof PlayCoinFlipDtoTokenType[keyof typeof PlayCoinFlipDtoTokenType];
-
+export type PlayCoinFlipDtoTokenType =
+  (typeof PlayCoinFlipDtoTokenType)[keyof typeof PlayCoinFlipDtoTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const PlayCoinFlipDtoTokenType = {
@@ -917,8 +956,8 @@ export interface PlayCoinFlipDto {
   demoMode?: boolean;
 }
 
-export type CoinFlipResultDtoChoice = typeof CoinFlipResultDtoChoice[keyof typeof CoinFlipResultDtoChoice];
-
+export type CoinFlipResultDtoChoice =
+  (typeof CoinFlipResultDtoChoice)[keyof typeof CoinFlipResultDtoChoice];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const CoinFlipResultDtoChoice = {
@@ -926,8 +965,8 @@ export const CoinFlipResultDtoChoice = {
   TAILS: 'TAILS',
 } as const;
 
-export type CoinFlipResultDtoResult = typeof CoinFlipResultDtoResult[keyof typeof CoinFlipResultDtoResult];
-
+export type CoinFlipResultDtoResult =
+  (typeof CoinFlipResultDtoResult)[keyof typeof CoinFlipResultDtoResult];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const CoinFlipResultDtoResult = {
@@ -935,8 +974,8 @@ export const CoinFlipResultDtoResult = {
   TAILS: 'TAILS',
 } as const;
 
-export type CoinFlipResultDtoTokenType = typeof CoinFlipResultDtoTokenType[keyof typeof CoinFlipResultDtoTokenType];
-
+export type CoinFlipResultDtoTokenType =
+  (typeof CoinFlipResultDtoTokenType)[keyof typeof CoinFlipResultDtoTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const CoinFlipResultDtoTokenType = {
@@ -960,8 +999,8 @@ export interface CoinFlipResultDto {
   readonly demoMode: boolean;
 }
 
-export type CoinFlipHistoryItemResult = typeof CoinFlipHistoryItemResult[keyof typeof CoinFlipHistoryItemResult];
-
+export type CoinFlipHistoryItemResult =
+  (typeof CoinFlipHistoryItemResult)[keyof typeof CoinFlipHistoryItemResult];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const CoinFlipHistoryItemResult = {
@@ -969,8 +1008,8 @@ export const CoinFlipHistoryItemResult = {
   TAILS: 'TAILS',
 } as const;
 
-export type CoinFlipHistoryItemChoice = typeof CoinFlipHistoryItemChoice[keyof typeof CoinFlipHistoryItemChoice];
-
+export type CoinFlipHistoryItemChoice =
+  (typeof CoinFlipHistoryItemChoice)[keyof typeof CoinFlipHistoryItemChoice];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const CoinFlipHistoryItemChoice = {
@@ -978,8 +1017,8 @@ export const CoinFlipHistoryItemChoice = {
   TAILS: 'TAILS',
 } as const;
 
-export type CoinFlipHistoryItemTokenType = typeof CoinFlipHistoryItemTokenType[keyof typeof CoinFlipHistoryItemTokenType];
-
+export type CoinFlipHistoryItemTokenType =
+  (typeof CoinFlipHistoryItemTokenType)[keyof typeof CoinFlipHistoryItemTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const CoinFlipHistoryItemTokenType = {
@@ -1007,8 +1046,8 @@ export interface CoinFlipHistoryResponse {
   readonly limit: number;
 }
 
-export type CoinFlipStatsTokenType = typeof CoinFlipStatsTokenType[keyof typeof CoinFlipStatsTokenType];
-
+export type CoinFlipStatsTokenType =
+  (typeof CoinFlipStatsTokenType)[keyof typeof CoinFlipStatsTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const CoinFlipStatsTokenType = {
@@ -1032,8 +1071,8 @@ export interface CoinFlipStats {
   readonly tokenType: CoinFlipStatsTokenType;
 }
 
-export type DetailedGameHistoryItemResult = typeof DetailedGameHistoryItemResult[keyof typeof DetailedGameHistoryItemResult];
-
+export type DetailedGameHistoryItemResult =
+  (typeof DetailedGameHistoryItemResult)[keyof typeof DetailedGameHistoryItemResult];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const DetailedGameHistoryItemResult = {
@@ -1041,8 +1080,8 @@ export const DetailedGameHistoryItemResult = {
   TAILS: 'TAILS',
 } as const;
 
-export type DetailedGameHistoryItemChoice = typeof DetailedGameHistoryItemChoice[keyof typeof DetailedGameHistoryItemChoice];
-
+export type DetailedGameHistoryItemChoice =
+  (typeof DetailedGameHistoryItemChoice)[keyof typeof DetailedGameHistoryItemChoice];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const DetailedGameHistoryItemChoice = {
@@ -1050,8 +1089,8 @@ export const DetailedGameHistoryItemChoice = {
   TAILS: 'TAILS',
 } as const;
 
-export type DetailedGameHistoryItemTokenType = typeof DetailedGameHistoryItemTokenType[keyof typeof DetailedGameHistoryItemTokenType];
-
+export type DetailedGameHistoryItemTokenType =
+  (typeof DetailedGameHistoryItemTokenType)[keyof typeof DetailedGameHistoryItemTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const DetailedGameHistoryItemTokenType = {
@@ -1080,18 +1119,18 @@ export interface DetailedCoinFlipHistoryResponse {
 }
 
 export type TransactionControllerGetWalletsHoldingsParams = {
-/**
- * Comma-separated wallet addresses
- */
-walletAddresses: string;
-/**
- * Type of token to get balances for
- */
-tokenType: TransactionControllerGetWalletsHoldingsTokenType;
+  /**
+   * Comma-separated wallet addresses
+   */
+  walletAddresses: string;
+  /**
+   * Type of token to get balances for
+   */
+  tokenType: TransactionControllerGetWalletsHoldingsTokenType;
 };
 
-export type TransactionControllerGetWalletsHoldingsTokenType = typeof TransactionControllerGetWalletsHoldingsTokenType[keyof typeof TransactionControllerGetWalletsHoldingsTokenType];
-
+export type TransactionControllerGetWalletsHoldingsTokenType =
+  (typeof TransactionControllerGetWalletsHoldingsTokenType)[keyof typeof TransactionControllerGetWalletsHoldingsTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const TransactionControllerGetWalletsHoldingsTokenType = {
@@ -1102,18 +1141,18 @@ export const TransactionControllerGetWalletsHoldingsTokenType = {
 } as const;
 
 export type TransactionControllerGetAvailableBalanceParams = {
-/**
- * Account ID to get balance for
- */
-accountId: string;
-/**
- * Type of token to get balance for
- */
-tokenType: TransactionControllerGetAvailableBalanceTokenType;
+  /**
+   * Account ID to get balance for
+   */
+  accountId: string;
+  /**
+   * Type of token to get balance for
+   */
+  tokenType: TransactionControllerGetAvailableBalanceTokenType;
 };
 
-export type TransactionControllerGetAvailableBalanceTokenType = typeof TransactionControllerGetAvailableBalanceTokenType[keyof typeof TransactionControllerGetAvailableBalanceTokenType];
-
+export type TransactionControllerGetAvailableBalanceTokenType =
+  (typeof TransactionControllerGetAvailableBalanceTokenType)[keyof typeof TransactionControllerGetAvailableBalanceTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const TransactionControllerGetAvailableBalanceTokenType = {
@@ -1124,25 +1163,25 @@ export const TransactionControllerGetAvailableBalanceTokenType = {
 } as const;
 
 export type TransactionControllerGetAvailableBalanceListParams = {
-/**
- * Account ID to get balance for
- */
-accountId: string;
+  /**
+   * Account ID to get balance for
+   */
+  accountId: string;
 };
 
 export type TransactionControllerGetActiveBlockagesParams = {
-/**
- * Account ID to get balance for
- */
-accountId: string;
-/**
- * Type of token to get balance for
- */
-tokenType: TransactionControllerGetActiveBlockagesTokenType;
+  /**
+   * Account ID to get balance for
+   */
+  accountId: string;
+  /**
+   * Type of token to get balance for
+   */
+  tokenType: TransactionControllerGetActiveBlockagesTokenType;
 };
 
-export type TransactionControllerGetActiveBlockagesTokenType = typeof TransactionControllerGetActiveBlockagesTokenType[keyof typeof TransactionControllerGetActiveBlockagesTokenType];
-
+export type TransactionControllerGetActiveBlockagesTokenType =
+  (typeof TransactionControllerGetActiveBlockagesTokenType)[keyof typeof TransactionControllerGetActiveBlockagesTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const TransactionControllerGetActiveBlockagesTokenType = {
@@ -1153,26 +1192,26 @@ export const TransactionControllerGetActiveBlockagesTokenType = {
 } as const;
 
 export type TransactionControllerGetBlockageHistoryParams = {
-/**
- * Account ID to get balance for
- */
-accountId: string;
-/**
- * Type of token to get balance for
- */
-tokenType: TransactionControllerGetBlockageHistoryTokenType;
-/**
- * Number of records to return
- */
-limit?: number;
-/**
- * Number of records to skip
- */
-offset?: number;
+  /**
+   * Account ID to get balance for
+   */
+  accountId: string;
+  /**
+   * Type of token to get balance for
+   */
+  tokenType: TransactionControllerGetBlockageHistoryTokenType;
+  /**
+   * Number of records to return
+   */
+  limit?: number;
+  /**
+   * Number of records to skip
+   */
+  offset?: number;
 };
 
-export type TransactionControllerGetBlockageHistoryTokenType = typeof TransactionControllerGetBlockageHistoryTokenType[keyof typeof TransactionControllerGetBlockageHistoryTokenType];
-
+export type TransactionControllerGetBlockageHistoryTokenType =
+  (typeof TransactionControllerGetBlockageHistoryTokenType)[keyof typeof TransactionControllerGetBlockageHistoryTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const TransactionControllerGetBlockageHistoryTokenType = {
@@ -1183,41 +1222,41 @@ export const TransactionControllerGetBlockageHistoryTokenType = {
 } as const;
 
 export type NFTStakingControllerGetLeaderboardParams = {
-/**
- * Number of entries to return
- */
-limit?: number;
-/**
- * Number of entries to skip
- */
-offset?: number;
+  /**
+   * Number of entries to return
+   */
+  limit?: number;
+  /**
+   * Number of entries to skip
+   */
+  offset?: number;
 };
 
 export type NFTCollectionControllerGetNFTsParams = {
-/**
- * Page number
- */
-page?: number;
-/**
- * Number of NFTs per page
- */
-limit?: number;
-/**
- * Sort direction
- */
-sort?: NFTCollectionControllerGetNFTsSort;
-/**
- * NFT trait type
- */
-trait_type: NFTCollectionControllerGetNFTsTraitType;
-/**
- * Trait value
- */
-value: string;
+  /**
+   * Page number
+   */
+  page?: number;
+  /**
+   * Number of NFTs per page
+   */
+  limit?: number;
+  /**
+   * Sort direction
+   */
+  sort?: NFTCollectionControllerGetNFTsSort;
+  /**
+   * NFT trait type
+   */
+  trait_type: NFTCollectionControllerGetNFTsTraitType;
+  /**
+   * Trait value
+   */
+  value: string;
 };
 
-export type NFTCollectionControllerGetNFTsSort = typeof NFTCollectionControllerGetNFTsSort[keyof typeof NFTCollectionControllerGetNFTsSort];
-
+export type NFTCollectionControllerGetNFTsSort =
+  (typeof NFTCollectionControllerGetNFTsSort)[keyof typeof NFTCollectionControllerGetNFTsSort];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const NFTCollectionControllerGetNFTsSort = {
@@ -1225,8 +1264,8 @@ export const NFTCollectionControllerGetNFTsSort = {
   desc: 'desc',
 } as const;
 
-export type NFTCollectionControllerGetNFTsTraitType = typeof NFTCollectionControllerGetNFTsTraitType[keyof typeof NFTCollectionControllerGetNFTsTraitType];
-
+export type NFTCollectionControllerGetNFTsTraitType =
+  (typeof NFTCollectionControllerGetNFTsTraitType)[keyof typeof NFTCollectionControllerGetNFTsTraitType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const NFTCollectionControllerGetNFTsTraitType = {
@@ -1239,14 +1278,14 @@ export const NFTCollectionControllerGetNFTsTraitType = {
 } as const;
 
 export type GamesControllerGetBalanceParams = {
-/**
- * The type of token to get balance for (SOL, AFEL, WAA, USDC)
- */
-tokenType: GamesControllerGetBalanceTokenType;
+  /**
+   * The type of token to get balance for (SOL, AFEL, WAA, USDC)
+   */
+  tokenType: GamesControllerGetBalanceTokenType;
 };
 
-export type GamesControllerGetBalanceTokenType = typeof GamesControllerGetBalanceTokenType[keyof typeof GamesControllerGetBalanceTokenType];
-
+export type GamesControllerGetBalanceTokenType =
+  (typeof GamesControllerGetBalanceTokenType)[keyof typeof GamesControllerGetBalanceTokenType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const GamesControllerGetBalanceTokenType = {
@@ -1257,13 +1296,13 @@ export const GamesControllerGetBalanceTokenType = {
 } as const;
 
 export type ReferralControllerGetReferralHistoryParams = {
-page: number;
-limit: number;
+  page: number;
+  limit: number;
 };
 
 export type FreeSpinControllerGetFreeSpinHistoryParams = {
-page: number;
-limit: number;
+  page: number;
+  limit: number;
 };
 
 export type GamesAuthControllerGenerateMessage201 = {
@@ -1272,4824 +1311,8976 @@ export type GamesAuthControllerGenerateMessage201 = {
 };
 
 export type SlotMachineControllerGetHistoryParams = {
-page: number;
-limit: number;
+  page: number;
+  limit: number;
 };
 
 export type SlotMachineControllerGetStatsParams = {
-tokenType: string;
+  tokenType: string;
 };
 
 export type SlotMachineControllerGetDetailedHistoryParams = {
-tokenType: string;
-page: number;
-limit: number;
+  tokenType: string;
+  page: number;
+  limit: number;
 };
 
 export type CoinFlipControllerGetHistoryParams = {
-page: number;
-limit: number;
+  page: number;
+  limit: number;
 };
 
 export type CoinFlipControllerGetStatsParams = {
-tokenType: string;
+  tokenType: string;
 };
 
 export type CoinFlipControllerGetDetailedHistoryParams = {
-tokenType: string;
-page: number;
-limit: number;
+  tokenType: string;
+  page: number;
+  limit: number;
 };
 
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
-
-
 export const appControllerGetHello = (
-    
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<void>(
-      {url: `/`, method: 'GET', signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<void>({ url: `/`, method: 'GET', signal }, options);
+};
 
 export const getAppControllerGetHelloQueryKey = () => {
-    return [`/`] as const;
-    }
+  return [`/`] as const;
+};
 
-    
-export const getAppControllerGetHelloQueryOptions = <TData = Awaited<ReturnType<typeof appControllerGetHello>>, TError = unknown>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof appControllerGetHello>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
-) => {
+export const getAppControllerGetHelloQueryOptions = <
+  TData = Awaited<ReturnType<typeof appControllerGetHello>>,
+  TError = unknown
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<ReturnType<typeof appControllerGetHello>>,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+  const queryKey = queryOptions?.queryKey ?? getAppControllerGetHelloQueryKey();
 
-  const queryKey =  queryOptions?.queryKey ?? getAppControllerGetHelloQueryKey();
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof appControllerGetHello>>
+  > = ({ signal }) => appControllerGetHello(requestOptions, signal);
 
-  
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof appControllerGetHello>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof appControllerGetHello>>> = ({ signal }) => appControllerGetHello(requestOptions, signal);
+export type AppControllerGetHelloQueryResult = NonNullable<
+  Awaited<ReturnType<typeof appControllerGetHello>>
+>;
+export type AppControllerGetHelloQueryError = unknown;
 
-      
-
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof appControllerGetHello>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type AppControllerGetHelloQueryResult = NonNullable<Awaited<ReturnType<typeof appControllerGetHello>>>
-export type AppControllerGetHelloQueryError = unknown
-
-
-export function useAppControllerGetHello<TData = Awaited<ReturnType<typeof appControllerGetHello>>, TError = unknown>(
-  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof appControllerGetHello>>, TError, TData>> & Pick<
+export function useAppControllerGetHello<
+  TData = Awaited<ReturnType<typeof appControllerGetHello>>,
+  TError = unknown
+>(
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof appControllerGetHello>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof appControllerGetHello>>,
           TError,
           Awaited<ReturnType<typeof appControllerGetHello>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useAppControllerGetHello<TData = Awaited<ReturnType<typeof appControllerGetHello>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof appControllerGetHello>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useAppControllerGetHello<
+  TData = Awaited<ReturnType<typeof appControllerGetHello>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof appControllerGetHello>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof appControllerGetHello>>,
           TError,
           Awaited<ReturnType<typeof appControllerGetHello>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useAppControllerGetHello<TData = Awaited<ReturnType<typeof appControllerGetHello>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof appControllerGetHello>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useAppControllerGetHello<
+  TData = Awaited<ReturnType<typeof appControllerGetHello>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof appControllerGetHello>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 
-export function useAppControllerGetHello<TData = Awaited<ReturnType<typeof appControllerGetHello>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof appControllerGetHello>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useAppControllerGetHello<
+  TData = Awaited<ReturnType<typeof appControllerGetHello>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof appControllerGetHello>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getAppControllerGetHelloQueryOptions(options);
 
-  const queryOptions = getAppControllerGetHelloQueryOptions(options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 export const s3ControllerListBuckets = (
-    s3Request: S3Request,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  s3Request: S3Request,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<void>(
-      {url: `/s3/list/buckets`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: s3Request, signal
+  return getAxiosInstance<void>(
+    {
+      url: `/s3/list/buckets`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: s3Request,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getS3ControllerListBucketsMutationOptions = <
+  TError = unknown,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof s3ControllerListBuckets>>,
+    TError,
+    { data: S3Request },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof s3ControllerListBuckets>>,
+  TError,
+  { data: S3Request },
+  TContext
+> => {
+  const mutationKey = ['s3ControllerListBuckets'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getS3ControllerListBucketsMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof s3ControllerListBuckets>>, TError,{data: S3Request}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof s3ControllerListBuckets>>, TError,{data: S3Request}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof s3ControllerListBuckets>>,
+    { data: S3Request }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['s3ControllerListBuckets'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return s3ControllerListBuckets(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type S3ControllerListBucketsMutationResult = NonNullable<
+  Awaited<ReturnType<typeof s3ControllerListBuckets>>
+>;
+export type S3ControllerListBucketsMutationBody = S3Request;
+export type S3ControllerListBucketsMutationError = unknown;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof s3ControllerListBuckets>>, {data: S3Request}> = (props) => {
-          const {data} = props ?? {};
+export const useS3ControllerListBuckets = <
+  TError = unknown,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof s3ControllerListBuckets>>,
+      TError,
+      { data: S3Request },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof s3ControllerListBuckets>>,
+  TError,
+  { data: S3Request },
+  TContext
+> => {
+  const mutationOptions = getS3ControllerListBucketsMutationOptions(options);
 
-          return  s3ControllerListBuckets(data,requestOptions)
-        }
+  return useMutation(mutationOptions, queryClient);
+};
 
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type S3ControllerListBucketsMutationResult = NonNullable<Awaited<ReturnType<typeof s3ControllerListBuckets>>>
-    export type S3ControllerListBucketsMutationBody = S3Request
-    export type S3ControllerListBucketsMutationError = unknown
-
-    export const useS3ControllerListBuckets = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof s3ControllerListBuckets>>, TError,{data: S3Request}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof s3ControllerListBuckets>>,
-        TError,
-        {data: S3Request},
-        TContext
-      > => {
-
-      const mutationOptions = getS3ControllerListBucketsMutationOptions(options);
-
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 export const s3ControllerGetFile = (
-    fileRequest: FileRequest,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  fileRequest: FileRequest,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<void>(
-      {url: `/s3/list/file`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: fileRequest, signal
+  return getAxiosInstance<void>(
+    {
+      url: `/s3/list/file`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: fileRequest,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getS3ControllerGetFileMutationOptions = <
+  TError = unknown,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof s3ControllerGetFile>>,
+    TError,
+    { data: FileRequest },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof s3ControllerGetFile>>,
+  TError,
+  { data: FileRequest },
+  TContext
+> => {
+  const mutationKey = ['s3ControllerGetFile'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getS3ControllerGetFileMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof s3ControllerGetFile>>, TError,{data: FileRequest}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof s3ControllerGetFile>>, TError,{data: FileRequest}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof s3ControllerGetFile>>,
+    { data: FileRequest }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['s3ControllerGetFile'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return s3ControllerGetFile(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type S3ControllerGetFileMutationResult = NonNullable<
+  Awaited<ReturnType<typeof s3ControllerGetFile>>
+>;
+export type S3ControllerGetFileMutationBody = FileRequest;
+export type S3ControllerGetFileMutationError = unknown;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof s3ControllerGetFile>>, {data: FileRequest}> = (props) => {
-          const {data} = props ?? {};
+export const useS3ControllerGetFile = <TError = unknown, TContext = unknown>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof s3ControllerGetFile>>,
+      TError,
+      { data: FileRequest },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof s3ControllerGetFile>>,
+  TError,
+  { data: FileRequest },
+  TContext
+> => {
+  const mutationOptions = getS3ControllerGetFileMutationOptions(options);
 
-          return  s3ControllerGetFile(data,requestOptions)
-        }
+  return useMutation(mutationOptions, queryClient);
+};
 
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type S3ControllerGetFileMutationResult = NonNullable<Awaited<ReturnType<typeof s3ControllerGetFile>>>
-    export type S3ControllerGetFileMutationBody = FileRequest
-    export type S3ControllerGetFileMutationError = unknown
-
-    export const useS3ControllerGetFile = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof s3ControllerGetFile>>, TError,{data: FileRequest}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof s3ControllerGetFile>>,
-        TError,
-        {data: FileRequest},
-        TContext
-      > => {
-
-      const mutationOptions = getS3ControllerGetFileMutationOptions(options);
-
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 export const s3ControllerUploadFile = (
-    fileRequest: FileRequest,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  fileRequest: FileRequest,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<void>(
-      {url: `/s3/upload/file`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: fileRequest, signal
+  return getAxiosInstance<void>(
+    {
+      url: `/s3/upload/file`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: fileRequest,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getS3ControllerUploadFileMutationOptions = <
+  TError = unknown,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof s3ControllerUploadFile>>,
+    TError,
+    { data: FileRequest },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof s3ControllerUploadFile>>,
+  TError,
+  { data: FileRequest },
+  TContext
+> => {
+  const mutationKey = ['s3ControllerUploadFile'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getS3ControllerUploadFileMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof s3ControllerUploadFile>>, TError,{data: FileRequest}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof s3ControllerUploadFile>>, TError,{data: FileRequest}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof s3ControllerUploadFile>>,
+    { data: FileRequest }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['s3ControllerUploadFile'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return s3ControllerUploadFile(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type S3ControllerUploadFileMutationResult = NonNullable<
+  Awaited<ReturnType<typeof s3ControllerUploadFile>>
+>;
+export type S3ControllerUploadFileMutationBody = FileRequest;
+export type S3ControllerUploadFileMutationError = unknown;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof s3ControllerUploadFile>>, {data: FileRequest}> = (props) => {
-          const {data} = props ?? {};
+export const useS3ControllerUploadFile = <TError = unknown, TContext = unknown>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof s3ControllerUploadFile>>,
+      TError,
+      { data: FileRequest },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof s3ControllerUploadFile>>,
+  TError,
+  { data: FileRequest },
+  TContext
+> => {
+  const mutationOptions = getS3ControllerUploadFileMutationOptions(options);
 
-          return  s3ControllerUploadFile(data,requestOptions)
-        }
+  return useMutation(mutationOptions, queryClient);
+};
 
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type S3ControllerUploadFileMutationResult = NonNullable<Awaited<ReturnType<typeof s3ControllerUploadFile>>>
-    export type S3ControllerUploadFileMutationBody = FileRequest
-    export type S3ControllerUploadFileMutationError = unknown
-
-    export const useS3ControllerUploadFile = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof s3ControllerUploadFile>>, TError,{data: FileRequest}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof s3ControllerUploadFile>>,
-        TError,
-        {data: FileRequest},
-        TContext
-      > => {
-
-      const mutationOptions = getS3ControllerUploadFileMutationOptions(options);
-
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 export const referanceControllerGetAccountReferralCode = (
-    
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<string>(
-      {url: `/referals/code`, method: 'GET', signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<string>(
+    { url: `/referals/code`, method: 'GET', signal },
+    options
+  );
+};
 
 export const getReferanceControllerGetAccountReferralCodeQueryKey = () => {
-    return [`/referals/code`] as const;
-    }
+  return [`/referals/code`] as const;
+};
 
-    
-export const getReferanceControllerGetAccountReferralCodeQueryOptions = <TData = Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>, TError = unknown>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
-) => {
+export const getReferanceControllerGetAccountReferralCodeQueryOptions = <
+  TData = Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>,
+  TError = unknown
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+  const queryKey =
+    queryOptions?.queryKey ??
+    getReferanceControllerGetAccountReferralCodeQueryKey();
 
-  const queryKey =  queryOptions?.queryKey ?? getReferanceControllerGetAccountReferralCodeQueryKey();
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>
+  > = ({ signal }) =>
+    referanceControllerGetAccountReferralCode(requestOptions, signal);
 
-  
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>> = ({ signal }) => referanceControllerGetAccountReferralCode(requestOptions, signal);
+export type ReferanceControllerGetAccountReferralCodeQueryResult = NonNullable<
+  Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>
+>;
+export type ReferanceControllerGetAccountReferralCodeQueryError = unknown;
 
-      
-
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type ReferanceControllerGetAccountReferralCodeQueryResult = NonNullable<Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>>
-export type ReferanceControllerGetAccountReferralCodeQueryError = unknown
-
-
-export function useReferanceControllerGetAccountReferralCode<TData = Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>, TError = unknown>(
-  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>, TError, TData>> & Pick<
+export function useReferanceControllerGetAccountReferralCode<
+  TData = Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>,
+  TError = unknown
+>(
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>,
           TError,
           Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useReferanceControllerGetAccountReferralCode<TData = Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useReferanceControllerGetAccountReferralCode<
+  TData = Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>,
           TError,
           Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useReferanceControllerGetAccountReferralCode<TData = Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useReferanceControllerGetAccountReferralCode<
+  TData = Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 
-export function useReferanceControllerGetAccountReferralCode<TData = Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useReferanceControllerGetAccountReferralCode<
+  TData = Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referanceControllerGetAccountReferralCode>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions =
+    getReferanceControllerGetAccountReferralCodeQueryOptions(options);
 
-  const queryOptions = getReferanceControllerGetAccountReferralCodeQueryOptions(options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 export const referanceControllerUseReferanceCode = (
-    useReferralCodeRequest: UseReferralCodeRequest,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  useReferralCodeRequest: UseReferralCodeRequest,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<void>(
-      {url: `/referals`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: useReferralCodeRequest, signal
+  return getAxiosInstance<void>(
+    {
+      url: `/referals`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: useReferralCodeRequest,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getReferanceControllerUseReferanceCodeMutationOptions = <
+  TError = unknown,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof referanceControllerUseReferanceCode>>,
+    TError,
+    { data: UseReferralCodeRequest },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof referanceControllerUseReferanceCode>>,
+  TError,
+  { data: UseReferralCodeRequest },
+  TContext
+> => {
+  const mutationKey = ['referanceControllerUseReferanceCode'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getReferanceControllerUseReferanceCodeMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof referanceControllerUseReferanceCode>>, TError,{data: UseReferralCodeRequest}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof referanceControllerUseReferanceCode>>, TError,{data: UseReferralCodeRequest}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof referanceControllerUseReferanceCode>>,
+    { data: UseReferralCodeRequest }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['referanceControllerUseReferanceCode'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return referanceControllerUseReferanceCode(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type ReferanceControllerUseReferanceCodeMutationResult = NonNullable<
+  Awaited<ReturnType<typeof referanceControllerUseReferanceCode>>
+>;
+export type ReferanceControllerUseReferanceCodeMutationBody =
+  UseReferralCodeRequest;
+export type ReferanceControllerUseReferanceCodeMutationError = unknown;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof referanceControllerUseReferanceCode>>, {data: UseReferralCodeRequest}> = (props) => {
-          const {data} = props ?? {};
+export const useReferanceControllerUseReferanceCode = <
+  TError = unknown,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof referanceControllerUseReferanceCode>>,
+      TError,
+      { data: UseReferralCodeRequest },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof referanceControllerUseReferanceCode>>,
+  TError,
+  { data: UseReferralCodeRequest },
+  TContext
+> => {
+  const mutationOptions =
+    getReferanceControllerUseReferanceCodeMutationOptions(options);
 
-          return  referanceControllerUseReferanceCode(data,requestOptions)
-        }
+  return useMutation(mutationOptions, queryClient);
+};
 
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type ReferanceControllerUseReferanceCodeMutationResult = NonNullable<Awaited<ReturnType<typeof referanceControllerUseReferanceCode>>>
-    export type ReferanceControllerUseReferanceCodeMutationBody = UseReferralCodeRequest
-    export type ReferanceControllerUseReferanceCodeMutationError = unknown
-
-    export const useReferanceControllerUseReferanceCode = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof referanceControllerUseReferanceCode>>, TError,{data: UseReferralCodeRequest}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof referanceControllerUseReferanceCode>>,
-        TError,
-        {data: UseReferralCodeRequest},
-        TContext
-      > => {
-
-      const mutationOptions = getReferanceControllerUseReferanceCodeMutationOptions(options);
-
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 export const referanceControllerGetReferanceRelations = (
-    
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<GetAccountReferralRelationsDto>(
-      {url: `/referals/relations`, method: 'GET', signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<GetAccountReferralRelationsDto>(
+    { url: `/referals/relations`, method: 'GET', signal },
+    options
+  );
+};
 
 export const getReferanceControllerGetReferanceRelationsQueryKey = () => {
-    return [`/referals/relations`] as const;
-    }
+  return [`/referals/relations`] as const;
+};
 
-    
-export const getReferanceControllerGetReferanceRelationsQueryOptions = <TData = Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>, TError = unknown>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
-) => {
+export const getReferanceControllerGetReferanceRelationsQueryOptions = <
+  TData = Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>,
+  TError = unknown
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+  const queryKey =
+    queryOptions?.queryKey ??
+    getReferanceControllerGetReferanceRelationsQueryKey();
 
-  const queryKey =  queryOptions?.queryKey ?? getReferanceControllerGetReferanceRelationsQueryKey();
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>
+  > = ({ signal }) =>
+    referanceControllerGetReferanceRelations(requestOptions, signal);
 
-  
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>> = ({ signal }) => referanceControllerGetReferanceRelations(requestOptions, signal);
+export type ReferanceControllerGetReferanceRelationsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>
+>;
+export type ReferanceControllerGetReferanceRelationsQueryError = unknown;
 
-      
-
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type ReferanceControllerGetReferanceRelationsQueryResult = NonNullable<Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>>
-export type ReferanceControllerGetReferanceRelationsQueryError = unknown
-
-
-export function useReferanceControllerGetReferanceRelations<TData = Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>, TError = unknown>(
-  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>, TError, TData>> & Pick<
+export function useReferanceControllerGetReferanceRelations<
+  TData = Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>,
+  TError = unknown
+>(
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>,
           TError,
           Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useReferanceControllerGetReferanceRelations<TData = Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useReferanceControllerGetReferanceRelations<
+  TData = Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>,
           TError,
           Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useReferanceControllerGetReferanceRelations<TData = Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useReferanceControllerGetReferanceRelations<
+  TData = Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 
-export function useReferanceControllerGetReferanceRelations<TData = Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useReferanceControllerGetReferanceRelations<
+  TData = Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referanceControllerGetReferanceRelations>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions =
+    getReferanceControllerGetReferanceRelationsQueryOptions(options);
 
-  const queryOptions = getReferanceControllerGetReferanceRelationsQueryOptions(options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * Retrieves token balances for a list of wallet addresses for specified token type
  * @summary Get token balances for multiple wallets
  */
 export const transactionControllerGetWalletsHoldings = (
-    params: TransactionControllerGetWalletsHoldingsParams,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  params: TransactionControllerGetWalletsHoldingsParams,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<unknown>(
-      {url: `/transactions/wallets/holdings`, method: 'GET',
-        params, signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<unknown>(
+    { url: `/transactions/wallets/holdings`, method: 'GET', params, signal },
+    options
+  );
+};
 
-export const getTransactionControllerGetWalletsHoldingsQueryKey = (params: TransactionControllerGetWalletsHoldingsParams,) => {
-    return [`/transactions/wallets/holdings`, ...(params ? [params]: [])] as const;
-    }
-
-    
-export const getTransactionControllerGetWalletsHoldingsQueryOptions = <TData = Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>, TError = void>(params: TransactionControllerGetWalletsHoldingsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getTransactionControllerGetWalletsHoldingsQueryKey = (
+  params: TransactionControllerGetWalletsHoldingsParams
 ) => {
+  return [
+    `/transactions/wallets/holdings`,
+    ...(params ? [params] : []),
+  ] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getTransactionControllerGetWalletsHoldingsQueryOptions = <
+  TData = Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>,
+  TError = void
+>(
+  params: TransactionControllerGetWalletsHoldingsParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getTransactionControllerGetWalletsHoldingsQueryKey(params);
+  const queryKey =
+    queryOptions?.queryKey ??
+    getTransactionControllerGetWalletsHoldingsQueryKey(params);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>
+  > = ({ signal }) =>
+    transactionControllerGetWalletsHoldings(params, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>> = ({ signal }) => transactionControllerGetWalletsHoldings(params, requestOptions, signal);
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type TransactionControllerGetWalletsHoldingsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>
+>;
+export type TransactionControllerGetWalletsHoldingsQueryError = void;
 
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type TransactionControllerGetWalletsHoldingsQueryResult = NonNullable<Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>>
-export type TransactionControllerGetWalletsHoldingsQueryError = void
-
-
-export function useTransactionControllerGetWalletsHoldings<TData = Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>, TError = void>(
- params: TransactionControllerGetWalletsHoldingsParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>, TError, TData>> & Pick<
+export function useTransactionControllerGetWalletsHoldings<
+  TData = Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>,
+  TError = void
+>(
+  params: TransactionControllerGetWalletsHoldingsParams,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>,
           TError,
           Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useTransactionControllerGetWalletsHoldings<TData = Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>, TError = void>(
- params: TransactionControllerGetWalletsHoldingsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useTransactionControllerGetWalletsHoldings<
+  TData = Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>,
+  TError = void
+>(
+  params: TransactionControllerGetWalletsHoldingsParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>,
           TError,
           Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useTransactionControllerGetWalletsHoldings<TData = Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>, TError = void>(
- params: TransactionControllerGetWalletsHoldingsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useTransactionControllerGetWalletsHoldings<
+  TData = Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>,
+  TError = void
+>(
+  params: TransactionControllerGetWalletsHoldingsParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get token balances for multiple wallets
  */
 
-export function useTransactionControllerGetWalletsHoldings<TData = Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>, TError = void>(
- params: TransactionControllerGetWalletsHoldingsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useTransactionControllerGetWalletsHoldings<
+  TData = Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>,
+  TError = void
+>(
+  params: TransactionControllerGetWalletsHoldingsParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetWalletsHoldings>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getTransactionControllerGetWalletsHoldingsQueryOptions(
+    params,
+    options
+  );
 
-  const queryOptions = getTransactionControllerGetWalletsHoldingsQueryOptions(params,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * @summary Get application wallet address
  */
 export const transactionControllerGetApplicationWalletAddress = (
-    
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<string>(
-      {url: `/transactions/application/wallet/address`, method: 'GET', signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<string>(
+    { url: `/transactions/application/wallet/address`, method: 'GET', signal },
+    options
+  );
+};
 
-export const getTransactionControllerGetApplicationWalletAddressQueryKey = () => {
+export const getTransactionControllerGetApplicationWalletAddressQueryKey =
+  () => {
     return [`/transactions/application/wallet/address`] as const;
-    }
+  };
 
-    
-export const getTransactionControllerGetApplicationWalletAddressQueryOptions = <TData = Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>, TError = unknown>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
-) => {
+export const getTransactionControllerGetApplicationWalletAddressQueryOptions = <
+  TData = Awaited<
+    ReturnType<typeof transactionControllerGetApplicationWalletAddress>
+  >,
+  TError = unknown
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<
+        ReturnType<typeof transactionControllerGetApplicationWalletAddress>
+      >,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+  const queryKey =
+    queryOptions?.queryKey ??
+    getTransactionControllerGetApplicationWalletAddressQueryKey();
 
-  const queryKey =  queryOptions?.queryKey ?? getTransactionControllerGetApplicationWalletAddressQueryKey();
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>
+  > = ({ signal }) =>
+    transactionControllerGetApplicationWalletAddress(requestOptions, signal);
 
-  
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<
+      ReturnType<typeof transactionControllerGetApplicationWalletAddress>
+    >,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>> = ({ signal }) => transactionControllerGetApplicationWalletAddress(requestOptions, signal);
+export type TransactionControllerGetApplicationWalletAddressQueryResult =
+  NonNullable<
+    Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>
+  >;
+export type TransactionControllerGetApplicationWalletAddressQueryError =
+  unknown;
 
-      
-
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type TransactionControllerGetApplicationWalletAddressQueryResult = NonNullable<Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>>
-export type TransactionControllerGetApplicationWalletAddressQueryError = unknown
-
-
-export function useTransactionControllerGetApplicationWalletAddress<TData = Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>, TError = unknown>(
-  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>, TError, TData>> & Pick<
+export function useTransactionControllerGetApplicationWalletAddress<
+  TData = Awaited<
+    ReturnType<typeof transactionControllerGetApplicationWalletAddress>
+  >,
+  TError = unknown
+>(
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<
+          ReturnType<typeof transactionControllerGetApplicationWalletAddress>
+        >,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
-          Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>,
+          Awaited<
+            ReturnType<typeof transactionControllerGetApplicationWalletAddress>
+          >,
           TError,
-          Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useTransactionControllerGetApplicationWalletAddress<TData = Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>, TError, TData>> & Pick<
+          Awaited<
+            ReturnType<typeof transactionControllerGetApplicationWalletAddress>
+          >
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useTransactionControllerGetApplicationWalletAddress<
+  TData = Awaited<
+    ReturnType<typeof transactionControllerGetApplicationWalletAddress>
+  >,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<
+          ReturnType<typeof transactionControllerGetApplicationWalletAddress>
+        >,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
-          Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>,
+          Awaited<
+            ReturnType<typeof transactionControllerGetApplicationWalletAddress>
+          >,
           TError,
-          Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useTransactionControllerGetApplicationWalletAddress<TData = Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+          Awaited<
+            ReturnType<typeof transactionControllerGetApplicationWalletAddress>
+          >
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useTransactionControllerGetApplicationWalletAddress<
+  TData = Awaited<
+    ReturnType<typeof transactionControllerGetApplicationWalletAddress>
+  >,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<
+          ReturnType<typeof transactionControllerGetApplicationWalletAddress>
+        >,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get application wallet address
  */
 
-export function useTransactionControllerGetApplicationWalletAddress<TData = Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetApplicationWalletAddress>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useTransactionControllerGetApplicationWalletAddress<
+  TData = Awaited<
+    ReturnType<typeof transactionControllerGetApplicationWalletAddress>
+  >,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<
+          ReturnType<typeof transactionControllerGetApplicationWalletAddress>
+        >,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions =
+    getTransactionControllerGetApplicationWalletAddressQueryOptions(options);
 
-  const queryOptions = getTransactionControllerGetApplicationWalletAddressQueryOptions(options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * @summary Get available balance
  */
 export const transactionControllerGetAvailableBalance = (
-    params: TransactionControllerGetAvailableBalanceParams,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  params: TransactionControllerGetAvailableBalanceParams,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<BalanceResponse>(
-      {url: `/transactions/user/balance`, method: 'GET',
-        params, signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<BalanceResponse>(
+    { url: `/transactions/user/balance`, method: 'GET', params, signal },
+    options
+  );
+};
 
-export const getTransactionControllerGetAvailableBalanceQueryKey = (params: TransactionControllerGetAvailableBalanceParams,) => {
-    return [`/transactions/user/balance`, ...(params ? [params]: [])] as const;
-    }
-
-    
-export const getTransactionControllerGetAvailableBalanceQueryOptions = <TData = Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>, TError = unknown>(params: TransactionControllerGetAvailableBalanceParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getTransactionControllerGetAvailableBalanceQueryKey = (
+  params: TransactionControllerGetAvailableBalanceParams
 ) => {
+  return [`/transactions/user/balance`, ...(params ? [params] : [])] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getTransactionControllerGetAvailableBalanceQueryOptions = <
+  TData = Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>,
+  TError = unknown
+>(
+  params: TransactionControllerGetAvailableBalanceParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getTransactionControllerGetAvailableBalanceQueryKey(params);
+  const queryKey =
+    queryOptions?.queryKey ??
+    getTransactionControllerGetAvailableBalanceQueryKey(params);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>
+  > = ({ signal }) =>
+    transactionControllerGetAvailableBalance(params, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>> = ({ signal }) => transactionControllerGetAvailableBalance(params, requestOptions, signal);
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type TransactionControllerGetAvailableBalanceQueryResult = NonNullable<
+  Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>
+>;
+export type TransactionControllerGetAvailableBalanceQueryError = unknown;
 
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type TransactionControllerGetAvailableBalanceQueryResult = NonNullable<Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>>
-export type TransactionControllerGetAvailableBalanceQueryError = unknown
-
-
-export function useTransactionControllerGetAvailableBalance<TData = Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>, TError = unknown>(
- params: TransactionControllerGetAvailableBalanceParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>, TError, TData>> & Pick<
+export function useTransactionControllerGetAvailableBalance<
+  TData = Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>,
+  TError = unknown
+>(
+  params: TransactionControllerGetAvailableBalanceParams,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>,
           TError,
           Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useTransactionControllerGetAvailableBalance<TData = Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>, TError = unknown>(
- params: TransactionControllerGetAvailableBalanceParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useTransactionControllerGetAvailableBalance<
+  TData = Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>,
+  TError = unknown
+>(
+  params: TransactionControllerGetAvailableBalanceParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>,
           TError,
           Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useTransactionControllerGetAvailableBalance<TData = Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>, TError = unknown>(
- params: TransactionControllerGetAvailableBalanceParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useTransactionControllerGetAvailableBalance<
+  TData = Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>,
+  TError = unknown
+>(
+  params: TransactionControllerGetAvailableBalanceParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get available balance
  */
 
-export function useTransactionControllerGetAvailableBalance<TData = Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>, TError = unknown>(
- params: TransactionControllerGetAvailableBalanceParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useTransactionControllerGetAvailableBalance<
+  TData = Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>,
+  TError = unknown
+>(
+  params: TransactionControllerGetAvailableBalanceParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetAvailableBalance>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getTransactionControllerGetAvailableBalanceQueryOptions(
+    params,
+    options
+  );
 
-  const queryOptions = getTransactionControllerGetAvailableBalanceQueryOptions(params,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * @summary Get available balance
  */
 export const transactionControllerGetAvailableBalanceList = (
-    params: TransactionControllerGetAvailableBalanceListParams,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  params: TransactionControllerGetAvailableBalanceListParams,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<BalanceResponse[]>(
-      {url: `/transactions/user/balance/list`, method: 'GET',
-        params, signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<BalanceResponse[]>(
+    { url: `/transactions/user/balance/list`, method: 'GET', params, signal },
+    options
+  );
+};
 
-export const getTransactionControllerGetAvailableBalanceListQueryKey = (params: TransactionControllerGetAvailableBalanceListParams,) => {
-    return [`/transactions/user/balance/list`, ...(params ? [params]: [])] as const;
-    }
-
-    
-export const getTransactionControllerGetAvailableBalanceListQueryOptions = <TData = Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>, TError = unknown>(params: TransactionControllerGetAvailableBalanceListParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getTransactionControllerGetAvailableBalanceListQueryKey = (
+  params: TransactionControllerGetAvailableBalanceListParams
 ) => {
+  return [
+    `/transactions/user/balance/list`,
+    ...(params ? [params] : []),
+  ] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getTransactionControllerGetAvailableBalanceListQueryOptions = <
+  TData = Awaited<
+    ReturnType<typeof transactionControllerGetAvailableBalanceList>
+  >,
+  TError = unknown
+>(
+  params: TransactionControllerGetAvailableBalanceListParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<
+          ReturnType<typeof transactionControllerGetAvailableBalanceList>
+        >,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getTransactionControllerGetAvailableBalanceListQueryKey(params);
+  const queryKey =
+    queryOptions?.queryKey ??
+    getTransactionControllerGetAvailableBalanceListQueryKey(params);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>
+  > = ({ signal }) =>
+    transactionControllerGetAvailableBalanceList(
+      params,
+      requestOptions,
+      signal
+    );
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>> = ({ signal }) => transactionControllerGetAvailableBalanceList(params, requestOptions, signal);
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type TransactionControllerGetAvailableBalanceListQueryResult =
+  NonNullable<
+    Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>
+  >;
+export type TransactionControllerGetAvailableBalanceListQueryError = unknown;
 
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type TransactionControllerGetAvailableBalanceListQueryResult = NonNullable<Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>>
-export type TransactionControllerGetAvailableBalanceListQueryError = unknown
-
-
-export function useTransactionControllerGetAvailableBalanceList<TData = Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>, TError = unknown>(
- params: TransactionControllerGetAvailableBalanceListParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>, TError, TData>> & Pick<
+export function useTransactionControllerGetAvailableBalanceList<
+  TData = Awaited<
+    ReturnType<typeof transactionControllerGetAvailableBalanceList>
+  >,
+  TError = unknown
+>(
+  params: TransactionControllerGetAvailableBalanceListParams,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<
+          ReturnType<typeof transactionControllerGetAvailableBalanceList>
+        >,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
-          Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>,
+          Awaited<
+            ReturnType<typeof transactionControllerGetAvailableBalanceList>
+          >,
           TError,
-          Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useTransactionControllerGetAvailableBalanceList<TData = Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>, TError = unknown>(
- params: TransactionControllerGetAvailableBalanceListParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>, TError, TData>> & Pick<
+          Awaited<
+            ReturnType<typeof transactionControllerGetAvailableBalanceList>
+          >
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useTransactionControllerGetAvailableBalanceList<
+  TData = Awaited<
+    ReturnType<typeof transactionControllerGetAvailableBalanceList>
+  >,
+  TError = unknown
+>(
+  params: TransactionControllerGetAvailableBalanceListParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<
+          ReturnType<typeof transactionControllerGetAvailableBalanceList>
+        >,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
-          Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>,
+          Awaited<
+            ReturnType<typeof transactionControllerGetAvailableBalanceList>
+          >,
           TError,
-          Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useTransactionControllerGetAvailableBalanceList<TData = Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>, TError = unknown>(
- params: TransactionControllerGetAvailableBalanceListParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+          Awaited<
+            ReturnType<typeof transactionControllerGetAvailableBalanceList>
+          >
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useTransactionControllerGetAvailableBalanceList<
+  TData = Awaited<
+    ReturnType<typeof transactionControllerGetAvailableBalanceList>
+  >,
+  TError = unknown
+>(
+  params: TransactionControllerGetAvailableBalanceListParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<
+          ReturnType<typeof transactionControllerGetAvailableBalanceList>
+        >,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get available balance
  */
 
-export function useTransactionControllerGetAvailableBalanceList<TData = Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>, TError = unknown>(
- params: TransactionControllerGetAvailableBalanceListParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetAvailableBalanceList>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useTransactionControllerGetAvailableBalanceList<
+  TData = Awaited<
+    ReturnType<typeof transactionControllerGetAvailableBalanceList>
+  >,
+  TError = unknown
+>(
+  params: TransactionControllerGetAvailableBalanceListParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<
+          ReturnType<typeof transactionControllerGetAvailableBalanceList>
+        >,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions =
+    getTransactionControllerGetAvailableBalanceListQueryOptions(
+      params,
+      options
+    );
 
-  const queryOptions = getTransactionControllerGetAvailableBalanceListQueryOptions(params,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * @summary Process a wallet deposit transaction
  */
 export const transactionControllerWalletDeposit = (
-    walletDepositRequest: WalletDepositRequest,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  walletDepositRequest: WalletDepositRequest,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<WalletDepositResponse>(
-      {url: `/transactions/deposit/wallet`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: walletDepositRequest, signal
+  return getAxiosInstance<WalletDepositResponse>(
+    {
+      url: `/transactions/deposit/wallet`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: walletDepositRequest,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getTransactionControllerWalletDepositMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof transactionControllerWalletDeposit>>,
+    TError,
+    { data: WalletDepositRequest },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof transactionControllerWalletDeposit>>,
+  TError,
+  { data: WalletDepositRequest },
+  TContext
+> => {
+  const mutationKey = ['transactionControllerWalletDeposit'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getTransactionControllerWalletDepositMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof transactionControllerWalletDeposit>>, TError,{data: WalletDepositRequest}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof transactionControllerWalletDeposit>>, TError,{data: WalletDepositRequest}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof transactionControllerWalletDeposit>>,
+    { data: WalletDepositRequest }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['transactionControllerWalletDeposit'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return transactionControllerWalletDeposit(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type TransactionControllerWalletDepositMutationResult = NonNullable<
+  Awaited<ReturnType<typeof transactionControllerWalletDeposit>>
+>;
+export type TransactionControllerWalletDepositMutationBody =
+  WalletDepositRequest;
+export type TransactionControllerWalletDepositMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof transactionControllerWalletDeposit>>, {data: WalletDepositRequest}> = (props) => {
-          const {data} = props ?? {};
-
-          return  transactionControllerWalletDeposit(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type TransactionControllerWalletDepositMutationResult = NonNullable<Awaited<ReturnType<typeof transactionControllerWalletDeposit>>>
-    export type TransactionControllerWalletDepositMutationBody = WalletDepositRequest
-    export type TransactionControllerWalletDepositMutationError = void
-
-    /**
+/**
  * @summary Process a wallet deposit transaction
  */
-export const useTransactionControllerWalletDeposit = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof transactionControllerWalletDeposit>>, TError,{data: WalletDepositRequest}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof transactionControllerWalletDeposit>>,
-        TError,
-        {data: WalletDepositRequest},
-        TContext
-      > => {
+export const useTransactionControllerWalletDeposit = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof transactionControllerWalletDeposit>>,
+      TError,
+      { data: WalletDepositRequest },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof transactionControllerWalletDeposit>>,
+  TError,
+  { data: WalletDepositRequest },
+  TContext
+> => {
+  const mutationOptions =
+    getTransactionControllerWalletDepositMutationOptions(options);
 
-      const mutationOptions = getTransactionControllerWalletDepositMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * @summary Process a prize deposit transaction, Only TOKEN prize
  */
 export const transactionControllerPrizeDeposit = (
-    prizeDepositRequest: PrizeDepositRequest,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  prizeDepositRequest: PrizeDepositRequest,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<PrizeDepositResponse>(
-      {url: `/transactions/deposit/prize/token`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: prizeDepositRequest, signal
+  return getAxiosInstance<PrizeDepositResponse>(
+    {
+      url: `/transactions/deposit/prize/token`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: prizeDepositRequest,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getTransactionControllerPrizeDepositMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof transactionControllerPrizeDeposit>>,
+    TError,
+    { data: PrizeDepositRequest },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof transactionControllerPrizeDeposit>>,
+  TError,
+  { data: PrizeDepositRequest },
+  TContext
+> => {
+  const mutationKey = ['transactionControllerPrizeDeposit'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getTransactionControllerPrizeDepositMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof transactionControllerPrizeDeposit>>, TError,{data: PrizeDepositRequest}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof transactionControllerPrizeDeposit>>, TError,{data: PrizeDepositRequest}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof transactionControllerPrizeDeposit>>,
+    { data: PrizeDepositRequest }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['transactionControllerPrizeDeposit'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return transactionControllerPrizeDeposit(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type TransactionControllerPrizeDepositMutationResult = NonNullable<
+  Awaited<ReturnType<typeof transactionControllerPrizeDeposit>>
+>;
+export type TransactionControllerPrizeDepositMutationBody = PrizeDepositRequest;
+export type TransactionControllerPrizeDepositMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof transactionControllerPrizeDeposit>>, {data: PrizeDepositRequest}> = (props) => {
-          const {data} = props ?? {};
-
-          return  transactionControllerPrizeDeposit(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type TransactionControllerPrizeDepositMutationResult = NonNullable<Awaited<ReturnType<typeof transactionControllerPrizeDeposit>>>
-    export type TransactionControllerPrizeDepositMutationBody = PrizeDepositRequest
-    export type TransactionControllerPrizeDepositMutationError = void
-
-    /**
+/**
  * @summary Process a prize deposit transaction, Only TOKEN prize
  */
-export const useTransactionControllerPrizeDeposit = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof transactionControllerPrizeDeposit>>, TError,{data: PrizeDepositRequest}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof transactionControllerPrizeDeposit>>,
-        TError,
-        {data: PrizeDepositRequest},
-        TContext
-      > => {
+export const useTransactionControllerPrizeDeposit = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof transactionControllerPrizeDeposit>>,
+      TError,
+      { data: PrizeDepositRequest },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof transactionControllerPrizeDeposit>>,
+  TError,
+  { data: PrizeDepositRequest },
+  TContext
+> => {
+  const mutationOptions =
+    getTransactionControllerPrizeDepositMutationOptions(options);
 
-      const mutationOptions = getTransactionControllerPrizeDepositMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * @summary Process a game deposit transaction
  */
 export const transactionControllerGameDeposit = (
-    gameDepositRequest: GameDepositRequest,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  gameDepositRequest: GameDepositRequest,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<GameDepositResponse>(
-      {url: `/transactions/deposit/game`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: gameDepositRequest, signal
+  return getAxiosInstance<GameDepositResponse>(
+    {
+      url: `/transactions/deposit/game`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: gameDepositRequest,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getTransactionControllerGameDepositMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof transactionControllerGameDeposit>>,
+    TError,
+    { data: GameDepositRequest },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof transactionControllerGameDeposit>>,
+  TError,
+  { data: GameDepositRequest },
+  TContext
+> => {
+  const mutationKey = ['transactionControllerGameDeposit'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getTransactionControllerGameDepositMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof transactionControllerGameDeposit>>, TError,{data: GameDepositRequest}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof transactionControllerGameDeposit>>, TError,{data: GameDepositRequest}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof transactionControllerGameDeposit>>,
+    { data: GameDepositRequest }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['transactionControllerGameDeposit'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return transactionControllerGameDeposit(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type TransactionControllerGameDepositMutationResult = NonNullable<
+  Awaited<ReturnType<typeof transactionControllerGameDeposit>>
+>;
+export type TransactionControllerGameDepositMutationBody = GameDepositRequest;
+export type TransactionControllerGameDepositMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof transactionControllerGameDeposit>>, {data: GameDepositRequest}> = (props) => {
-          const {data} = props ?? {};
-
-          return  transactionControllerGameDeposit(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type TransactionControllerGameDepositMutationResult = NonNullable<Awaited<ReturnType<typeof transactionControllerGameDeposit>>>
-    export type TransactionControllerGameDepositMutationBody = GameDepositRequest
-    export type TransactionControllerGameDepositMutationError = void
-
-    /**
+/**
  * @summary Process a game deposit transaction
  */
-export const useTransactionControllerGameDeposit = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof transactionControllerGameDeposit>>, TError,{data: GameDepositRequest}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof transactionControllerGameDeposit>>,
-        TError,
-        {data: GameDepositRequest},
-        TContext
-      > => {
+export const useTransactionControllerGameDeposit = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof transactionControllerGameDeposit>>,
+      TError,
+      { data: GameDepositRequest },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof transactionControllerGameDeposit>>,
+  TError,
+  { data: GameDepositRequest },
+  TContext
+> => {
+  const mutationOptions =
+    getTransactionControllerGameDepositMutationOptions(options);
 
-      const mutationOptions = getTransactionControllerGameDepositMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * @summary Process a withdrawal transaction
  */
 export const transactionControllerWithdraw = (
-    withdrawRequestDto: WithdrawRequestDto,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  withdrawRequestDto: WithdrawRequestDto,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<WithdrawResponse>(
-      {url: `/transactions/withdraw`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: withdrawRequestDto, signal
+  return getAxiosInstance<WithdrawResponse>(
+    {
+      url: `/transactions/withdraw`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: withdrawRequestDto,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getTransactionControllerWithdrawMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof transactionControllerWithdraw>>,
+    TError,
+    { data: WithdrawRequestDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof transactionControllerWithdraw>>,
+  TError,
+  { data: WithdrawRequestDto },
+  TContext
+> => {
+  const mutationKey = ['transactionControllerWithdraw'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getTransactionControllerWithdrawMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof transactionControllerWithdraw>>, TError,{data: WithdrawRequestDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof transactionControllerWithdraw>>, TError,{data: WithdrawRequestDto}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof transactionControllerWithdraw>>,
+    { data: WithdrawRequestDto }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['transactionControllerWithdraw'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return transactionControllerWithdraw(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type TransactionControllerWithdrawMutationResult = NonNullable<
+  Awaited<ReturnType<typeof transactionControllerWithdraw>>
+>;
+export type TransactionControllerWithdrawMutationBody = WithdrawRequestDto;
+export type TransactionControllerWithdrawMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof transactionControllerWithdraw>>, {data: WithdrawRequestDto}> = (props) => {
-          const {data} = props ?? {};
-
-          return  transactionControllerWithdraw(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type TransactionControllerWithdrawMutationResult = NonNullable<Awaited<ReturnType<typeof transactionControllerWithdraw>>>
-    export type TransactionControllerWithdrawMutationBody = WithdrawRequestDto
-    export type TransactionControllerWithdrawMutationError = void
-
-    /**
+/**
  * @summary Process a withdrawal transaction
  */
-export const useTransactionControllerWithdraw = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof transactionControllerWithdraw>>, TError,{data: WithdrawRequestDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof transactionControllerWithdraw>>,
-        TError,
-        {data: WithdrawRequestDto},
-        TContext
-      > => {
+export const useTransactionControllerWithdraw = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof transactionControllerWithdraw>>,
+      TError,
+      { data: WithdrawRequestDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof transactionControllerWithdraw>>,
+  TError,
+  { data: WithdrawRequestDto },
+  TContext
+> => {
+  const mutationOptions =
+    getTransactionControllerWithdrawMutationOptions(options);
 
-      const mutationOptions = getTransactionControllerWithdrawMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * @summary Add a new blockage
  */
 export const transactionControllerAddBlockage = (
-    addBlockageDto: AddBlockageDto,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  addBlockageDto: AddBlockageDto,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<AddBlockageResponse | void>(
-      {url: `/transactions/blockages/add`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: addBlockageDto, signal
+  return getAxiosInstance<AddBlockageResponse | void>(
+    {
+      url: `/transactions/blockages/add`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: addBlockageDto,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getTransactionControllerAddBlockageMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof transactionControllerAddBlockage>>,
+    TError,
+    { data: AddBlockageDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof transactionControllerAddBlockage>>,
+  TError,
+  { data: AddBlockageDto },
+  TContext
+> => {
+  const mutationKey = ['transactionControllerAddBlockage'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getTransactionControllerAddBlockageMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof transactionControllerAddBlockage>>, TError,{data: AddBlockageDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof transactionControllerAddBlockage>>, TError,{data: AddBlockageDto}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof transactionControllerAddBlockage>>,
+    { data: AddBlockageDto }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['transactionControllerAddBlockage'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return transactionControllerAddBlockage(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type TransactionControllerAddBlockageMutationResult = NonNullable<
+  Awaited<ReturnType<typeof transactionControllerAddBlockage>>
+>;
+export type TransactionControllerAddBlockageMutationBody = AddBlockageDto;
+export type TransactionControllerAddBlockageMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof transactionControllerAddBlockage>>, {data: AddBlockageDto}> = (props) => {
-          const {data} = props ?? {};
-
-          return  transactionControllerAddBlockage(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type TransactionControllerAddBlockageMutationResult = NonNullable<Awaited<ReturnType<typeof transactionControllerAddBlockage>>>
-    export type TransactionControllerAddBlockageMutationBody = AddBlockageDto
-    export type TransactionControllerAddBlockageMutationError = void
-
-    /**
+/**
  * @summary Add a new blockage
  */
-export const useTransactionControllerAddBlockage = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof transactionControllerAddBlockage>>, TError,{data: AddBlockageDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof transactionControllerAddBlockage>>,
-        TError,
-        {data: AddBlockageDto},
-        TContext
-      > => {
+export const useTransactionControllerAddBlockage = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof transactionControllerAddBlockage>>,
+      TError,
+      { data: AddBlockageDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof transactionControllerAddBlockage>>,
+  TError,
+  { data: AddBlockageDto },
+  TContext
+> => {
+  const mutationOptions =
+    getTransactionControllerAddBlockageMutationOptions(options);
 
-      const mutationOptions = getTransactionControllerAddBlockageMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * @summary Remove a single blockage
  */
 export const transactionControllerRemoveBlockage = (
-    removeBlockageDto: RemoveBlockageDto,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  removeBlockageDto: RemoveBlockageDto,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<RemoveBlockageResponse | void>(
-      {url: `/transactions/blockages/remove`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: removeBlockageDto, signal
+  return getAxiosInstance<RemoveBlockageResponse | void>(
+    {
+      url: `/transactions/blockages/remove`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: removeBlockageDto,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getTransactionControllerRemoveBlockageMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof transactionControllerRemoveBlockage>>,
+    TError,
+    { data: RemoveBlockageDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof transactionControllerRemoveBlockage>>,
+  TError,
+  { data: RemoveBlockageDto },
+  TContext
+> => {
+  const mutationKey = ['transactionControllerRemoveBlockage'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getTransactionControllerRemoveBlockageMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof transactionControllerRemoveBlockage>>, TError,{data: RemoveBlockageDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof transactionControllerRemoveBlockage>>, TError,{data: RemoveBlockageDto}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof transactionControllerRemoveBlockage>>,
+    { data: RemoveBlockageDto }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['transactionControllerRemoveBlockage'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return transactionControllerRemoveBlockage(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type TransactionControllerRemoveBlockageMutationResult = NonNullable<
+  Awaited<ReturnType<typeof transactionControllerRemoveBlockage>>
+>;
+export type TransactionControllerRemoveBlockageMutationBody = RemoveBlockageDto;
+export type TransactionControllerRemoveBlockageMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof transactionControllerRemoveBlockage>>, {data: RemoveBlockageDto}> = (props) => {
-          const {data} = props ?? {};
-
-          return  transactionControllerRemoveBlockage(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type TransactionControllerRemoveBlockageMutationResult = NonNullable<Awaited<ReturnType<typeof transactionControllerRemoveBlockage>>>
-    export type TransactionControllerRemoveBlockageMutationBody = RemoveBlockageDto
-    export type TransactionControllerRemoveBlockageMutationError = void
-
-    /**
+/**
  * @summary Remove a single blockage
  */
-export const useTransactionControllerRemoveBlockage = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof transactionControllerRemoveBlockage>>, TError,{data: RemoveBlockageDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof transactionControllerRemoveBlockage>>,
-        TError,
-        {data: RemoveBlockageDto},
-        TContext
-      > => {
+export const useTransactionControllerRemoveBlockage = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof transactionControllerRemoveBlockage>>,
+      TError,
+      { data: RemoveBlockageDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof transactionControllerRemoveBlockage>>,
+  TError,
+  { data: RemoveBlockageDto },
+  TContext
+> => {
+  const mutationOptions =
+    getTransactionControllerRemoveBlockageMutationOptions(options);
 
-      const mutationOptions = getTransactionControllerRemoveBlockageMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * @summary Remove multiple blockages
  */
 export const transactionControllerRemoveMultipleBlockages = (
-    removeMultipleBlockagesDto: RemoveMultipleBlockagesDto,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  removeMultipleBlockagesDto: RemoveMultipleBlockagesDto,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<RemoveMultipleBlockagesResponseDto>(
-      {url: `/transactions/blockages/remove/bulk`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: removeMultipleBlockagesDto, signal
+  return getAxiosInstance<RemoveMultipleBlockagesResponseDto>(
+    {
+      url: `/transactions/blockages/remove/bulk`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: removeMultipleBlockagesDto,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getTransactionControllerRemoveMultipleBlockagesMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof transactionControllerRemoveMultipleBlockages>>,
+    TError,
+    { data: RemoveMultipleBlockagesDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof transactionControllerRemoveMultipleBlockages>>,
+  TError,
+  { data: RemoveMultipleBlockagesDto },
+  TContext
+> => {
+  const mutationKey = ['transactionControllerRemoveMultipleBlockages'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getTransactionControllerRemoveMultipleBlockagesMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof transactionControllerRemoveMultipleBlockages>>, TError,{data: RemoveMultipleBlockagesDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof transactionControllerRemoveMultipleBlockages>>, TError,{data: RemoveMultipleBlockagesDto}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof transactionControllerRemoveMultipleBlockages>>,
+    { data: RemoveMultipleBlockagesDto }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['transactionControllerRemoveMultipleBlockages'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return transactionControllerRemoveMultipleBlockages(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type TransactionControllerRemoveMultipleBlockagesMutationResult =
+  NonNullable<
+    Awaited<ReturnType<typeof transactionControllerRemoveMultipleBlockages>>
+  >;
+export type TransactionControllerRemoveMultipleBlockagesMutationBody =
+  RemoveMultipleBlockagesDto;
+export type TransactionControllerRemoveMultipleBlockagesMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof transactionControllerRemoveMultipleBlockages>>, {data: RemoveMultipleBlockagesDto}> = (props) => {
-          const {data} = props ?? {};
-
-          return  transactionControllerRemoveMultipleBlockages(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type TransactionControllerRemoveMultipleBlockagesMutationResult = NonNullable<Awaited<ReturnType<typeof transactionControllerRemoveMultipleBlockages>>>
-    export type TransactionControllerRemoveMultipleBlockagesMutationBody = RemoveMultipleBlockagesDto
-    export type TransactionControllerRemoveMultipleBlockagesMutationError = void
-
-    /**
+/**
  * @summary Remove multiple blockages
  */
-export const useTransactionControllerRemoveMultipleBlockages = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof transactionControllerRemoveMultipleBlockages>>, TError,{data: RemoveMultipleBlockagesDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof transactionControllerRemoveMultipleBlockages>>,
-        TError,
-        {data: RemoveMultipleBlockagesDto},
-        TContext
-      > => {
+export const useTransactionControllerRemoveMultipleBlockages = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof transactionControllerRemoveMultipleBlockages>>,
+      TError,
+      { data: RemoveMultipleBlockagesDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof transactionControllerRemoveMultipleBlockages>>,
+  TError,
+  { data: RemoveMultipleBlockagesDto },
+  TContext
+> => {
+  const mutationOptions =
+    getTransactionControllerRemoveMultipleBlockagesMutationOptions(options);
 
-      const mutationOptions = getTransactionControllerRemoveMultipleBlockagesMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * @summary List active blockages
  */
 export const transactionControllerGetActiveBlockages = (
-    params: TransactionControllerGetActiveBlockagesParams,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  params: TransactionControllerGetActiveBlockagesParams,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<ActiveBlockagesResponseDto>(
-      {url: `/transactions/user/blockages/list/active`, method: 'GET',
-        params, signal
+  return getAxiosInstance<ActiveBlockagesResponseDto>(
+    {
+      url: `/transactions/user/blockages/list/active`,
+      method: 'GET',
+      params,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
-export const getTransactionControllerGetActiveBlockagesQueryKey = (params: TransactionControllerGetActiveBlockagesParams,) => {
-    return [`/transactions/user/blockages/list/active`, ...(params ? [params]: [])] as const;
-    }
-
-    
-export const getTransactionControllerGetActiveBlockagesQueryOptions = <TData = Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>, TError = unknown>(params: TransactionControllerGetActiveBlockagesParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getTransactionControllerGetActiveBlockagesQueryKey = (
+  params: TransactionControllerGetActiveBlockagesParams
 ) => {
+  return [
+    `/transactions/user/blockages/list/active`,
+    ...(params ? [params] : []),
+  ] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getTransactionControllerGetActiveBlockagesQueryOptions = <
+  TData = Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>,
+  TError = unknown
+>(
+  params: TransactionControllerGetActiveBlockagesParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getTransactionControllerGetActiveBlockagesQueryKey(params);
+  const queryKey =
+    queryOptions?.queryKey ??
+    getTransactionControllerGetActiveBlockagesQueryKey(params);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>
+  > = ({ signal }) =>
+    transactionControllerGetActiveBlockages(params, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>> = ({ signal }) => transactionControllerGetActiveBlockages(params, requestOptions, signal);
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type TransactionControllerGetActiveBlockagesQueryResult = NonNullable<
+  Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>
+>;
+export type TransactionControllerGetActiveBlockagesQueryError = unknown;
 
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type TransactionControllerGetActiveBlockagesQueryResult = NonNullable<Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>>
-export type TransactionControllerGetActiveBlockagesQueryError = unknown
-
-
-export function useTransactionControllerGetActiveBlockages<TData = Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>, TError = unknown>(
- params: TransactionControllerGetActiveBlockagesParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>, TError, TData>> & Pick<
+export function useTransactionControllerGetActiveBlockages<
+  TData = Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>,
+  TError = unknown
+>(
+  params: TransactionControllerGetActiveBlockagesParams,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>,
           TError,
           Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useTransactionControllerGetActiveBlockages<TData = Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>, TError = unknown>(
- params: TransactionControllerGetActiveBlockagesParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useTransactionControllerGetActiveBlockages<
+  TData = Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>,
+  TError = unknown
+>(
+  params: TransactionControllerGetActiveBlockagesParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>,
           TError,
           Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useTransactionControllerGetActiveBlockages<TData = Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>, TError = unknown>(
- params: TransactionControllerGetActiveBlockagesParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useTransactionControllerGetActiveBlockages<
+  TData = Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>,
+  TError = unknown
+>(
+  params: TransactionControllerGetActiveBlockagesParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary List active blockages
  */
 
-export function useTransactionControllerGetActiveBlockages<TData = Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>, TError = unknown>(
- params: TransactionControllerGetActiveBlockagesParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useTransactionControllerGetActiveBlockages<
+  TData = Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>,
+  TError = unknown
+>(
+  params: TransactionControllerGetActiveBlockagesParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetActiveBlockages>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getTransactionControllerGetActiveBlockagesQueryOptions(
+    params,
+    options
+  );
 
-  const queryOptions = getTransactionControllerGetActiveBlockagesQueryOptions(params,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * @summary Get blockage history
  */
 export const transactionControllerGetBlockageHistory = (
-    params: TransactionControllerGetBlockageHistoryParams,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  params: TransactionControllerGetBlockageHistoryParams,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<BlockageHistoryResponseDto>(
-      {url: `/transactions/user/blockages/list/history`, method: 'GET',
-        params, signal
+  return getAxiosInstance<BlockageHistoryResponseDto>(
+    {
+      url: `/transactions/user/blockages/list/history`,
+      method: 'GET',
+      params,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
-export const getTransactionControllerGetBlockageHistoryQueryKey = (params: TransactionControllerGetBlockageHistoryParams,) => {
-    return [`/transactions/user/blockages/list/history`, ...(params ? [params]: [])] as const;
-    }
-
-    
-export const getTransactionControllerGetBlockageHistoryQueryOptions = <TData = Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>, TError = unknown>(params: TransactionControllerGetBlockageHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getTransactionControllerGetBlockageHistoryQueryKey = (
+  params: TransactionControllerGetBlockageHistoryParams
 ) => {
+  return [
+    `/transactions/user/blockages/list/history`,
+    ...(params ? [params] : []),
+  ] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getTransactionControllerGetBlockageHistoryQueryOptions = <
+  TData = Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>,
+  TError = unknown
+>(
+  params: TransactionControllerGetBlockageHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getTransactionControllerGetBlockageHistoryQueryKey(params);
+  const queryKey =
+    queryOptions?.queryKey ??
+    getTransactionControllerGetBlockageHistoryQueryKey(params);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>
+  > = ({ signal }) =>
+    transactionControllerGetBlockageHistory(params, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>> = ({ signal }) => transactionControllerGetBlockageHistory(params, requestOptions, signal);
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type TransactionControllerGetBlockageHistoryQueryResult = NonNullable<
+  Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>
+>;
+export type TransactionControllerGetBlockageHistoryQueryError = unknown;
 
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type TransactionControllerGetBlockageHistoryQueryResult = NonNullable<Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>>
-export type TransactionControllerGetBlockageHistoryQueryError = unknown
-
-
-export function useTransactionControllerGetBlockageHistory<TData = Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>, TError = unknown>(
- params: TransactionControllerGetBlockageHistoryParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>, TError, TData>> & Pick<
+export function useTransactionControllerGetBlockageHistory<
+  TData = Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>,
+  TError = unknown
+>(
+  params: TransactionControllerGetBlockageHistoryParams,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>,
           TError,
           Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useTransactionControllerGetBlockageHistory<TData = Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>, TError = unknown>(
- params: TransactionControllerGetBlockageHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useTransactionControllerGetBlockageHistory<
+  TData = Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>,
+  TError = unknown
+>(
+  params: TransactionControllerGetBlockageHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>,
           TError,
           Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useTransactionControllerGetBlockageHistory<TData = Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>, TError = unknown>(
- params: TransactionControllerGetBlockageHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useTransactionControllerGetBlockageHistory<
+  TData = Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>,
+  TError = unknown
+>(
+  params: TransactionControllerGetBlockageHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get blockage history
  */
 
-export function useTransactionControllerGetBlockageHistory<TData = Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>, TError = unknown>(
- params: TransactionControllerGetBlockageHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useTransactionControllerGetBlockageHistory<
+  TData = Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>,
+  TError = unknown
+>(
+  params: TransactionControllerGetBlockageHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof transactionControllerGetBlockageHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getTransactionControllerGetBlockageHistoryQueryOptions(
+    params,
+    options
+  );
 
-  const queryOptions = getTransactionControllerGetBlockageHistoryQueryOptions(params,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * @summary Burn a blockage (Game exit scenario)
  */
 export const transactionControllerBurnBlockage = (
-    burnBlockageDto: BurnBlockageDto,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  burnBlockageDto: BurnBlockageDto,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<BurnBlockageResponse | void>(
-      {url: `/transactions/blockages/burn`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: burnBlockageDto, signal
+  return getAxiosInstance<BurnBlockageResponse | void>(
+    {
+      url: `/transactions/blockages/burn`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: burnBlockageDto,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getTransactionControllerBurnBlockageMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof transactionControllerBurnBlockage>>,
+    TError,
+    { data: BurnBlockageDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof transactionControllerBurnBlockage>>,
+  TError,
+  { data: BurnBlockageDto },
+  TContext
+> => {
+  const mutationKey = ['transactionControllerBurnBlockage'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getTransactionControllerBurnBlockageMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof transactionControllerBurnBlockage>>, TError,{data: BurnBlockageDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof transactionControllerBurnBlockage>>, TError,{data: BurnBlockageDto}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof transactionControllerBurnBlockage>>,
+    { data: BurnBlockageDto }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['transactionControllerBurnBlockage'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return transactionControllerBurnBlockage(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type TransactionControllerBurnBlockageMutationResult = NonNullable<
+  Awaited<ReturnType<typeof transactionControllerBurnBlockage>>
+>;
+export type TransactionControllerBurnBlockageMutationBody = BurnBlockageDto;
+export type TransactionControllerBurnBlockageMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof transactionControllerBurnBlockage>>, {data: BurnBlockageDto}> = (props) => {
-          const {data} = props ?? {};
-
-          return  transactionControllerBurnBlockage(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type TransactionControllerBurnBlockageMutationResult = NonNullable<Awaited<ReturnType<typeof transactionControllerBurnBlockage>>>
-    export type TransactionControllerBurnBlockageMutationBody = BurnBlockageDto
-    export type TransactionControllerBurnBlockageMutationError = void
-
-    /**
+/**
  * @summary Burn a blockage (Game exit scenario)
  */
-export const useTransactionControllerBurnBlockage = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof transactionControllerBurnBlockage>>, TError,{data: BurnBlockageDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof transactionControllerBurnBlockage>>,
-        TError,
-        {data: BurnBlockageDto},
-        TContext
-      > => {
+export const useTransactionControllerBurnBlockage = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof transactionControllerBurnBlockage>>,
+      TError,
+      { data: BurnBlockageDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof transactionControllerBurnBlockage>>,
+  TError,
+  { data: BurnBlockageDto },
+  TContext
+> => {
+  const mutationOptions =
+    getTransactionControllerBurnBlockageMutationOptions(options);
 
-      const mutationOptions = getTransactionControllerBurnBlockageMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * @summary Get user NFTs
  */
 export const nFTStakingControllerGetUserNFTs = (
-    walletAddress: string,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  walletAddress: string,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<NFTMetadataDto[]>(
-      {url: `/nft-staking/nfts/${walletAddress}`, method: 'GET', signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<NFTMetadataDto[]>(
+    { url: `/nft-staking/nfts/${walletAddress}`, method: 'GET', signal },
+    options
+  );
+};
 
-export const getNFTStakingControllerGetUserNFTsQueryKey = (walletAddress: string,) => {
-    return [`/nft-staking/nfts/${walletAddress}`] as const;
-    }
-
-    
-export const getNFTStakingControllerGetUserNFTsQueryOptions = <TData = Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>, TError = void>(walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getNFTStakingControllerGetUserNFTsQueryKey = (
+  walletAddress: string
 ) => {
+  return [`/nft-staking/nfts/${walletAddress}`] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getNFTStakingControllerGetUserNFTsQueryOptions = <
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>,
+  TError = void
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getNFTStakingControllerGetUserNFTsQueryKey(walletAddress);
+  const queryKey =
+    queryOptions?.queryKey ??
+    getNFTStakingControllerGetUserNFTsQueryKey(walletAddress);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>
+  > = ({ signal }) =>
+    nFTStakingControllerGetUserNFTs(walletAddress, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>> = ({ signal }) => nFTStakingControllerGetUserNFTs(walletAddress, requestOptions, signal);
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!walletAddress,
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type NFTStakingControllerGetUserNFTsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>
+>;
+export type NFTStakingControllerGetUserNFTsQueryError = void;
 
-      
-
-   return  { queryKey, queryFn, enabled: !!(walletAddress), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type NFTStakingControllerGetUserNFTsQueryResult = NonNullable<Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>>
-export type NFTStakingControllerGetUserNFTsQueryError = void
-
-
-export function useNFTStakingControllerGetUserNFTs<TData = Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>, TError = void>(
- walletAddress: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>, TError, TData>> & Pick<
+export function useNFTStakingControllerGetUserNFTs<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>,
+  TError = void
+>(
+  walletAddress: string,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>,
           TError,
           Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useNFTStakingControllerGetUserNFTs<TData = Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>, TError = void>(
- walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useNFTStakingControllerGetUserNFTs<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>,
+  TError = void
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>,
           TError,
           Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useNFTStakingControllerGetUserNFTs<TData = Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>, TError = void>(
- walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useNFTStakingControllerGetUserNFTs<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>,
+  TError = void
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get user NFTs
  */
 
-export function useNFTStakingControllerGetUserNFTs<TData = Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>, TError = void>(
- walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useNFTStakingControllerGetUserNFTs<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>,
+  TError = void
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetUserNFTs>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getNFTStakingControllerGetUserNFTsQueryOptions(
+    walletAddress,
+    options
+  );
 
-  const queryOptions = getNFTStakingControllerGetUserNFTsQueryOptions(walletAddress,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * @summary Create freeze transactions for NFTs
  */
 export const nFTStakingControllerFreezeNFTs = (
-    freezeNFTsRequestDto: FreezeNFTsRequestDto,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  freezeNFTsRequestDto: FreezeNFTsRequestDto,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<TransactionResponseDto>(
-      {url: `/nft-staking/freeze-nfts`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: freezeNFTsRequestDto, signal
+  return getAxiosInstance<TransactionResponseDto>(
+    {
+      url: `/nft-staking/freeze-nfts`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: freezeNFTsRequestDto,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getNFTStakingControllerFreezeNFTsMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof nFTStakingControllerFreezeNFTs>>,
+    TError,
+    { data: FreezeNFTsRequestDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof nFTStakingControllerFreezeNFTs>>,
+  TError,
+  { data: FreezeNFTsRequestDto },
+  TContext
+> => {
+  const mutationKey = ['nFTStakingControllerFreezeNFTs'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getNFTStakingControllerFreezeNFTsMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof nFTStakingControllerFreezeNFTs>>, TError,{data: FreezeNFTsRequestDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof nFTStakingControllerFreezeNFTs>>, TError,{data: FreezeNFTsRequestDto}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof nFTStakingControllerFreezeNFTs>>,
+    { data: FreezeNFTsRequestDto }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['nFTStakingControllerFreezeNFTs'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return nFTStakingControllerFreezeNFTs(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type NFTStakingControllerFreezeNFTsMutationResult = NonNullable<
+  Awaited<ReturnType<typeof nFTStakingControllerFreezeNFTs>>
+>;
+export type NFTStakingControllerFreezeNFTsMutationBody = FreezeNFTsRequestDto;
+export type NFTStakingControllerFreezeNFTsMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof nFTStakingControllerFreezeNFTs>>, {data: FreezeNFTsRequestDto}> = (props) => {
-          const {data} = props ?? {};
-
-          return  nFTStakingControllerFreezeNFTs(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type NFTStakingControllerFreezeNFTsMutationResult = NonNullable<Awaited<ReturnType<typeof nFTStakingControllerFreezeNFTs>>>
-    export type NFTStakingControllerFreezeNFTsMutationBody = FreezeNFTsRequestDto
-    export type NFTStakingControllerFreezeNFTsMutationError = void
-
-    /**
+/**
  * @summary Create freeze transactions for NFTs
  */
-export const useNFTStakingControllerFreezeNFTs = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof nFTStakingControllerFreezeNFTs>>, TError,{data: FreezeNFTsRequestDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof nFTStakingControllerFreezeNFTs>>,
-        TError,
-        {data: FreezeNFTsRequestDto},
-        TContext
-      > => {
+export const useNFTStakingControllerFreezeNFTs = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof nFTStakingControllerFreezeNFTs>>,
+      TError,
+      { data: FreezeNFTsRequestDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof nFTStakingControllerFreezeNFTs>>,
+  TError,
+  { data: FreezeNFTsRequestDto },
+  TContext
+> => {
+  const mutationOptions =
+    getNFTStakingControllerFreezeNFTsMutationOptions(options);
 
-      const mutationOptions = getNFTStakingControllerFreezeNFTsMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * @summary Create thaw transactions for NFTs
  */
 export const nFTStakingControllerThawNFTs = (
-    freezeNFTsRequestDto: FreezeNFTsRequestDto,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  freezeNFTsRequestDto: FreezeNFTsRequestDto,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<TransactionResponseDto>(
-      {url: `/nft-staking/thaw-nfts`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: freezeNFTsRequestDto, signal
+  return getAxiosInstance<TransactionResponseDto>(
+    {
+      url: `/nft-staking/thaw-nfts`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: freezeNFTsRequestDto,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getNFTStakingControllerThawNFTsMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof nFTStakingControllerThawNFTs>>,
+    TError,
+    { data: FreezeNFTsRequestDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof nFTStakingControllerThawNFTs>>,
+  TError,
+  { data: FreezeNFTsRequestDto },
+  TContext
+> => {
+  const mutationKey = ['nFTStakingControllerThawNFTs'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getNFTStakingControllerThawNFTsMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof nFTStakingControllerThawNFTs>>, TError,{data: FreezeNFTsRequestDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof nFTStakingControllerThawNFTs>>, TError,{data: FreezeNFTsRequestDto}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof nFTStakingControllerThawNFTs>>,
+    { data: FreezeNFTsRequestDto }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['nFTStakingControllerThawNFTs'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return nFTStakingControllerThawNFTs(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type NFTStakingControllerThawNFTsMutationResult = NonNullable<
+  Awaited<ReturnType<typeof nFTStakingControllerThawNFTs>>
+>;
+export type NFTStakingControllerThawNFTsMutationBody = FreezeNFTsRequestDto;
+export type NFTStakingControllerThawNFTsMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof nFTStakingControllerThawNFTs>>, {data: FreezeNFTsRequestDto}> = (props) => {
-          const {data} = props ?? {};
-
-          return  nFTStakingControllerThawNFTs(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type NFTStakingControllerThawNFTsMutationResult = NonNullable<Awaited<ReturnType<typeof nFTStakingControllerThawNFTs>>>
-    export type NFTStakingControllerThawNFTsMutationBody = FreezeNFTsRequestDto
-    export type NFTStakingControllerThawNFTsMutationError = void
-
-    /**
+/**
  * @summary Create thaw transactions for NFTs
  */
-export const useNFTStakingControllerThawNFTs = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof nFTStakingControllerThawNFTs>>, TError,{data: FreezeNFTsRequestDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof nFTStakingControllerThawNFTs>>,
-        TError,
-        {data: FreezeNFTsRequestDto},
-        TContext
-      > => {
+export const useNFTStakingControllerThawNFTs = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof nFTStakingControllerThawNFTs>>,
+      TError,
+      { data: FreezeNFTsRequestDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof nFTStakingControllerThawNFTs>>,
+  TError,
+  { data: FreezeNFTsRequestDto },
+  TContext
+> => {
+  const mutationOptions =
+    getNFTStakingControllerThawNFTsMutationOptions(options);
 
-      const mutationOptions = getNFTStakingControllerThawNFTsMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * @summary Finalize signed transaction
  */
 export const nFTStakingControllerFinalizeTransaction = (
-    finalizeTransactionRequestDto: FinalizeTransactionRequestDto,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  finalizeTransactionRequestDto: FinalizeTransactionRequestDto,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<TransactionSignatureDto>(
-      {url: `/nft-staking/finalize-transaction`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: finalizeTransactionRequestDto, signal
+  return getAxiosInstance<TransactionSignatureDto>(
+    {
+      url: `/nft-staking/finalize-transaction`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: finalizeTransactionRequestDto,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getNFTStakingControllerFinalizeTransactionMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof nFTStakingControllerFinalizeTransaction>>,
+    TError,
+    { data: FinalizeTransactionRequestDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof nFTStakingControllerFinalizeTransaction>>,
+  TError,
+  { data: FinalizeTransactionRequestDto },
+  TContext
+> => {
+  const mutationKey = ['nFTStakingControllerFinalizeTransaction'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getNFTStakingControllerFinalizeTransactionMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof nFTStakingControllerFinalizeTransaction>>, TError,{data: FinalizeTransactionRequestDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof nFTStakingControllerFinalizeTransaction>>, TError,{data: FinalizeTransactionRequestDto}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof nFTStakingControllerFinalizeTransaction>>,
+    { data: FinalizeTransactionRequestDto }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['nFTStakingControllerFinalizeTransaction'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return nFTStakingControllerFinalizeTransaction(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type NFTStakingControllerFinalizeTransactionMutationResult = NonNullable<
+  Awaited<ReturnType<typeof nFTStakingControllerFinalizeTransaction>>
+>;
+export type NFTStakingControllerFinalizeTransactionMutationBody =
+  FinalizeTransactionRequestDto;
+export type NFTStakingControllerFinalizeTransactionMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof nFTStakingControllerFinalizeTransaction>>, {data: FinalizeTransactionRequestDto}> = (props) => {
-          const {data} = props ?? {};
-
-          return  nFTStakingControllerFinalizeTransaction(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type NFTStakingControllerFinalizeTransactionMutationResult = NonNullable<Awaited<ReturnType<typeof nFTStakingControllerFinalizeTransaction>>>
-    export type NFTStakingControllerFinalizeTransactionMutationBody = FinalizeTransactionRequestDto
-    export type NFTStakingControllerFinalizeTransactionMutationError = void
-
-    /**
+/**
  * @summary Finalize signed transaction
  */
-export const useNFTStakingControllerFinalizeTransaction = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof nFTStakingControllerFinalizeTransaction>>, TError,{data: FinalizeTransactionRequestDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof nFTStakingControllerFinalizeTransaction>>,
-        TError,
-        {data: FinalizeTransactionRequestDto},
-        TContext
-      > => {
+export const useNFTStakingControllerFinalizeTransaction = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof nFTStakingControllerFinalizeTransaction>>,
+      TError,
+      { data: FinalizeTransactionRequestDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof nFTStakingControllerFinalizeTransaction>>,
+  TError,
+  { data: FinalizeTransactionRequestDto },
+  TContext
+> => {
+  const mutationOptions =
+    getNFTStakingControllerFinalizeTransactionMutationOptions(options);
 
-      const mutationOptions = getNFTStakingControllerFinalizeTransactionMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * @summary Get wallet staking statistics
  */
 export const nFTStakingControllerGetWalletStats = (
-    walletAddress: string,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  walletAddress: string,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<WalletStatsDto>(
-      {url: `/nft-staking/wallet-stats/${walletAddress}`, method: 'GET', signal
+  return getAxiosInstance<WalletStatsDto>(
+    {
+      url: `/nft-staking/wallet-stats/${walletAddress}`,
+      method: 'GET',
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
-export const getNFTStakingControllerGetWalletStatsQueryKey = (walletAddress: string,) => {
-    return [`/nft-staking/wallet-stats/${walletAddress}`] as const;
-    }
-
-    
-export const getNFTStakingControllerGetWalletStatsQueryOptions = <TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>, TError = void>(walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getNFTStakingControllerGetWalletStatsQueryKey = (
+  walletAddress: string
 ) => {
+  return [`/nft-staking/wallet-stats/${walletAddress}`] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getNFTStakingControllerGetWalletStatsQueryOptions = <
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>,
+  TError = void
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getNFTStakingControllerGetWalletStatsQueryKey(walletAddress);
+  const queryKey =
+    queryOptions?.queryKey ??
+    getNFTStakingControllerGetWalletStatsQueryKey(walletAddress);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>
+  > = ({ signal }) =>
+    nFTStakingControllerGetWalletStats(walletAddress, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>> = ({ signal }) => nFTStakingControllerGetWalletStats(walletAddress, requestOptions, signal);
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!walletAddress,
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type NFTStakingControllerGetWalletStatsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>
+>;
+export type NFTStakingControllerGetWalletStatsQueryError = void;
 
-      
-
-   return  { queryKey, queryFn, enabled: !!(walletAddress), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type NFTStakingControllerGetWalletStatsQueryResult = NonNullable<Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>>
-export type NFTStakingControllerGetWalletStatsQueryError = void
-
-
-export function useNFTStakingControllerGetWalletStats<TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>, TError = void>(
- walletAddress: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>, TError, TData>> & Pick<
+export function useNFTStakingControllerGetWalletStats<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>,
+  TError = void
+>(
+  walletAddress: string,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>,
           TError,
           Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useNFTStakingControllerGetWalletStats<TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>, TError = void>(
- walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useNFTStakingControllerGetWalletStats<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>,
+  TError = void
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>,
           TError,
           Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useNFTStakingControllerGetWalletStats<TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>, TError = void>(
- walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useNFTStakingControllerGetWalletStats<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>,
+  TError = void
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get wallet staking statistics
  */
 
-export function useNFTStakingControllerGetWalletStats<TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>, TError = void>(
- walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useNFTStakingControllerGetWalletStats<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>,
+  TError = void
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetWalletStats>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getNFTStakingControllerGetWalletStatsQueryOptions(
+    walletAddress,
+    options
+  );
 
-  const queryOptions = getNFTStakingControllerGetWalletStatsQueryOptions(walletAddress,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * @summary Get staked NFTs for wallet
  */
 export const nFTStakingControllerGetStakedNFTs = (
-    walletAddress: string,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  walletAddress: string,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<StakedNFTDto[]>(
-      {url: `/nft-staking/staked-nfts/${walletAddress}`, method: 'GET', signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<StakedNFTDto[]>(
+    { url: `/nft-staking/staked-nfts/${walletAddress}`, method: 'GET', signal },
+    options
+  );
+};
 
-export const getNFTStakingControllerGetStakedNFTsQueryKey = (walletAddress: string,) => {
-    return [`/nft-staking/staked-nfts/${walletAddress}`] as const;
-    }
-
-    
-export const getNFTStakingControllerGetStakedNFTsQueryOptions = <TData = Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>, TError = void>(walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getNFTStakingControllerGetStakedNFTsQueryKey = (
+  walletAddress: string
 ) => {
+  return [`/nft-staking/staked-nfts/${walletAddress}`] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getNFTStakingControllerGetStakedNFTsQueryOptions = <
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>,
+  TError = void
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getNFTStakingControllerGetStakedNFTsQueryKey(walletAddress);
+  const queryKey =
+    queryOptions?.queryKey ??
+    getNFTStakingControllerGetStakedNFTsQueryKey(walletAddress);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>
+  > = ({ signal }) =>
+    nFTStakingControllerGetStakedNFTs(walletAddress, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>> = ({ signal }) => nFTStakingControllerGetStakedNFTs(walletAddress, requestOptions, signal);
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!walletAddress,
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type NFTStakingControllerGetStakedNFTsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>
+>;
+export type NFTStakingControllerGetStakedNFTsQueryError = void;
 
-      
-
-   return  { queryKey, queryFn, enabled: !!(walletAddress), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type NFTStakingControllerGetStakedNFTsQueryResult = NonNullable<Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>>
-export type NFTStakingControllerGetStakedNFTsQueryError = void
-
-
-export function useNFTStakingControllerGetStakedNFTs<TData = Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>, TError = void>(
- walletAddress: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>, TError, TData>> & Pick<
+export function useNFTStakingControllerGetStakedNFTs<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>,
+  TError = void
+>(
+  walletAddress: string,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>,
           TError,
           Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useNFTStakingControllerGetStakedNFTs<TData = Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>, TError = void>(
- walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useNFTStakingControllerGetStakedNFTs<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>,
+  TError = void
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>,
           TError,
           Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useNFTStakingControllerGetStakedNFTs<TData = Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>, TError = void>(
- walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useNFTStakingControllerGetStakedNFTs<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>,
+  TError = void
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get staked NFTs for wallet
  */
 
-export function useNFTStakingControllerGetStakedNFTs<TData = Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>, TError = void>(
- walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useNFTStakingControllerGetStakedNFTs<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>,
+  TError = void
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetStakedNFTs>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getNFTStakingControllerGetStakedNFTsQueryOptions(
+    walletAddress,
+    options
+  );
 
-  const queryOptions = getNFTStakingControllerGetStakedNFTsQueryOptions(walletAddress,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * @summary Get wallet points
  */
 export const nFTStakingControllerGetWalletPoints = (
-    walletAddress: string,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  walletAddress: string,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<WalletPointsDto>(
-      {url: `/nft-staking/wallet-points/${walletAddress}`, method: 'GET', signal
+  return getAxiosInstance<WalletPointsDto>(
+    {
+      url: `/nft-staking/wallet-points/${walletAddress}`,
+      method: 'GET',
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
-export const getNFTStakingControllerGetWalletPointsQueryKey = (walletAddress: string,) => {
-    return [`/nft-staking/wallet-points/${walletAddress}`] as const;
-    }
-
-    
-export const getNFTStakingControllerGetWalletPointsQueryOptions = <TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>, TError = void>(walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getNFTStakingControllerGetWalletPointsQueryKey = (
+  walletAddress: string
 ) => {
+  return [`/nft-staking/wallet-points/${walletAddress}`] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getNFTStakingControllerGetWalletPointsQueryOptions = <
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>,
+  TError = void
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getNFTStakingControllerGetWalletPointsQueryKey(walletAddress);
+  const queryKey =
+    queryOptions?.queryKey ??
+    getNFTStakingControllerGetWalletPointsQueryKey(walletAddress);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>
+  > = ({ signal }) =>
+    nFTStakingControllerGetWalletPoints(walletAddress, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>> = ({ signal }) => nFTStakingControllerGetWalletPoints(walletAddress, requestOptions, signal);
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!walletAddress,
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type NFTStakingControllerGetWalletPointsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>
+>;
+export type NFTStakingControllerGetWalletPointsQueryError = void;
 
-      
-
-   return  { queryKey, queryFn, enabled: !!(walletAddress), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type NFTStakingControllerGetWalletPointsQueryResult = NonNullable<Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>>
-export type NFTStakingControllerGetWalletPointsQueryError = void
-
-
-export function useNFTStakingControllerGetWalletPoints<TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>, TError = void>(
- walletAddress: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>, TError, TData>> & Pick<
+export function useNFTStakingControllerGetWalletPoints<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>,
+  TError = void
+>(
+  walletAddress: string,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>,
           TError,
           Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useNFTStakingControllerGetWalletPoints<TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>, TError = void>(
- walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useNFTStakingControllerGetWalletPoints<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>,
+  TError = void
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>,
           TError,
           Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useNFTStakingControllerGetWalletPoints<TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>, TError = void>(
- walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useNFTStakingControllerGetWalletPoints<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>,
+  TError = void
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get wallet points
  */
 
-export function useNFTStakingControllerGetWalletPoints<TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>, TError = void>(
- walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useNFTStakingControllerGetWalletPoints<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>,
+  TError = void
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetWalletPoints>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getNFTStakingControllerGetWalletPointsQueryOptions(
+    walletAddress,
+    options
+  );
 
-  const queryOptions = getNFTStakingControllerGetWalletPointsQueryOptions(walletAddress,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * @summary Get staking leaderboard
  */
 export const nFTStakingControllerGetLeaderboard = (
-    params?: NFTStakingControllerGetLeaderboardParams,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  params?: NFTStakingControllerGetLeaderboardParams,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<LeaderboardResponseDto>(
-      {url: `/nft-staking/leaderboard`, method: 'GET',
-        params, signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<LeaderboardResponseDto>(
+    { url: `/nft-staking/leaderboard`, method: 'GET', params, signal },
+    options
+  );
+};
 
-export const getNFTStakingControllerGetLeaderboardQueryKey = (params?: NFTStakingControllerGetLeaderboardParams,) => {
-    return [`/nft-staking/leaderboard`, ...(params ? [params]: [])] as const;
-    }
-
-    
-export const getNFTStakingControllerGetLeaderboardQueryOptions = <TData = Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>, TError = unknown>(params?: NFTStakingControllerGetLeaderboardParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getNFTStakingControllerGetLeaderboardQueryKey = (
+  params?: NFTStakingControllerGetLeaderboardParams
 ) => {
+  return [`/nft-staking/leaderboard`, ...(params ? [params] : [])] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getNFTStakingControllerGetLeaderboardQueryOptions = <
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>,
+  TError = unknown
+>(
+  params?: NFTStakingControllerGetLeaderboardParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getNFTStakingControllerGetLeaderboardQueryKey(params);
+  const queryKey =
+    queryOptions?.queryKey ??
+    getNFTStakingControllerGetLeaderboardQueryKey(params);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>
+  > = ({ signal }) =>
+    nFTStakingControllerGetLeaderboard(params, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>> = ({ signal }) => nFTStakingControllerGetLeaderboard(params, requestOptions, signal);
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type NFTStakingControllerGetLeaderboardQueryResult = NonNullable<
+  Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>
+>;
+export type NFTStakingControllerGetLeaderboardQueryError = unknown;
 
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type NFTStakingControllerGetLeaderboardQueryResult = NonNullable<Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>>
-export type NFTStakingControllerGetLeaderboardQueryError = unknown
-
-
-export function useNFTStakingControllerGetLeaderboard<TData = Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>, TError = unknown>(
- params: undefined |  NFTStakingControllerGetLeaderboardParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>, TError, TData>> & Pick<
+export function useNFTStakingControllerGetLeaderboard<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>,
+  TError = unknown
+>(
+  params: undefined | NFTStakingControllerGetLeaderboardParams,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>,
           TError,
           Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useNFTStakingControllerGetLeaderboard<TData = Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>, TError = unknown>(
- params?: NFTStakingControllerGetLeaderboardParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useNFTStakingControllerGetLeaderboard<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>,
+  TError = unknown
+>(
+  params?: NFTStakingControllerGetLeaderboardParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>,
           TError,
           Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useNFTStakingControllerGetLeaderboard<TData = Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>, TError = unknown>(
- params?: NFTStakingControllerGetLeaderboardParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useNFTStakingControllerGetLeaderboard<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>,
+  TError = unknown
+>(
+  params?: NFTStakingControllerGetLeaderboardParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get staking leaderboard
  */
 
-export function useNFTStakingControllerGetLeaderboard<TData = Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>, TError = unknown>(
- params?: NFTStakingControllerGetLeaderboardParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useNFTStakingControllerGetLeaderboard<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>,
+  TError = unknown
+>(
+  params?: NFTStakingControllerGetLeaderboardParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetLeaderboard>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getNFTStakingControllerGetLeaderboardQueryOptions(
+    params,
+    options
+  );
 
-  const queryOptions = getNFTStakingControllerGetLeaderboardQueryOptions(params,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * @summary Get transaction status
  */
 export const nFTStakingControllerGetTransactionStatus = (
-    signature: string,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  signature: string,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<TransactionStatusDto>(
-      {url: `/nft-staking/transaction/${signature}`, method: 'GET', signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<TransactionStatusDto>(
+    { url: `/nft-staking/transaction/${signature}`, method: 'GET', signal },
+    options
+  );
+};
 
-export const getNFTStakingControllerGetTransactionStatusQueryKey = (signature: string,) => {
-    return [`/nft-staking/transaction/${signature}`] as const;
-    }
-
-    
-export const getNFTStakingControllerGetTransactionStatusQueryOptions = <TData = Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>, TError = void>(signature: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getNFTStakingControllerGetTransactionStatusQueryKey = (
+  signature: string
 ) => {
+  return [`/nft-staking/transaction/${signature}`] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getNFTStakingControllerGetTransactionStatusQueryOptions = <
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>,
+  TError = void
+>(
+  signature: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getNFTStakingControllerGetTransactionStatusQueryKey(signature);
+  const queryKey =
+    queryOptions?.queryKey ??
+    getNFTStakingControllerGetTransactionStatusQueryKey(signature);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>
+  > = ({ signal }) =>
+    nFTStakingControllerGetTransactionStatus(signature, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>> = ({ signal }) => nFTStakingControllerGetTransactionStatus(signature, requestOptions, signal);
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!signature,
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type NFTStakingControllerGetTransactionStatusQueryResult = NonNullable<
+  Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>
+>;
+export type NFTStakingControllerGetTransactionStatusQueryError = void;
 
-      
-
-   return  { queryKey, queryFn, enabled: !!(signature), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type NFTStakingControllerGetTransactionStatusQueryResult = NonNullable<Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>>
-export type NFTStakingControllerGetTransactionStatusQueryError = void
-
-
-export function useNFTStakingControllerGetTransactionStatus<TData = Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>, TError = void>(
- signature: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>, TError, TData>> & Pick<
+export function useNFTStakingControllerGetTransactionStatus<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>,
+  TError = void
+>(
+  signature: string,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>,
           TError,
           Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useNFTStakingControllerGetTransactionStatus<TData = Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>, TError = void>(
- signature: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useNFTStakingControllerGetTransactionStatus<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>,
+  TError = void
+>(
+  signature: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>,
           TError,
           Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useNFTStakingControllerGetTransactionStatus<TData = Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>, TError = void>(
- signature: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useNFTStakingControllerGetTransactionStatus<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>,
+  TError = void
+>(
+  signature: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get transaction status
  */
 
-export function useNFTStakingControllerGetTransactionStatus<TData = Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>, TError = void>(
- signature: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useNFTStakingControllerGetTransactionStatus<
+  TData = Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>,
+  TError = void
+>(
+  signature: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTStakingControllerGetTransactionStatus>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getNFTStakingControllerGetTransactionStatusQueryOptions(
+    signature,
+    options
+  );
 
-  const queryOptions = getNFTStakingControllerGetTransactionStatusQueryOptions(signature,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * Queries Magic Eden activities for the specified wallet (walletAddress). If any NFTs from the target collection were purchased and not already recorded, a new ticket record is created. Returns the user’s and the system’s total raffle ticket counts.
  * @summary Check wallet’s NFT purchases and assign raffle tickets.
  */
 export const nFTRaffleControllerCheckUserTickets = (
-    walletAddress: string,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  walletAddress: string,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<CheckTickerResponse>(
-      {url: `/nft-raffles/check-ticker/${walletAddress}`, method: 'GET', signal
+  return getAxiosInstance<CheckTickerResponse>(
+    {
+      url: `/nft-raffles/check-ticker/${walletAddress}`,
+      method: 'GET',
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
-export const getNFTRaffleControllerCheckUserTicketsQueryKey = (walletAddress: string,) => {
-    return [`/nft-raffles/check-ticker/${walletAddress}`] as const;
-    }
-
-    
-export const getNFTRaffleControllerCheckUserTicketsQueryOptions = <TData = Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>, TError = unknown>(walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getNFTRaffleControllerCheckUserTicketsQueryKey = (
+  walletAddress: string
 ) => {
+  return [`/nft-raffles/check-ticker/${walletAddress}`] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getNFTRaffleControllerCheckUserTicketsQueryOptions = <
+  TData = Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>,
+  TError = unknown
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getNFTRaffleControllerCheckUserTicketsQueryKey(walletAddress);
+  const queryKey =
+    queryOptions?.queryKey ??
+    getNFTRaffleControllerCheckUserTicketsQueryKey(walletAddress);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>
+  > = ({ signal }) =>
+    nFTRaffleControllerCheckUserTickets(walletAddress, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>> = ({ signal }) => nFTRaffleControllerCheckUserTickets(walletAddress, requestOptions, signal);
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!walletAddress,
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type NFTRaffleControllerCheckUserTicketsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>
+>;
+export type NFTRaffleControllerCheckUserTicketsQueryError = unknown;
 
-      
-
-   return  { queryKey, queryFn, enabled: !!(walletAddress), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type NFTRaffleControllerCheckUserTicketsQueryResult = NonNullable<Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>>
-export type NFTRaffleControllerCheckUserTicketsQueryError = unknown
-
-
-export function useNFTRaffleControllerCheckUserTickets<TData = Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>, TError = unknown>(
- walletAddress: string, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>, TError, TData>> & Pick<
+export function useNFTRaffleControllerCheckUserTickets<
+  TData = Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>,
+  TError = unknown
+>(
+  walletAddress: string,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>,
           TError,
           Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useNFTRaffleControllerCheckUserTickets<TData = Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>, TError = unknown>(
- walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useNFTRaffleControllerCheckUserTickets<
+  TData = Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>,
+  TError = unknown
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>,
           TError,
           Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useNFTRaffleControllerCheckUserTickets<TData = Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>, TError = unknown>(
- walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useNFTRaffleControllerCheckUserTickets<
+  TData = Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>,
+  TError = unknown
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Check wallet’s NFT purchases and assign raffle tickets.
  */
 
-export function useNFTRaffleControllerCheckUserTickets<TData = Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>, TError = unknown>(
- walletAddress: string, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useNFTRaffleControllerCheckUserTickets<
+  TData = Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>,
+  TError = unknown
+>(
+  walletAddress: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTRaffleControllerCheckUserTickets>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getNFTRaffleControllerCheckUserTicketsQueryOptions(
+    walletAddress,
+    options
+  );
 
-  const queryOptions = getNFTRaffleControllerCheckUserTicketsQueryOptions(walletAddress,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
 
-
-
-
 export const marketPlaceControllerHandleWebhook = (
-    
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<void>(
-      {url: `/market-place/webhook`, method: 'POST', signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<void>(
+    { url: `/market-place/webhook`, method: 'POST', signal },
+    options
+  );
+};
 
+export const getMarketPlaceControllerHandleWebhookMutationOptions = <
+  TError = unknown,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof marketPlaceControllerHandleWebhook>>,
+    TError,
+    void,
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof marketPlaceControllerHandleWebhook>>,
+  TError,
+  void,
+  TContext
+> => {
+  const mutationKey = ['marketPlaceControllerHandleWebhook'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getMarketPlaceControllerHandleWebhookMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof marketPlaceControllerHandleWebhook>>, TError,void, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof marketPlaceControllerHandleWebhook>>, TError,void, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof marketPlaceControllerHandleWebhook>>,
+    void
+  > = () => {
+    return marketPlaceControllerHandleWebhook(requestOptions);
+  };
 
-const mutationKey = ['marketPlaceControllerHandleWebhook'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+  return { mutationFn, ...mutationOptions };
+};
 
-      
+export type MarketPlaceControllerHandleWebhookMutationResult = NonNullable<
+  Awaited<ReturnType<typeof marketPlaceControllerHandleWebhook>>
+>;
 
+export type MarketPlaceControllerHandleWebhookMutationError = unknown;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof marketPlaceControllerHandleWebhook>>, void> = () => {
-          
+export const useMarketPlaceControllerHandleWebhook = <
+  TError = unknown,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof marketPlaceControllerHandleWebhook>>,
+      TError,
+      void,
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof marketPlaceControllerHandleWebhook>>,
+  TError,
+  void,
+  TContext
+> => {
+  const mutationOptions =
+    getMarketPlaceControllerHandleWebhookMutationOptions(options);
 
-          return  marketPlaceControllerHandleWebhook(requestOptions)
-        }
+  return useMutation(mutationOptions, queryClient);
+};
 
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type MarketPlaceControllerHandleWebhookMutationResult = NonNullable<Awaited<ReturnType<typeof marketPlaceControllerHandleWebhook>>>
-    
-    export type MarketPlaceControllerHandleWebhookMutationError = unknown
-
-    export const useMarketPlaceControllerHandleWebhook = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof marketPlaceControllerHandleWebhook>>, TError,void, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof marketPlaceControllerHandleWebhook>>,
-        TError,
-        void,
-        TContext
-      > => {
-
-      const mutationOptions = getMarketPlaceControllerHandleWebhookMutationOptions(options);
-
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * Returns NFTs based on trait filters with pagination support.
  * @summary Get filtered NFTs with pagination
  */
 export const nFTCollectionControllerGetNFTs = (
-    params: NFTCollectionControllerGetNFTsParams,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  params: NFTCollectionControllerGetNFTsParams,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<PaginatedResponseDto>(
-      {url: `/nft-collection`, method: 'GET',
-        params, signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<PaginatedResponseDto>(
+    { url: `/nft-collection`, method: 'GET', params, signal },
+    options
+  );
+};
 
-export const getNFTCollectionControllerGetNFTsQueryKey = (params: NFTCollectionControllerGetNFTsParams,) => {
-    return [`/nft-collection`, ...(params ? [params]: [])] as const;
-    }
-
-    
-export const getNFTCollectionControllerGetNFTsQueryOptions = <TData = Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>, TError = unknown>(params: NFTCollectionControllerGetNFTsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getNFTCollectionControllerGetNFTsQueryKey = (
+  params: NFTCollectionControllerGetNFTsParams
 ) => {
+  return [`/nft-collection`, ...(params ? [params] : [])] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getNFTCollectionControllerGetNFTsQueryOptions = <
+  TData = Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>,
+  TError = unknown
+>(
+  params: NFTCollectionControllerGetNFTsParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getNFTCollectionControllerGetNFTsQueryKey(params);
+  const queryKey =
+    queryOptions?.queryKey ?? getNFTCollectionControllerGetNFTsQueryKey(params);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>
+  > = ({ signal }) =>
+    nFTCollectionControllerGetNFTs(params, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>> = ({ signal }) => nFTCollectionControllerGetNFTs(params, requestOptions, signal);
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type NFTCollectionControllerGetNFTsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>
+>;
+export type NFTCollectionControllerGetNFTsQueryError = unknown;
 
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type NFTCollectionControllerGetNFTsQueryResult = NonNullable<Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>>
-export type NFTCollectionControllerGetNFTsQueryError = unknown
-
-
-export function useNFTCollectionControllerGetNFTs<TData = Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>, TError = unknown>(
- params: NFTCollectionControllerGetNFTsParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>, TError, TData>> & Pick<
+export function useNFTCollectionControllerGetNFTs<
+  TData = Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>,
+  TError = unknown
+>(
+  params: NFTCollectionControllerGetNFTsParams,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>,
           TError,
           Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useNFTCollectionControllerGetNFTs<TData = Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>, TError = unknown>(
- params: NFTCollectionControllerGetNFTsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useNFTCollectionControllerGetNFTs<
+  TData = Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>,
+  TError = unknown
+>(
+  params: NFTCollectionControllerGetNFTsParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>,
           TError,
           Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useNFTCollectionControllerGetNFTs<TData = Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>, TError = unknown>(
- params: NFTCollectionControllerGetNFTsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useNFTCollectionControllerGetNFTs<
+  TData = Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>,
+  TError = unknown
+>(
+  params: NFTCollectionControllerGetNFTsParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get filtered NFTs with pagination
  */
 
-export function useNFTCollectionControllerGetNFTs<TData = Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>, TError = unknown>(
- params: NFTCollectionControllerGetNFTsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useNFTCollectionControllerGetNFTs<
+  TData = Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>,
+  TError = unknown
+>(
+  params: NFTCollectionControllerGetNFTsParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTCollectionControllerGetNFTs>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getNFTCollectionControllerGetNFTsQueryOptions(
+    params,
+    options
+  );
 
-  const queryOptions = getNFTCollectionControllerGetNFTsQueryOptions(params,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * Returns all trait types and their possible values that can be used for filtering
  * @summary Get all available trait types and their possible values
  */
 export const nFTCollectionControllerGetAvailableTraits = (
-    
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<unknown>(
-      {url: `/nft-collection/traits`, method: 'GET', signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<unknown>(
+    { url: `/nft-collection/traits`, method: 'GET', signal },
+    options
+  );
+};
 
 export const getNFTCollectionControllerGetAvailableTraitsQueryKey = () => {
-    return [`/nft-collection/traits`] as const;
-    }
+  return [`/nft-collection/traits`] as const;
+};
 
-    
-export const getNFTCollectionControllerGetAvailableTraitsQueryOptions = <TData = Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>, TError = unknown>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
-) => {
+export const getNFTCollectionControllerGetAvailableTraitsQueryOptions = <
+  TData = Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>,
+  TError = unknown
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+  const queryKey =
+    queryOptions?.queryKey ??
+    getNFTCollectionControllerGetAvailableTraitsQueryKey();
 
-  const queryKey =  queryOptions?.queryKey ?? getNFTCollectionControllerGetAvailableTraitsQueryKey();
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>
+  > = ({ signal }) =>
+    nFTCollectionControllerGetAvailableTraits(requestOptions, signal);
 
-  
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>> = ({ signal }) => nFTCollectionControllerGetAvailableTraits(requestOptions, signal);
+export type NFTCollectionControllerGetAvailableTraitsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>
+>;
+export type NFTCollectionControllerGetAvailableTraitsQueryError = unknown;
 
-      
-
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type NFTCollectionControllerGetAvailableTraitsQueryResult = NonNullable<Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>>
-export type NFTCollectionControllerGetAvailableTraitsQueryError = unknown
-
-
-export function useNFTCollectionControllerGetAvailableTraits<TData = Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>, TError = unknown>(
-  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>, TError, TData>> & Pick<
+export function useNFTCollectionControllerGetAvailableTraits<
+  TData = Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>,
+  TError = unknown
+>(
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>,
           TError,
           Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useNFTCollectionControllerGetAvailableTraits<TData = Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useNFTCollectionControllerGetAvailableTraits<
+  TData = Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>,
           TError,
           Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useNFTCollectionControllerGetAvailableTraits<TData = Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useNFTCollectionControllerGetAvailableTraits<
+  TData = Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get all available trait types and their possible values
  */
 
-export function useNFTCollectionControllerGetAvailableTraits<TData = Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useNFTCollectionControllerGetAvailableTraits<
+  TData = Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof nFTCollectionControllerGetAvailableTraits>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions =
+    getNFTCollectionControllerGetAvailableTraitsQueryOptions(options);
 
-  const queryOptions = getNFTCollectionControllerGetAvailableTraitsQueryOptions(options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
 
-
-
-
 export const tokenGateControllerGetUserStatus = (
-    
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<AccountTokenStatusResponse>(
-      {url: `/tokens/status`, method: 'GET', signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<AccountTokenStatusResponse>(
+    { url: `/tokens/status`, method: 'GET', signal },
+    options
+  );
+};
 
 export const getTokenGateControllerGetUserStatusQueryKey = () => {
-    return [`/tokens/status`] as const;
-    }
+  return [`/tokens/status`] as const;
+};
 
-    
-export const getTokenGateControllerGetUserStatusQueryOptions = <TData = Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>, TError = unknown>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
-) => {
+export const getTokenGateControllerGetUserStatusQueryOptions = <
+  TData = Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>,
+  TError = unknown
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+  const queryKey =
+    queryOptions?.queryKey ?? getTokenGateControllerGetUserStatusQueryKey();
 
-  const queryKey =  queryOptions?.queryKey ?? getTokenGateControllerGetUserStatusQueryKey();
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>
+  > = ({ signal }) => tokenGateControllerGetUserStatus(requestOptions, signal);
 
-  
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>> = ({ signal }) => tokenGateControllerGetUserStatus(requestOptions, signal);
+export type TokenGateControllerGetUserStatusQueryResult = NonNullable<
+  Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>
+>;
+export type TokenGateControllerGetUserStatusQueryError = unknown;
 
-      
-
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type TokenGateControllerGetUserStatusQueryResult = NonNullable<Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>>
-export type TokenGateControllerGetUserStatusQueryError = unknown
-
-
-export function useTokenGateControllerGetUserStatus<TData = Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>, TError = unknown>(
-  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>, TError, TData>> & Pick<
+export function useTokenGateControllerGetUserStatus<
+  TData = Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>,
+  TError = unknown
+>(
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>,
           TError,
           Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useTokenGateControllerGetUserStatus<TData = Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useTokenGateControllerGetUserStatus<
+  TData = Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>,
           TError,
           Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useTokenGateControllerGetUserStatus<TData = Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useTokenGateControllerGetUserStatus<
+  TData = Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 
-export function useTokenGateControllerGetUserStatus<TData = Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>, TError = unknown>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useTokenGateControllerGetUserStatus<
+  TData = Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof tokenGateControllerGetUserStatus>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getTokenGateControllerGetUserStatusQueryOptions(options);
 
-  const queryOptions = getTokenGateControllerGetUserStatusQueryOptions(options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
 
-
-
-
 export const tokenGateControllerSyncTokenGate = (
-    
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<void>(
-      {url: `/tokens/sync`, method: 'POST', signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<void>(
+    { url: `/tokens/sync`, method: 'POST', signal },
+    options
+  );
+};
 
+export const getTokenGateControllerSyncTokenGateMutationOptions = <
+  TError = unknown,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof tokenGateControllerSyncTokenGate>>,
+    TError,
+    void,
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof tokenGateControllerSyncTokenGate>>,
+  TError,
+  void,
+  TContext
+> => {
+  const mutationKey = ['tokenGateControllerSyncTokenGate'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getTokenGateControllerSyncTokenGateMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof tokenGateControllerSyncTokenGate>>, TError,void, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof tokenGateControllerSyncTokenGate>>, TError,void, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof tokenGateControllerSyncTokenGate>>,
+    void
+  > = () => {
+    return tokenGateControllerSyncTokenGate(requestOptions);
+  };
 
-const mutationKey = ['tokenGateControllerSyncTokenGate'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+  return { mutationFn, ...mutationOptions };
+};
 
-      
+export type TokenGateControllerSyncTokenGateMutationResult = NonNullable<
+  Awaited<ReturnType<typeof tokenGateControllerSyncTokenGate>>
+>;
 
+export type TokenGateControllerSyncTokenGateMutationError = unknown;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof tokenGateControllerSyncTokenGate>>, void> = () => {
-          
+export const useTokenGateControllerSyncTokenGate = <
+  TError = unknown,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof tokenGateControllerSyncTokenGate>>,
+      TError,
+      void,
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof tokenGateControllerSyncTokenGate>>,
+  TError,
+  void,
+  TContext
+> => {
+  const mutationOptions =
+    getTokenGateControllerSyncTokenGateMutationOptions(options);
 
-          return  tokenGateControllerSyncTokenGate(requestOptions)
-        }
+  return useMutation(mutationOptions, queryClient);
+};
 
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type TokenGateControllerSyncTokenGateMutationResult = NonNullable<Awaited<ReturnType<typeof tokenGateControllerSyncTokenGate>>>
-    
-    export type TokenGateControllerSyncTokenGateMutationError = unknown
-
-    export const useTokenGateControllerSyncTokenGate = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof tokenGateControllerSyncTokenGate>>, TError,void, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof tokenGateControllerSyncTokenGate>>,
-        TError,
-        void,
-        TContext
-      > => {
-
-      const mutationOptions = getTokenGateControllerSyncTokenGateMutationOptions(options);
-
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * Returns the wallet address that users need to send funds to when depositing for games. This is the centralized wallet that receives all game deposits. Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Get game wallet address
  */
 export const gamesControllerGetGameWalletAddress = (
-    
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<WalletAddressResponse>(
-      {url: `/games/wallet/address`, method: 'GET', signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<WalletAddressResponse>(
+    { url: `/games/wallet/address`, method: 'GET', signal },
+    options
+  );
+};
 
 export const getGamesControllerGetGameWalletAddressQueryKey = () => {
-    return [`/games/wallet/address`] as const;
-    }
+  return [`/games/wallet/address`] as const;
+};
 
-    
-export const getGamesControllerGetGameWalletAddressQueryOptions = <TData = Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>, TError = void>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
-) => {
+export const getGamesControllerGetGameWalletAddressQueryOptions = <
+  TData = Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>,
+  TError = void
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+  const queryKey =
+    queryOptions?.queryKey ?? getGamesControllerGetGameWalletAddressQueryKey();
 
-  const queryKey =  queryOptions?.queryKey ?? getGamesControllerGetGameWalletAddressQueryKey();
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>
+  > = ({ signal }) =>
+    gamesControllerGetGameWalletAddress(requestOptions, signal);
 
-  
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>> = ({ signal }) => gamesControllerGetGameWalletAddress(requestOptions, signal);
+export type GamesControllerGetGameWalletAddressQueryResult = NonNullable<
+  Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>
+>;
+export type GamesControllerGetGameWalletAddressQueryError = void;
 
-      
-
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type GamesControllerGetGameWalletAddressQueryResult = NonNullable<Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>>
-export type GamesControllerGetGameWalletAddressQueryError = void
-
-
-export function useGamesControllerGetGameWalletAddress<TData = Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>, TError = void>(
-  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>, TError, TData>> & Pick<
+export function useGamesControllerGetGameWalletAddress<
+  TData = Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>,
+  TError = void
+>(
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>,
           TError,
           Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useGamesControllerGetGameWalletAddress<TData = Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>, TError = void>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useGamesControllerGetGameWalletAddress<
+  TData = Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>,
           TError,
           Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useGamesControllerGetGameWalletAddress<TData = Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>, TError = void>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useGamesControllerGetGameWalletAddress<
+  TData = Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get game wallet address
  */
 
-export function useGamesControllerGetGameWalletAddress<TData = Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>, TError = void>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useGamesControllerGetGameWalletAddress<
+  TData = Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesControllerGetGameWalletAddress>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions =
+    getGamesControllerGetGameWalletAddressQueryOptions(options);
 
-  const queryOptions = getGamesControllerGetGameWalletAddressQueryOptions(options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * Retrieves the authenticated user's available balance for the specified token type. The response includes total balance, available balance (total minus blockages), any active blockages, and details about each blockage. This endpoint is useful for showing users how much they can wager on games. Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Get authenticated user balance for games
  */
 export const gamesControllerGetBalance = (
-    params: GamesControllerGetBalanceParams,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  params: GamesControllerGetBalanceParams,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<BalanceResponse>(
-      {url: `/games/balance`, method: 'GET',
-        params, signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<BalanceResponse>(
+    { url: `/games/balance`, method: 'GET', params, signal },
+    options
+  );
+};
 
-export const getGamesControllerGetBalanceQueryKey = (params: GamesControllerGetBalanceParams,) => {
-    return [`/games/balance`, ...(params ? [params]: [])] as const;
-    }
-
-    
-export const getGamesControllerGetBalanceQueryOptions = <TData = Awaited<ReturnType<typeof gamesControllerGetBalance>>, TError = void>(params: GamesControllerGetBalanceParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof gamesControllerGetBalance>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getGamesControllerGetBalanceQueryKey = (
+  params: GamesControllerGetBalanceParams
 ) => {
+  return [`/games/balance`, ...(params ? [params] : [])] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getGamesControllerGetBalanceQueryOptions = <
+  TData = Awaited<ReturnType<typeof gamesControllerGetBalance>>,
+  TError = void
+>(
+  params: GamesControllerGetBalanceParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesControllerGetBalance>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getGamesControllerGetBalanceQueryKey(params);
+  const queryKey =
+    queryOptions?.queryKey ?? getGamesControllerGetBalanceQueryKey(params);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof gamesControllerGetBalance>>
+  > = ({ signal }) => gamesControllerGetBalance(params, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof gamesControllerGetBalance>>> = ({ signal }) => gamesControllerGetBalance(params, requestOptions, signal);
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof gamesControllerGetBalance>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type GamesControllerGetBalanceQueryResult = NonNullable<
+  Awaited<ReturnType<typeof gamesControllerGetBalance>>
+>;
+export type GamesControllerGetBalanceQueryError = void;
 
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof gamesControllerGetBalance>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type GamesControllerGetBalanceQueryResult = NonNullable<Awaited<ReturnType<typeof gamesControllerGetBalance>>>
-export type GamesControllerGetBalanceQueryError = void
-
-
-export function useGamesControllerGetBalance<TData = Awaited<ReturnType<typeof gamesControllerGetBalance>>, TError = void>(
- params: GamesControllerGetBalanceParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof gamesControllerGetBalance>>, TError, TData>> & Pick<
+export function useGamesControllerGetBalance<
+  TData = Awaited<ReturnType<typeof gamesControllerGetBalance>>,
+  TError = void
+>(
+  params: GamesControllerGetBalanceParams,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesControllerGetBalance>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof gamesControllerGetBalance>>,
           TError,
           Awaited<ReturnType<typeof gamesControllerGetBalance>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useGamesControllerGetBalance<TData = Awaited<ReturnType<typeof gamesControllerGetBalance>>, TError = void>(
- params: GamesControllerGetBalanceParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof gamesControllerGetBalance>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useGamesControllerGetBalance<
+  TData = Awaited<ReturnType<typeof gamesControllerGetBalance>>,
+  TError = void
+>(
+  params: GamesControllerGetBalanceParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesControllerGetBalance>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof gamesControllerGetBalance>>,
           TError,
           Awaited<ReturnType<typeof gamesControllerGetBalance>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useGamesControllerGetBalance<TData = Awaited<ReturnType<typeof gamesControllerGetBalance>>, TError = void>(
- params: GamesControllerGetBalanceParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof gamesControllerGetBalance>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useGamesControllerGetBalance<
+  TData = Awaited<ReturnType<typeof gamesControllerGetBalance>>,
+  TError = void
+>(
+  params: GamesControllerGetBalanceParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesControllerGetBalance>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get authenticated user balance for games
  */
 
-export function useGamesControllerGetBalance<TData = Awaited<ReturnType<typeof gamesControllerGetBalance>>, TError = void>(
- params: GamesControllerGetBalanceParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof gamesControllerGetBalance>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useGamesControllerGetBalance<
+  TData = Awaited<ReturnType<typeof gamesControllerGetBalance>>,
+  TError = void
+>(
+  params: GamesControllerGetBalanceParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesControllerGetBalance>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getGamesControllerGetBalanceQueryOptions(
+    params,
+    options
+  );
 
-  const queryOptions = getGamesControllerGetBalanceQueryOptions(params,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * Retrieves the authenticated user's available balances for all supported token types (SOL, AFEL, WAA, USDC). This is useful for showing users their total holdings across different tokens in the gaming platform. Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Get all token balances for authenticated user
  */
 export const gamesControllerGetAllBalances = (
-    
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<BalanceResponse[]>(
-      {url: `/games/balances`, method: 'GET', signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<BalanceResponse[]>(
+    { url: `/games/balances`, method: 'GET', signal },
+    options
+  );
+};
 
 export const getGamesControllerGetAllBalancesQueryKey = () => {
-    return [`/games/balances`] as const;
-    }
+  return [`/games/balances`] as const;
+};
 
-    
-export const getGamesControllerGetAllBalancesQueryOptions = <TData = Awaited<ReturnType<typeof gamesControllerGetAllBalances>>, TError = void>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof gamesControllerGetAllBalances>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
-) => {
+export const getGamesControllerGetAllBalancesQueryOptions = <
+  TData = Awaited<ReturnType<typeof gamesControllerGetAllBalances>>,
+  TError = void
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<ReturnType<typeof gamesControllerGetAllBalances>>,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+  const queryKey =
+    queryOptions?.queryKey ?? getGamesControllerGetAllBalancesQueryKey();
 
-  const queryKey =  queryOptions?.queryKey ?? getGamesControllerGetAllBalancesQueryKey();
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof gamesControllerGetAllBalances>>
+  > = ({ signal }) => gamesControllerGetAllBalances(requestOptions, signal);
 
-  
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof gamesControllerGetAllBalances>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof gamesControllerGetAllBalances>>> = ({ signal }) => gamesControllerGetAllBalances(requestOptions, signal);
+export type GamesControllerGetAllBalancesQueryResult = NonNullable<
+  Awaited<ReturnType<typeof gamesControllerGetAllBalances>>
+>;
+export type GamesControllerGetAllBalancesQueryError = void;
 
-      
-
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof gamesControllerGetAllBalances>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type GamesControllerGetAllBalancesQueryResult = NonNullable<Awaited<ReturnType<typeof gamesControllerGetAllBalances>>>
-export type GamesControllerGetAllBalancesQueryError = void
-
-
-export function useGamesControllerGetAllBalances<TData = Awaited<ReturnType<typeof gamesControllerGetAllBalances>>, TError = void>(
-  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof gamesControllerGetAllBalances>>, TError, TData>> & Pick<
+export function useGamesControllerGetAllBalances<
+  TData = Awaited<ReturnType<typeof gamesControllerGetAllBalances>>,
+  TError = void
+>(
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesControllerGetAllBalances>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof gamesControllerGetAllBalances>>,
           TError,
           Awaited<ReturnType<typeof gamesControllerGetAllBalances>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useGamesControllerGetAllBalances<TData = Awaited<ReturnType<typeof gamesControllerGetAllBalances>>, TError = void>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof gamesControllerGetAllBalances>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useGamesControllerGetAllBalances<
+  TData = Awaited<ReturnType<typeof gamesControllerGetAllBalances>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesControllerGetAllBalances>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof gamesControllerGetAllBalances>>,
           TError,
           Awaited<ReturnType<typeof gamesControllerGetAllBalances>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useGamesControllerGetAllBalances<TData = Awaited<ReturnType<typeof gamesControllerGetAllBalances>>, TError = void>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof gamesControllerGetAllBalances>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useGamesControllerGetAllBalances<
+  TData = Awaited<ReturnType<typeof gamesControllerGetAllBalances>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesControllerGetAllBalances>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get all token balances for authenticated user
  */
 
-export function useGamesControllerGetAllBalances<TData = Awaited<ReturnType<typeof gamesControllerGetAllBalances>>, TError = void>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof gamesControllerGetAllBalances>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useGamesControllerGetAllBalances<
+  TData = Awaited<ReturnType<typeof gamesControllerGetAllBalances>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesControllerGetAllBalances>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getGamesControllerGetAllBalancesQueryOptions(options);
 
-  const queryOptions = getGamesControllerGetAllBalancesQueryOptions(options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * This endpoint processes deposits to the authenticated user account for gaming purposes. It validates the transaction signature on the blockchain before crediting the funds to the user's balance. The deposit can be made in SOL or AFEL tokens, depending on the specified tokenType. The receiver wallet address must match the application's designated wallet. Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Deposit funds for authenticated user games
  */
 export const gamesControllerDeposit = (
-    walletDepositRequest: WalletDepositRequest,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  walletDepositRequest: WalletDepositRequest,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<WalletDepositResponse>(
-      {url: `/games/deposit`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: walletDepositRequest, signal
+  return getAxiosInstance<WalletDepositResponse>(
+    {
+      url: `/games/deposit`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: walletDepositRequest,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getGamesControllerDepositMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof gamesControllerDeposit>>,
+    TError,
+    { data: WalletDepositRequest },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof gamesControllerDeposit>>,
+  TError,
+  { data: WalletDepositRequest },
+  TContext
+> => {
+  const mutationKey = ['gamesControllerDeposit'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getGamesControllerDepositMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof gamesControllerDeposit>>, TError,{data: WalletDepositRequest}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof gamesControllerDeposit>>, TError,{data: WalletDepositRequest}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof gamesControllerDeposit>>,
+    { data: WalletDepositRequest }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['gamesControllerDeposit'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return gamesControllerDeposit(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type GamesControllerDepositMutationResult = NonNullable<
+  Awaited<ReturnType<typeof gamesControllerDeposit>>
+>;
+export type GamesControllerDepositMutationBody = WalletDepositRequest;
+export type GamesControllerDepositMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof gamesControllerDeposit>>, {data: WalletDepositRequest}> = (props) => {
-          const {data} = props ?? {};
-
-          return  gamesControllerDeposit(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type GamesControllerDepositMutationResult = NonNullable<Awaited<ReturnType<typeof gamesControllerDeposit>>>
-    export type GamesControllerDepositMutationBody = WalletDepositRequest
-    export type GamesControllerDepositMutationError = void
-
-    /**
+/**
  * @summary Deposit funds for authenticated user games
  */
-export const useGamesControllerDeposit = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof gamesControllerDeposit>>, TError,{data: WalletDepositRequest}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof gamesControllerDeposit>>,
-        TError,
-        {data: WalletDepositRequest},
-        TContext
-      > => {
+export const useGamesControllerDeposit = <TError = void, TContext = unknown>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof gamesControllerDeposit>>,
+      TError,
+      { data: WalletDepositRequest },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof gamesControllerDeposit>>,
+  TError,
+  { data: WalletDepositRequest },
+  TContext
+> => {
+  const mutationOptions = getGamesControllerDepositMutationOptions(options);
 
-      const mutationOptions = getGamesControllerDepositMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * This endpoint processes withdrawal requests from the authenticated user account for gaming purposes. It validates the withdrawal amount against available balance and processes the transaction. The withdrawal can be made in SOL or AFEL tokens, depending on the specified tokenType. Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Withdraw funds from authenticated user games
  */
 export const gamesControllerWithdraw = (
-    withdrawRequestDto: WithdrawRequestDto,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  withdrawRequestDto: WithdrawRequestDto,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<WithdrawResponse>(
-      {url: `/games/withdraw`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: withdrawRequestDto, signal
+  return getAxiosInstance<WithdrawResponse>(
+    {
+      url: `/games/withdraw`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: withdrawRequestDto,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getGamesControllerWithdrawMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof gamesControllerWithdraw>>,
+    TError,
+    { data: WithdrawRequestDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof gamesControllerWithdraw>>,
+  TError,
+  { data: WithdrawRequestDto },
+  TContext
+> => {
+  const mutationKey = ['gamesControllerWithdraw'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getGamesControllerWithdrawMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof gamesControllerWithdraw>>, TError,{data: WithdrawRequestDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof gamesControllerWithdraw>>, TError,{data: WithdrawRequestDto}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof gamesControllerWithdraw>>,
+    { data: WithdrawRequestDto }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['gamesControllerWithdraw'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return gamesControllerWithdraw(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type GamesControllerWithdrawMutationResult = NonNullable<
+  Awaited<ReturnType<typeof gamesControllerWithdraw>>
+>;
+export type GamesControllerWithdrawMutationBody = WithdrawRequestDto;
+export type GamesControllerWithdrawMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof gamesControllerWithdraw>>, {data: WithdrawRequestDto}> = (props) => {
-          const {data} = props ?? {};
-
-          return  gamesControllerWithdraw(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type GamesControllerWithdrawMutationResult = NonNullable<Awaited<ReturnType<typeof gamesControllerWithdraw>>>
-    export type GamesControllerWithdrawMutationBody = WithdrawRequestDto
-    export type GamesControllerWithdrawMutationError = void
-
-    /**
+/**
  * @summary Withdraw funds from authenticated user games
  */
-export const useGamesControllerWithdraw = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof gamesControllerWithdraw>>, TError,{data: WithdrawRequestDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof gamesControllerWithdraw>>,
-        TError,
-        {data: WithdrawRequestDto},
-        TContext
-      > => {
+export const useGamesControllerWithdraw = <TError = void, TContext = unknown>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof gamesControllerWithdraw>>,
+      TError,
+      { data: WithdrawRequestDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof gamesControllerWithdraw>>,
+  TError,
+  { data: WithdrawRequestDto },
+  TContext
+> => {
+  const mutationOptions = getGamesControllerWithdrawMutationOptions(options);
 
-      const mutationOptions = getGamesControllerWithdrawMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * This endpoint processes withdrawal requests specifically from slot machine game winnings. It includes slot machine specific commission calculations and processing. Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Withdraw funds from authenticated user slot machine games
  */
 export const gamesControllerWithdrawFromSlotMachine = (
-    withdrawRequestDto: WithdrawRequestDto,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  withdrawRequestDto: WithdrawRequestDto,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<WithdrawResponse>(
-      {url: `/games/withdraw/slotmachine`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: withdrawRequestDto, signal
+  return getAxiosInstance<WithdrawResponse>(
+    {
+      url: `/games/withdraw/slotmachine`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: withdrawRequestDto,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getGamesControllerWithdrawFromSlotMachineMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof gamesControllerWithdrawFromSlotMachine>>,
+    TError,
+    { data: WithdrawRequestDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof gamesControllerWithdrawFromSlotMachine>>,
+  TError,
+  { data: WithdrawRequestDto },
+  TContext
+> => {
+  const mutationKey = ['gamesControllerWithdrawFromSlotMachine'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getGamesControllerWithdrawFromSlotMachineMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof gamesControllerWithdrawFromSlotMachine>>, TError,{data: WithdrawRequestDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof gamesControllerWithdrawFromSlotMachine>>, TError,{data: WithdrawRequestDto}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof gamesControllerWithdrawFromSlotMachine>>,
+    { data: WithdrawRequestDto }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['gamesControllerWithdrawFromSlotMachine'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return gamesControllerWithdrawFromSlotMachine(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type GamesControllerWithdrawFromSlotMachineMutationResult = NonNullable<
+  Awaited<ReturnType<typeof gamesControllerWithdrawFromSlotMachine>>
+>;
+export type GamesControllerWithdrawFromSlotMachineMutationBody =
+  WithdrawRequestDto;
+export type GamesControllerWithdrawFromSlotMachineMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof gamesControllerWithdrawFromSlotMachine>>, {data: WithdrawRequestDto}> = (props) => {
-          const {data} = props ?? {};
-
-          return  gamesControllerWithdrawFromSlotMachine(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type GamesControllerWithdrawFromSlotMachineMutationResult = NonNullable<Awaited<ReturnType<typeof gamesControllerWithdrawFromSlotMachine>>>
-    export type GamesControllerWithdrawFromSlotMachineMutationBody = WithdrawRequestDto
-    export type GamesControllerWithdrawFromSlotMachineMutationError = void
-
-    /**
+/**
  * @summary Withdraw funds from authenticated user slot machine games
  */
-export const useGamesControllerWithdrawFromSlotMachine = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof gamesControllerWithdrawFromSlotMachine>>, TError,{data: WithdrawRequestDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof gamesControllerWithdrawFromSlotMachine>>,
-        TError,
-        {data: WithdrawRequestDto},
-        TContext
-      > => {
+export const useGamesControllerWithdrawFromSlotMachine = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof gamesControllerWithdrawFromSlotMachine>>,
+      TError,
+      { data: WithdrawRequestDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof gamesControllerWithdrawFromSlotMachine>>,
+  TError,
+  { data: WithdrawRequestDto },
+  TContext
+> => {
+  const mutationOptions =
+    getGamesControllerWithdrawFromSlotMachineMutationOptions(options);
 
-      const mutationOptions = getGamesControllerWithdrawFromSlotMachineMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * Processes withdrawals from Coin Flip game accounts with a 2% commission fee. The requested amount will have the commission deducted before processing the blockchain transaction. For example, if withdrawing 100 SOL, 2 SOL will be retained as commission and 98 SOL will be sent to the user's wallet. The minimum withdrawal amounts are 0.025 SOL for SOL tokens and 1 AFEL for AFEL tokens. Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Withdraw funds from authenticated user Coin Flip games
  */
 export const gamesControllerWithdrawFromCoinFlip = (
-    withdrawRequestDto: WithdrawRequestDto,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  withdrawRequestDto: WithdrawRequestDto,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<WithdrawResponse>(
-      {url: `/games/withdraw/coinflip`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: withdrawRequestDto, signal
+  return getAxiosInstance<WithdrawResponse>(
+    {
+      url: `/games/withdraw/coinflip`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: withdrawRequestDto,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getGamesControllerWithdrawFromCoinFlipMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof gamesControllerWithdrawFromCoinFlip>>,
+    TError,
+    { data: WithdrawRequestDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof gamesControllerWithdrawFromCoinFlip>>,
+  TError,
+  { data: WithdrawRequestDto },
+  TContext
+> => {
+  const mutationKey = ['gamesControllerWithdrawFromCoinFlip'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getGamesControllerWithdrawFromCoinFlipMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof gamesControllerWithdrawFromCoinFlip>>, TError,{data: WithdrawRequestDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof gamesControllerWithdrawFromCoinFlip>>, TError,{data: WithdrawRequestDto}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof gamesControllerWithdrawFromCoinFlip>>,
+    { data: WithdrawRequestDto }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['gamesControllerWithdrawFromCoinFlip'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return gamesControllerWithdrawFromCoinFlip(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type GamesControllerWithdrawFromCoinFlipMutationResult = NonNullable<
+  Awaited<ReturnType<typeof gamesControllerWithdrawFromCoinFlip>>
+>;
+export type GamesControllerWithdrawFromCoinFlipMutationBody =
+  WithdrawRequestDto;
+export type GamesControllerWithdrawFromCoinFlipMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof gamesControllerWithdrawFromCoinFlip>>, {data: WithdrawRequestDto}> = (props) => {
-          const {data} = props ?? {};
-
-          return  gamesControllerWithdrawFromCoinFlip(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type GamesControllerWithdrawFromCoinFlipMutationResult = NonNullable<Awaited<ReturnType<typeof gamesControllerWithdrawFromCoinFlip>>>
-    export type GamesControllerWithdrawFromCoinFlipMutationBody = WithdrawRequestDto
-    export type GamesControllerWithdrawFromCoinFlipMutationError = void
-
-    /**
+/**
  * @summary Withdraw funds from authenticated user Coin Flip games
  */
-export const useGamesControllerWithdrawFromCoinFlip = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof gamesControllerWithdrawFromCoinFlip>>, TError,{data: WithdrawRequestDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof gamesControllerWithdrawFromCoinFlip>>,
-        TError,
-        {data: WithdrawRequestDto},
-        TContext
-      > => {
+export const useGamesControllerWithdrawFromCoinFlip = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof gamesControllerWithdrawFromCoinFlip>>,
+      TError,
+      { data: WithdrawRequestDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof gamesControllerWithdrawFromCoinFlip>>,
+  TError,
+  { data: WithdrawRequestDto },
+  TContext
+> => {
+  const mutationOptions =
+    getGamesControllerWithdrawFromCoinFlipMutationOptions(options);
 
-      const mutationOptions = getGamesControllerWithdrawFromCoinFlipMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * Retrieves the referral code for the authenticated user account. If the user does not have a referral code yet, a new unique code will be generated and assigned to them. Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Get Authenticated User Referral Code
  */
 export const referralControllerGetReferralCode = (
-    
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<ReferralCodeResponse>(
-      {url: `/games/referral/code`, method: 'GET', signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<ReferralCodeResponse>(
+    { url: `/games/referral/code`, method: 'GET', signal },
+    options
+  );
+};
 
 export const getReferralControllerGetReferralCodeQueryKey = () => {
-    return [`/games/referral/code`] as const;
-    }
+  return [`/games/referral/code`] as const;
+};
 
-    
-export const getReferralControllerGetReferralCodeQueryOptions = <TData = Awaited<ReturnType<typeof referralControllerGetReferralCode>>, TError = void>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referralControllerGetReferralCode>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
-) => {
+export const getReferralControllerGetReferralCodeQueryOptions = <
+  TData = Awaited<ReturnType<typeof referralControllerGetReferralCode>>,
+  TError = void
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<ReturnType<typeof referralControllerGetReferralCode>>,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+  const queryKey =
+    queryOptions?.queryKey ?? getReferralControllerGetReferralCodeQueryKey();
 
-  const queryKey =  queryOptions?.queryKey ?? getReferralControllerGetReferralCodeQueryKey();
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof referralControllerGetReferralCode>>
+  > = ({ signal }) => referralControllerGetReferralCode(requestOptions, signal);
 
-  
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof referralControllerGetReferralCode>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof referralControllerGetReferralCode>>> = ({ signal }) => referralControllerGetReferralCode(requestOptions, signal);
+export type ReferralControllerGetReferralCodeQueryResult = NonNullable<
+  Awaited<ReturnType<typeof referralControllerGetReferralCode>>
+>;
+export type ReferralControllerGetReferralCodeQueryError = void;
 
-      
-
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof referralControllerGetReferralCode>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type ReferralControllerGetReferralCodeQueryResult = NonNullable<Awaited<ReturnType<typeof referralControllerGetReferralCode>>>
-export type ReferralControllerGetReferralCodeQueryError = void
-
-
-export function useReferralControllerGetReferralCode<TData = Awaited<ReturnType<typeof referralControllerGetReferralCode>>, TError = void>(
-  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof referralControllerGetReferralCode>>, TError, TData>> & Pick<
+export function useReferralControllerGetReferralCode<
+  TData = Awaited<ReturnType<typeof referralControllerGetReferralCode>>,
+  TError = void
+>(
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referralControllerGetReferralCode>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof referralControllerGetReferralCode>>,
           TError,
           Awaited<ReturnType<typeof referralControllerGetReferralCode>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useReferralControllerGetReferralCode<TData = Awaited<ReturnType<typeof referralControllerGetReferralCode>>, TError = void>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referralControllerGetReferralCode>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useReferralControllerGetReferralCode<
+  TData = Awaited<ReturnType<typeof referralControllerGetReferralCode>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referralControllerGetReferralCode>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof referralControllerGetReferralCode>>,
           TError,
           Awaited<ReturnType<typeof referralControllerGetReferralCode>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useReferralControllerGetReferralCode<TData = Awaited<ReturnType<typeof referralControllerGetReferralCode>>, TError = void>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referralControllerGetReferralCode>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useReferralControllerGetReferralCode<
+  TData = Awaited<ReturnType<typeof referralControllerGetReferralCode>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referralControllerGetReferralCode>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get Authenticated User Referral Code
  */
 
-export function useReferralControllerGetReferralCode<TData = Awaited<ReturnType<typeof referralControllerGetReferralCode>>, TError = void>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referralControllerGetReferralCode>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useReferralControllerGetReferralCode<
+  TData = Awaited<ReturnType<typeof referralControllerGetReferralCode>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referralControllerGetReferralCode>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions =
+    getReferralControllerGetReferralCodeQueryOptions(options);
 
-  const queryOptions = getReferralControllerGetReferralCodeQueryOptions(options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * Allows the authenticated user to use a referral code to establish a referral relationship. Once used, the user will be linked to the referrer and the referrer will earn rewards from the user future game activities. Each user can only use one referral code, and users cannot use their own referral codes. Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Use Referral Code
  */
 export const referralControllerUseReferralCode = (
-    useReferralCodeDto: UseReferralCodeDto,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  useReferralCodeDto: UseReferralCodeDto,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<UseReferralCodeResponse>(
-      {url: `/games/referral/use`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: useReferralCodeDto, signal
+  return getAxiosInstance<UseReferralCodeResponse>(
+    {
+      url: `/games/referral/use`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: useReferralCodeDto,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getReferralControllerUseReferralCodeMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof referralControllerUseReferralCode>>,
+    TError,
+    { data: UseReferralCodeDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof referralControllerUseReferralCode>>,
+  TError,
+  { data: UseReferralCodeDto },
+  TContext
+> => {
+  const mutationKey = ['referralControllerUseReferralCode'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getReferralControllerUseReferralCodeMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof referralControllerUseReferralCode>>, TError,{data: UseReferralCodeDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof referralControllerUseReferralCode>>, TError,{data: UseReferralCodeDto}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof referralControllerUseReferralCode>>,
+    { data: UseReferralCodeDto }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['referralControllerUseReferralCode'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return referralControllerUseReferralCode(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type ReferralControllerUseReferralCodeMutationResult = NonNullable<
+  Awaited<ReturnType<typeof referralControllerUseReferralCode>>
+>;
+export type ReferralControllerUseReferralCodeMutationBody = UseReferralCodeDto;
+export type ReferralControllerUseReferralCodeMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof referralControllerUseReferralCode>>, {data: UseReferralCodeDto}> = (props) => {
-          const {data} = props ?? {};
-
-          return  referralControllerUseReferralCode(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type ReferralControllerUseReferralCodeMutationResult = NonNullable<Awaited<ReturnType<typeof referralControllerUseReferralCode>>>
-    export type ReferralControllerUseReferralCodeMutationBody = UseReferralCodeDto
-    export type ReferralControllerUseReferralCodeMutationError = void
-
-    /**
+/**
  * @summary Use Referral Code
  */
-export const useReferralControllerUseReferralCode = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof referralControllerUseReferralCode>>, TError,{data: UseReferralCodeDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof referralControllerUseReferralCode>>,
-        TError,
-        {data: UseReferralCodeDto},
-        TContext
-      > => {
+export const useReferralControllerUseReferralCode = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof referralControllerUseReferralCode>>,
+      TError,
+      { data: UseReferralCodeDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof referralControllerUseReferralCode>>,
+  TError,
+  { data: UseReferralCodeDto },
+  TContext
+> => {
+  const mutationOptions =
+    getReferralControllerUseReferralCodeMutationOptions(options);
 
-      const mutationOptions = getReferralControllerUseReferralCodeMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * Retrieves comprehensive referral statistics for the authenticated user account. This includes their referral code, total earnings from referrals, number of people they have referred, and information about any referral code they have used. Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Get Authenticated User Referral Statistics
  */
 export const referralControllerGetReferralStats = (
-    
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<ReferralStatsDto>(
-      {url: `/games/referral/stats`, method: 'GET', signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<ReferralStatsDto>(
+    { url: `/games/referral/stats`, method: 'GET', signal },
+    options
+  );
+};
 
 export const getReferralControllerGetReferralStatsQueryKey = () => {
-    return [`/games/referral/stats`] as const;
-    }
+  return [`/games/referral/stats`] as const;
+};
 
-    
-export const getReferralControllerGetReferralStatsQueryOptions = <TData = Awaited<ReturnType<typeof referralControllerGetReferralStats>>, TError = void>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referralControllerGetReferralStats>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
-) => {
+export const getReferralControllerGetReferralStatsQueryOptions = <
+  TData = Awaited<ReturnType<typeof referralControllerGetReferralStats>>,
+  TError = void
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<ReturnType<typeof referralControllerGetReferralStats>>,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+  const queryKey =
+    queryOptions?.queryKey ?? getReferralControllerGetReferralStatsQueryKey();
 
-  const queryKey =  queryOptions?.queryKey ?? getReferralControllerGetReferralStatsQueryKey();
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof referralControllerGetReferralStats>>
+  > = ({ signal }) =>
+    referralControllerGetReferralStats(requestOptions, signal);
 
-  
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof referralControllerGetReferralStats>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof referralControllerGetReferralStats>>> = ({ signal }) => referralControllerGetReferralStats(requestOptions, signal);
+export type ReferralControllerGetReferralStatsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof referralControllerGetReferralStats>>
+>;
+export type ReferralControllerGetReferralStatsQueryError = void;
 
-      
-
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof referralControllerGetReferralStats>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type ReferralControllerGetReferralStatsQueryResult = NonNullable<Awaited<ReturnType<typeof referralControllerGetReferralStats>>>
-export type ReferralControllerGetReferralStatsQueryError = void
-
-
-export function useReferralControllerGetReferralStats<TData = Awaited<ReturnType<typeof referralControllerGetReferralStats>>, TError = void>(
-  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof referralControllerGetReferralStats>>, TError, TData>> & Pick<
+export function useReferralControllerGetReferralStats<
+  TData = Awaited<ReturnType<typeof referralControllerGetReferralStats>>,
+  TError = void
+>(
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referralControllerGetReferralStats>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof referralControllerGetReferralStats>>,
           TError,
           Awaited<ReturnType<typeof referralControllerGetReferralStats>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useReferralControllerGetReferralStats<TData = Awaited<ReturnType<typeof referralControllerGetReferralStats>>, TError = void>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referralControllerGetReferralStats>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useReferralControllerGetReferralStats<
+  TData = Awaited<ReturnType<typeof referralControllerGetReferralStats>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referralControllerGetReferralStats>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof referralControllerGetReferralStats>>,
           TError,
           Awaited<ReturnType<typeof referralControllerGetReferralStats>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useReferralControllerGetReferralStats<TData = Awaited<ReturnType<typeof referralControllerGetReferralStats>>, TError = void>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referralControllerGetReferralStats>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useReferralControllerGetReferralStats<
+  TData = Awaited<ReturnType<typeof referralControllerGetReferralStats>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referralControllerGetReferralStats>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get Authenticated User Referral Statistics
  */
 
-export function useReferralControllerGetReferralStats<TData = Awaited<ReturnType<typeof referralControllerGetReferralStats>>, TError = void>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referralControllerGetReferralStats>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useReferralControllerGetReferralStats<
+  TData = Awaited<ReturnType<typeof referralControllerGetReferralStats>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referralControllerGetReferralStats>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions =
+    getReferralControllerGetReferralStatsQueryOptions(options);
 
-  const queryOptions = getReferralControllerGetReferralStatsQueryOptions(options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * Retrieves the history of referral earnings for the authenticated user account. This shows all the rewards earned from users who used their referral code, including details about each transaction that generated referral rewards. Results are paginated and ordered by creation date (newest first). Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Get Authenticated User Referral Earnings History
  */
 export const referralControllerGetReferralHistory = (
-    params: ReferralControllerGetReferralHistoryParams,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  params: ReferralControllerGetReferralHistoryParams,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<ReferralHistoryResponse>(
-      {url: `/games/referral/history`, method: 'GET',
-        params, signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<ReferralHistoryResponse>(
+    { url: `/games/referral/history`, method: 'GET', params, signal },
+    options
+  );
+};
 
-export const getReferralControllerGetReferralHistoryQueryKey = (params: ReferralControllerGetReferralHistoryParams,) => {
-    return [`/games/referral/history`, ...(params ? [params]: [])] as const;
-    }
-
-    
-export const getReferralControllerGetReferralHistoryQueryOptions = <TData = Awaited<ReturnType<typeof referralControllerGetReferralHistory>>, TError = void>(params: ReferralControllerGetReferralHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referralControllerGetReferralHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getReferralControllerGetReferralHistoryQueryKey = (
+  params: ReferralControllerGetReferralHistoryParams
 ) => {
+  return [`/games/referral/history`, ...(params ? [params] : [])] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getReferralControllerGetReferralHistoryQueryOptions = <
+  TData = Awaited<ReturnType<typeof referralControllerGetReferralHistory>>,
+  TError = void
+>(
+  params: ReferralControllerGetReferralHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referralControllerGetReferralHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getReferralControllerGetReferralHistoryQueryKey(params);
+  const queryKey =
+    queryOptions?.queryKey ??
+    getReferralControllerGetReferralHistoryQueryKey(params);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof referralControllerGetReferralHistory>>
+  > = ({ signal }) =>
+    referralControllerGetReferralHistory(params, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof referralControllerGetReferralHistory>>> = ({ signal }) => referralControllerGetReferralHistory(params, requestOptions, signal);
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof referralControllerGetReferralHistory>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type ReferralControllerGetReferralHistoryQueryResult = NonNullable<
+  Awaited<ReturnType<typeof referralControllerGetReferralHistory>>
+>;
+export type ReferralControllerGetReferralHistoryQueryError = void;
 
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof referralControllerGetReferralHistory>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type ReferralControllerGetReferralHistoryQueryResult = NonNullable<Awaited<ReturnType<typeof referralControllerGetReferralHistory>>>
-export type ReferralControllerGetReferralHistoryQueryError = void
-
-
-export function useReferralControllerGetReferralHistory<TData = Awaited<ReturnType<typeof referralControllerGetReferralHistory>>, TError = void>(
- params: ReferralControllerGetReferralHistoryParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof referralControllerGetReferralHistory>>, TError, TData>> & Pick<
+export function useReferralControllerGetReferralHistory<
+  TData = Awaited<ReturnType<typeof referralControllerGetReferralHistory>>,
+  TError = void
+>(
+  params: ReferralControllerGetReferralHistoryParams,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referralControllerGetReferralHistory>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof referralControllerGetReferralHistory>>,
           TError,
           Awaited<ReturnType<typeof referralControllerGetReferralHistory>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useReferralControllerGetReferralHistory<TData = Awaited<ReturnType<typeof referralControllerGetReferralHistory>>, TError = void>(
- params: ReferralControllerGetReferralHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referralControllerGetReferralHistory>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useReferralControllerGetReferralHistory<
+  TData = Awaited<ReturnType<typeof referralControllerGetReferralHistory>>,
+  TError = void
+>(
+  params: ReferralControllerGetReferralHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referralControllerGetReferralHistory>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof referralControllerGetReferralHistory>>,
           TError,
           Awaited<ReturnType<typeof referralControllerGetReferralHistory>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useReferralControllerGetReferralHistory<TData = Awaited<ReturnType<typeof referralControllerGetReferralHistory>>, TError = void>(
- params: ReferralControllerGetReferralHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referralControllerGetReferralHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useReferralControllerGetReferralHistory<
+  TData = Awaited<ReturnType<typeof referralControllerGetReferralHistory>>,
+  TError = void
+>(
+  params: ReferralControllerGetReferralHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referralControllerGetReferralHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get Authenticated User Referral Earnings History
  */
 
-export function useReferralControllerGetReferralHistory<TData = Awaited<ReturnType<typeof referralControllerGetReferralHistory>>, TError = void>(
- params: ReferralControllerGetReferralHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof referralControllerGetReferralHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useReferralControllerGetReferralHistory<
+  TData = Awaited<ReturnType<typeof referralControllerGetReferralHistory>>,
+  TError = void
+>(
+  params: ReferralControllerGetReferralHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof referralControllerGetReferralHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getReferralControllerGetReferralHistoryQueryOptions(
+    params,
+    options
+  );
 
-  const queryOptions = getReferralControllerGetReferralHistoryQueryOptions(params,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * Gets the authenticated user's daily free spin status. Shows total, used, and remaining spin counts. Returns zero values if free spin system is disabled. Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Get Daily Free Spin Status
  */
 export const freeSpinControllerGetFreeSpinStatus = (
-    
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<FreeSpinStatusResponse>(
-      {url: `/games/freespin/status`, method: 'GET', signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<FreeSpinStatusResponse>(
+    { url: `/games/freespin/status`, method: 'GET', signal },
+    options
+  );
+};
 
 export const getFreeSpinControllerGetFreeSpinStatusQueryKey = () => {
-    return [`/games/freespin/status`] as const;
-    }
+  return [`/games/freespin/status`] as const;
+};
 
-    
-export const getFreeSpinControllerGetFreeSpinStatusQueryOptions = <TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>, TError = void>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
-) => {
+export const getFreeSpinControllerGetFreeSpinStatusQueryOptions = <
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>,
+  TError = void
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+  const queryKey =
+    queryOptions?.queryKey ?? getFreeSpinControllerGetFreeSpinStatusQueryKey();
 
-  const queryKey =  queryOptions?.queryKey ?? getFreeSpinControllerGetFreeSpinStatusQueryKey();
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>
+  > = ({ signal }) =>
+    freeSpinControllerGetFreeSpinStatus(requestOptions, signal);
 
-  
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>> = ({ signal }) => freeSpinControllerGetFreeSpinStatus(requestOptions, signal);
+export type FreeSpinControllerGetFreeSpinStatusQueryResult = NonNullable<
+  Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>
+>;
+export type FreeSpinControllerGetFreeSpinStatusQueryError = void;
 
-      
-
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type FreeSpinControllerGetFreeSpinStatusQueryResult = NonNullable<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>>
-export type FreeSpinControllerGetFreeSpinStatusQueryError = void
-
-
-export function useFreeSpinControllerGetFreeSpinStatus<TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>, TError = void>(
-  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>, TError, TData>> & Pick<
+export function useFreeSpinControllerGetFreeSpinStatus<
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>,
+  TError = void
+>(
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>,
           TError,
           Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useFreeSpinControllerGetFreeSpinStatus<TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>, TError = void>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useFreeSpinControllerGetFreeSpinStatus<
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>,
           TError,
           Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useFreeSpinControllerGetFreeSpinStatus<TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>, TError = void>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useFreeSpinControllerGetFreeSpinStatus<
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get Daily Free Spin Status
  */
 
-export function useFreeSpinControllerGetFreeSpinStatus<TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>, TError = void>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useFreeSpinControllerGetFreeSpinStatus<
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinStatus>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions =
+    getFreeSpinControllerGetFreeSpinStatusQueryOptions(options);
 
-  const queryOptions = getFreeSpinControllerGetFreeSpinStatusQueryOptions(options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * Gets the authenticated user's free spin game history. Shows how much was won in each free spin. Results are paginated and ordered by creation date (newest first). Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Get Free Spin History
  */
 export const freeSpinControllerGetFreeSpinHistory = (
-    params: FreeSpinControllerGetFreeSpinHistoryParams,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  params: FreeSpinControllerGetFreeSpinHistoryParams,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<FreeSpinHistoryResponse>(
-      {url: `/games/freespin/history`, method: 'GET',
-        params, signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<FreeSpinHistoryResponse>(
+    { url: `/games/freespin/history`, method: 'GET', params, signal },
+    options
+  );
+};
 
-export const getFreeSpinControllerGetFreeSpinHistoryQueryKey = (params: FreeSpinControllerGetFreeSpinHistoryParams,) => {
-    return [`/games/freespin/history`, ...(params ? [params]: [])] as const;
-    }
-
-    
-export const getFreeSpinControllerGetFreeSpinHistoryQueryOptions = <TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>, TError = void>(params: FreeSpinControllerGetFreeSpinHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getFreeSpinControllerGetFreeSpinHistoryQueryKey = (
+  params: FreeSpinControllerGetFreeSpinHistoryParams
 ) => {
+  return [`/games/freespin/history`, ...(params ? [params] : [])] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getFreeSpinControllerGetFreeSpinHistoryQueryOptions = <
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>,
+  TError = void
+>(
+  params: FreeSpinControllerGetFreeSpinHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getFreeSpinControllerGetFreeSpinHistoryQueryKey(params);
+  const queryKey =
+    queryOptions?.queryKey ??
+    getFreeSpinControllerGetFreeSpinHistoryQueryKey(params);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>
+  > = ({ signal }) =>
+    freeSpinControllerGetFreeSpinHistory(params, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>> = ({ signal }) => freeSpinControllerGetFreeSpinHistory(params, requestOptions, signal);
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type FreeSpinControllerGetFreeSpinHistoryQueryResult = NonNullable<
+  Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>
+>;
+export type FreeSpinControllerGetFreeSpinHistoryQueryError = void;
 
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type FreeSpinControllerGetFreeSpinHistoryQueryResult = NonNullable<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>>
-export type FreeSpinControllerGetFreeSpinHistoryQueryError = void
-
-
-export function useFreeSpinControllerGetFreeSpinHistory<TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>, TError = void>(
- params: FreeSpinControllerGetFreeSpinHistoryParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>, TError, TData>> & Pick<
+export function useFreeSpinControllerGetFreeSpinHistory<
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>,
+  TError = void
+>(
+  params: FreeSpinControllerGetFreeSpinHistoryParams,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>,
           TError,
           Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useFreeSpinControllerGetFreeSpinHistory<TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>, TError = void>(
- params: FreeSpinControllerGetFreeSpinHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useFreeSpinControllerGetFreeSpinHistory<
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>,
+  TError = void
+>(
+  params: FreeSpinControllerGetFreeSpinHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>,
           TError,
           Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useFreeSpinControllerGetFreeSpinHistory<TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>, TError = void>(
- params: FreeSpinControllerGetFreeSpinHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useFreeSpinControllerGetFreeSpinHistory<
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>,
+  TError = void
+>(
+  params: FreeSpinControllerGetFreeSpinHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get Free Spin History
  */
 
-export function useFreeSpinControllerGetFreeSpinHistory<TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>, TError = void>(
- params: FreeSpinControllerGetFreeSpinHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useFreeSpinControllerGetFreeSpinHistory<
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>,
+  TError = void
+>(
+  params: FreeSpinControllerGetFreeSpinHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getFreeSpinControllerGetFreeSpinHistoryQueryOptions(
+    params,
+    options
+  );
 
-  const queryOptions = getFreeSpinControllerGetFreeSpinHistoryQueryOptions(params,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * Gets the value of free spins (in SOL). This shows how much each free spin is worth. Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Get Free Spin Amount
  */
 export const freeSpinControllerGetFreeSpinAmount = (
-    
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<FreeSpinAmountResponse>(
-      {url: `/games/freespin/amount`, method: 'GET', signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<FreeSpinAmountResponse>(
+    { url: `/games/freespin/amount`, method: 'GET', signal },
+    options
+  );
+};
 
 export const getFreeSpinControllerGetFreeSpinAmountQueryKey = () => {
-    return [`/games/freespin/amount`] as const;
-    }
+  return [`/games/freespin/amount`] as const;
+};
 
-    
-export const getFreeSpinControllerGetFreeSpinAmountQueryOptions = <TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>, TError = void>( options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
-) => {
+export const getFreeSpinControllerGetFreeSpinAmountQueryOptions = <
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>,
+  TError = void
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+  const queryKey =
+    queryOptions?.queryKey ?? getFreeSpinControllerGetFreeSpinAmountQueryKey();
 
-  const queryKey =  queryOptions?.queryKey ?? getFreeSpinControllerGetFreeSpinAmountQueryKey();
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>
+  > = ({ signal }) =>
+    freeSpinControllerGetFreeSpinAmount(requestOptions, signal);
 
-  
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>> = ({ signal }) => freeSpinControllerGetFreeSpinAmount(requestOptions, signal);
+export type FreeSpinControllerGetFreeSpinAmountQueryResult = NonNullable<
+  Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>
+>;
+export type FreeSpinControllerGetFreeSpinAmountQueryError = void;
 
-      
-
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type FreeSpinControllerGetFreeSpinAmountQueryResult = NonNullable<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>>
-export type FreeSpinControllerGetFreeSpinAmountQueryError = void
-
-
-export function useFreeSpinControllerGetFreeSpinAmount<TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>, TError = void>(
-  options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>, TError, TData>> & Pick<
+export function useFreeSpinControllerGetFreeSpinAmount<
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>,
+  TError = void
+>(
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>,
           TError,
           Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useFreeSpinControllerGetFreeSpinAmount<TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>, TError = void>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useFreeSpinControllerGetFreeSpinAmount<
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>,
           TError,
           Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useFreeSpinControllerGetFreeSpinAmount<TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>, TError = void>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useFreeSpinControllerGetFreeSpinAmount<
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get Free Spin Amount
  */
 
-export function useFreeSpinControllerGetFreeSpinAmount<TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>, TError = void>(
-  options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useFreeSpinControllerGetFreeSpinAmount<
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof freeSpinControllerGetFreeSpinAmount>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions =
+    getFreeSpinControllerGetFreeSpinAmountQueryOptions(options);
 
-  const queryOptions = getFreeSpinControllerGetFreeSpinAmountQueryOptions(options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
 
+/**
+ * Adds a wallet to the freeSpin whitelist with specified daily limit. Only admin users can perform this action. Requires valid access token in Authorization header: Bearer <access_token>
+ * @summary Add Wallet to FreeSpin Whitelist
+ */
+export const freeSpinControllerAddToWhitelist = (
+  addToWhitelistDto: AddToWhitelistDto,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
+) => {
+  return getAxiosInstance<WhitelistResponse>(
+    {
+      url: `/games/freespin/whitelist`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: addToWhitelistDto,
+      signal,
+    },
+    options
+  );
+};
 
+export const getFreeSpinControllerAddToWhitelistMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof freeSpinControllerAddToWhitelist>>,
+    TError,
+    { data: AddToWhitelistDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof freeSpinControllerAddToWhitelist>>,
+  TError,
+  { data: AddToWhitelistDto },
+  TContext
+> => {
+  const mutationKey = ['freeSpinControllerAddToWhitelist'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof freeSpinControllerAddToWhitelist>>,
+    { data: AddToWhitelistDto }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return freeSpinControllerAddToWhitelist(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type FreeSpinControllerAddToWhitelistMutationResult = NonNullable<
+  Awaited<ReturnType<typeof freeSpinControllerAddToWhitelist>>
+>;
+export type FreeSpinControllerAddToWhitelistMutationBody = AddToWhitelistDto;
+export type FreeSpinControllerAddToWhitelistMutationError = void;
+
+/**
+ * @summary Add Wallet to FreeSpin Whitelist
+ */
+export const useFreeSpinControllerAddToWhitelist = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof freeSpinControllerAddToWhitelist>>,
+      TError,
+      { data: AddToWhitelistDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof freeSpinControllerAddToWhitelist>>,
+  TError,
+  { data: AddToWhitelistDto },
+  TContext
+> => {
+  const mutationOptions =
+    getFreeSpinControllerAddToWhitelistMutationOptions(options);
+
+  return useMutation(mutationOptions, queryClient);
+};
+
+/**
+ * Removes a wallet from the freeSpin whitelist. Only admin users can perform this action. Requires valid access token in Authorization header: Bearer <access_token>
+ * @summary Remove Wallet from FreeSpin Whitelist
+ */
+export const freeSpinControllerRemoveFromWhitelist = (
+  removeFromWhitelistDto: RemoveFromWhitelistDto,
+  options?: SecondParameter<typeof getAxiosInstance>
+) => {
+  return getAxiosInstance<WhitelistResponse>(
+    {
+      url: `/games/freespin/whitelist`,
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      data: removeFromWhitelistDto,
+    },
+    options
+  );
+};
+
+export const getFreeSpinControllerRemoveFromWhitelistMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof freeSpinControllerRemoveFromWhitelist>>,
+    TError,
+    { data: RemoveFromWhitelistDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof freeSpinControllerRemoveFromWhitelist>>,
+  TError,
+  { data: RemoveFromWhitelistDto },
+  TContext
+> => {
+  const mutationKey = ['freeSpinControllerRemoveFromWhitelist'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof freeSpinControllerRemoveFromWhitelist>>,
+    { data: RemoveFromWhitelistDto }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return freeSpinControllerRemoveFromWhitelist(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type FreeSpinControllerRemoveFromWhitelistMutationResult = NonNullable<
+  Awaited<ReturnType<typeof freeSpinControllerRemoveFromWhitelist>>
+>;
+export type FreeSpinControllerRemoveFromWhitelistMutationBody =
+  RemoveFromWhitelistDto;
+export type FreeSpinControllerRemoveFromWhitelistMutationError = void;
+
+/**
+ * @summary Remove Wallet from FreeSpin Whitelist
+ */
+export const useFreeSpinControllerRemoveFromWhitelist = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof freeSpinControllerRemoveFromWhitelist>>,
+      TError,
+      { data: RemoveFromWhitelistDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof freeSpinControllerRemoveFromWhitelist>>,
+  TError,
+  { data: RemoveFromWhitelistDto },
+  TContext
+> => {
+  const mutationOptions =
+    getFreeSpinControllerRemoveFromWhitelistMutationOptions(options);
+
+  return useMutation(mutationOptions, queryClient);
+};
+
+/**
+ * Gets the list of whitelisted wallets for freeSpin. Only admin users can access this. Requires valid access token in Authorization header: Bearer <access_token>
+ * @summary Get FreeSpin Whitelist
+ */
+export const freeSpinControllerGetWhitelist = (
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
+) => {
+  return getAxiosInstance<void>(
+    { url: `/games/freespin/whitelist`, method: 'GET', signal },
+    options
+  );
+};
+
+export const getFreeSpinControllerGetWhitelistQueryKey = () => {
+  return [`/games/freespin/whitelist`] as const;
+};
+
+export const getFreeSpinControllerGetWhitelistQueryOptions = <
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetWhitelist>>,
+  TError = void
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<ReturnType<typeof freeSpinControllerGetWhitelist>>,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ?? getFreeSpinControllerGetWhitelistQueryKey();
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof freeSpinControllerGetWhitelist>>
+  > = ({ signal }) => freeSpinControllerGetWhitelist(requestOptions, signal);
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof freeSpinControllerGetWhitelist>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
+
+export type FreeSpinControllerGetWhitelistQueryResult = NonNullable<
+  Awaited<ReturnType<typeof freeSpinControllerGetWhitelist>>
+>;
+export type FreeSpinControllerGetWhitelistQueryError = void;
+
+export function useFreeSpinControllerGetWhitelist<
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetWhitelist>>,
+  TError = void
+>(
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof freeSpinControllerGetWhitelist>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof freeSpinControllerGetWhitelist>>,
+          TError,
+          Awaited<ReturnType<typeof freeSpinControllerGetWhitelist>>
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useFreeSpinControllerGetWhitelist<
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetWhitelist>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof freeSpinControllerGetWhitelist>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof freeSpinControllerGetWhitelist>>,
+          TError,
+          Awaited<ReturnType<typeof freeSpinControllerGetWhitelist>>
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useFreeSpinControllerGetWhitelist<
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetWhitelist>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof freeSpinControllerGetWhitelist>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+/**
+ * @summary Get FreeSpin Whitelist
+ */
+
+export function useFreeSpinControllerGetWhitelist<
+  TData = Awaited<ReturnType<typeof freeSpinControllerGetWhitelist>>,
+  TError = void
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof freeSpinControllerGetWhitelist>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getFreeSpinControllerGetWhitelistQueryOptions(options);
+
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+}
 
 /**
  * Generates a timestamped message that users need to sign with their Phantom wallet. This message should be signed and then used in the token generation endpoint. Message includes a timestamp for security and expires in 5 minutes.
  * @summary Generate Authentication Message
  */
 export const gamesAuthControllerGenerateMessage = (
-    
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<GamesAuthControllerGenerateMessage201>(
-      {url: `/games/auth/generate-message`, method: 'POST', signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<GamesAuthControllerGenerateMessage201>(
+    { url: `/games/auth/generate-message`, method: 'POST', signal },
+    options
+  );
+};
 
+export const getGamesAuthControllerGenerateMessageMutationOptions = <
+  TError = unknown,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof gamesAuthControllerGenerateMessage>>,
+    TError,
+    void,
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof gamesAuthControllerGenerateMessage>>,
+  TError,
+  void,
+  TContext
+> => {
+  const mutationKey = ['gamesAuthControllerGenerateMessage'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getGamesAuthControllerGenerateMessageMutationOptions = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof gamesAuthControllerGenerateMessage>>, TError,void, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof gamesAuthControllerGenerateMessage>>, TError,void, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof gamesAuthControllerGenerateMessage>>,
+    void
+  > = () => {
+    return gamesAuthControllerGenerateMessage(requestOptions);
+  };
 
-const mutationKey = ['gamesAuthControllerGenerateMessage'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+  return { mutationFn, ...mutationOptions };
+};
 
-      
+export type GamesAuthControllerGenerateMessageMutationResult = NonNullable<
+  Awaited<ReturnType<typeof gamesAuthControllerGenerateMessage>>
+>;
 
+export type GamesAuthControllerGenerateMessageMutationError = unknown;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof gamesAuthControllerGenerateMessage>>, void> = () => {
-          
-
-          return  gamesAuthControllerGenerateMessage(requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type GamesAuthControllerGenerateMessageMutationResult = NonNullable<Awaited<ReturnType<typeof gamesAuthControllerGenerateMessage>>>
-    
-    export type GamesAuthControllerGenerateMessageMutationError = unknown
-
-    /**
+/**
  * @summary Generate Authentication Message
  */
-export const useGamesAuthControllerGenerateMessage = <TError = unknown,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof gamesAuthControllerGenerateMessage>>, TError,void, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof gamesAuthControllerGenerateMessage>>,
-        TError,
-        void,
-        TContext
-      > => {
+export const useGamesAuthControllerGenerateMessage = <
+  TError = unknown,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof gamesAuthControllerGenerateMessage>>,
+      TError,
+      void,
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof gamesAuthControllerGenerateMessage>>,
+  TError,
+  void,
+  TContext
+> => {
+  const mutationOptions =
+    getGamesAuthControllerGenerateMessageMutationOptions(options);
 
-      const mutationOptions = getGamesAuthControllerGenerateMessageMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * Generates a new access token (6 hours) and refresh token (30 days) for the wallet owner. User must sign a message with their Phantom wallet to prove ownership. The accountId should be the user's Solana wallet address. Access tokens are used to authenticate game API requests. Refresh tokens are used to generate new access tokens when they expire. Each account can have only one active token pair at a time - generating new tokens will revoke previous ones. SECURITY: Requires valid wallet signature to ensure only wallet owners can generate tokens.
  * @summary Generate Access and Refresh Tokens
  */
 export const gamesAuthControllerGenerateToken = (
-    generateTokenDto: GenerateTokenDto,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  generateTokenDto: GenerateTokenDto,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<TokenResponse>(
-      {url: `/games/auth/token`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: generateTokenDto, signal
+  return getAxiosInstance<TokenResponse>(
+    {
+      url: `/games/auth/token`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: generateTokenDto,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getGamesAuthControllerGenerateTokenMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof gamesAuthControllerGenerateToken>>,
+    TError,
+    { data: GenerateTokenDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof gamesAuthControllerGenerateToken>>,
+  TError,
+  { data: GenerateTokenDto },
+  TContext
+> => {
+  const mutationKey = ['gamesAuthControllerGenerateToken'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getGamesAuthControllerGenerateTokenMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof gamesAuthControllerGenerateToken>>, TError,{data: GenerateTokenDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof gamesAuthControllerGenerateToken>>, TError,{data: GenerateTokenDto}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof gamesAuthControllerGenerateToken>>,
+    { data: GenerateTokenDto }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['gamesAuthControllerGenerateToken'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return gamesAuthControllerGenerateToken(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type GamesAuthControllerGenerateTokenMutationResult = NonNullable<
+  Awaited<ReturnType<typeof gamesAuthControllerGenerateToken>>
+>;
+export type GamesAuthControllerGenerateTokenMutationBody = GenerateTokenDto;
+export type GamesAuthControllerGenerateTokenMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof gamesAuthControllerGenerateToken>>, {data: GenerateTokenDto}> = (props) => {
-          const {data} = props ?? {};
-
-          return  gamesAuthControllerGenerateToken(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type GamesAuthControllerGenerateTokenMutationResult = NonNullable<Awaited<ReturnType<typeof gamesAuthControllerGenerateToken>>>
-    export type GamesAuthControllerGenerateTokenMutationBody = GenerateTokenDto
-    export type GamesAuthControllerGenerateTokenMutationError = void
-
-    /**
+/**
  * @summary Generate Access and Refresh Tokens
  */
-export const useGamesAuthControllerGenerateToken = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof gamesAuthControllerGenerateToken>>, TError,{data: GenerateTokenDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof gamesAuthControllerGenerateToken>>,
-        TError,
-        {data: GenerateTokenDto},
-        TContext
-      > => {
+export const useGamesAuthControllerGenerateToken = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof gamesAuthControllerGenerateToken>>,
+      TError,
+      { data: GenerateTokenDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof gamesAuthControllerGenerateToken>>,
+  TError,
+  { data: GenerateTokenDto },
+  TContext
+> => {
+  const mutationOptions =
+    getGamesAuthControllerGenerateTokenMutationOptions(options);
 
-      const mutationOptions = getGamesAuthControllerGenerateTokenMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * Uses a valid refresh token to generate a new access token (6 hours) and refresh token (30 days) pair. The old tokens will be revoked and new ones will be issued with fresh expiration times. This should be called when the access token expires or is about to expire.
  * @summary Refresh Access Token
  */
 export const gamesAuthControllerRefreshToken = (
-    refreshTokenDto: RefreshTokenDto,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  refreshTokenDto: RefreshTokenDto,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<TokenResponse>(
-      {url: `/games/auth/refresh`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: refreshTokenDto, signal
+  return getAxiosInstance<TokenResponse>(
+    {
+      url: `/games/auth/refresh`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: refreshTokenDto,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getGamesAuthControllerRefreshTokenMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof gamesAuthControllerRefreshToken>>,
+    TError,
+    { data: RefreshTokenDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof gamesAuthControllerRefreshToken>>,
+  TError,
+  { data: RefreshTokenDto },
+  TContext
+> => {
+  const mutationKey = ['gamesAuthControllerRefreshToken'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getGamesAuthControllerRefreshTokenMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof gamesAuthControllerRefreshToken>>, TError,{data: RefreshTokenDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof gamesAuthControllerRefreshToken>>, TError,{data: RefreshTokenDto}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof gamesAuthControllerRefreshToken>>,
+    { data: RefreshTokenDto }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['gamesAuthControllerRefreshToken'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return gamesAuthControllerRefreshToken(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type GamesAuthControllerRefreshTokenMutationResult = NonNullable<
+  Awaited<ReturnType<typeof gamesAuthControllerRefreshToken>>
+>;
+export type GamesAuthControllerRefreshTokenMutationBody = RefreshTokenDto;
+export type GamesAuthControllerRefreshTokenMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof gamesAuthControllerRefreshToken>>, {data: RefreshTokenDto}> = (props) => {
-          const {data} = props ?? {};
-
-          return  gamesAuthControllerRefreshToken(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type GamesAuthControllerRefreshTokenMutationResult = NonNullable<Awaited<ReturnType<typeof gamesAuthControllerRefreshToken>>>
-    export type GamesAuthControllerRefreshTokenMutationBody = RefreshTokenDto
-    export type GamesAuthControllerRefreshTokenMutationError = void
-
-    /**
+/**
  * @summary Refresh Access Token
  */
-export const useGamesAuthControllerRefreshToken = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof gamesAuthControllerRefreshToken>>, TError,{data: RefreshTokenDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof gamesAuthControllerRefreshToken>>,
-        TError,
-        {data: RefreshTokenDto},
-        TContext
-      > => {
+export const useGamesAuthControllerRefreshToken = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof gamesAuthControllerRefreshToken>>,
+      TError,
+      { data: RefreshTokenDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof gamesAuthControllerRefreshToken>>,
+  TError,
+  { data: RefreshTokenDto },
+  TContext
+> => {
+  const mutationOptions =
+    getGamesAuthControllerRefreshTokenMutationOptions(options);
 
-      const mutationOptions = getGamesAuthControllerRefreshTokenMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * Revokes all active access and refresh tokens for the specified account. This effectively logs out the user from all devices and requires them to generate new tokens. Useful for security purposes or when a user wants to log out from all sessions.
  * @summary Revoke All Tokens for Account
  */
 export const gamesAuthControllerRevokeTokens = (
-    revokeTokenDto: RevokeTokenDto,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  revokeTokenDto: RevokeTokenDto,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<void>(
-      {url: `/games/auth/revoke`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: revokeTokenDto, signal
+  return getAxiosInstance<void>(
+    {
+      url: `/games/auth/revoke`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: revokeTokenDto,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getGamesAuthControllerRevokeTokensMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof gamesAuthControllerRevokeTokens>>,
+    TError,
+    { data: RevokeTokenDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof gamesAuthControllerRevokeTokens>>,
+  TError,
+  { data: RevokeTokenDto },
+  TContext
+> => {
+  const mutationKey = ['gamesAuthControllerRevokeTokens'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getGamesAuthControllerRevokeTokensMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof gamesAuthControllerRevokeTokens>>, TError,{data: RevokeTokenDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof gamesAuthControllerRevokeTokens>>, TError,{data: RevokeTokenDto}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof gamesAuthControllerRevokeTokens>>,
+    { data: RevokeTokenDto }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['gamesAuthControllerRevokeTokens'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return gamesAuthControllerRevokeTokens(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type GamesAuthControllerRevokeTokensMutationResult = NonNullable<
+  Awaited<ReturnType<typeof gamesAuthControllerRevokeTokens>>
+>;
+export type GamesAuthControllerRevokeTokensMutationBody = RevokeTokenDto;
+export type GamesAuthControllerRevokeTokensMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof gamesAuthControllerRevokeTokens>>, {data: RevokeTokenDto}> = (props) => {
-          const {data} = props ?? {};
-
-          return  gamesAuthControllerRevokeTokens(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type GamesAuthControllerRevokeTokensMutationResult = NonNullable<Awaited<ReturnType<typeof gamesAuthControllerRevokeTokens>>>
-    export type GamesAuthControllerRevokeTokensMutationBody = RevokeTokenDto
-    export type GamesAuthControllerRevokeTokensMutationError = void
-
-    /**
+/**
  * @summary Revoke All Tokens for Account
  */
-export const useGamesAuthControllerRevokeTokens = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof gamesAuthControllerRevokeTokens>>, TError,{data: RevokeTokenDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof gamesAuthControllerRevokeTokens>>,
+export const useGamesAuthControllerRevokeTokens = <
+  TError = void,
+  TContext = unknown
+>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof gamesAuthControllerRevokeTokens>>,
+      TError,
+      { data: RevokeTokenDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof gamesAuthControllerRevokeTokens>>,
+  TError,
+  { data: RevokeTokenDto },
+  TContext
+> => {
+  const mutationOptions =
+    getGamesAuthControllerRevokeTokensMutationOptions(options);
+
+  return useMutation(mutationOptions, queryClient);
+};
+
+/**
+ * Returns the current free spin system configuration including whether it is enabled, the amount per spin, and daily limits. This endpoint does not require authentication and is intended for frontend applications to check feature availability.
+ * @summary Get Free Spin Configuration
+ */
+export const gamesPublicControllerGetFreeSpinConfig = (
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
+) => {
+  return getAxiosInstance<FreeSpinConfigResponse>(
+    { url: `/games/public/freespin/config`, method: 'GET', signal },
+    options
+  );
+};
+
+export const getGamesPublicControllerGetFreeSpinConfigQueryKey = () => {
+  return [`/games/public/freespin/config`] as const;
+};
+
+export const getGamesPublicControllerGetFreeSpinConfigQueryOptions = <
+  TData = Awaited<ReturnType<typeof gamesPublicControllerGetFreeSpinConfig>>,
+  TError = unknown
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<ReturnType<typeof gamesPublicControllerGetFreeSpinConfig>>,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ??
+    getGamesPublicControllerGetFreeSpinConfigQueryKey();
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof gamesPublicControllerGetFreeSpinConfig>>
+  > = ({ signal }) =>
+    gamesPublicControllerGetFreeSpinConfig(requestOptions, signal);
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof gamesPublicControllerGetFreeSpinConfig>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
+
+export type GamesPublicControllerGetFreeSpinConfigQueryResult = NonNullable<
+  Awaited<ReturnType<typeof gamesPublicControllerGetFreeSpinConfig>>
+>;
+export type GamesPublicControllerGetFreeSpinConfigQueryError = unknown;
+
+export function useGamesPublicControllerGetFreeSpinConfig<
+  TData = Awaited<ReturnType<typeof gamesPublicControllerGetFreeSpinConfig>>,
+  TError = unknown
+>(
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesPublicControllerGetFreeSpinConfig>>,
         TError,
-        {data: RevokeTokenDto},
-        TContext
-      > => {
+        TData
+      >
+    > &
+      Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof gamesPublicControllerGetFreeSpinConfig>>,
+          TError,
+          Awaited<ReturnType<typeof gamesPublicControllerGetFreeSpinConfig>>
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useGamesPublicControllerGetFreeSpinConfig<
+  TData = Awaited<ReturnType<typeof gamesPublicControllerGetFreeSpinConfig>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesPublicControllerGetFreeSpinConfig>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof gamesPublicControllerGetFreeSpinConfig>>,
+          TError,
+          Awaited<ReturnType<typeof gamesPublicControllerGetFreeSpinConfig>>
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useGamesPublicControllerGetFreeSpinConfig<
+  TData = Awaited<ReturnType<typeof gamesPublicControllerGetFreeSpinConfig>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesPublicControllerGetFreeSpinConfig>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+/**
+ * @summary Get Free Spin Configuration
+ */
 
-      const mutationOptions = getGamesAuthControllerRevokeTokensMutationOptions(options);
+export function useGamesPublicControllerGetFreeSpinConfig<
+  TData = Awaited<ReturnType<typeof gamesPublicControllerGetFreeSpinConfig>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesPublicControllerGetFreeSpinConfig>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions =
+    getGamesPublicControllerGetFreeSpinConfigQueryOptions(options);
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+}
+
+/**
+ * Returns the current slot machine symbol weights, three-of-a-kind multipliers, and special combination multipliers. This information is public and helps players understand the game mechanics and payout structure.
+ * @summary Get Slot Machine Odds and Multipliers
+ */
+export const gamesPublicControllerGetSlotMachineOdds = (
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
+) => {
+  return getAxiosInstance<SlotMachineOddsResponse>(
+    { url: `/games/public/slotmachine/odds`, method: 'GET', signal },
+    options
+  );
+};
+
+export const getGamesPublicControllerGetSlotMachineOddsQueryKey = () => {
+  return [`/games/public/slotmachine/odds`] as const;
+};
+
+export const getGamesPublicControllerGetSlotMachineOddsQueryOptions = <
+  TData = Awaited<ReturnType<typeof gamesPublicControllerGetSlotMachineOdds>>,
+  TError = unknown
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<ReturnType<typeof gamesPublicControllerGetSlotMachineOdds>>,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ??
+    getGamesPublicControllerGetSlotMachineOddsQueryKey();
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof gamesPublicControllerGetSlotMachineOdds>>
+  > = ({ signal }) =>
+    gamesPublicControllerGetSlotMachineOdds(requestOptions, signal);
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof gamesPublicControllerGetSlotMachineOdds>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
+
+export type GamesPublicControllerGetSlotMachineOddsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof gamesPublicControllerGetSlotMachineOdds>>
+>;
+export type GamesPublicControllerGetSlotMachineOddsQueryError = unknown;
+
+export function useGamesPublicControllerGetSlotMachineOdds<
+  TData = Awaited<ReturnType<typeof gamesPublicControllerGetSlotMachineOdds>>,
+  TError = unknown
+>(
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesPublicControllerGetSlotMachineOdds>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof gamesPublicControllerGetSlotMachineOdds>>,
+          TError,
+          Awaited<ReturnType<typeof gamesPublicControllerGetSlotMachineOdds>>
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useGamesPublicControllerGetSlotMachineOdds<
+  TData = Awaited<ReturnType<typeof gamesPublicControllerGetSlotMachineOdds>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesPublicControllerGetSlotMachineOdds>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof gamesPublicControllerGetSlotMachineOdds>>,
+          TError,
+          Awaited<ReturnType<typeof gamesPublicControllerGetSlotMachineOdds>>
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useGamesPublicControllerGetSlotMachineOdds<
+  TData = Awaited<ReturnType<typeof gamesPublicControllerGetSlotMachineOdds>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesPublicControllerGetSlotMachineOdds>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+/**
+ * @summary Get Slot Machine Odds and Multipliers
+ */
+
+export function useGamesPublicControllerGetSlotMachineOdds<
+  TData = Awaited<ReturnType<typeof gamesPublicControllerGetSlotMachineOdds>>,
+  TError = unknown
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof gamesPublicControllerGetSlotMachineOdds>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions =
+    getGamesPublicControllerGetSlotMachineOddsQueryOptions(options);
+
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+}
+
 /**
  * Initiates a slot machine game with the specified bet amount and token type. The slot machine generates three random symbols based on weighted probabilities. Winnings are calculated based on matching symbols and their corresponding payout multipliers. Two matching symbols result in a smaller win, while three matching symbols result in a larger win. The result includes the generated symbols, win status, multiplier applied, bet amount, win amount, and balance information before and after the game. Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Play Slot Machine Game
  */
 export const slotMachineControllerPlay = (
-    playSlotMachineDto: PlaySlotMachineDto,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  playSlotMachineDto: PlaySlotMachineDto,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<SlotMachineResultDto>(
-      {url: `/games/slotmachine/play`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: playSlotMachineDto, signal
+  return getAxiosInstance<SlotMachineResultDto>(
+    {
+      url: `/games/slotmachine/play`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: playSlotMachineDto,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getSlotMachineControllerPlayMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof slotMachineControllerPlay>>,
+    TError,
+    { data: PlaySlotMachineDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof slotMachineControllerPlay>>,
+  TError,
+  { data: PlaySlotMachineDto },
+  TContext
+> => {
+  const mutationKey = ['slotMachineControllerPlay'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getSlotMachineControllerPlayMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof slotMachineControllerPlay>>, TError,{data: PlaySlotMachineDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof slotMachineControllerPlay>>, TError,{data: PlaySlotMachineDto}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof slotMachineControllerPlay>>,
+    { data: PlaySlotMachineDto }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['slotMachineControllerPlay'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return slotMachineControllerPlay(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type SlotMachineControllerPlayMutationResult = NonNullable<
+  Awaited<ReturnType<typeof slotMachineControllerPlay>>
+>;
+export type SlotMachineControllerPlayMutationBody = PlaySlotMachineDto;
+export type SlotMachineControllerPlayMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof slotMachineControllerPlay>>, {data: PlaySlotMachineDto}> = (props) => {
-          const {data} = props ?? {};
-
-          return  slotMachineControllerPlay(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type SlotMachineControllerPlayMutationResult = NonNullable<Awaited<ReturnType<typeof slotMachineControllerPlay>>>
-    export type SlotMachineControllerPlayMutationBody = PlaySlotMachineDto
-    export type SlotMachineControllerPlayMutationError = void
-
-    /**
+/**
  * @summary Play Slot Machine Game
  */
-export const useSlotMachineControllerPlay = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof slotMachineControllerPlay>>, TError,{data: PlaySlotMachineDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof slotMachineControllerPlay>>,
-        TError,
-        {data: PlaySlotMachineDto},
-        TContext
-      > => {
+export const useSlotMachineControllerPlay = <TError = void, TContext = unknown>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof slotMachineControllerPlay>>,
+      TError,
+      { data: PlaySlotMachineDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof slotMachineControllerPlay>>,
+  TError,
+  { data: PlaySlotMachineDto },
+  TContext
+> => {
+  const mutationOptions = getSlotMachineControllerPlayMutationOptions(options);
 
-      const mutationOptions = getSlotMachineControllerPlayMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * Retrieves the history of slot machine games played by the authenticated user account. Results are paginated and ordered by creation date (newest first). Each game record includes the symbols generated, bet amount, win amount, win multiplier, whether the game was won or lost, and the timestamp of when the game was played. Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Get Slot Machine Game History
  */
 export const slotMachineControllerGetHistory = (
-    params: SlotMachineControllerGetHistoryParams,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  params: SlotMachineControllerGetHistoryParams,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<SlotMachineHistoryResponse>(
-      {url: `/games/slotmachine/history`, method: 'GET',
-        params, signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<SlotMachineHistoryResponse>(
+    { url: `/games/slotmachine/history`, method: 'GET', params, signal },
+    options
+  );
+};
 
-export const getSlotMachineControllerGetHistoryQueryKey = (params: SlotMachineControllerGetHistoryParams,) => {
-    return [`/games/slotmachine/history`, ...(params ? [params]: [])] as const;
-    }
-
-    
-export const getSlotMachineControllerGetHistoryQueryOptions = <TData = Awaited<ReturnType<typeof slotMachineControllerGetHistory>>, TError = void>(params: SlotMachineControllerGetHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof slotMachineControllerGetHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getSlotMachineControllerGetHistoryQueryKey = (
+  params: SlotMachineControllerGetHistoryParams
 ) => {
+  return [`/games/slotmachine/history`, ...(params ? [params] : [])] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getSlotMachineControllerGetHistoryQueryOptions = <
+  TData = Awaited<ReturnType<typeof slotMachineControllerGetHistory>>,
+  TError = void
+>(
+  params: SlotMachineControllerGetHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof slotMachineControllerGetHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getSlotMachineControllerGetHistoryQueryKey(params);
+  const queryKey =
+    queryOptions?.queryKey ??
+    getSlotMachineControllerGetHistoryQueryKey(params);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof slotMachineControllerGetHistory>>
+  > = ({ signal }) =>
+    slotMachineControllerGetHistory(params, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof slotMachineControllerGetHistory>>> = ({ signal }) => slotMachineControllerGetHistory(params, requestOptions, signal);
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof slotMachineControllerGetHistory>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type SlotMachineControllerGetHistoryQueryResult = NonNullable<
+  Awaited<ReturnType<typeof slotMachineControllerGetHistory>>
+>;
+export type SlotMachineControllerGetHistoryQueryError = void;
 
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof slotMachineControllerGetHistory>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type SlotMachineControllerGetHistoryQueryResult = NonNullable<Awaited<ReturnType<typeof slotMachineControllerGetHistory>>>
-export type SlotMachineControllerGetHistoryQueryError = void
-
-
-export function useSlotMachineControllerGetHistory<TData = Awaited<ReturnType<typeof slotMachineControllerGetHistory>>, TError = void>(
- params: SlotMachineControllerGetHistoryParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof slotMachineControllerGetHistory>>, TError, TData>> & Pick<
+export function useSlotMachineControllerGetHistory<
+  TData = Awaited<ReturnType<typeof slotMachineControllerGetHistory>>,
+  TError = void
+>(
+  params: SlotMachineControllerGetHistoryParams,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof slotMachineControllerGetHistory>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof slotMachineControllerGetHistory>>,
           TError,
           Awaited<ReturnType<typeof slotMachineControllerGetHistory>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useSlotMachineControllerGetHistory<TData = Awaited<ReturnType<typeof slotMachineControllerGetHistory>>, TError = void>(
- params: SlotMachineControllerGetHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof slotMachineControllerGetHistory>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useSlotMachineControllerGetHistory<
+  TData = Awaited<ReturnType<typeof slotMachineControllerGetHistory>>,
+  TError = void
+>(
+  params: SlotMachineControllerGetHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof slotMachineControllerGetHistory>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof slotMachineControllerGetHistory>>,
           TError,
           Awaited<ReturnType<typeof slotMachineControllerGetHistory>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useSlotMachineControllerGetHistory<TData = Awaited<ReturnType<typeof slotMachineControllerGetHistory>>, TError = void>(
- params: SlotMachineControllerGetHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof slotMachineControllerGetHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useSlotMachineControllerGetHistory<
+  TData = Awaited<ReturnType<typeof slotMachineControllerGetHistory>>,
+  TError = void
+>(
+  params: SlotMachineControllerGetHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof slotMachineControllerGetHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get Slot Machine Game History
  */
 
-export function useSlotMachineControllerGetHistory<TData = Awaited<ReturnType<typeof slotMachineControllerGetHistory>>, TError = void>(
- params: SlotMachineControllerGetHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof slotMachineControllerGetHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useSlotMachineControllerGetHistory<
+  TData = Awaited<ReturnType<typeof slotMachineControllerGetHistory>>,
+  TError = void
+>(
+  params: SlotMachineControllerGetHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof slotMachineControllerGetHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getSlotMachineControllerGetHistoryQueryOptions(
+    params,
+    options
+  );
 
-  const queryOptions = getSlotMachineControllerGetHistoryQueryOptions(params,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * Retrieves comprehensive statistics about the authenticated user's performance in slot machine games for a specific token type. Statistics include total games played, wins and losses count, win rate percentage, financial metrics (total bet amount, total winnings, net profit), average win multiplier, frequency distribution of each symbol, and the largest single win amount. Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Get User Slot Machine Statistics
  */
 export const slotMachineControllerGetStats = (
-    params: SlotMachineControllerGetStatsParams,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  params: SlotMachineControllerGetStatsParams,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<SlotMachineStats>(
-      {url: `/games/slotmachine/stats`, method: 'GET',
-        params, signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<SlotMachineStats>(
+    { url: `/games/slotmachine/stats`, method: 'GET', params, signal },
+    options
+  );
+};
 
-export const getSlotMachineControllerGetStatsQueryKey = (params: SlotMachineControllerGetStatsParams,) => {
-    return [`/games/slotmachine/stats`, ...(params ? [params]: [])] as const;
-    }
-
-    
-export const getSlotMachineControllerGetStatsQueryOptions = <TData = Awaited<ReturnType<typeof slotMachineControllerGetStats>>, TError = void>(params: SlotMachineControllerGetStatsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof slotMachineControllerGetStats>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getSlotMachineControllerGetStatsQueryKey = (
+  params: SlotMachineControllerGetStatsParams
 ) => {
+  return [`/games/slotmachine/stats`, ...(params ? [params] : [])] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getSlotMachineControllerGetStatsQueryOptions = <
+  TData = Awaited<ReturnType<typeof slotMachineControllerGetStats>>,
+  TError = void
+>(
+  params: SlotMachineControllerGetStatsParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof slotMachineControllerGetStats>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getSlotMachineControllerGetStatsQueryKey(params);
+  const queryKey =
+    queryOptions?.queryKey ?? getSlotMachineControllerGetStatsQueryKey(params);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof slotMachineControllerGetStats>>
+  > = ({ signal }) =>
+    slotMachineControllerGetStats(params, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof slotMachineControllerGetStats>>> = ({ signal }) => slotMachineControllerGetStats(params, requestOptions, signal);
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof slotMachineControllerGetStats>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type SlotMachineControllerGetStatsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof slotMachineControllerGetStats>>
+>;
+export type SlotMachineControllerGetStatsQueryError = void;
 
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof slotMachineControllerGetStats>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type SlotMachineControllerGetStatsQueryResult = NonNullable<Awaited<ReturnType<typeof slotMachineControllerGetStats>>>
-export type SlotMachineControllerGetStatsQueryError = void
-
-
-export function useSlotMachineControllerGetStats<TData = Awaited<ReturnType<typeof slotMachineControllerGetStats>>, TError = void>(
- params: SlotMachineControllerGetStatsParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof slotMachineControllerGetStats>>, TError, TData>> & Pick<
+export function useSlotMachineControllerGetStats<
+  TData = Awaited<ReturnType<typeof slotMachineControllerGetStats>>,
+  TError = void
+>(
+  params: SlotMachineControllerGetStatsParams,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof slotMachineControllerGetStats>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof slotMachineControllerGetStats>>,
           TError,
           Awaited<ReturnType<typeof slotMachineControllerGetStats>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useSlotMachineControllerGetStats<TData = Awaited<ReturnType<typeof slotMachineControllerGetStats>>, TError = void>(
- params: SlotMachineControllerGetStatsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof slotMachineControllerGetStats>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useSlotMachineControllerGetStats<
+  TData = Awaited<ReturnType<typeof slotMachineControllerGetStats>>,
+  TError = void
+>(
+  params: SlotMachineControllerGetStatsParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof slotMachineControllerGetStats>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof slotMachineControllerGetStats>>,
           TError,
           Awaited<ReturnType<typeof slotMachineControllerGetStats>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useSlotMachineControllerGetStats<TData = Awaited<ReturnType<typeof slotMachineControllerGetStats>>, TError = void>(
- params: SlotMachineControllerGetStatsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof slotMachineControllerGetStats>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useSlotMachineControllerGetStats<
+  TData = Awaited<ReturnType<typeof slotMachineControllerGetStats>>,
+  TError = void
+>(
+  params: SlotMachineControllerGetStatsParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof slotMachineControllerGetStats>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get User Slot Machine Statistics
  */
 
-export function useSlotMachineControllerGetStats<TData = Awaited<ReturnType<typeof slotMachineControllerGetStats>>, TError = void>(
- params: SlotMachineControllerGetStatsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof slotMachineControllerGetStats>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useSlotMachineControllerGetStats<
+  TData = Awaited<ReturnType<typeof slotMachineControllerGetStats>>,
+  TError = void
+>(
+  params: SlotMachineControllerGetStatsParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof slotMachineControllerGetStats>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getSlotMachineControllerGetStatsQueryOptions(
+    params,
+    options
+  );
 
-  const queryOptions = getSlotMachineControllerGetStatsQueryOptions(params,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * Retrieves a detailed history of slot machine games for the authenticated user and token type, including balance information before and after each game. This provides a comprehensive view of how each game affected the user's balance over time, allowing for detailed analysis of gaming sessions. Results are paginated and ordered by creation date (newest first). Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Get Detailed Slot Machine Game History
  */
 export const slotMachineControllerGetDetailedHistory = (
-    params: SlotMachineControllerGetDetailedHistoryParams,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  params: SlotMachineControllerGetDetailedHistoryParams,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<DetailedSlotHistoryResponse>(
-      {url: `/games/slotmachine/detailed-history`, method: 'GET',
-        params, signal
+  return getAxiosInstance<DetailedSlotHistoryResponse>(
+    {
+      url: `/games/slotmachine/detailed-history`,
+      method: 'GET',
+      params,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
-export const getSlotMachineControllerGetDetailedHistoryQueryKey = (params: SlotMachineControllerGetDetailedHistoryParams,) => {
-    return [`/games/slotmachine/detailed-history`, ...(params ? [params]: [])] as const;
-    }
-
-    
-export const getSlotMachineControllerGetDetailedHistoryQueryOptions = <TData = Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>, TError = void>(params: SlotMachineControllerGetDetailedHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getSlotMachineControllerGetDetailedHistoryQueryKey = (
+  params: SlotMachineControllerGetDetailedHistoryParams
 ) => {
+  return [
+    `/games/slotmachine/detailed-history`,
+    ...(params ? [params] : []),
+  ] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getSlotMachineControllerGetDetailedHistoryQueryOptions = <
+  TData = Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>,
+  TError = void
+>(
+  params: SlotMachineControllerGetDetailedHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getSlotMachineControllerGetDetailedHistoryQueryKey(params);
+  const queryKey =
+    queryOptions?.queryKey ??
+    getSlotMachineControllerGetDetailedHistoryQueryKey(params);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>
+  > = ({ signal }) =>
+    slotMachineControllerGetDetailedHistory(params, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>> = ({ signal }) => slotMachineControllerGetDetailedHistory(params, requestOptions, signal);
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type SlotMachineControllerGetDetailedHistoryQueryResult = NonNullable<
+  Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>
+>;
+export type SlotMachineControllerGetDetailedHistoryQueryError = void;
 
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type SlotMachineControllerGetDetailedHistoryQueryResult = NonNullable<Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>>
-export type SlotMachineControllerGetDetailedHistoryQueryError = void
-
-
-export function useSlotMachineControllerGetDetailedHistory<TData = Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>, TError = void>(
- params: SlotMachineControllerGetDetailedHistoryParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>, TError, TData>> & Pick<
+export function useSlotMachineControllerGetDetailedHistory<
+  TData = Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>,
+  TError = void
+>(
+  params: SlotMachineControllerGetDetailedHistoryParams,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>,
           TError,
           Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useSlotMachineControllerGetDetailedHistory<TData = Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>, TError = void>(
- params: SlotMachineControllerGetDetailedHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useSlotMachineControllerGetDetailedHistory<
+  TData = Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>,
+  TError = void
+>(
+  params: SlotMachineControllerGetDetailedHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>,
           TError,
           Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useSlotMachineControllerGetDetailedHistory<TData = Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>, TError = void>(
- params: SlotMachineControllerGetDetailedHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useSlotMachineControllerGetDetailedHistory<
+  TData = Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>,
+  TError = void
+>(
+  params: SlotMachineControllerGetDetailedHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get Detailed Slot Machine Game History
  */
 
-export function useSlotMachineControllerGetDetailedHistory<TData = Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>, TError = void>(
- params: SlotMachineControllerGetDetailedHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useSlotMachineControllerGetDetailedHistory<
+  TData = Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>,
+  TError = void
+>(
+  params: SlotMachineControllerGetDetailedHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof slotMachineControllerGetDetailedHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getSlotMachineControllerGetDetailedHistoryQueryOptions(
+    params,
+    options
+  );
 
-  const queryOptions = getSlotMachineControllerGetDetailedHistoryQueryOptions(params,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * Places a bet on the coin flip game with specified parameters. Player chooses HEADS or TAILS, and places a bet. The coin is flipped and if the player guessed correctly, they win double their bet amount (minus 2% commission). The result, winning status, and updated balance information are returned. Each play generates a unique transactionId for tracking purposes. Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Play Coin Flip Game
  */
 export const coinFlipControllerPlay = (
-    playCoinFlipDto: PlayCoinFlipDto,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  playCoinFlipDto: PlayCoinFlipDto,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<CoinFlipResultDto>(
-      {url: `/games/coinflip/play`, method: 'POST',
-      headers: {'Content-Type': 'application/json', },
-      data: playCoinFlipDto, signal
+  return getAxiosInstance<CoinFlipResultDto>(
+    {
+      url: `/games/coinflip/play`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: playCoinFlipDto,
+      signal,
     },
-      options);
-    }
-  
+    options
+  );
+};
 
+export const getCoinFlipControllerPlayMutationOptions = <
+  TError = void,
+  TContext = unknown
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof coinFlipControllerPlay>>,
+    TError,
+    { data: PlayCoinFlipDto },
+    TContext
+  >;
+  request?: SecondParameter<typeof getAxiosInstance>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof coinFlipControllerPlay>>,
+  TError,
+  { data: PlayCoinFlipDto },
+  TContext
+> => {
+  const mutationKey = ['coinFlipControllerPlay'];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      'mutationKey' in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
 
-export const getCoinFlipControllerPlayMutationOptions = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof coinFlipControllerPlay>>, TError,{data: PlayCoinFlipDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
-): UseMutationOptions<Awaited<ReturnType<typeof coinFlipControllerPlay>>, TError,{data: PlayCoinFlipDto}, TContext> => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof coinFlipControllerPlay>>,
+    { data: PlayCoinFlipDto }
+  > = (props) => {
+    const { data } = props ?? {};
 
-const mutationKey = ['coinFlipControllerPlay'];
-const {mutation: mutationOptions, request: requestOptions} = options ?
-      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
-      options
-      : {...options, mutation: {...options.mutation, mutationKey}}
-      : {mutation: { mutationKey, }, request: undefined};
+    return coinFlipControllerPlay(data, requestOptions);
+  };
 
-      
+  return { mutationFn, ...mutationOptions };
+};
 
+export type CoinFlipControllerPlayMutationResult = NonNullable<
+  Awaited<ReturnType<typeof coinFlipControllerPlay>>
+>;
+export type CoinFlipControllerPlayMutationBody = PlayCoinFlipDto;
+export type CoinFlipControllerPlayMutationError = void;
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof coinFlipControllerPlay>>, {data: PlayCoinFlipDto}> = (props) => {
-          const {data} = props ?? {};
-
-          return  coinFlipControllerPlay(data,requestOptions)
-        }
-
-        
-
-
-  return  { mutationFn, ...mutationOptions }}
-
-    export type CoinFlipControllerPlayMutationResult = NonNullable<Awaited<ReturnType<typeof coinFlipControllerPlay>>>
-    export type CoinFlipControllerPlayMutationBody = PlayCoinFlipDto
-    export type CoinFlipControllerPlayMutationError = void
-
-    /**
+/**
  * @summary Play Coin Flip Game
  */
-export const useCoinFlipControllerPlay = <TError = void,
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof coinFlipControllerPlay>>, TError,{data: PlayCoinFlipDto}, TContext>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient): UseMutationResult<
-        Awaited<ReturnType<typeof coinFlipControllerPlay>>,
-        TError,
-        {data: PlayCoinFlipDto},
-        TContext
-      > => {
+export const useCoinFlipControllerPlay = <TError = void, TContext = unknown>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof coinFlipControllerPlay>>,
+      TError,
+      { data: PlayCoinFlipDto },
+      TContext
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseMutationResult<
+  Awaited<ReturnType<typeof coinFlipControllerPlay>>,
+  TError,
+  { data: PlayCoinFlipDto },
+  TContext
+> => {
+  const mutationOptions = getCoinFlipControllerPlayMutationOptions(options);
 
-      const mutationOptions = getCoinFlipControllerPlayMutationOptions(options);
+  return useMutation(mutationOptions, queryClient);
+};
 
-      return useMutation(mutationOptions , queryClient);
-    }
-    
 /**
  * Retrieves the history of coin flip games played by the authenticated user account. Results are paginated and ordered by creation date (newest first). Each game record includes the chosen side, result, bet amount, win amount, and whether the game was won or lost. Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Get Coin Flip Game History
  */
 export const coinFlipControllerGetHistory = (
-    params: CoinFlipControllerGetHistoryParams,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  params: CoinFlipControllerGetHistoryParams,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<CoinFlipHistoryResponse>(
-      {url: `/games/coinflip/history`, method: 'GET',
-        params, signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<CoinFlipHistoryResponse>(
+    { url: `/games/coinflip/history`, method: 'GET', params, signal },
+    options
+  );
+};
 
-export const getCoinFlipControllerGetHistoryQueryKey = (params: CoinFlipControllerGetHistoryParams,) => {
-    return [`/games/coinflip/history`, ...(params ? [params]: [])] as const;
-    }
-
-    
-export const getCoinFlipControllerGetHistoryQueryOptions = <TData = Awaited<ReturnType<typeof coinFlipControllerGetHistory>>, TError = void>(params: CoinFlipControllerGetHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof coinFlipControllerGetHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getCoinFlipControllerGetHistoryQueryKey = (
+  params: CoinFlipControllerGetHistoryParams
 ) => {
+  return [`/games/coinflip/history`, ...(params ? [params] : [])] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getCoinFlipControllerGetHistoryQueryOptions = <
+  TData = Awaited<ReturnType<typeof coinFlipControllerGetHistory>>,
+  TError = void
+>(
+  params: CoinFlipControllerGetHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof coinFlipControllerGetHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getCoinFlipControllerGetHistoryQueryKey(params);
+  const queryKey =
+    queryOptions?.queryKey ?? getCoinFlipControllerGetHistoryQueryKey(params);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof coinFlipControllerGetHistory>>
+  > = ({ signal }) =>
+    coinFlipControllerGetHistory(params, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof coinFlipControllerGetHistory>>> = ({ signal }) => coinFlipControllerGetHistory(params, requestOptions, signal);
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof coinFlipControllerGetHistory>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type CoinFlipControllerGetHistoryQueryResult = NonNullable<
+  Awaited<ReturnType<typeof coinFlipControllerGetHistory>>
+>;
+export type CoinFlipControllerGetHistoryQueryError = void;
 
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof coinFlipControllerGetHistory>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type CoinFlipControllerGetHistoryQueryResult = NonNullable<Awaited<ReturnType<typeof coinFlipControllerGetHistory>>>
-export type CoinFlipControllerGetHistoryQueryError = void
-
-
-export function useCoinFlipControllerGetHistory<TData = Awaited<ReturnType<typeof coinFlipControllerGetHistory>>, TError = void>(
- params: CoinFlipControllerGetHistoryParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof coinFlipControllerGetHistory>>, TError, TData>> & Pick<
+export function useCoinFlipControllerGetHistory<
+  TData = Awaited<ReturnType<typeof coinFlipControllerGetHistory>>,
+  TError = void
+>(
+  params: CoinFlipControllerGetHistoryParams,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof coinFlipControllerGetHistory>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof coinFlipControllerGetHistory>>,
           TError,
           Awaited<ReturnType<typeof coinFlipControllerGetHistory>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useCoinFlipControllerGetHistory<TData = Awaited<ReturnType<typeof coinFlipControllerGetHistory>>, TError = void>(
- params: CoinFlipControllerGetHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof coinFlipControllerGetHistory>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useCoinFlipControllerGetHistory<
+  TData = Awaited<ReturnType<typeof coinFlipControllerGetHistory>>,
+  TError = void
+>(
+  params: CoinFlipControllerGetHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof coinFlipControllerGetHistory>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof coinFlipControllerGetHistory>>,
           TError,
           Awaited<ReturnType<typeof coinFlipControllerGetHistory>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useCoinFlipControllerGetHistory<TData = Awaited<ReturnType<typeof coinFlipControllerGetHistory>>, TError = void>(
- params: CoinFlipControllerGetHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof coinFlipControllerGetHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useCoinFlipControllerGetHistory<
+  TData = Awaited<ReturnType<typeof coinFlipControllerGetHistory>>,
+  TError = void
+>(
+  params: CoinFlipControllerGetHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof coinFlipControllerGetHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get Coin Flip Game History
  */
 
-export function useCoinFlipControllerGetHistory<TData = Awaited<ReturnType<typeof coinFlipControllerGetHistory>>, TError = void>(
- params: CoinFlipControllerGetHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof coinFlipControllerGetHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useCoinFlipControllerGetHistory<
+  TData = Awaited<ReturnType<typeof coinFlipControllerGetHistory>>,
+  TError = void
+>(
+  params: CoinFlipControllerGetHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof coinFlipControllerGetHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getCoinFlipControllerGetHistoryQueryOptions(
+    params,
+    options
+  );
 
-  const queryOptions = getCoinFlipControllerGetHistoryQueryOptions(params,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * Retrieves comprehensive statistics about the authenticated user's performance in coin flip games for a specific token type. Statistics include total games played, win/loss ratio, total amounts bet and won, net profit, distribution of heads/tails results, and largest win amount. Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Get User Coin Flip Statistics
  */
 export const coinFlipControllerGetStats = (
-    params: CoinFlipControllerGetStatsParams,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  params: CoinFlipControllerGetStatsParams,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<CoinFlipStats>(
-      {url: `/games/coinflip/stats`, method: 'GET',
-        params, signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<CoinFlipStats>(
+    { url: `/games/coinflip/stats`, method: 'GET', params, signal },
+    options
+  );
+};
 
-export const getCoinFlipControllerGetStatsQueryKey = (params: CoinFlipControllerGetStatsParams,) => {
-    return [`/games/coinflip/stats`, ...(params ? [params]: [])] as const;
-    }
-
-    
-export const getCoinFlipControllerGetStatsQueryOptions = <TData = Awaited<ReturnType<typeof coinFlipControllerGetStats>>, TError = void>(params: CoinFlipControllerGetStatsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof coinFlipControllerGetStats>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getCoinFlipControllerGetStatsQueryKey = (
+  params: CoinFlipControllerGetStatsParams
 ) => {
+  return [`/games/coinflip/stats`, ...(params ? [params] : [])] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getCoinFlipControllerGetStatsQueryOptions = <
+  TData = Awaited<ReturnType<typeof coinFlipControllerGetStats>>,
+  TError = void
+>(
+  params: CoinFlipControllerGetStatsParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof coinFlipControllerGetStats>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getCoinFlipControllerGetStatsQueryKey(params);
+  const queryKey =
+    queryOptions?.queryKey ?? getCoinFlipControllerGetStatsQueryKey(params);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof coinFlipControllerGetStats>>
+  > = ({ signal }) =>
+    coinFlipControllerGetStats(params, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof coinFlipControllerGetStats>>> = ({ signal }) => coinFlipControllerGetStats(params, requestOptions, signal);
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof coinFlipControllerGetStats>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type CoinFlipControllerGetStatsQueryResult = NonNullable<
+  Awaited<ReturnType<typeof coinFlipControllerGetStats>>
+>;
+export type CoinFlipControllerGetStatsQueryError = void;
 
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof coinFlipControllerGetStats>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type CoinFlipControllerGetStatsQueryResult = NonNullable<Awaited<ReturnType<typeof coinFlipControllerGetStats>>>
-export type CoinFlipControllerGetStatsQueryError = void
-
-
-export function useCoinFlipControllerGetStats<TData = Awaited<ReturnType<typeof coinFlipControllerGetStats>>, TError = void>(
- params: CoinFlipControllerGetStatsParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof coinFlipControllerGetStats>>, TError, TData>> & Pick<
+export function useCoinFlipControllerGetStats<
+  TData = Awaited<ReturnType<typeof coinFlipControllerGetStats>>,
+  TError = void
+>(
+  params: CoinFlipControllerGetStatsParams,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof coinFlipControllerGetStats>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof coinFlipControllerGetStats>>,
           TError,
           Awaited<ReturnType<typeof coinFlipControllerGetStats>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useCoinFlipControllerGetStats<TData = Awaited<ReturnType<typeof coinFlipControllerGetStats>>, TError = void>(
- params: CoinFlipControllerGetStatsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof coinFlipControllerGetStats>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useCoinFlipControllerGetStats<
+  TData = Awaited<ReturnType<typeof coinFlipControllerGetStats>>,
+  TError = void
+>(
+  params: CoinFlipControllerGetStatsParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof coinFlipControllerGetStats>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof coinFlipControllerGetStats>>,
           TError,
           Awaited<ReturnType<typeof coinFlipControllerGetStats>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useCoinFlipControllerGetStats<TData = Awaited<ReturnType<typeof coinFlipControllerGetStats>>, TError = void>(
- params: CoinFlipControllerGetStatsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof coinFlipControllerGetStats>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useCoinFlipControllerGetStats<
+  TData = Awaited<ReturnType<typeof coinFlipControllerGetStats>>,
+  TError = void
+>(
+  params: CoinFlipControllerGetStatsParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof coinFlipControllerGetStats>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get User Coin Flip Statistics
  */
 
-export function useCoinFlipControllerGetStats<TData = Awaited<ReturnType<typeof coinFlipControllerGetStats>>, TError = void>(
- params: CoinFlipControllerGetStatsParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof coinFlipControllerGetStats>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useCoinFlipControllerGetStats<
+  TData = Awaited<ReturnType<typeof coinFlipControllerGetStats>>,
+  TError = void
+>(
+  params: CoinFlipControllerGetStatsParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof coinFlipControllerGetStats>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getCoinFlipControllerGetStatsQueryOptions(
+    params,
+    options
+  );
 
-  const queryOptions = getCoinFlipControllerGetStatsQueryOptions(params,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }
-
-
-
 
 /**
  * Retrieves a detailed history of coin flip games for the authenticated user and token type, including balance information before and after each game. This provides a comprehensive view of how each game affected the user's balance over time. Results are paginated and ordered by creation date (newest first). Requires valid access token in Authorization header: Bearer <access_token>
  * @summary Get Detailed Coin Flip Game History
  */
 export const coinFlipControllerGetDetailedHistory = (
-    params: CoinFlipControllerGetDetailedHistoryParams,
- options?: SecondParameter<typeof getAxiosInstance>,signal?: AbortSignal
+  params: CoinFlipControllerGetDetailedHistoryParams,
+  options?: SecondParameter<typeof getAxiosInstance>,
+  signal?: AbortSignal
 ) => {
-      
-      
-      return getAxiosInstance<DetailedCoinFlipHistoryResponse>(
-      {url: `/games/coinflip/detailed-history`, method: 'GET',
-        params, signal
-    },
-      options);
-    }
-  
+  return getAxiosInstance<DetailedCoinFlipHistoryResponse>(
+    { url: `/games/coinflip/detailed-history`, method: 'GET', params, signal },
+    options
+  );
+};
 
-export const getCoinFlipControllerGetDetailedHistoryQueryKey = (params: CoinFlipControllerGetDetailedHistoryParams,) => {
-    return [`/games/coinflip/detailed-history`, ...(params ? [params]: [])] as const;
-    }
-
-    
-export const getCoinFlipControllerGetDetailedHistoryQueryOptions = <TData = Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>, TError = void>(params: CoinFlipControllerGetDetailedHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
+export const getCoinFlipControllerGetDetailedHistoryQueryKey = (
+  params: CoinFlipControllerGetDetailedHistoryParams
 ) => {
+  return [
+    `/games/coinflip/detailed-history`,
+    ...(params ? [params] : []),
+  ] as const;
+};
 
-const {query: queryOptions, request: requestOptions} = options ?? {};
+export const getCoinFlipControllerGetDetailedHistoryQueryOptions = <
+  TData = Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>,
+  TError = void
+>(
+  params: CoinFlipControllerGetDetailedHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  }
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getCoinFlipControllerGetDetailedHistoryQueryKey(params);
+  const queryKey =
+    queryOptions?.queryKey ??
+    getCoinFlipControllerGetDetailedHistoryQueryKey(params);
 
-  
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>
+  > = ({ signal }) =>
+    coinFlipControllerGetDetailedHistory(params, requestOptions, signal);
 
-    const queryFn: QueryFunction<Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>> = ({ signal }) => coinFlipControllerGetDetailedHistory(params, requestOptions, signal);
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
 
-      
+export type CoinFlipControllerGetDetailedHistoryQueryResult = NonNullable<
+  Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>
+>;
+export type CoinFlipControllerGetDetailedHistoryQueryError = void;
 
-      
-
-   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>, TError, TData> & { queryKey: DataTag<QueryKey, TData, TError> }
-}
-
-export type CoinFlipControllerGetDetailedHistoryQueryResult = NonNullable<Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>>
-export type CoinFlipControllerGetDetailedHistoryQueryError = void
-
-
-export function useCoinFlipControllerGetDetailedHistory<TData = Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>, TError = void>(
- params: CoinFlipControllerGetDetailedHistoryParams, options: { query:Partial<UseQueryOptions<Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>, TError, TData>> & Pick<
+export function useCoinFlipControllerGetDetailedHistory<
+  TData = Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>,
+  TError = void
+>(
+  params: CoinFlipControllerGetDetailedHistoryParams,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         DefinedInitialDataOptions<
           Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>,
           TError,
           Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useCoinFlipControllerGetDetailedHistory<TData = Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>, TError = void>(
- params: CoinFlipControllerGetDetailedHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>, TError, TData>> & Pick<
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useCoinFlipControllerGetDetailedHistory<
+  TData = Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>,
+  TError = void
+>(
+  params: CoinFlipControllerGetDetailedHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
         UndefinedInitialDataOptions<
           Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>,
           TError,
           Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>
-        > , 'initialData'
-      >, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
-export function useCoinFlipControllerGetDetailedHistory<TData = Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>, TError = void>(
- params: CoinFlipControllerGetDetailedHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient
-  ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useCoinFlipControllerGetDetailedHistory<
+  TData = Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>,
+  TError = void
+>(
+  params: CoinFlipControllerGetDetailedHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
 /**
  * @summary Get Detailed Coin Flip Game History
  */
 
-export function useCoinFlipControllerGetDetailedHistory<TData = Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>, TError = void>(
- params: CoinFlipControllerGetDetailedHistoryParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>, TError, TData>>, request?: SecondParameter<typeof getAxiosInstance>}
- , queryClient?: QueryClient 
- ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+export function useCoinFlipControllerGetDetailedHistory<
+  TData = Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>,
+  TError = void
+>(
+  params: CoinFlipControllerGetDetailedHistoryParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof coinFlipControllerGetDetailedHistory>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof getAxiosInstance>;
+  },
+  queryClient?: QueryClient
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getCoinFlipControllerGetDetailedHistoryQueryOptions(
+    params,
+    options
+  );
 
-  const queryOptions = getCoinFlipControllerGetDetailedHistoryQueryOptions(params,options)
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
 
-  const query = useQuery(queryOptions , queryClient) as  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
-
-  query.queryKey = queryOptions.queryKey ;
+  query.queryKey = queryOptions.queryKey;
 
   return query;
 }

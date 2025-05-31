@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { createPortal } from "react-dom";
 import { useGame } from "@/hooks/bet/useGame";
 import { motion, AnimatePresence } from "framer-motion";
@@ -9,6 +9,13 @@ import ArrowUpIcon from "@/assets/icons/ArrowUpIcon";
 import useWindowSize from "@/hooks/useWindowSize";
 import { Gift, TrendingUp, TrendingDown, Users } from "lucide-react";
 import { useReferral } from "@/hooks/bet/useReferral";
+import {
+  showErrorToast,
+  showSuccessToast,
+  showLoadingToast,
+} from "@/utils/toast";
+import { toast } from "sonner";
+import { useSlotMachine } from "@/contexts/SlotMachineContext";
 
 interface BalancePanelProps {
   isOpen?: boolean;
@@ -21,8 +28,14 @@ const BalancePanel: React.FC<BalancePanelProps> = ({
 }) => {
   const { isMobile, isTablet, isLargeScreen } = useWindowSize();
   const { solBalance, depositSol, withdrawSol } = useGame();
-  const [depositAmount, setDepositAmount] = useState("0.1");
-  const [withdrawAmount, setWithdrawAmount] = useState("0.1");
+  const { isSpinning, spinCompleted } = useSlotMachine();
+
+  // Update the default deposit amount
+  const [depositAmount, setDepositAmount] = useState("0.01");
+
+  // Update the default withdraw amount
+  const [withdrawAmount, setWithdrawAmount] = useState("0.05");
+
   const [activeTab, setActiveTab] = useState<"deposit" | "withdraw">("deposit");
   const [isLoading, setIsLoading] = useState(false);
   const [transactionSuccess, setTransactionSuccess] = useState(false);
@@ -30,39 +43,125 @@ const BalancePanel: React.FC<BalancePanelProps> = ({
   const [portalElement, setPortalElement] = useState<HTMLElement | null>(null);
   const [referralCode, setReferralCode] = useState("");
 
+  // Add display balance state similar to PlayPanel
+  const [displayBalance, setDisplayBalance] = useState("0.00");
+
   const [copiedCode, setCopiedCode] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
 
-  const { referralCode: userReferralCode, applyReferralCode } = useReferral();
-  const referralLink = `${window.location.origin}?ref=${userReferralCode}`;
+  const {
+    referralCode: userReferralCode,
+    applyReferralCode,
+    referralStats,
+    refreshReferralStats,
+  } = useReferral();
+  const referralLink = `${window.location.origin}?ref=${userReferralCode?.referralCode}`;
 
   const copyToClipboard = async (text: string, type: "code" | "link") => {
     try {
       await navigator.clipboard.writeText(text);
       if (type === "code") {
         setCopiedCode(true);
+        showSuccessToast("Copied!", "Referral code copied to clipboard");
         setTimeout(() => setCopiedCode(false), 2000);
       } else {
         setCopiedLink(true);
+        showSuccessToast("Copied!", "Referral link copied to clipboard");
         setTimeout(() => setCopiedLink(false), 2000);
       }
     } catch (err) {
       console.error("Failed to copy: ", err);
+      showErrorToast("Failed to copy", "Could not copy to clipboard");
     }
   };
 
   const isSmallScreen = isMobile || isTablet;
 
-  // Enhanced quick amount options - responsive layout
-  const quickAmounts = [0.1, 0.5, 1, 2, 5, 10, 20, 40];
+  // Updated quick amount options with new values
+  const depositQuickAmounts = [0.01, 0.025, 0.05, 0.1, 0.5, 1];
+  const withdrawQuickAmounts = [0.05, 0.1, 0.25, 0.5, 1, 2];
 
   // Set up portal element when component mounts
   useEffect(() => {
     setPortalElement(document.body);
   }, []);
 
+  // Auto-fill and auto-apply referral code from pending storage
+  useEffect(() => {
+    const pendingRefCode = localStorage.getItem('pendingReferralCode');
+    if (pendingRefCode && !referralStats?.usedReferralCode) {
+      setReferralCode(pendingRefCode);
+      // Don't clear the pending code here - let auto-apply handle it
+      
+      // Show notification that referral code was auto-filled
+      showSuccessToast(
+        "Referral Code Ready",
+        `Referral code ${pendingRefCode} will be automatically applied!`
+      );
+    }
+  }, [referralStats?.usedReferralCode]);
+
+  // Auto-apply referral code when user is authenticated
+  useEffect(() => {
+    const pendingRefCode = localStorage.getItem('pendingReferralCode');
+    if (
+      pendingRefCode && 
+      referralStats && 
+      !referralStats.usedReferralCode &&
+      referralCode === pendingRefCode
+    ) {
+      // Show loading notification
+      const toastId = showLoadingToast(
+        "Auto-Applying Referral Code",
+        `Applying referral code ${pendingRefCode}...`
+      );
+
+      // Auto-apply the referral code
+      applyReferralCode(pendingRefCode.trim())
+        .then(() => {
+          showSuccessToast(
+            "Referral Code Applied",
+            `Referral code ${pendingRefCode} has been automatically applied!`
+          );
+          refreshReferralStats();
+          setReferralCode("");
+          // Clear from localStorage after successful application
+          localStorage.removeItem('pendingReferralCode');
+        })
+        .catch((error) => {
+          showErrorToast(
+            "Auto-Apply Failed",
+            error instanceof Error ? error.message : "Failed to apply referral code automatically"
+          );
+          console.error("Auto-apply referral code failed:", error);
+        })
+        .finally(() => {
+          toast.dismiss(toastId);
+        });
+    }
+  }, [referralStats, referralCode, applyReferralCode, refreshReferralStats]);
+
+  // Update the display balance when solBalance changes, but only when not spinning and after transaction completes
+  useEffect(() => {
+    if (
+      !isLoading &&
+      solBalance?.availableBalance &&
+      !isSpinning &&
+      spinCompleted
+    ) {
+      // Only update display balance when not in loading state (after transaction completes)
+      // And not during slot spinning
+      setDisplayBalance(solBalance.availableBalance);
+    }
+  }, [solBalance?.availableBalance, isLoading, isSpinning, spinCompleted]);
+
   const handleDeposit = async () => {
     if (isLoading) return;
+
+    const toastId = showLoadingToast(
+      "Processing Deposit",
+      "Please wait while we process your deposit..."
+    );
 
     try {
       setIsLoading(true);
@@ -70,17 +169,37 @@ const BalancePanel: React.FC<BalancePanelProps> = ({
       await depositSol(parseFloat(depositAmount));
       setTransactionSuccess(true);
       setTimeout(() => setTransactionSuccess(false), 3000);
-    } catch (error) {
-      setTransactionError(
-        error instanceof Error ? error.message : "Transaction failed"
+      showSuccessToast(
+        "Deposit Successful",
+        `Successfully deposited ${depositAmount} SOL`
       );
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : "Transaction failed";
+      setTransactionError(errorMessage);
+      showErrorToast("Deposit Failed", errorMessage);
     } finally {
       setIsLoading(false);
+      toast.dismiss(toastId);
     }
   };
 
   const handleWithdraw = async () => {
     if (isLoading) return;
+
+    // Validate minimum withdraw amount
+    if (parseFloat(withdrawAmount) < 0.05) {
+      showErrorToast(
+        "Withdraw Failed",
+        "Minimum withdrawal amount is 0.05 SOL"
+      );
+      return;
+    }
+
+    const toastId = showLoadingToast(
+      "Processing Withdrawal",
+      "Please wait while we process your withdrawal..."
+    );
 
     try {
       setIsLoading(true);
@@ -88,12 +207,18 @@ const BalancePanel: React.FC<BalancePanelProps> = ({
       await withdrawSol(parseFloat(withdrawAmount));
       setTransactionSuccess(true);
       setTimeout(() => setTransactionSuccess(false), 3000);
-    } catch (error) {
-      setTransactionError(
-        error instanceof Error ? error.message : "Transaction failed"
+      showSuccessToast(
+        "Withdrawal Successful",
+        `Successfully withdrawn ${withdrawAmount} SOL`
       );
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : "Transaction failed";
+      setTransactionError(errorMessage);
+      showErrorToast("Withdrawal Failed", errorMessage);
     } finally {
       setIsLoading(false);
+      toast.dismiss(toastId);
     }
   };
 
@@ -101,11 +226,14 @@ const BalancePanel: React.FC<BalancePanelProps> = ({
     const currentAmount = parseFloat(
       type === "deposit" ? depositAmount : withdrawAmount
     );
-    const newAmount = Math.max(0.1, currentAmount + 0.1);
+    const newAmount = Math.max(
+      type === "deposit" ? 0.01 : 0.05,
+      currentAmount + 0.01
+    );
     if (type === "deposit") {
-      setDepositAmount(newAmount.toFixed(1));
+      setDepositAmount(newAmount.toFixed(2));
     } else {
-      setWithdrawAmount(newAmount.toFixed(1));
+      setWithdrawAmount(newAmount.toFixed(2));
     }
   };
 
@@ -113,11 +241,12 @@ const BalancePanel: React.FC<BalancePanelProps> = ({
     const currentAmount = parseFloat(
       type === "deposit" ? depositAmount : withdrawAmount
     );
-    const newAmount = Math.max(0.1, currentAmount - 0.1);
+    const minAmount = type === "deposit" ? 0.01 : 0.05;
+    const newAmount = Math.max(minAmount, currentAmount - 0.01);
     if (type === "deposit") {
-      setDepositAmount(newAmount.toFixed(1));
+      setDepositAmount(newAmount.toFixed(2));
     } else {
-      setWithdrawAmount(newAmount.toFixed(1));
+      setWithdrawAmount(newAmount.toFixed(2));
     }
   };
 
@@ -129,8 +258,11 @@ const BalancePanel: React.FC<BalancePanelProps> = ({
     }
   };
 
-  const maxWithdrawAmount = parseFloat(solBalance?.availableBalance || "0");
-  const isWithdrawDisabled = parseFloat(withdrawAmount) > maxWithdrawAmount;
+  const maxWithdrawAmount = parseFloat(displayBalance || "0");
+  const isWithdrawDisabled =
+    parseFloat(withdrawAmount) > maxWithdrawAmount ||
+    parseFloat(withdrawAmount) < 0.05;
+  const isDepositDisabled = parseFloat(depositAmount) < 0.01;
 
   if (isMobile && !isOpen) {
     return null;
@@ -179,7 +311,7 @@ const BalancePanel: React.FC<BalancePanelProps> = ({
         </div>
       )}
 
-      {/* Balance Display */}
+      {/* Balance Display - Updated to use displayBalance */}
       <div className="bg-[#171717]/50 rounded-md p-2 sm:p-3 backdrop-blur-sm text-white">
         <h3 className="text-xs sm:text-sm uppercase mb-1 text-[#a0c380] leading-tight">
           Available Balance
@@ -195,15 +327,10 @@ const BalancePanel: React.FC<BalancePanelProps> = ({
           }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          {solBalance?.availableBalance
-            ? parseFloat(solBalance.availableBalance).toLocaleString(
-                undefined,
-                {
-                  maximumFractionDigits: 3,
-                  minimumFractionDigits: 0,
-                }
-              )
-            : "0.00"}{" "}
+          {parseFloat(displayBalance).toLocaleString(undefined, {
+            maximumFractionDigits: 3,
+            minimumFractionDigits: 0,
+          })}{" "}
           SOL
         </motion.div>
       </div>
@@ -244,14 +371,21 @@ const BalancePanel: React.FC<BalancePanelProps> = ({
         <div className="relative">
           {activeTab === "withdraw" && isWithdrawDisabled && (
             <div className="absolute -top-4 sm:-top-5 left-0 text-[#FF0018] text-[9px] sm:text-[10px]">
-              INSUFFICIENT BALANCE
+              {parseFloat(withdrawAmount) < 0.05
+                ? "MINIMUM AMOUNT: 0.05 SOL"
+                : "INSUFFICIENT BALANCE"}
+            </div>
+          )}
+          {activeTab === "deposit" && isDepositDisabled && (
+            <div className="absolute -top-4 sm:-top-5 left-0 text-[#FF0018] text-[9px] sm:text-[10px]">
+              MINIMUM AMOUNT: 0.01 SOL
             </div>
           )}
           <input
             className="w-full bg-[#171717] text-white px-3 py-2 rounded border border-[#979797] text-xs sm:text-sm pr-10 sm:pr-12 touch-manipulation"
             type="number"
-            step="0.1"
-            min="0.1"
+            step="0.01"
+            min={activeTab === "deposit" ? "0.01" : "0.05"}
             value={activeTab === "deposit" ? depositAmount : withdrawAmount}
             onChange={(e) => {
               const value = e.target.value;
@@ -292,10 +426,13 @@ const BalancePanel: React.FC<BalancePanelProps> = ({
           </div>
           <div
             className={`grid gap-1 ${
-              isSmallScreen ? "grid-cols-4" : "grid-cols-4"
+              isSmallScreen ? "grid-cols-3" : "grid-cols-3"
             }`}
           >
-            {quickAmounts.map((amount) => (
+            {(activeTab === "deposit"
+              ? depositQuickAmounts
+              : withdrawQuickAmounts
+            ).map((amount) => (
               <button
                 key={amount}
                 className={`py-1 sm:py-1.5 text-[8px] sm:text-[9px] md:text-[10px] rounded transition-all touch-manipulation ${
@@ -314,7 +451,7 @@ const BalancePanel: React.FC<BalancePanelProps> = ({
                   activeTab === "withdraw" && amount > maxWithdrawAmount
                 }
               >
-                {amount < 1 ? amount.toFixed(1) : amount}
+                {amount < 1 ? amount.toFixed(2) : amount}
               </button>
             ))}
           </div>
@@ -337,9 +474,7 @@ const BalancePanel: React.FC<BalancePanelProps> = ({
           disabled={
             isLoading ||
             (activeTab === "withdraw" && isWithdrawDisabled) ||
-            parseFloat(
-              activeTab === "deposit" ? depositAmount : withdrawAmount
-            ) <= 0
+            (activeTab === "deposit" && isDepositDisabled)
           }
         >
           {isLoading ? (
@@ -376,7 +511,6 @@ const BalancePanel: React.FC<BalancePanelProps> = ({
       </AnimatePresence>
 
       {/* Referral Code Section */}
-
       <div className="bg-[#171717]/30 rounded-md p-2 sm:p-3 space-y-2">
         <div className="flex items-center gap-1 sm:gap-2">
           <Users size={isSmallScreen ? 16 : 18} className="text-[#a0c380]" />
@@ -386,24 +520,50 @@ const BalancePanel: React.FC<BalancePanelProps> = ({
         </div>
         <div className="space-y-2">
           <input
-            className="w-full bg-[#171717] text-white px-2 sm:px-3 py-1.5 sm:py-2 rounded border border-[#979797] text-sm sm:text-base placeholder-white/50 touch-manipulation"
+            className="w-full bg-[#171717] text-white px-2 sm:px-3 py-1.5 sm:py-2 rounded border border-[#979797] text-sm sm:text-base placeholder-white/50 touch-manipulation disabled:opacity-30"
             type="text"
-            placeholder="Enter referral code"
+            placeholder={
+              referralStats?.usedReferralCode
+                ? referralStats.usedReferralCode
+                : "Enter referral code"
+            }
             value={referralCode}
             onChange={(e) => setReferralCode(e.target.value)}
+            disabled={!!referralStats?.usedReferralCode}
           />
           <button
             className="w-full py-1 sm:py-1.5 text-xs sm:text-sm rounded bg-[#a0c380] text-black hover:bg-[#8db170] transition-all disabled:opacity-50 font-semibold touch-manipulation"
             disabled={!referralCode.trim()}
             onClick={() => {
-              applyReferralCode(referralCode.trim());
+              const toastId = showLoadingToast(
+                "Applying Referral Code",
+                "Please wait..."
+              );
+              try {
+                applyReferralCode(referralCode.trim());
+                showSuccessToast(
+                  "Referral Code Applied",
+                  "Your referral code has been successfully applied"
+                );
+                refreshReferralStats();
+                setReferralCode("");
+              } catch (error) {
+                showErrorToast(
+                  "Failed to Apply Code",
+                  error instanceof Error ? error.message : "Unknown error"
+                );
+              } finally {
+                toast.dismiss(toastId);
+              }
             }}
           >
-            Apply Referral Code
+            {referralStats?.usedReferralCode
+              ? "Referral Code Applied"
+              : "Apply Referral Code"}
           </button>
         </div>
         <div className="text-xs sm:text-sm text-white/60 leading-relaxed">
-          Get bonuses by using a friend's referral code
+          Get bonuses by using a friend&apos;s referral code
         </div>
       </div>
 

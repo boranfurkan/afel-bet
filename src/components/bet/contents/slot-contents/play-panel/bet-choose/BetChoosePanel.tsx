@@ -1,3 +1,4 @@
+// src/components/bet/contents/slot-contents/play-panel/bet-choose/BetChoosePanel.tsx
 import SlotButton from '@/components/UI/SlotButton';
 import React from 'react';
 import { useSlotMachine } from '@/contexts/SlotMachineContext';
@@ -19,22 +20,23 @@ const BetChoosePanel: React.FC<BetChoosePanelProps> = ({
     setBetAmount(amount);
   };
 
+  // Updated bet options with new values
   const betOptions = isMobile
     ? [
+        { amount: 0.01, label: '0.01' },
+        { amount: 0.025, label: '0.025' },
         { amount: 0.05, label: '0.05' },
         { amount: 0.1, label: '0.1' },
-        { amount: 0.25, label: '0.25' },
         { amount: 0.5, label: '0.5' },
         { amount: 1, label: '1' },
-        { amount: 2, label: '2' },
       ]
     : [
+        { amount: 0.01, label: '0.01 SOL' },
+        { amount: 0.025, label: '0.025 SOL' },
         { amount: 0.05, label: '0.05 SOL' },
         { amount: 0.1, label: '0.1 SOL' },
-        { amount: 0.25, label: '0.25 SOL' },
         { amount: 0.5, label: '0.5 SOL' },
         { amount: 1, label: '1 SOL' },
-        { amount: 2, label: '2 SOL' },
       ];
 
   return (

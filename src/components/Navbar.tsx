@@ -27,6 +27,7 @@ interface NavbarProps {
 
 const navItems: NavItem[] = [
   { label: 'HOME', path: '/', isInternal: true },
+  { label: 'CASINO', path: '/play', isInternal: true },
   { label: 'STAKING', path: '/stake', isInternal: true },
   { label: 'COLLECTIONS', path: '/collections', isInternal: true },
   {
