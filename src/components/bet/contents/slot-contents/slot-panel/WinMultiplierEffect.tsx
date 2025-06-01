@@ -1,12 +1,14 @@
 import React, { useEffect, useState, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSlotMachineOdds } from '@/hooks/bet/useSlotMachineOdds';
+import { SlotIconType } from '@/types/bet';
 
 interface WinMultiplierEffectProps {
   multiplier: number;
   winAmount: number;
   isVisible: boolean;
   winningPatterns: number[][];
-  isFreeSpin?: boolean; // Add this prop to indicate if it's a free spin win
+  slotValues: SlotIconType[];
 }
 
 interface WinEffect {
@@ -87,9 +89,41 @@ const WinMultiplierEffect: React.FC<WinMultiplierEffectProps> = ({
   winAmount,
   isVisible,
   winningPatterns,
-  isFreeSpin = false,
+  slotValues,
 }) => {
   const [activeEffects, setActiveEffects] = useState<WinEffect[]>([]);
+  const {
+    iconMultipliers,
+    specialCombinations,
+    freeSpinCombination,
+    isLoading,
+  } = useSlotMachineOdds();
+
+  const isFreeSpin = useCallback(
+    (patterns: number[][], slotValues: SlotIconType[]) => {
+      if (isLoading || !freeSpinCombination || freeSpinCombination.length === 0)
+        return false;
+
+      return patterns.some((pattern) => {
+        if (pattern.length === freeSpinCombination.length) {
+          const patternIcons = pattern.map((position) => slotValues[position]);
+
+          const targetIcon = freeSpinCombination[0];
+          const allSameIcon = freeSpinCombination.every(
+            (icon) => icon === targetIcon
+          );
+
+          if (allSameIcon) {
+            return patternIcons.every((icon) => icon === targetIcon);
+          } else {
+            return false;
+          }
+        }
+        return false;
+      });
+    },
+    [isLoading, freeSpinCombination]
+  );
 
   const getMultiplierTier = useCallback(
     (multiplier: number, isFreeSpin: boolean) => {
@@ -176,7 +210,8 @@ const WinMultiplierEffect: React.FC<WinMultiplierEffectProps> = ({
     };
   }, [isVisible, winningPatterns, createWinEffect]);
 
-  const tier = getMultiplierTier(multiplier, isFreeSpin);
+  const isFreeSpinWin = isFreeSpin(winningPatterns, slotValues);
+  const tier = getMultiplierTier(multiplier, isFreeSpinWin);
   const winAmountPerPattern = winAmount / winningPatterns.length;
 
   return (
@@ -189,7 +224,7 @@ const WinMultiplierEffect: React.FC<WinMultiplierEffectProps> = ({
             multiplier={multiplier}
             winAmount={winAmountPerPattern}
             tier={tier}
-            isFreeSpin={isFreeSpin}
+            isFreeSpin={isFreeSpinWin}
             onComplete={() => {
               setActiveEffects((prev) =>
                 prev.filter((e) => e.id !== effect.id)

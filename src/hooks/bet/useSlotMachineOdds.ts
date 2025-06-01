@@ -1,9 +1,7 @@
 import { useGamesPublicControllerGetSlotMachineOdds } from '@/api';
-import { symbolsToNumbers } from '@/utils/gameUtils';
 import { SlotIconType } from '@/types/bet';
 import { useMemo } from 'react';
 
-// Define types for the API response
 export interface SlotMachineOddsResponse {
   symbolWeights: Record<string, number>;
   threeOfAKindMultipliers: Record<string, number>;
@@ -11,9 +9,10 @@ export interface SlotMachineOddsResponse {
     symbols: string[];
     multiplier: number;
   }[];
+  freeSpinCombination: number[];
+  symbolNumbers: Record<string, number>;
 }
 
-// Define types for the transformed data
 export interface SlotMachineOdds {
   iconDropChances: Record<SlotIconType, number>;
   iconMultipliers: Record<SlotIconType, number>;
@@ -21,6 +20,7 @@ export interface SlotMachineOdds {
     combo: SlotIconType[];
     multiplier: number;
   }[];
+  freeSpinCombination: SlotIconType[];
   isLoading: boolean;
   error: unknown;
 }
@@ -30,28 +30,27 @@ export const useSlotMachineOdds = (): SlotMachineOdds => {
     useGamesPublicControllerGetSlotMachineOdds();
 
   return useMemo(() => {
-    // Fallback values if data is not loaded yet - updated to match API response structure
     const fallbackIconDropChances: Record<SlotIconType, number> = {
-      [SlotIconType.MEAT]: 0.35, // LEMON: 28 / 80
-      [SlotIconType.CROCODILE]: 0.338, // ORANGE: 27 / 80
-      [SlotIconType.HEAD]: 0.263, // MEAT: 21 / 80
-      [SlotIconType.TRUMP]: 0.181, // TRUMP: 14.5 / 80
-      [SlotIconType.SOLANA]: 0.088, // SOLANA: 7 / 80
-      [SlotIconType.AFEL]: 0.031, // AFEL: 2.5 / 80
+      [SlotIconType.MEAT]: 0.35,
+      [SlotIconType.CROCODILE]: 0.338,
+      [SlotIconType.HEAD]: 0.263,
+      [SlotIconType.TRUMP]: 0.181,
+      [SlotIconType.SOLANA]: 0.088,
+      [SlotIconType.AFEL]: 0.031,
     };
 
     const fallbackIconMultipliers: Record<SlotIconType, number> = {
-      [SlotIconType.MEAT]: 1.2, // LEMON
-      [SlotIconType.CROCODILE]: 1.3, // ORANGE
-      [SlotIconType.HEAD]: 2, // MEAT
-      [SlotIconType.TRUMP]: 3, // TRUMP
-      [SlotIconType.SOLANA]: 10, // SOLANA
-      [SlotIconType.AFEL]: 15, // AFEL
+      [SlotIconType.MEAT]: 1.2,
+      [SlotIconType.CROCODILE]: 1.3,
+      [SlotIconType.HEAD]: 2,
+      [SlotIconType.TRUMP]: 3,
+      [SlotIconType.SOLANA]: 10,
+      [SlotIconType.AFEL]: 15,
     };
 
     const fallbackSpecialCombinations = [
       {
-        combo: [SlotIconType.HEAD, SlotIconType.SOLANA, SlotIconType.AFEL], // MEAT, SOLANA, AFEL
+        combo: [SlotIconType.HEAD, SlotIconType.SOLANA, SlotIconType.AFEL],
         multiplier: 4,
       },
       {
@@ -59,25 +58,31 @@ export const useSlotMachineOdds = (): SlotMachineOdds => {
           SlotIconType.MEAT,
           SlotIconType.CROCODILE,
           SlotIconType.CROCODILE,
-        ], // LEMON, ORANGE, ORANGE
+        ],
         multiplier: 1.6,
       },
       {
-        combo: [SlotIconType.HEAD, SlotIconType.TRUMP, SlotIconType.HEAD], // MEAT, TRUMP, MEAT
+        combo: [SlotIconType.HEAD, SlotIconType.TRUMP, SlotIconType.HEAD],
         multiplier: 2.5,
       },
       {
-        combo: [SlotIconType.CROCODILE, SlotIconType.SOLANA, SlotIconType.AFEL], // ORANGE, SOLANA, AFEL
+        combo: [SlotIconType.CROCODILE, SlotIconType.SOLANA, SlotIconType.AFEL],
         multiplier: 3.5,
       },
       {
-        combo: [SlotIconType.TRUMP, SlotIconType.AFEL, SlotIconType.SOLANA], // TRUMP, AFEL, SOLANA
+        combo: [SlotIconType.TRUMP, SlotIconType.AFEL, SlotIconType.SOLANA],
         multiplier: 4,
       },
       {
-        combo: [SlotIconType.MEAT, SlotIconType.MEAT, SlotIconType.CROCODILE], // LEMON, LEMON, ORANGE
+        combo: [SlotIconType.MEAT, SlotIconType.MEAT, SlotIconType.CROCODILE],
         multiplier: 1.3,
       },
+    ];
+
+    const fallbackFreeSpinCombination = [
+      SlotIconType.CROCODILE,
+      SlotIconType.CROCODILE,
+      SlotIconType.CROCODILE,
     ];
 
     if (!data) {
@@ -85,12 +90,12 @@ export const useSlotMachineOdds = (): SlotMachineOdds => {
         iconDropChances: fallbackIconDropChances,
         iconMultipliers: fallbackIconMultipliers,
         specialCombinations: fallbackSpecialCombinations,
+        freeSpinCombination: fallbackFreeSpinCombination,
         isLoading,
         error,
       };
     }
 
-    // Transform symbolWeights to iconDropChances
     const iconDropChances: Record<SlotIconType, number> = {
       [SlotIconType.MEAT]: 0,
       [SlotIconType.CROCODILE]: 0,
@@ -108,11 +113,13 @@ export const useSlotMachineOdds = (): SlotMachineOdds => {
 
     Object.entries(data.symbolWeights).forEach(([symbol, weight]) => {
       const normalizedWeight = (weight as number) / totalWeight;
-      const iconType = symbolsToNumbers([symbol])[0];
-      iconDropChances[iconType] = normalizedWeight;
+      const iconType = data.symbolNumbers[symbol] as SlotIconType;
+      if (iconType) {
+        iconDropChances[iconType] = normalizedWeight;
+      }
     });
 
-    // Transform threeOfAKindMultipliers to iconMultipliers
+    // Transform threeOfAKindMultipliers to iconMultipliers using symbolNumbers mapping
     const iconMultipliers: Record<SlotIconType, number> = {
       [SlotIconType.MEAT]: 0,
       [SlotIconType.CROCODILE]: 0,
@@ -123,21 +130,30 @@ export const useSlotMachineOdds = (): SlotMachineOdds => {
     };
     Object.entries(data.threeOfAKindMultipliers).forEach(
       ([symbol, multiplier]) => {
-        const iconType = symbolsToNumbers([symbol])[0];
-        iconMultipliers[iconType] = multiplier as number;
+        const iconType = data.symbolNumbers[symbol] as SlotIconType;
+        if (iconType) {
+          iconMultipliers[iconType] = multiplier as number;
+        }
       }
     );
 
-    // Transform specialCombinations
+    // Transform specialCombinations using symbolNumbers mapping
     const specialCombinations = data.specialCombinations.map((combo) => ({
-      combo: symbolsToNumbers([...combo.symbols]),
+      combo: combo.symbols.map(
+        (symbol) => data.symbolNumbers[symbol] as SlotIconType
+      ),
       multiplier: combo.multiplier,
     }));
+
+    const freeSpinCombination = data.freeSpinCombination.map(
+      (iconNumber) => iconNumber as SlotIconType
+    );
 
     return {
       iconDropChances,
       iconMultipliers,
       specialCombinations,
+      freeSpinCombination,
       isLoading,
       error,
     };

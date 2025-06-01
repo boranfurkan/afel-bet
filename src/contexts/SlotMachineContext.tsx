@@ -13,7 +13,6 @@ import { SlotIconType } from '@/types/bet';
 import { useSlotMachine as useSlotMachineHook } from '@/hooks/bet/useSlotMachine';
 import { useFreeSpin } from '@/hooks/bet/useFreeSpin';
 import { useSlotMachineOdds } from '@/hooks/bet/useSlotMachineOdds';
-import { symbolsToNumbers } from '@/utils/gameUtils';
 import { SlotMachineResultDto } from '@/api';
 import { useGame } from '@/hooks/bet/useGame';
 
@@ -83,7 +82,12 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
     refreshFreeSpin,
   } = useFreeSpin();
 
-  const { isLoading: isOddsLoading } = useSlotMachineOdds();
+  const {
+    isLoading: isOddsLoading,
+    iconDropChances,
+    iconMultipliers,
+    specialCombinations,
+  } = useSlotMachineOdds();
 
   const [playReelsBegin] = useSound('/sounds/reels-begin.mp3');
 
@@ -112,11 +116,27 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
     [gameMode]
   );
 
+  // Convert symbol names to SlotIconType using the symbolNumbers mapping from API
+  const convertSymbolsToSlotIcons = useCallback(
+    (symbols: string[]): SlotIconType[] => {
+      // Direct mapping since backend now returns correct symbol names
+      const symbolMap: Record<string, SlotIconType> = {
+        MEAT: SlotIconType.MEAT,
+        CROCODILE: SlotIconType.CROCODILE,
+        HEAD: SlotIconType.HEAD,
+        TRUMP: SlotIconType.TRUMP,
+        SOLANA: SlotIconType.SOLANA,
+        AFEL: SlotIconType.AFEL,
+      };
+
+      return symbols.map((symbol) => symbolMap[symbol] || SlotIconType.MEAT);
+    },
+    []
+  );
   // Convert backend winningLines to frontend winning patterns
   const convertWinningLinesToPatterns = useCallback(
     (winningLines: readonly any[]): number[][] => {
       if (!winningLines || winningLines.length === 0) return [];
-
       return winningLines.map((line) => line.positions || []);
     },
     []
@@ -184,11 +204,11 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
       if (gameMode === 'demo') {
         // Demo mode - use realistic simulation with drop chances
         playResult = await slotMachine.play(betAmount, false, true);
-        newSlotValues = symbolsToNumbers([...playResult.symbols]);
+        newSlotValues = convertSymbolsToSlotIcons([...playResult.symbols]);
       } else {
         // Normal mode - use real API
         playResult = await slotMachine.play(betAmount, false, false);
-        newSlotValues = symbolsToNumbers([...playResult.symbols]);
+        newSlotValues = convertSymbolsToSlotIcons([...playResult.symbols]);
       }
 
       setTimeout(() => {
@@ -250,6 +270,7 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
     gameMode,
     isOddsLoading,
     convertWinningLinesToPatterns,
+    convertSymbolsToSlotIcons,
   ]);
 
   const utiliseFreeSpinSlots = useCallback(async () => {
@@ -295,7 +316,7 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
 
       refreshFreSpinWithRetry();
 
-      const newSlotValues = symbolsToNumbers([...playResult.symbols]);
+      const newSlotValues = convertSymbolsToSlotIcons([...playResult.symbols]);
 
       setTimeout(() => {
         setSlotValues(newSlotValues);
@@ -348,6 +369,7 @@ export const SlotMachineProvider: React.FC<{ children: React.ReactNode }> = ({
     updateBalance,
     isOddsLoading,
     convertWinningLinesToPatterns,
+    convertSymbolsToSlotIcons,
   ]);
 
   useEffect(() => {

@@ -383,7 +383,7 @@ const SlotPanel: React.FC<SlotPanelProps> = ({
                     winAmount={winResult.winAmount}
                     isVisible={true}
                     winningPatterns={winResult.winningPatterns}
-                    isFreeSpin={winResult.usedFreeSpin}
+                    slotValues={slotValues}
                   />
                 </motion.div>
               )}
